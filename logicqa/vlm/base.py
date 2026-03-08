@@ -8,6 +8,7 @@ from typing import Optional, Union
 
 from PIL import Image
 
+import re
 
 @dataclass
 class VLMResponse:
@@ -37,20 +38,33 @@ class VLMBase(ABC):
             VLMResponse with generated text, extracted answer, and log-prob.
         """
 
+    # def _extract_answer(self, text: str) -> Optional[str]:
+    #     """
+    #     Heuristically extract 'Yes' or 'No' from a VLM response.
+    #     Returns None if neither is found.
+    #     """
+    #     normalized = text.strip().lower()
+    #     # Check for explicit tokens at start of response
+    #     if normalized.startswith("yes"):
+    #         return "Yes"
+    #     if normalized.startswith("no"):
+    #         return "No"
+    #     # Fallback: search anywhere in the text
+    #     if " yes" in normalized or "\nyes" in normalized:
+    #         return "Yes"
+    #     if " no" in normalized or "\nno" in normalized:
+    #         return "No"
+    #     return None
+
     def _extract_answer(self, text: str) -> Optional[str]:
-        """
-        Heuristically extract 'Yes' or 'No' from a VLM response.
-        Returns None if neither is found.
-        """
         normalized = text.strip().lower()
-        # Check for explicit tokens at start of response
         if normalized.startswith("yes"):
             return "Yes"
         if normalized.startswith("no"):
             return "No"
-        # Fallback: search anywhere in the text
-        if " yes" in normalized or "\nyes" in normalized:
-            return "Yes"
-        if " no" in normalized or "\nno" in normalized:
-            return "No"
-        return None
+        last_yes = max([m.start() for m in re.finditer(r'\byes\b', normalized)] or [-1])
+        last_no  = max([m.start() for m in re.finditer(r'\bno\b',  normalized)] or [-1])
+        if last_yes == last_no == -1:
+            return None
+        return "Yes" if last_yes > last_no else "No"
+

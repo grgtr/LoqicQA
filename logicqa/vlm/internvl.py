@@ -19,6 +19,35 @@ from logicqa.config import InternVLConfig
 IMAGENET_MEAN = (0.485, 0.456, 0.406)
 IMAGENET_STD = (0.229, 0.224, 0.225)
 
+def _split_model(model_name: str) -> dict:
+    """
+    Returns device_map for even distribution of layers across GPUs.
+    Used instead of device_map='auto' to avoid meta tensor issue.
+    """
+    import transformers
+    config = transformers.AutoConfig.from_pretrained(
+        model_name, trust_remote_code=True
+    )
+    num_layers = config.llm_config.num_hidden_layers
+
+    n_gpus = torch.cuda.device_count()
+    assert n_gpus > 0, "No available GPUs"
+
+    # vision model + embedding on GPU 0
+    # lm_head + norm on last GPU
+    # LLM layers are divided equally
+    layers_per_gpu = math.ceil(num_layers / n_gpus)
+    device_map = {"vision_model": 0, "mlp1": 0, "language_model.model.embed_tokens": 0}
+
+    for i in range(num_layers):
+        gpu_id = min(i // layers_per_gpu, n_gpus - 1)
+        device_map[f"language_model.model.layers.{i}"] = gpu_id
+
+    last_gpu = n_gpus - 1
+    device_map["language_model.model.norm"] = last_gpu
+    device_map["language_model.lm_head"] = last_gpu
+
+    return device_map
 
 def _build_transform(input_size: int = 448):
     """Build the transform used by InternVL."""
@@ -112,20 +141,43 @@ class InternVLBackend(VLMBase):
     def __init__(self, cfg: InternVLConfig):
         self.cfg = cfg
         print(f"[InternVL] Loading model: {cfg.model_name}")
-        self.model = AutoModel.from_pretrained(
-            cfg.model_name,
-            torch_dtype=torch.bfloat16,
-            low_cpu_mem_usage=True,
-            use_flash_attn=True,
-            trust_remote_code=True,
-            device_map=cfg.device_map,
-        ).eval()
+        n_gpus = torch.cuda.device_count()
+        print("Number of GPUs:", n_gpus)
+        assert n_gpus > 0
+
+        _orig_linspace = torch.linspace
+        def _safe_linspace(*args, **kwargs):
+            kwargs['device'] = 'cpu'
+            return _orig_linspace(*args, **kwargs)
+        torch.linspace = _safe_linspace
+
+        try:
+            self.model = AutoModel.from_pretrained(
+                cfg.model_name,
+                torch_dtype=torch.bfloat16,
+                low_cpu_mem_usage=False,
+                use_flash_attn=False,
+                trust_remote_code=True,
+            ).eval()
+        finally:
+            torch.linspace = _orig_linspace
+        if not hasattr(self.model, 'all_tied_weights_keys'):
+            tied = getattr(self.model, '_tied_weights_keys', []) or []
+            self.model.all_tied_weights_keys = {k: None for k in tied}
+
+        self.model = self.model.eval()
+        if n_gpus == 1:
+            self.model = self.model.cuda()
+        else:
+            from accelerate import dispatch_model
+            device_map = _split_model(cfg.model_name)
+            self.model = dispatch_model(self.model, device_map=device_map)
         self.tokenizer = AutoTokenizer.from_pretrained(
             cfg.model_name,
             trust_remote_code=True,
             use_fast=False,
         )
-        print(f"[InternVL] Model loaded on device_map={cfg.device_map}")
+        print(f"[InternVL] Model loaded. GPUs used: {n_gpus}")
 
     # ------------------------------------------------------------------ #
 
@@ -150,8 +202,6 @@ class InternVLBackend(VLMBase):
             temperature=self.cfg.temperature,
             top_p=self.cfg.top_p,
             repetition_penalty=self.cfg.repetition_penalty,
-            output_scores=True,
-            return_dict_in_generate=True,
         )
 
         if image is not None:
@@ -184,10 +234,8 @@ class InternVLBackend(VLMBase):
         # or a GenerateOutput depending on version; handle both.
         if isinstance(response_obj, tuple):
             generated_text = response_obj[0]
-            scores = None  # scores not easily accessible via .chat wrapper
         else:
             generated_text = response_obj
-            scores = None
 
         answer = self._extract_answer(generated_text)
         log_prob = self._compute_log_prob_from_text(generated_text, answer)

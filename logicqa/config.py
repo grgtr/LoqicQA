@@ -7,6 +7,13 @@ from typing import Dict, Optional
 
 import yaml
 
+@dataclass
+class TestingConfig:
+    mode: str = "all"                          # "all" | "specific" | "random"
+    specific_samples: List[str] = field(default_factory=list)
+    random_count: int = 10
+    random_seed: int = 42
+    interleave: bool = True
 
 @dataclass
 class InternVLConfig:
@@ -86,6 +93,7 @@ class OutputConfig:
 
 @dataclass
 class LogicQAConfig:
+    testing: TestingConfig = field(default_factory=TestingConfig)
     vlm: VLMConfig = field(default_factory=VLMConfig)
     pipeline: PipelineConfig = field(default_factory=PipelineConfig)
     dataset: DatasetConfig = field(default_factory=DatasetConfig)
@@ -112,7 +120,6 @@ class LogicQAConfig:
             if "gemini" in v:
                 for k, val in v["gemini"].items():
                     setattr(cfg.vlm.gemini, k, val)
-
         if "pipeline" in raw:
             for k, val in raw["pipeline"].items():
                 setattr(cfg.pipeline, k, val)
@@ -135,6 +142,16 @@ class LogicQAConfig:
         if "output" in raw:
             for k, val in raw["output"].items():
                 setattr(cfg.output, k, val)
+        
+        if "testing" in raw:
+            t = raw["testing"]
+            cfg.testing = TestingConfig(
+                mode=t.get("mode", "all"),
+                specific_samples=t.get("specific_samples", []),
+                random_count=t.get("random_count", 10),
+                random_seed=t.get("random_seed", 42),
+                interleave=t.get("interleave", True),
+            )
 
         return cfg
 

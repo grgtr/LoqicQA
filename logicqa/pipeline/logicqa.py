@@ -226,10 +226,17 @@ class LogicQAPipeline:
             is_anomaly = any(r.is_anomaly for r in results)
             anomaly_score = max(r.anomaly_score for r in results)
             best = max(results, key=lambda r: r.anomaly_score)
-            best.is_anomaly = is_anomaly
-            best.anomaly_score = anomaly_score
-            best.image_path = image_path_str
-            return best
+            # best.is_anomaly = is_anomaly
+            # best.anomaly_score = anomaly_score
+            # best.image_path = image_path_str
+            # return best
+            return ImageResult(
+                image_path=image_path_str,
+                is_anomaly=is_anomaly,
+                anomaly_score=anomaly_score,
+                main_q_results=best.main_q_results,
+                explanation=best.explanation,
+            )
 
         return test_image(
             self.vlm,

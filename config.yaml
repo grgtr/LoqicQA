@@ -3,8 +3,8 @@
 vlm:
   backend: "internvl"          # "internvl" | "gpt4o" | "gemini"
   internvl:
-    model_name: "OpenGVLab/InternVL2_5-38B"
-    # model_name: "OpenGVLab/InternVL2_5-8B"  # lighter option
+    # model_name: "OpenGVLab/InternVL2_5-38B"
+    model_name: "OpenGVLab/InternVL2_5-8B"
     temperature: 0.2
     top_p: 0.7
     repetition_penalty: 1.1
@@ -27,7 +27,7 @@ pipeline:
 
 dataset:
   name: "mvtec_loco"
-  data_dir: "~/dataset-ninja/"
+  data_dir: /home/chikibriki/LoqicQA/dataset-ninja/"
   download_if_missing: true
 
 preprocessing:
@@ -47,3 +47,29 @@ output:
   results_dir: "results"
   save_questions: true         # save generated questions to JSON
   save_per_image: true         # save per-image decisions and scores
+
+testing:
+  mode: "specific"
+
+  specific_samples:
+    - "breakfast_box_good_000.png"
+    - "breakfast_box_good_001.png"
+    - "breakfast_box_good_002.png"
+    - "breakfast_box_good_003.png"
+    - "breakfast_box_good_004.png"
+    - "breakfast_box_good_005.png"
+    - "breakfast_box_good_006.png"
+    - "breakfast_box_good_007.png"
+    - "breakfast_box_logical_anomalies_000.png"
+    - "breakfast_box_logical_anomalies_001.png"
+    - "breakfast_box_logical_anomalies_002.png"
+    - "breakfast_box_logical_anomalies_003.png"
+    - "breakfast_box_structural_anomalies_000.png"
+    - "breakfast_box_structural_anomalies_001.png"
+    - "breakfast_box_structural_anomalies_002.png"
+    - "breakfast_box_structural_anomalies_003.png"
+  random_count: 10
+  random_seed: 42
+
+  interleave: true
+

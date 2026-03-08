@@ -26,6 +26,97 @@ from logicqa.pipeline.logicqa import LogicQAPipeline
 from logicqa.data.mvtec_loco import MVTecLOCODataset
 from logicqa.evaluation.metrics import print_evaluation_summary
 
+def select_test_samples(
+    all_samples: List[ImageSample],
+    cfg: LogicQAConfig,
+) -> List[ImageSample]:
+    """
+    Select test samples based on config.testing.mode:
+      - "all"      : все сэмплы класса
+      - "specific" : только файлы из testing.specific_samples
+      - "random"   : N случайных, с чередованием если testing.interleave=True
+    """
+    testing = cfg.testing
+    mode = getattr(testing, "mode", "all")
+
+    if mode == "all":
+        selected = all_samples
+        print(f"[TestSelect] mode=all → {len(selected)} samples")
+
+    elif mode == "specific":
+        names = set(getattr(testing, "specific_samples", []))
+        selected = [s for s in all_samples if s.path.name in names]
+        missing = names - {s.path.name for s in selected}
+        if missing:
+            print(f"[TestSelect] WARNING: not found in dataset: {missing}")
+        print(f"[TestSelect] mode=specific → {len(selected)} samples")
+
+    elif mode == "random":
+        n = getattr(testing, "random_count", 10)
+        seed = getattr(testing, "random_seed", 42)
+        interleave = getattr(testing, "interleave", True)
+        selected = _sample_random(all_samples, n=n, seed=seed, interleave=interleave)
+        print(f"[TestSelect] mode=random (n={n}, interleave={interleave}) "
+              f"→ {len(selected)} samples")
+
+    else:
+        raise ValueError(
+            f"Unknown testing.mode: '{mode}'. Choose from: all, specific, random"
+        )
+
+    return selected
+
+
+def _sample_random(
+    samples: List[ImageSample],
+    n: int,
+    seed: int = 42,
+    interleave: bool = True,
+) -> List[ImageSample]:
+    """
+    Sample n images. If interleave=True, чередуем normal/anomaly пока возможно,
+    затем добираем из оставшегося типа.
+    """
+    rng = random.Random(seed)
+
+    normals = [s for s in samples if not s.is_anomaly]
+    anomalies = [s for s in samples if s.is_anomaly]
+    rng.shuffle(normals)
+    rng.shuffle(anomalies)
+
+    if not interleave:
+        pool = normals + anomalies
+        rng.shuffle(pool)
+        selected = pool[:n]
+        return selected
+
+    # Чередование: N, A, N, A, ... пока оба списка не пустые
+    selected: List[ImageSample] = []
+    ni, ai = 0, 0
+    turn = 0  # 0 = normal first, 1 = anomaly first
+    while len(selected) < n:
+        if turn == 0:
+            if ni < len(normals):
+                selected.append(normals[ni]); ni += 1
+            elif ai < len(anomalies):
+                selected.append(anomalies[ai]); ai += 1
+            else:
+                break
+        else:
+            if ai < len(anomalies):
+                selected.append(anomalies[ai]); ai += 1
+            elif ni < len(normals):
+                selected.append(normals[ni]); ni += 1
+            else:
+                break
+        turn = 1 - turn
+
+    if len(selected) < n:
+        print(f"[TestSelect] WARNING: requested {n} samples but only "
+              f"{len(selected)} available "
+              f"({len(normals)} normal, {len(anomalies)} anomaly)")
+    return selected
+
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
@@ -131,6 +222,7 @@ def main() -> None:
     if args.questions_file:
         # Skip setup — load pre-generated questions
         pipeline.load_questions(args.questions_file)
+        print(f"[Setup] Loaded questions from {args.questions_file}")
     else:
         # Sample few-shot normal images and run setup (Stages 1-3)
         normal_images = dataset.sample_train_normal(n=args.n_shots, seed=args.seed)
@@ -152,9 +244,16 @@ def main() -> None:
     # ------------------------------------------------------------------ #
     # Test (Stage 4)
     # ------------------------------------------------------------------ #
-    test_samples = dataset.get_test_images()
-    if args.max_test:
-        test_samples = test_samples[: args.max_test]
+    # test_samples = dataset.get_test_images()
+    # if args.max_test:
+    #     test_samples = test_samples[: args.max_test]
+
+    all_test = dataset.get_test_images()
+    test_samples = select_test_samples(all_test, cfg)
+
+    if not test_samples:
+        print("[ERROR] No test samples selected. Check config.testing settings.")
+        sys.exit(1)
 
     print(f"\n[Test] Running inference on {len(test_samples)} test images ...")
 
@@ -164,9 +263,11 @@ def main() -> None:
     scores = []
 
     for i, sample in enumerate(test_samples):
-        print(f"  [{i+1}/{len(test_samples)}] {sample.path.name} "
-              f"(label={sample.label})", end=" ", flush=True)
-
+        # print(f"  [{i+1}/{len(test_samples)}] {sample.path.name} "
+        #       f"(label={sample.label})", end=" ", flush=True)
+        tag = "ANOMALY" if sample.is_anomaly else "normal "
+        print(f"  [{i+1:03d}/{len(test_samples):03d}] [{tag}] {sample.path.name}",
+              end=" ", flush=True)
         result = pipeline.predict(sample.path)
         pred_label = "anomaly" if result.is_anomaly else "normal"
         gt_label = 1 if sample.is_anomaly else 0

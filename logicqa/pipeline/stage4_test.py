@@ -70,46 +70,64 @@ def _majority_vote(answers: List[Optional[str]]) -> str:
     return "Yes" if yes_count > no_count else "No"
 
 
+# def _compute_anomaly_score(main_q_results: List[MainQResult]) -> float:
+#     """
+#     Compute the anomaly score from Main-Q log-probabilities.
+
+#     Per the paper's formulation:
+#         score_i = exp(best_log_prob_i)   for each main-Q i
+#         final_score = product(score_i)
+
+#     A higher score indicates higher anomaly confidence.
+#     When a main-Q votes 'No', its exp(log_prob) contributes to the score.
+#     When it votes 'Yes' (normal), its contribution is low (near 0).
+
+#     To compute AUROC, we use: anomaly_score = 1 - product(exp(log_p_i for Yes Qs))
+#     = probability that at least one constraint is violated.
+#     """
+#     if not main_q_results:
+#         return 0.5
+
+#     log_prob_no_answers = []
+#     for mq in main_q_results:
+#         lp = mq.best_log_prob
+#         if lp is None:
+#             lp = -1.0  # default when log-prob unavailable
+#         if mq.voted_answer == "No":
+#             log_prob_no_answers.append(lp)
+
+#     if not log_prob_no_answers:
+#         # All 'Yes' → compute inverse: 1 - product of Yes probabilities
+#         log_prob_yes = []
+#         for mq in main_q_results:
+#             lp = mq.best_log_prob if mq.best_log_prob is not None else -1.0
+#             log_prob_yes.append(lp)
+#         log_prod_yes = sum(log_prob_yes)
+#         prob_all_yes = math.exp(max(log_prod_yes, -30))
+#         return 1.0 - min(prob_all_yes, 1.0)
+
+#     # Some 'No' answers → anomaly score from No answers
+#     log_sum = sum(log_prob_no_answers)
+#     return min(math.exp(max(log_sum, -30)), 1.0)
+
+import numpy as np
+
 def _compute_anomaly_score(main_q_results: List[MainQResult]) -> float:
-    """
-    Compute the anomaly score from Main-Q log-probabilities.
-
-    Per the paper's formulation:
-        score_i = exp(best_log_prob_i)   for each main-Q i
-        final_score = product(score_i)
-
-    A higher score indicates higher anomaly confidence.
-    When a main-Q votes 'No', its exp(log_prob) contributes to the score.
-    When it votes 'Yes' (normal), its contribution is low (near 0).
-
-    To compute AUROC, we use: anomaly_score = 1 - product(exp(log_p_i for Yes Qs))
-    = probability that at least one constraint is violated.
-    """
     if not main_q_results:
         return 0.5
 
-    log_prob_no_answers = []
+    S = []
     for mq in main_q_results:
-        lp = mq.best_log_prob
-        if lp is None:
-            lp = -1.0  # default when log-prob unavailable
-        if mq.voted_answer == "No":
-            log_prob_no_answers.append(lp)
+        lp = mq.best_log_prob if mq.best_log_prob is not None else -1.0
+        S.append(math.exp(max(lp, -30)))
 
-    if not log_prob_no_answers:
-        # All 'Yes' → compute inverse: 1 - product of Yes probabilities
-        log_prob_yes = []
-        for mq in main_q_results:
-            lp = mq.best_log_prob if mq.best_log_prob is not None else -1.0
-            log_prob_yes.append(lp)
-        log_prod_yes = sum(log_prob_yes)
-        prob_all_yes = math.exp(max(log_prod_yes, -30))
-        return 1.0 - min(prob_all_yes, 1.0)
+    median_s = np.median(S)
+    is_anomaly = any(mq.voted_answer == "No" for mq in main_q_results)
 
-    # Some 'No' answers → anomaly score from No answers
-    log_sum = sum(log_prob_no_answers)
-    return min(math.exp(max(log_sum, -30)), 1.0)
-
+    if is_anomaly:
+        return min(median_s, 1.0)
+    else:
+        return max(1.0 - median_s, 0.0)
 
 def test_image(
     vlm: VLMBase,

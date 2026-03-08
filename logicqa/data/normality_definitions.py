@@ -19,46 +19,39 @@ from typing import Dict, Optional
 _NORMALITY_DEFINITIONS: Dict[str, str] = {
 
     "breakfast_box": """\
-A normal breakfast box image contains exactly the following items arranged in a cardboard tray:
-- One orange juice carton (small)
-- One cereal bar (or similar snack bar)
-- One banana
-- One apple
-All items must be present and located within the tray. No item should be missing, duplicated, or replaced by another object. The arrangement may vary slightly, but all four items must be visible within the box.""",
+- The breakfast box always contains exactly two tangerines and one nectarine \
+that are always located on the left-hand side of the box.
+- The ratio and relative position of the cereals and the mix of banana chips \
+and almonds on the right-hand side are fixed.""",
 
     "juice_bottle": """\
-A normal juice bottle image shows a single juice bottle with a label.
-The bottle must be upright and fully visible. The label on the bottle comes in different variants
-(different fruits: apple, orange, multivitamin, etc.). All bottles share the same shape.
-No foreign objects should be present. The cap must be on the bottle.""",
+- The juice bottle is filled with {fruit} juice and carries exactly two labels.
+- The first label is attached to the center of the bottle, with the {fruit} \
+icon positioned exactly at the center of the label, clearly indicating the \
+type of {fruit} juice.
+- The second label is attached to the lower part of the bottle with the text \
+"100% Juice" written on it.
+- The fill level is the same for each bottle.
+- The bottle is filled with at least 90% of its capacity with juice, \
+but not 100%.""",
 
     "pushpins": """\
-A normal pushpins image shows a transparent plastic storage box containing black compartments.
-Each compartment must contain exactly ONE pushpin.
-- No compartment should be empty.
-- No compartment should contain more than one pushpin.
-- No pushpin should be placed outside of a compartment.
-The pushpins are all of the same type (metallic needle, round colored head).""",
+- Each compartment of the box of pushpins contains exactly one pushpin.""",
 
     "screw_bag": """\
-A normal screw bag image shows a transparent plastic bag containing a specific set of screws and washers.
-The normal bag must contain:
-- 5 screws of type A (short pan-head screws)
-- 5 screws of type B (longer screws)
-- 5 washers
-All items must be inside the bag. Extra or missing items constitute an anomaly.
-No foreign items should be present.""",
+- A screw bag contains exactly two washers, two nuts, one long screw, \
+and one short screw.
+- All bolts (screws) are longer than 3 times the diameter of the washer.""",
 
     "splicing_connectors": """\
-A normal splicing connectors image shows one or more connector blocks.
-Each connector block has a fixed number of terminal slots.
-Each terminal slot must be occupied by exactly one cable.
-The cables come in different colors, and the normal color configuration is consistent per variant.
-
-For a 5-terminal block: cables must be in slots 1 through 5 (left to right).
-For a 3-terminal block: cables must be in all 3 slots.
-No slot should be empty. No extra cable should be inserted in an already-occupied slot.
-Cables must be fully inserted (not partially).""",
+- Exactly two splicing connectors with the same number of cable clamps are \
+linked by exactly one cable.
+- In addition, the number of clamps has a one-to-one correspondence to the \
+{color} of the cable.
+- The cable must be connected to the same position on both connectors to \
+maintain mirror symmetry.
+- The cable length is roughly longer than the length of the splicing \
+connector terminal block.""",
 }
 
 

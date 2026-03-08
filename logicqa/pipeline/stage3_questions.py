@@ -32,7 +32,8 @@ def _parse_numbered_list(text: str) -> List[str]:
             questions.append(match.group(1).strip())
         elif line.strip() and not line.strip().isdigit():
             # Fallback: non-empty line without a number prefix
-            pass
+            # pass
+            questions.append(line.strip())
     return questions
 
 

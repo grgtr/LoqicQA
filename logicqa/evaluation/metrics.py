@@ -42,10 +42,16 @@ def compute_f1_max(
     Returns:
         F1-max in [0, 1].
     """
+    # scores = np.array(anomaly_scores)
+    # y = np.array(labels)
+    # precision, recall, thresholds = precision_recall_curve(y, scores)
+    # f1_scores = 2 * precision * recall / (precision + recall + 1e-8)
+    # return float(np.max(f1_scores))
     scores = np.array(anomaly_scores)
     y = np.array(labels)
-    precision, recall, thresholds = precision_recall_curve(y, scores)
-    f1_scores = 2 * precision * recall / (precision + recall + 1e-8)
+    precision, recall, _ = precision_recall_curve(y, scores)
+    denom = precision + recall
+    f1_scores = np.where(denom > 0, 2 * precision * recall / denom, 0.0)
     return float(np.max(f1_scores))
 
 

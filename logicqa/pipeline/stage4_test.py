@@ -52,9 +52,10 @@ def _ask_sub_question(
     vlm: VLMBase,
     question: str,
     image: Image.Image,
+    class_name: str = "object",
 ) -> SubQResult:
     """Ask one sub-question about an image and return the result."""
-    prompt = TEST_PROMPT.format(question=question)
+    prompt = TEST_PROMPT.format(question=question, class_name=class_name)
     response = vlm.query(prompt=prompt, image=image)
     return SubQResult(
         question=question,
@@ -135,6 +136,7 @@ def test_image(
     main_questions: List[str],
     sub_questions: Dict[str, List[str]],
     image_path: Optional[str] = None,
+    class_name: str = "object",
 ) -> ImageResult:
     """
     Stage 4: Test a single query image with the generated question checklist.
@@ -163,7 +165,7 @@ def test_image(
         sub_results: List[SubQResult] = []
 
         for sq in sub_qs:
-            sub_result = _ask_sub_question(vlm, sq, pil_img)
+            sub_result = _ask_sub_question(vlm, sq, pil_img, class_name)
             sub_results.append(sub_result)
 
         # Majority vote

@@ -18,6 +18,7 @@ def describe_normal_images(
     vlm: VLMBase,
     normal_images: List[Union[Path, Image.Image]],
     normality_definition: str,
+    class_name: str = "object",
 ) -> List[str]:
     """
     Stage 1: Generate textual descriptions of normal images.
@@ -30,10 +31,14 @@ def describe_normal_images(
     Returns:
         List of N description strings, one per image.
     """
-    prompt = DESCRIBE_PROMPT.format(normality_definition=normality_definition)
+    prompt = DESCRIBE_PROMPT.format(
+        class_name=class_name,
+        normality_definition=normality_definition,
+    )
+
     descriptions = []
     for i, img in enumerate(normal_images):
-        print(f"  [Stage 1] Describing normal image {i + 1}/{len(normal_images)} ...")
+        print(f"  [Stage 1] Describing normal image of class {class_name} {i + 1}/{len(normal_images)} ...")
         if isinstance(img, (str, Path)):
             img = Image.open(str(img)).convert("RGB")
         response = vlm.query(prompt=prompt, image=img)

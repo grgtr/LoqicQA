@@ -50,7 +50,7 @@ class VLMConfig:
 
 @dataclass
 class PipelineConfig:
-    n_shots: int = 3
+    n_shots: int = 5
     n_sub_questions: int = 5
     question_filter_threshold: float = 0.8
 
@@ -121,6 +121,7 @@ class LogicQAConfig:
                 for k, val in v["gemini"].items():
                     setattr(cfg.vlm.gemini, k, val)
         if "pipeline" in raw:
+            print("[DEBUG] pipeline", raw["pipeline"])
             for k, val in raw["pipeline"].items():
                 setattr(cfg.pipeline, k, val)
 

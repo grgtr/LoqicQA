@@ -142,13 +142,13 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--n_shots",
         type=int,
-        default=3,
+        default=None,
         help="Number of few-shot normal images for setup.",
     )
     parser.add_argument(
         "--n_questions",
         type=int,
-        default=6,
+        default=None,
         help="Number of candidate main questions to generate.",
     )
     parser.add_argument(
@@ -175,7 +175,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--seed",
         type=int,
-        default=42,
+        default=None,
         help="Random seed for few-shot sampling.",
     )
     parser.add_argument(
@@ -200,7 +200,12 @@ def main() -> None:
 
     # Override from CLI args
     cfg.vlm.backend = args.vlm
-    cfg.pipeline.n_shots = args.n_shots
+    if args.n_shots is not None:
+        cfg.pipeline.n_shots = args.n_shots
+    if args.n_questions is not None:
+        cfg.pipeline.n_questions = args.n_questions
+    if args.seed is not None:
+        cfg.testing.random_seed = args.seed
     cfg.dataset.data_dir = args.data_dir
     cfg.dataset.download_if_missing = True
 
@@ -225,7 +230,8 @@ def main() -> None:
         print(f"[Setup] Loaded questions from {args.questions_file}")
     else:
         # Sample few-shot normal images and run setup (Stages 1-3)
-        normal_images = dataset.sample_train_normal(n=args.n_shots, seed=args.seed)
+        print("[DEBUG] n_shots", args.n_shots)
+        normal_images = dataset.sample_train_normal(n=cfg.pipeline.n_shots, seed=args.seed)
         print(f"[Setup] Using {len(normal_images)} normal images: "
               f"{[p.name for p in normal_images]}")
 

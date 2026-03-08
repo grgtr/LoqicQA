@@ -151,7 +151,7 @@ class LogicQAPipeline:
             for img in normal_images
         ]
         descriptions = describe_normal_images(
-            self.vlm, preprocessed_normals, self.normality_definition
+            self.vlm, preprocessed_normals, self.normality_definition, self.class_name
         )
 
         # Stage 2
@@ -174,6 +174,7 @@ class LogicQAPipeline:
             candidates,
             preprocessed_vals,
             threshold=self.cfg.pipeline.question_filter_threshold,
+            class_name=self.class_name,
         )
 
         # Stage 3c: Sub-questions
@@ -219,7 +220,7 @@ class LogicQAPipeline:
         # If Lang-SAM returned multiple segments, test each and aggregate
         if isinstance(preprocessed, list):
             results = [
-                test_image(self.vlm, seg, self.main_questions, self.sub_questions)
+                test_image(self.vlm, seg, self.main_questions, self.sub_questions, class_name=self.class_name)
                 for seg in preprocessed
             ]
             # Aggregate: anomaly if ANY segment is anomalous; max anomaly score
@@ -244,6 +245,7 @@ class LogicQAPipeline:
             self.main_questions,
             self.sub_questions,
             image_path=image_path_str,
+            class_name=self.class_name,
         )
 
     # ------------------------------------------------------------------ #

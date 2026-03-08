@@ -1,4 +1,6 @@
-"""All prompt templates for the LogicQA pipeline."""
+"""All prompt templates for the LogicQA pipeline.
+Adopted verbatim from Appendix A of the paper (arXiv:2503.20252).
+"""
 from __future__ import annotations
 
 
@@ -7,20 +9,12 @@ from __future__ import annotations
 # ============================================================
 
 DESCRIBE_PROMPT = """\
-You are an expert visual inspector for industrial quality control.
+This is a {class_name}. Analyze the image and describe the {class_name} in \
+detail, including type, color, size (length, width), material, composition, \
+quantity, relative location.
 
-Below is a normality definition that describes what a correct, defect-free image looks like:
----
+< Normal Constraints for a {class_name} >
 {normality_definition}
----
-
-Please analyze the provided image carefully and write a detailed description of it, focusing on:
-1. The LOCATION of key objects or components in the image.
-2. The QUANTITY of each type of object (e.g., how many screws, bottles, connectors).
-3. The APPEARANCE, color, and arrangement of each element.
-4. Any structural or spatial relationships between components.
-
-Be specific and factual. Do NOT describe defects or anomalies — describe only what you observe.
 """
 
 
@@ -29,25 +23,11 @@ Be specific and factual. Do NOT describe defects or anomalies — describe only 
 # ============================================================
 
 SUMMARIZE_PROMPT = """\
-You are summarizing observations from multiple normal (defect-free) industrial images.
-
-Here are {n_descriptions} descriptions of normal images:
-
-{descriptions}
-
----
-Normality definition:
-{normality_definition}
----
-
-Please write a concise summary of the SHARED key characteristics that define a normal image in this category. Focus on:
-1. What objects/components are consistently present?
-2. What are their typical locations and spatial arrangement?
-3. What quantity patterns are consistently observed?
-4. What appearance features (color, shape) are consistent across normal examples?
-
-Your summary should generalize across all descriptions, capturing the most reliable and consistent normality criteria.
-Do not mention image-specific details; only include patterns that appear across multiple images.
+{labeled_descriptions}
+Combine the {n_descriptions} descriptions into one by extracting only the \
+"common" features.
+Create a concise summary that reflects the shared characteristics while \
+removing any redundant or unique details.
 """
 
 
@@ -56,53 +36,39 @@ Do not mention image-specific details; only include patterns that appear across 
 # ============================================================
 
 GENERATE_QUESTIONS_PROMPT = """\
-You are creating a quality inspection checklist for detecting LOGICAL ANOMALIES in industrial images.
-
-A logical anomaly is NOT a surface defect (scratch, stain, etc.) — it is a violation of expected rules about:
-- The PRESENCE or ABSENCE of required objects
-- The QUANTITY of objects (too many or too few)
-- The ARRANGEMENT or POSITION of objects
-
-Here is a summary of what a NORMAL image looks like:
----
+[ Description of {class_name} ]
 {normality_summary}
----
 
-And the formal normality definition:
----
+[ Normal Constraints for {class_name} ]
 {normality_definition}
----
 
-Generate a checklist of {n_questions} binary YES/NO questions that can be used to check whether an image is NORMAL (not anomalous).
+Using the [ Normal Constraints for {class_name} ] and \
+[ Description of {class_name} ], create several but essential, simple and \
+important questions to determine whether the {class_name} in the image is \
+normal or abnormal. Ensure the questions are only based on visible \
+characteristics, excluding any aspects that cannot be determined from the \
+image. Also, simplify any difficult terms into easy-to-understand questions.
 
-Rules for the questions:
-- Each question must be answerable with "Yes" (normal) or "No" (anomaly).
-- A correct (normal) image should answer "Yes" to every question.
-- Questions must target LOGICAL constraints (quantity, presence, arrangement) — not texture or appearance defects.
-- Questions must be concise, specific, and independently answerable from the image.
-- Number each question on its own line, like: "1. Is there exactly one juice bottle in the image?"
-
-Output ONLY the numbered list of questions, nothing else.
+(Q1) :
+(Q2) :
 """
 
 
 # ============================================================
-# Stage 3b: Generate sub-question variants for a main question
+# Stage 3b: Generate sub-question variants
 # ============================================================
 
 SUBQUESTION_AUGMENT_PROMPT = """\
-You are rephrasing a quality inspection question into {n_variants} semantically equivalent variants.
+Generate {n_variants} variations of the following question while keeping the \
+semantic meaning.
 
-Original question:
-"{main_question}"
+Input: {main_question}
 
-Generate {n_variants} alternative phrasings of this question that:
-- Ask the same thing in different words
-- Keep the Yes/No answer format
-- A normal image should still answer "Yes" to all variants
-- Vary the sentence structure, vocabulary, or perspective
-
-Output ONLY the {n_variants} rephrased questions, numbered 1 to {n_variants}. No explanations.
+Output1:
+Output2:
+Output3:
+Output4:
+Output5:
 """
 
 
@@ -111,30 +77,26 @@ Output ONLY the {n_variants} rephrased questions, numbered 1 to {n_variants}. No
 # ============================================================
 
 TEST_PROMPT = """\
-You are an expert industrial quality inspector.
-
-Examine the provided image carefully and answer the following quality inspection question.
-
 Question: {question}
-
-Instructions:
-- Think step by step before giving your answer.
-- First describe what you observe in the image relevant to the question.
-- Then conclude with "Yes" or "No" on its own line.
-
-Your answer must end with EXACTLY one of:
-Yes
-No
+At first, describe {class_name} image.
+Your response must end with `- Result: Yes` or `- Result: No`.
+Let's think step by step.
 """
 
 
 # ============================================================
-# Utility: format descriptions list
+# Utility: format descriptions for Stage 2
 # ============================================================
 
-def format_descriptions(descriptions: list[str]) -> str:
-    """Format a list of image descriptions into the summarization prompt."""
-    return "\n\n".join(
-        f"Description {i + 1}:\n{desc.strip()}"
-        for i, desc in enumerate(descriptions)
-    )
+def format_descriptions(descriptions: list[str], class_name: str) -> str:
+    """
+    Format descriptions into labeled sections matching the paper's prompt format:
+      [ Normal {class_name} Description 1 ]
+      ...
+    """
+    parts = []
+    for i, desc in enumerate(descriptions, start=1):
+        parts.append(
+            f"[ Normal {class_name} Description {i} ]\n{desc.strip()}"
+        )
+    return "\n\n".join(parts)

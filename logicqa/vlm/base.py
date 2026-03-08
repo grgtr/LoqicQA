@@ -57,14 +57,16 @@ class VLMBase(ABC):
     #     return None
 
     def _extract_answer(self, text: str) -> Optional[str]:
-        normalized = text.strip().lower()
-        if normalized.startswith("yes"):
+        """Extract Yes/No from '- Result: Yes' / '- Result: No' marker."""
+        lower = text.lower()
+        if "- result: yes" in lower:
             return "Yes"
-        if normalized.startswith("no"):
+        if "- result: no" in lower:
             return "No"
-        last_yes = max([m.start() for m in re.finditer(r'\byes\b', normalized)] or [-1])
-        last_no  = max([m.start() for m in re.finditer(r'\bno\b',  normalized)] or [-1])
-        if last_yes == last_no == -1:
-            return None
-        return "Yes" if last_yes > last_no else "No"
+        # Fallback для свободного текста
+        if lower.strip().startswith("yes"):
+            return "Yes"
+        if lower.strip().startswith("no"):
+            return "No"
+        return None
 

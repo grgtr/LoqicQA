@@ -36,11 +36,94 @@ def _parse_numbered_list(text: str) -> List[str]:
             questions.append(line.strip())
     return questions
 
+def _parse_questions(text: str) -> List[str]:
+    lines = text.strip().splitlines()
+    questions = []
+
+    for line in lines:
+        line = line.strip()
+        if not line:
+            continue
+
+        match = re.match(r"^\(Q\d+\)\s*:?\s*(.+)$", line, re.IGNORECASE)
+        if match:
+            questions.append(match.group(1).strip())
+            continue
+
+        match = re.match(r"^Q\d+[\.:\)]\s*(.+)$", line, re.IGNORECASE)
+        if match:
+            questions.append(match.group(1).strip())
+            continue
+
+        match = re.match(r"^\d+[\.\)]\s*(.+)$", line)
+        if match:
+            q = match.group(1).strip()
+            if len(q) > 10:
+                questions.append(q)
+            continue
+
+        match = re.match(r"^[-•]\s*(.+)$", line)
+        if match:
+            q = match.group(1).strip()
+            if len(q) > 10:
+                questions.append(q)
+            continue
+
+    if not questions:
+        for line in text.strip().splitlines():
+            line = line.strip()
+            if len(line) > 15 and (
+                line.endswith("?") or
+                re.match(r"^(Is |Are |Does |Do |Can |Has |Have )", line, re.IGNORECASE)
+            ):
+                questions.append(line)
+
+    return questions
+
+
+def _parse_output_list(text: str) -> List[str]:
+    lines = text.strip().splitlines()
+    variants = []
+
+    for line in lines:
+        line = line.strip()
+        if not line:
+            continue
+
+            match = re.match(r"^Output\s*\d+\s*:\s*(.+)$", line, re.IGNORECASE)
+            if match:
+                variants.append(match.group(1).strip())
+                continue
+            match = re.match(r"^\d+[\.\)]\s*(.+)$", line)
+            if match:
+                q = match.group(1).strip()
+                if len(q) > 10:
+                    variants.append(q)
+                continue
+
+            match = re.match(r"^[-•]\s*(.+)$", line)
+            if match:
+                q = match.group(1).strip()
+                if len(q) > 10:
+                    variants.append(q)
+
+        if not variants:
+            for line in text.strip().splitlines():
+                line = line.strip()
+                if len(line) > 15 and (
+                    line.endswith("?") or
+                    re.match(r"^(Is |Are |Does |Do |Can |Has |Have )", line, re.IGNORECASE)
+                ):
+                    variants.append(line)
+
+        return variants
+
 
 def generate_candidate_questions(
     vlm: VLMBase,
     normality_summary: str,
     normality_definition: str,
+    class_name: str = "object",
     n_questions: int = 6,
 ) -> List[str]:
     """
@@ -57,12 +140,14 @@ def generate_candidate_questions(
     """
     print("  [Stage 3a] Generating candidate main questions ...")
     prompt = GENERATE_QUESTIONS_PROMPT.format(
+        class_name=class_name,
         normality_summary=normality_summary,
         normality_definition=normality_definition,
-        n_questions=n_questions,
     )
     response = vlm.query(prompt=prompt, image=None)
-    questions = _parse_numbered_list(response.text)
+
+    print("DEBUG: response.text:", response.text)
+    questions = _parse_questions(response.text)
     print(f"    Generated {len(questions)} candidate questions.")
     return questions
 
@@ -71,6 +156,7 @@ def _answer_single_question(
     vlm: VLMBase,
     question: str,
     image: Union[Path, Image.Image],
+    class_name: str = "object",
 ) -> Optional[str]:
     """Ask a single question about one image and return 'Yes'/'No'/None."""
     if isinstance(image, (str, Path)):
@@ -78,7 +164,7 @@ def _answer_single_question(
     else:
         img = image
 
-    prompt = TEST_PROMPT.format(question=question)
+    prompt = TEST_PROMPT.format(question=question, class_name=class_name)
     response = vlm.query(prompt=prompt, image=img)
     return response.answer
 
@@ -88,6 +174,7 @@ def filter_questions_on_normal(
     candidate_questions: List[str],
     normal_images: List[Union[Path, Image.Image]],
     threshold: float = 0.8,
+    class_name: str = "object",
 ) -> List[str]:
     """
     Stage 3b: Filter candidate questions with < threshold accuracy on normals.
@@ -115,7 +202,7 @@ def filter_questions_on_normal(
     for q in candidate_questions:
         correct = 0
         for img in normal_images:
-            answer = _answer_single_question(vlm, q, img)
+            answer = _answer_single_question(vlm, q, img, class_name)
             if answer == "Yes":
                 correct += 1
         accuracy = correct / len(normal_images)
@@ -152,7 +239,7 @@ def generate_sub_questions(
             n_variants=n_variants,
         )
         response = vlm.query(prompt=prompt, image=None)
-        variants = _parse_numbered_list(response.text)
+        variants = _parse_output_list(response.text)
         # Ensure we always have exactly n_variants (pad with original if short)
         while len(variants) < n_variants:
             variants.append(mq)

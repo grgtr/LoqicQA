@@ -9,6 +9,7 @@ def summarize_normal_context(
     vlm: VLMBase,
     descriptions: list[str],
     normality_definition: str,
+    class_name: str = "object",
 ) -> str:
     """
     Stage 2: Distill multiple normal image descriptions into a single summary.
@@ -21,11 +22,11 @@ def summarize_normal_context(
     Returns:
         A normality summary string.
     """
-    print("  [Stage 2] Summarizing normal image context ...")
-    formatted_descs = format_descriptions(descriptions)
+    print(" [Stage 2] Summarizing normal image context ...")
+    labeled = format_descriptions(descriptions, class_name=class_name)
     prompt = SUMMARIZE_PROMPT.format(
+        labeled_descriptions=labeled,
         n_descriptions=len(descriptions),
-        descriptions=formatted_descs,
         normality_definition=normality_definition,
     )
     response = vlm.query(prompt=prompt, image=None)

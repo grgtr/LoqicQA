@@ -1,6 +1,7 @@
 """MVTec LOCO AD dataset utilities: presence check and download."""
 from __future__ import annotations
 
+import json
 import os
 import random
 from dataclasses import dataclass
@@ -8,7 +9,7 @@ from pathlib import Path
 from typing import List, Optional, Tuple
 
 
-# MVTec LOCO AD class names (as they appear in the dataset directory)
+# MVTec LOCO AD class names
 MVTEC_LOCO_CLASSES = [
     "breakfast_box",
     "juice_bottle",
@@ -22,37 +23,37 @@ MVTEC_LOCO_CLASSES = [
 class ImageSample:
     """A single image sample from the dataset."""
     path: Path
-    label: str        # "good" / "logical_anomalies" / "structural_anomalies"
+    label: str        # "good" / "logical_anomalies" / "structural_anomalies" (or similar from tags)
     is_anomaly: bool  # True if label != "good"
     class_name: str
 
 
 class MVTecLOCODataset:
     """
-    MVTec LOCO AD dataset loader.
+    MVTec LOCO AD dataset loader for the dataset-ninja format.
 
-    Expected directory structure (dataset-ninja layout):
-        <data_dir>/
-            MVTec LOCO AD/
-                <class_name>/
-                    train/
-                        good/
-                            *.png
-                    test/
-                        good/
-                            *.png
-                        logical_anomalies/
-                            *.png
-                        structural_anomalies/
-                            *.png        (present for some classes)
+    Expected directory structure:
+        dataset-ninja/
+            mvtec-loco-ad/
+                train/
+                    ann/
+                        *.json
+                    img/
+                        *.png, *.jpg
+                test/
+                    ann/
+                        *.json
+                    img/
+                        *.png, *.jpg
+                validation/
+                    ...
 
-    Args:
-        data_dir:   Root directory where the dataset lives (e.g., ~/dataset-ninja/).
-        class_name: One of the 5 MVTec LOCO AD class names.
-        download_if_missing: If True, download via dataset_tools when not found.
+    The JSON files contain tags such as:
+    - name: "breakfast_box" (the class)
+    - name: "good" (the defect type / label)
     """
 
-    DATASET_FOLDER_NAME = "MVTec LOCO AD"
+    DATASET_FOLDER_NAME = "mvtec-loco-ad"
 
     def __init__(
         self,
@@ -73,24 +74,17 @@ class MVTecLOCODataset:
                     f"Set download_if_missing=True or download manually."
                 )
 
-        self.class_root = self._find_class_dir()
-
     # ------------------------------------------------------------------ #
     # Presence check & download
     # ------------------------------------------------------------------ #
 
     def _is_present(self) -> bool:
-        """Return True if the dataset directory exists and is non-empty."""
-        if not self.dataset_root.exists():
-            return False
-        # Check that at least one class folder exists
-        for cls in MVTEC_LOCO_CLASSES:
-            candidate = self.dataset_root / cls
-            # Also try with spaces (some naming conventions)
-            alt = self.dataset_root / cls.replace("_", " ")
-            if candidate.exists() or alt.exists():
-                return True
-        return False
+        """Return True if the dataset directory exists and contains train/test dirs."""
+        return (
+            self.dataset_root.exists() and
+            (self.dataset_root / "train" / "img").exists() and
+            (self.dataset_root / "test" / "img").exists()
+        )
 
     @staticmethod
     def download(dst_dir: str | Path) -> None:
@@ -113,72 +107,95 @@ class MVTecLOCODataset:
         dtools.download(dataset="MVTec LOCO AD", dst_dir=dst_dir)
         print("[Dataset] Download complete.")
 
-    def _find_class_dir(self) -> Path:
-        """Locate the directory for self.class_name (handles spaces/underscores)."""
-        candidates = [
-            self.dataset_root / self.class_name,
-            self.dataset_root / self.class_name.replace("_", " "),
-        ]
-        for c in candidates:
-            if c.exists():
-                return c
+    # ------------------------------------------------------------------ #
+    # Data loading helpers
+    # ------------------------------------------------------------------ #
 
-        # Fuzzy match: find closest
-        existing = [d.name for d in self.dataset_root.iterdir() if d.is_dir()]
-        norm_name = self.class_name.replace("_", " ").lower()
-        for ex in existing:
-            if ex.lower() == norm_name or ex.lower().replace(" ", "_") == self.class_name:
-                return self.dataset_root / ex
+    def _parse_annotation(self, ann_file: Path) -> Tuple[Optional[str], Optional[str]]:
+        """
+        Parse dataset-ninja JSON annotation to extract (class_name, label).
+        Tags typically contain the class (e.g. 'breakfast_box') and the label (e.g. 'good').
+        """
+        with open(ann_file, "r") as f:
+            data = json.load(f)
 
-        raise FileNotFoundError(
-            f"Class directory for '{self.class_name}' not found "
-            f"under {self.dataset_root}. Available: {existing}"
-        )
+        tags = [t.get("name", "").lower() for t in data.get("tags", [])]
+
+        found_class = None
+        found_label = None
+
+        for t in tags:
+            if t in MVTEC_LOCO_CLASSES:
+                found_class = t
+            elif t:
+                # E.g. "good", "logical_anomalies", "structural_anomalies"
+                found_label = t
+
+        return found_class, found_label
+
+    def _get_samples_from_split(self, split: str) -> List[ImageSample]:
+        """Load all images from a specific split (train, test, validation) for this class."""
+        img_dir = self.dataset_root / split / "img"
+        ann_dir = self.dataset_root / split / "ann"
+
+        if not img_dir.exists() or not ann_dir.exists():
+            return []
+
+        samples = []
+        # Get all images
+        for ext in ["*.png", "*.jpg", "*.jpeg"]:
+            for img_path in img_dir.glob(ext):
+                # Anns have same stem but .json extension (usually)
+                # Note: dataset-ninja sometimes names it {original_name}.json
+                # e.g., breakfast_box_000.png -> breakfast_box_000.png.json
+                # or breakfast_box_000.json. Let's try both.
+                ann_path1 = ann_dir / f"{img_path.name}.json"
+                ann_path2 = ann_dir / f"{img_path.stem}.json"
+                
+                ann_path = ann_path1 if ann_path1.exists() else ann_path2
+                if not ann_path.exists():
+                    continue
+
+                cls_name, label = self._parse_annotation(ann_path)
+
+                # Filter by our requested class
+                if cls_name == self.class_name:
+                    is_anomaly = (label != "good")
+                    samples.append(ImageSample(
+                        path=img_path,
+                        label=label or "unknown",
+                        is_anomaly=is_anomaly,
+                        class_name=self.class_name,
+                    ))
+
+        return sorted(samples, key=lambda s: s.path.name)
 
     # ------------------------------------------------------------------ #
-    # Data loading
+    # Public interface
     # ------------------------------------------------------------------ #
 
     def get_train_normal(self) -> List[Path]:
         """Return sorted list of train-normal image paths."""
-        train_good = self.class_root / "train" / "good"
-        if not train_good.exists():
-            raise FileNotFoundError(f"Train-normal dir not found: {train_good}")
-        images = sorted(train_good.glob("*.png")) + sorted(train_good.glob("*.jpg"))
-        return images
+        samples = self._get_samples_from_split("train")
+        normal_paths = [s.path for s in samples if not s.is_anomaly]
+        
+        if not normal_paths:
+            raise FileNotFoundError(
+                f"No 'good' train samples found for class '{self.class_name}'"
+            )
+        return normal_paths
 
     def get_test_images(self) -> List[ImageSample]:
         """
         Return all test image samples with labels.
-
-        Returns:
-            List of ImageSample (path, label, is_anomaly, class_name).
+        (Includes both test and validation splits if available, per standard AD practice, 
+         or just 'test' split depending on dataset-ninja split mapping).
         """
-        test_dir = self.class_root / "test"
-        if not test_dir.exists():
-            raise FileNotFoundError(f"Test dir not found: {test_dir}")
-
-        samples: List[ImageSample] = []
-        for label_dir in sorted(test_dir.iterdir()):
-            if not label_dir.is_dir():
-                continue
-            label = label_dir.name
-            is_anomaly = label != "good"
-            for img_path in sorted(label_dir.glob("*.png")):
-                samples.append(ImageSample(
-                    path=img_path,
-                    label=label,
-                    is_anomaly=is_anomaly,
-                    class_name=self.class_name,
-                ))
-            for img_path in sorted(label_dir.glob("*.jpg")):
-                samples.append(ImageSample(
-                    path=img_path,
-                    label=label,
-                    is_anomaly=is_anomaly,
-                    class_name=self.class_name,
-                ))
-        return samples
+        samples = self._get_samples_from_split("test")
+        # Optionally add validation if dataset separated them
+        samples.extend(self._get_samples_from_split("val"))
+        samples.extend(self._get_samples_from_split("validation"))
+        return sorted(samples, key=lambda s: s.path.name)
 
     def sample_train_normal(
         self,

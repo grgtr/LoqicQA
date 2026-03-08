@@ -1,0 +1,49 @@
+# LogicQA default configuration
+
+vlm:
+  backend: "internvl"          # "internvl" | "gpt4o" | "gemini"
+  internvl:
+    model_name: "OpenGVLab/InternVL2_5-38B"
+    # model_name: "OpenGVLab/InternVL2_5-8B"  # lighter option
+    temperature: 0.2
+    top_p: 0.7
+    repetition_penalty: 1.1
+    do_sample: true
+    max_new_tokens: 512
+    device_map: "auto"          # multi-GPU via accelerate
+  gpt4o:
+    model_name: "gpt-4o"
+    temperature: 1.0
+  gemini:
+    model_name: "gemini-1.5-flash"
+    temperature: 1.0
+    top_p: 0.95
+    top_k: 40
+
+pipeline:
+  n_shots: 3                    # number of normal images for few-shot setup
+  n_sub_questions: 5            # number of sub-questions per main question
+  question_filter_threshold: 0.8  # drop main questions with accuracy < 80% on normal images
+
+dataset:
+  name: "mvtec_loco"
+  data_dir: "~/dataset-ninja/"
+  download_if_missing: true
+
+preprocessing:
+  # BPM applied to: screw_bag, splicing_connectors
+  bpm:
+    enabled: true
+    patch_size: 16
+    threshold: 0.05
+  # Lang-SAM applied to: pushpins, splicing_connectors
+  langsam:
+    enabled: true
+    prompts:
+      pushpins: "The individual black compartments within the transparent plastic storage box"
+      splicing_connectors: "Connector Block"
+
+output:
+  results_dir: "results"
+  save_questions: true         # save generated questions to JSON
+  save_per_image: true         # save per-image decisions and scores

@@ -22,6 +22,7 @@ from PIL import Image
 
 from logicqa.vlm.base import VLMBase
 from logicqa.prompts import TEST_PROMPT
+from logicqa.data.normality_definitions import CLASS_INSPECTION_CONTEXTS
 from logicqa.logging import PipelineLogger
 
 
@@ -60,7 +61,9 @@ def _ask_sub_question(
     logger: Optional[PipelineLogger] = None,
 ) -> SubQResult:
     """Ask one sub-question about an image and return the result."""
-    prompt = TEST_PROMPT.format(question=question, class_name=class_name)
+    normalized_class_name = class_name.lower().replace(" ", "_")
+    class_context = CLASS_INSPECTION_CONTEXTS.get(normalized_class_name, "")
+    prompt = TEST_PROMPT.format(question=question, class_name=class_name, class_context=class_context)
     if hasattr(vlm, "query_with_logprobs"):
         # print("[DEBUG] using query_with_logprobs in stage4_test")
         response = vlm.query_with_logprobs(prompt=prompt, image=image)

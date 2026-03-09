@@ -54,6 +54,41 @@ maintain mirror symmetry.
 connector terminal block.""",
 }
 
+CLASS_INSPECTION_CONTEXTS = {
+    "breakfast_box": """
+Valid items to look for:
+- Fruits: Tangerines (small oranges), Nectarine (smooth round fruit), Apple slices.
+- Dry goods: Cereals/Granola (oats), Banana chips (dried slices), Almonds.
+Do not confuse nectarines/apples with berries or plums.
+Analyze left side and right side separately.
+""",
+    "juice_bottle": """
+Valid items to look for:
+- Bottle components: Clear bottle, Cap, Liquid (juice) inside.
+- Labels: Exactly two labels (one central, one lower).
+- Graphics: Fruit icon on the central label (matching the juice color/type), '100% Juice' text on the lower label.
+Check fill levels carefully (must be >90% but not 100%).
+""",
+    "pushpins": """
+Valid items to look for:
+- Box: A plastic box divided into compartments.
+- Objects: Pushpins of various colors.
+Rule: Every single compartment must contain exactly one pushpin. No empty compartments, no multiple pins in one compartment.
+""",
+    "screw_bag": """
+Valid items to look for:
+- Container: Transparent plastic bag.
+- Hardware: Washers (flat rings), Nuts (hexagonal), Short screws, Long screws.
+Rule: Exactly two washers, two nuts, one short screw, and one long screw.
+""",
+    "splicing_connectors": """
+Valid items to look for:
+- Hardware: Splicing connectors (transparent with orange levers/clamps).
+- Cables: One colored cable linking exactly two connectors.
+Rule: Connectors must have the same number of clamps. Cable must maintain mirror symmetry.
+"""
+}
+
 
 def get_normality_definition(
     class_name: str,

@@ -85,12 +85,31 @@ Output5:
 # Stage 4: Test-time — answer a sub-question about a query image
 # ============================================================
 
-TEST_PROMPT = """\
+# TEST_PROMPT = """\
+# Question: {question}
+# At first, describe {class_name} image.
+# Your response must end with 'Result: Yes' or 'Result: No'.
+# Let's think step by step.
+# """
+
+TEST_PROMPT = """You are a strict industrial quality control inspector.
+Your task is to inspect a {class_name} and answer a specific constraint question.
+
+{class_context}
+
 Question: {question}
-At first, describe {class_name} image.
-Your response must end with 'Result: Yes' or 'Result: No'.
-Let's think step by step.
-"""
+
+Strict Rules:
+1. Base your answer ONLY on direct visual evidence from the image.
+2. DO NOT output general knowledge, advice, or hallucinate objects not listed above.
+3. Keep your reasoning strictly factual and brief (max 3-4 sentences).
+
+Analyze step-by-step based on the rules, then conclude.
+Your response MUST end with exactly:
+Result: Yes
+or
+Result: No"""
+
 
 
 # ============================================================

@@ -208,7 +208,8 @@ def main() -> None:
         cfg.testing.random_seed = args.seed
     cfg.dataset.data_dir = args.data_dir
     cfg.dataset.download_if_missing = True
-
+    cfg.pipeline.output_dir = args.output_dir
+    cfg.pipeline.class_name = args.class_name
     # ------------------------------------------------------------------ #
     # Load dataset
     # ------------------------------------------------------------------ #
@@ -230,7 +231,7 @@ def main() -> None:
         print(f"[Setup] Loaded questions from {args.questions_file}")
     else:
         # Sample few-shot normal images and run setup (Stages 1-3)
-        print("[DEBUG] n_shots", args.n_shots)
+        # print("[DEBUG] n_shots", args.n_shots)
         normal_images = dataset.sample_train_normal(n=cfg.pipeline.n_shots, seed=args.seed)
         print(f"[Setup] Using {len(normal_images)} normal images: "
               f"{[p.name for p in normal_images]}")
@@ -274,7 +275,7 @@ def main() -> None:
         tag = "ANOMALY" if sample.is_anomaly else "normal "
         print(f"  [{i+1:03d}/{len(test_samples):03d}] [{tag}] {sample.path.name}",
               end=" ", flush=True)
-        result = pipeline.predict(sample.path)
+        result = pipeline.predict(sample.path, gt_label=sample.label)
         pred_label = "anomaly" if result.is_anomaly else "normal"
         gt_label = 1 if sample.is_anomaly else 0
 

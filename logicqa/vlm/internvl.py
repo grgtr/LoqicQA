@@ -263,6 +263,12 @@ class InternVLBackend(VLMBase):
             use_fast=False,
         )
         print(f"[InternVL] Model loaded. GPUs used: {n_gpus}")
+        print(f"[DEBUG] encode('Yes')={self.tokenizer.encode('Yes', add_special_tokens=False)}")
+        print(f"[DEBUG] encode(' Yes')={self.tokenizer.encode(' Yes', add_special_tokens=False)}")
+        print(f"[DEBUG] encode('No')={self.tokenizer.encode('No', add_special_tokens=False)}")
+        print(f"[DEBUG] encode(' No')={self.tokenizer.encode(' No', add_special_tokens=False)}")
+        print(f"[DEBUG] encode('- Result: Yes')={self.tokenizer.encode('- Result: Yes', add_special_tokens=False)}")
+
 
     # ------------------------------------------------------------------ #
 
@@ -410,19 +416,30 @@ class InternVLBackend(VLMBase):
         """
         if answer is None:
             return None
-
+        
         # Fallback if patch did not return scores
         if scores is None or len(scores) == 0:
-            print("[DEBUG] Fallback to _compute_log_prob_from_text")
+            print("[DEBUG] SCORES IS NONE Fallback to _compute_log_prob_from_text")
             return self._compute_log_prob_from_text(text, answer)
+        def get_all_ids(word: str) -> set:
+            ids = set()
+            for variant in [word, f" {word}", word.lower(), f" {word.lower()}"]:
+                encoded = self.tokenizer.encode(variant, add_special_tokens=False)
+                if len(encoded) == 1:
+                    ids.add(encoded[0])
+            return ids
 
+        yes_ids = get_all_ids("Yes")
+        no_ids  = get_all_ids("No")
+        print(f"[DEBUG] yes_ids={yes_ids}, no_ids={no_ids}")
+        target_ids = yes_ids if answer == "Yes" else no_ids
         # Tokenize generated text (without special tokens)
         token_ids = self.tokenizer.encode(text, add_special_tokens=False)
 
         # ID tokens for "Yes" and "No"
-        yes_ids = set(self.tokenizer.encode("Yes", add_special_tokens=False))
-        no_ids  = set(self.tokenizer.encode("No",  add_special_tokens=False))
-        target_ids = yes_ids if answer == "Yes" else no_ids
+        # yes_ids = set(self.tokenizer.encode("Yes", add_special_tokens=False))
+        # no_ids  = set(self.tokenizer.encode("No",  add_special_tokens=False))
+        # target_ids = yes_ids if answer == "Yes" else no_ids
 
         # Find the last occurrence of the answer token in the generated sequence
         answer_pos = None
@@ -433,18 +450,24 @@ class InternVLBackend(VLMBase):
                 break
 
         if answer_pos is None:
-            print("[DEBUG] Answer token not found in generated text")
-            print("[DEBUG] Fallback to _compute_log_prob_from_text")
+            print("[DEBUG] Answer token not found in generated text, Fallback to _compute_log_prob_from_text")
+            print(f"[DEBUG] text tail: {repr(text[-100:])}")
+            print(f"[DEBUG] token_ids tail: {token_ids[-20:]}")
+            print(f"[DEBUG] target_ids: {target_ids}")
             return self._compute_log_prob_from_text(text, answer)
 
+        print(f"[DEBUG] answer_pos={answer_pos}, "
+              f"token_id={token_ids[answer_pos]}, "
+              f"decoded='{self.tokenizer.decode([token_ids[answer_pos]])}'")
         # scores[i] has shape (batch_size, vocab_size) or (vocab_size,)
         raw_scores = scores[answer_pos]
         if raw_scores.dim() == 2:
             raw_scores = raw_scores[0]  # remove batch dimension
 
         log_probs = torch.nn.functional.log_softmax(raw_scores.float(), dim=-1)
-        token_id  = token_ids[answer_pos]
-        return log_probs[token_id].item()
+        lp = log_probs[token_ids[answer_pos]].item()
+        print(f"[DEBUG] log_prob={lp:.4f} (prob={torch.exp(torch.tensor(lp)):.4f})")
+        return lp
 
     @staticmethod
     def _compute_log_prob_from_text(text: str, answer: Optional[str]) -> Optional[float]:

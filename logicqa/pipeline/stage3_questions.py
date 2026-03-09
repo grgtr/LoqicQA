@@ -20,6 +20,7 @@ from logicqa.prompts import (
     TEST_PROMPT,
     build_question_slots
 )
+from logicqa.logging import PipelineLogger
 
 
 def _parse_numbered_list(text: str) -> List[str]:
@@ -131,6 +132,7 @@ def generate_candidate_questions(
     normality_definition: str,
     class_name: str = "object",
     n_questions: int = 6,
+    logger: Optional[PipelineLogger] = None,
 ) -> List[str]:
     """
     Stage 3a: Generate candidate main questions from normality summary.
@@ -158,6 +160,12 @@ def generate_candidate_questions(
     questions = _parse_questions(response.text)
     print(f"   [DEBUG] Parsed questions:\n{questions}\n")
     print(f"    Generated {len(questions)} candidate questions.")
+    if logger:
+        logger.log_stage3a_questions(
+            prompt=prompt,
+            response_text=response.text,
+            parsed_questions=questions,
+        )
     return questions
 
 
@@ -166,6 +174,9 @@ def _answer_single_question(
     question: str,
     image: Union[Path, Image.Image],
     class_name: str = "object",
+    logger: Optional[PipelineLogger] = None,
+    image_idx: int = 0,
+    image_path: str = "",
 ) -> Optional[str]:
     """Ask a single question about one image and return 'Yes'/'No'/None."""
     if isinstance(image, (str, Path)):
@@ -175,6 +186,15 @@ def _answer_single_question(
 
     prompt = TEST_PROMPT.format(question=question, class_name=class_name)
     response = vlm.query(prompt=prompt, image=img)
+    if logger:
+        logger.log_stage3b_filter_answer(
+            question=question,
+            image_idx=image_idx,
+            image_path=image_path,
+            prompt=prompt,
+            response_text=response.text,
+            extracted_answer=response.answer,
+        )
     return response.answer
 
 
@@ -184,6 +204,7 @@ def filter_questions_on_normal(
     normal_images: List[Union[Path, Image.Image]],
     threshold: float = 0.8,
     class_name: str = "object",
+    logger: Optional[PipelineLogger] = None,
 ) -> List[str]:
     """
     Stage 3b: Filter candidate questions with < threshold accuracy on normals.
@@ -217,6 +238,8 @@ def filter_questions_on_normal(
         accuracy = correct / len(normal_images)
         status = "KEEP" if accuracy >= threshold else "DROP"
         print(f"    [{status}] acc={accuracy:.2f} | {q}")
+        if logger:
+            logger.log_stage3b_result(q, accuracy, accuracy >= threshold)
         if accuracy >= threshold:
             kept.append(q)
 
@@ -228,6 +251,7 @@ def generate_sub_questions(
     vlm: VLMBase,
     main_questions: List[str],
     n_variants: int = 5,
+    logger: Optional[PipelineLogger] = None,
 ) -> Dict[str, List[str]]:
     """
     Stage 3c: Generate sub-question variants for each accepted main question.
@@ -254,4 +278,11 @@ def generate_sub_questions(
             variants.append(mq)
         sub_questions[mq] = variants[:n_variants]
         print(f"    Q{i+1}: {mq[:60]} → {len(variants)} sub-Qs")
+        if logger:
+            logger.log_stage3c_subquestions(
+                main_question=mq,
+                prompt=prompt,
+                response_text=response.text,
+                sub_questions=sub_questions[mq],
+            )
     return sub_questions

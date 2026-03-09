@@ -21,10 +21,10 @@ vlm:
     top_k: 40
 
 pipeline:
-  n_shots: 10                    # number of normal images for few-shot setup
+  n_shots: 5                    # number of normal images for few-shot setup
   n_questions: 5 
   n_sub_questions: 5            # number of sub-questions per main question
-  question_filter_threshold: 0.7  # drop main questions with accuracy < 80% on normal images
+  question_filter_threshold: 0.6  # drop main questions with accuracy < 80% on normal images
 
 dataset:
   name: "mvtec_loco"
@@ -57,18 +57,10 @@ testing:
     - "breakfast_box_good_001.png"
     - "breakfast_box_good_002.png"
     - "breakfast_box_good_003.png"
-    - "breakfast_box_good_004.png"
-    - "breakfast_box_good_005.png"
-    - "breakfast_box_good_006.png"
-    - "breakfast_box_good_007.png"
     - "breakfast_box_logical_anomalies_000.png"
     - "breakfast_box_logical_anomalies_001.png"
     - "breakfast_box_logical_anomalies_002.png"
     - "breakfast_box_logical_anomalies_003.png"
-    - "breakfast_box_logical_anomalies_004.png"
-    - "breakfast_box_logical_anomalies_005.png"
-    - "breakfast_box_logical_anomalies_006.png"
-    - "breakfast_box_logical_anomalies_007.png"
 
   random_count: 10
   random_seed: 42

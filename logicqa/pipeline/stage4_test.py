@@ -77,6 +77,7 @@ def _ask_sub_question(
             response_text=response.text,
             extracted_answer=response.answer,
             log_prob=response.log_prob,
+            extraction_meta=response.extraction_meta
         )
     return SubQResult(
         question=question,

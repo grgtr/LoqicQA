@@ -3,6 +3,8 @@ from __future__ import annotations
 
 import numpy as np
 from sklearn.metrics import roc_auc_score, f1_score, precision_recall_curve
+from logicqa.logging import PipelineLogger
+from typing import Optional
 
 
 def compute_auroc(
@@ -78,6 +80,7 @@ def print_evaluation_summary(
     anomaly_scores: list[float],
     predictions: list[bool],
     labels: list[int],
+    logger: Optional[PipelineLogger] = None,
 ) -> dict:
     """
     Print and return a full evaluation summary for a class.
@@ -93,13 +96,17 @@ def print_evaluation_summary(
     n_anomaly = sum(labels)
     n_normal = total - n_anomaly
 
-    print(f"\n{'='*50}")
-    print(f" Evaluation: {class_name}")
-    print(f"{'='*50}")
-    print(f"  Total:    {total} ({n_normal} normal, {n_anomaly} anomaly)")
-    print(f"  AUROC:    {auroc:.4f}  (paper target: ~0.876)")
-    print(f"  F1-max:   {f1_max:.4f}  (paper target: ~0.870)")
-    print(f"  Bin-F1:   {bin_f1:.4f}")
-    print(f"{'='*50}")
+    text_to_print = (
+        f"\n{'='*50}\n"
+        f" Evaluation: {class_name}\n"
+        f"{'='*50}\n"
+        f"  Total:    {total} ({n_normal} normal, {n_anomaly} anomaly)\n"
+        f"  AUROC:    {auroc:.4f}  (paper target: ~0.876)\n"
+        f"  F1-max:   {f1_max:.4f}  (paper target: ~0.870)\n"
+        f"  Bin-F1:   {bin_f1:.4f}\n"
+        f"{'='*50}\n"
+    )
+    logger.log(text_to_print)
+    print(text_to_print)
 
     return {"auroc": auroc, "f1_max": f1_max, "binary_f1": bin_f1}

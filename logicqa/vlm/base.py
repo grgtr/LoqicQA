@@ -2,9 +2,9 @@
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Optional, Union
+from typing import Optional, Union, Dict
 
 from PIL import Image
 
@@ -16,6 +16,7 @@ class VLMResponse:
     text: str                  # Full generated text (e.g., "Yes" or "No" + reasoning)
     answer: Optional[str]      # Extracted binary answer: "Yes" or "No" (or None if unclear)
     log_prob: Optional[float]  # Log-probability of the first answer token (if available)
+    extraction_meta: Dict = field(default_factory=dict)
 
 
 class VLMBase(ABC):

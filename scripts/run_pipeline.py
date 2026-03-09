@@ -317,13 +317,48 @@ def main() -> None:
         anomaly_scores=eval_scores,
         predictions=eval_preds,
         labels=eval_labels,
+        logger=pipeline.logger,
     )
 
+    tp = fp = tn = fn = 0
+    # Предполагаем, что у вас есть списки ground_truths и predictions (из ImageResult)
+    # Для MVTec LOCO AD: если label == 'good', то это Normal. Иначе - Anomaly.
+    for gt_label, pred_is_anomaly in zip(labels, predictions):
+        if gt_label and pred_is_anomaly:
+            tp += 1
+        elif not gt_label and pred_is_anomaly:
+            fp += 1
+        elif not gt_label and not pred_is_anomaly:
+            tn += 1
+        elif gt_label and not pred_is_anomaly:
+            fn += 1
+    matrix_str = (
+    f"\n{'='*60}\n"
+    f"CONFUSION MATRIX (Logical Anomaly Detection)\n"
+    f"{'='*60}\n"
+    f"                  | Predicted Normal | Predicted Anomaly |\n"
+    f"----------------------------------------------------------\n"
+    f" Actual Normal    | {tn:<16} | {fp:<17} |\n"
+    f" Actual Anomaly   | {fn:<16} | {tp:<17} |\n"
+    f"{'='*60}\n"
+    f"Metrics Summary:\n"
+    f" - Accuracy:  {(tp + tn) / (tp + fp + tn + fn + 1e-9):.2%}\n"
+    f" - Precision: {tp / (tp + fp + 1e-9):.2%}\n"
+    f" - Recall:    {tp / (tp + fn + 1e-9):.2%}\n"
+    f"{'='*60}\n"
+    )
 
+    print(matrix_str)
     out_dir = Path(os.path.expanduser(args.output_dir))
     out_dir.mkdir(parents=True, exist_ok=True)
     results_path = out_dir / f"{args.class_name}_results.json"
-
+    if pipeline.logger:
+        if hasattr(pipeline.logger, "log"):
+            pipeline.logger.log(matrix_str)
+        else:
+            # Если это ваш кастомный логгер, добавьте метод или запишите в файл напрямую
+            with open(f"{cfg.output_dir}/evaluation_summary.txt", "w") as f:
+                f.write(matrix_str)
     with open(results_path, "w") as f:
         json.dump(
             {

@@ -259,11 +259,6 @@ class InternVLBackend(VLMBase):
             use_fast=False,
         )
         print(f"[InternVL] Model loaded. GPUs used: {n_gpus}")
-        print(f"[DEBUG] encode('Yes')={self.tokenizer.encode('Yes', add_special_tokens=False)}")
-        print(f"[DEBUG] encode(' Yes')={self.tokenizer.encode(' Yes', add_special_tokens=False)}")
-        print(f"[DEBUG] encode('No')={self.tokenizer.encode('No', add_special_tokens=False)}")
-        print(f"[DEBUG] encode(' No')={self.tokenizer.encode(' No', add_special_tokens=False)}")
-        print(f"[DEBUG] encode('- Result: Yes')={self.tokenizer.encode('- Result: Yes', add_special_tokens=False)}")
 
 
     # ------------------------------------------------------------------ #
@@ -377,7 +372,7 @@ class InternVLBackend(VLMBase):
                 self.tokenizer, None, prompt,
                 generation_config, history=None, return_history=True,
             )
-        print(f"[DEBUG] image is not None: {image is not None}, result_len={len(result)}")
+        # print(f"[DEBUG] image is not None: {image is not None}, result_len={len(result)}")
         if isinstance(result, tuple) and len(result) >= 3:
             # generated_text, _, scores, sequences = result
             generated_text = result[0]
@@ -397,9 +392,9 @@ class InternVLBackend(VLMBase):
 
         answer = self._extract_answer(generated_text)
         print(f"[DEBUG] extracted_answer={answer}")
-        log_prob = self._extract_answer_log_prob(generated_text, answer, scores, sequences)
+        log_prob, meta = self._extract_answer_log_prob(generated_text, answer, scores, sequences)
     
-        return VLMResponse(text=generated_text, answer=answer, log_prob=log_prob)
+        return VLMResponse(text=generated_text, answer=answer, log_prob=log_prob, extraction_meta=meta)
 
     # ------------------------------------------------------------------ #
 
@@ -407,12 +402,11 @@ class InternVLBackend(VLMBase):
         self, text: str, answer: Optional[str], scores, sequences=None
     ) -> Optional[float]:
         if answer is None:
-            return None
+            return None, {}
 
         if scores is None or len(scores) == 0:
-            return self._compute_log_prob_from_text(text, answer)
+            return self._compute_log_prob_from_text(text, answer), {"fallback": True}
 
-        import re
         text_lower = text.lower()
         
         # 1. Используем ТУ ЖЕ САМУЮ регулярку (СТРОГО БЕЗ [::-1])
@@ -448,7 +442,7 @@ class InternVLBackend(VLMBase):
                 break
 
         if answer_pos is None:
-            return self._compute_log_prob_from_text(text, answer)
+            return self._compute_log_prob_from_text(text, answer), {"fallback": True}
 
         # 4. Вытаскиваем вероятности
         raw_scores = scores[answer_pos]
@@ -459,10 +453,19 @@ class InternVLBackend(VLMBase):
 
         log_probs = torch.nn.functional.log_softmax(raw_scores.float(), dim=-1)
         lp = log_probs[target_token_id].item()
-        print(f"[DEBUG] Regex found '{text[target_char_index:target_char_index+3]}' at pos {target_char_index}")
-        print(f"[DEBUG] Mapped to token {target_token_id} ('{self.tokenizer.decode([target_token_id])}') at step {answer_pos}")
-        print(f"[DEBUG] log_prob={lp:.4f} (prob={torch.exp(torch.tensor(lp)):.4f})")
-        return lp
+        prob = float(torch.exp(torch.tensor(lp)))
+        meta = {
+            "regex_found": text[target_char_index:target_char_index+3],
+            "pos": target_char_index,
+            "mapped_to_token_id": target_token_id,
+            "decoded_token": self.tokenizer.decode([target_token_id]),
+            "step": answer_pos,
+            "raw_prob": prob
+        }
+        # print(f"[DEBUG] Regex found '{text[target_char_index:target_char_index+3]}' at pos {target_char_index}")
+        # print(f"[DEBUG] Mapped to token {target_token_id} ('{self.tokenizer.decode([target_token_id])}') at step {answer_pos}")
+        # print(f"[DEBUG] log_prob={lp:.4f} (prob={torch.exp(torch.tensor(lp)):.4f})")
+        return lp, meta
 
     # def _extract_answer_log_prob(
     #     self,

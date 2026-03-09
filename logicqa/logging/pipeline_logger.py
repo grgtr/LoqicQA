@@ -209,6 +209,7 @@ class PipelineLogger:
         response_text: str,
         extracted_answer: Optional[str],
         log_prob: Optional[float],
+        extraction_meta: Optional[Dict[str, Any]],
     ) -> None:
         entry = {
             "image_path": image_path,
@@ -219,6 +220,7 @@ class PipelineLogger:
             "response": response_text,
             "extracted_answer": extracted_answer,
             "log_prob": log_prob,
+            "extraction_meta": extraction_meta,
         }
         self._stage4.append(entry)
         self._save_json("stage4_responses.json", self._stage4)
@@ -231,6 +233,9 @@ class PipelineLogger:
         self._log(f"  [RESPONSE]\n{response_text}")
         self._log(
             f"  [ANSWER] {extracted_answer} | log_prob={log_prob}"
+        )
+        self._log(
+            f"  [META] {extraction_meta}"
         )
 
     def log_stage4_main_question_result(
@@ -252,9 +257,13 @@ class PipelineLogger:
         is_anomaly: bool,
         anomaly_score: float,
         explanation: str,
+
     ) -> None:
         self._log(
             f"  [RESULT] anomaly={is_anomaly} "
             f"score={anomaly_score:.4f}\n"
             f"  {explanation}"
         )
+    def log(self, message: str) -> None:
+        self._log(message)
+        

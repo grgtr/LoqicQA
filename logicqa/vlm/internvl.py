@@ -322,7 +322,7 @@ class InternVLBackend(VLMBase):
         answer = self._extract_answer(generated_text)
         # log_prob = self._compute_log_prob_from_text(generated_text, answer)
 
-        return VLMResponse(text=generated_text, answer=answer)
+        return VLMResponse(text=generated_text, answer=answer, log_prob=None, extraction_meta=None)
 
     # ------------------------------------------------------------------ #
 

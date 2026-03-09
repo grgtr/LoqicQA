@@ -59,7 +59,7 @@ CLASS_INSPECTION_CONTEXTS = {
 Valid items to look for:
 - Fruits: Tangerines (small oranges), Nectarine (smooth round fruit), Apple slices.
 - Dry goods: Cereals/Granola (oats), Banana chips (dried slices), Almonds.
-Do not confuse nectarines/apples with berries or plums.
+Do not confuse nectarines with berries or plums or something else.
 Analyze left side and right side separately.
 """,
     "juice_bottle": """

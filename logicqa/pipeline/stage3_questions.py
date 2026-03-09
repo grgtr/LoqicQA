@@ -18,9 +18,11 @@ from logicqa.prompts import (
     GENERATE_QUESTIONS_PROMPT,
     SUBQUESTION_AUGMENT_PROMPT,
     TEST_PROMPT,
-    build_question_slots
+    build_question_slots,
+    build_subquestion_slots
 )
 from logicqa.logging import PipelineLogger
+from logicqa.data.normality_definitions import CLASS_INSPECTION_CONTEXTS
 
 
 def _parse_numbered_list(text: str) -> List[str]:
@@ -83,7 +85,7 @@ def _parse_questions(text: str) -> List[str]:
     questions = [
         q for q in questions
         if (q.endswith("?") or
-        re.match(r"^(Is |Are |Does |Do |Can |Has |Have |Did )", q, re.IGNORECASE)) and 15 < len(q) < 200
+        re.match(r"^(Is |Are |Does |Do |Can |Has |Have |Did )", q, re.IGNORECASE)) and 15 < len(q) < 250
     ]
     return questions
 
@@ -184,7 +186,9 @@ def _answer_single_question(
     else:
         img = image
 
-    prompt = TEST_PROMPT.format(question=question, class_name=class_name)
+    normalized_class_name = class_name.lower().replace(" ", "_")
+    class_context = CLASS_INSPECTION_CONTEXTS.get(normalized_class_name, "")
+    prompt = TEST_PROMPT.format(question=question, class_name=class_name, class_context=class_context)
     response = vlm.query(prompt=prompt, image=img)
     if logger:
         logger.log_stage3b_filter_answer(
@@ -266,10 +270,11 @@ def generate_sub_questions(
     """
     print(f"  [Stage 3c] Generating {n_variants} sub-questions per main question ...")
     sub_questions: Dict[str, List[str]] = {}
+    subquestion_slots = build_subquestion_slots(n_variants)
     for i, mq in enumerate(main_questions):
-        prompt = SUBQUESTION_AUGMENT_PROMPT.format(
+        prompt = SUBQUESTION_AUGMENT_PROMPT.format(n_variants=n_variants,
             main_question=mq,
-            n_variants=n_variants,
+            subquestion_slots=subquestion_slots,
         )
         response = vlm.query(prompt=prompt, image=None)
         variants = _parse_output_list(response.text)

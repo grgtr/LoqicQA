@@ -29,6 +29,8 @@ def summarize_normal_context(
         labeled_descriptions=labeled,
         n_descriptions=len(descriptions),
         normality_definition=normality_definition,
+        class_name=class_name,
+        
     )
     response = vlm.query(prompt=prompt, image=None)
     text = response.text.strip()

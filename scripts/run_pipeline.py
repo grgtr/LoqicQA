@@ -273,7 +273,7 @@ def main() -> None:
         # print(f"  [{i+1}/{len(test_samples)}] {sample.path.name} "
         #       f"(label={sample.label})", end=" ", flush=True)
         tag = "ANOMALY" if sample.is_anomaly else "normal "
-        print(f"  [{i+1:03d}/{len(test_samples):03d}] [{tag}] {sample.path.name}",
+        print(f"  [{i+1:03d}/{len(test_samples):03d}] [{tag}] {sample.path.name} Ground truth: {sample.label}",
               end=" ", flush=True)
         result = pipeline.predict(sample.path, gt_label=sample.label)
         pred_label = "anomaly" if result.is_anomaly else "normal"

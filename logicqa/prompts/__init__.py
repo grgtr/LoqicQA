@@ -88,7 +88,7 @@ Output5:
 TEST_PROMPT = """\
 Question: {question}
 At first, describe {class_name} image.
-Your response must end with `- Result: Yes` or `- Result: No`.
+Your response must end with 'Result: Yes' or 'Result: No'.
 Let's think step by step.
 """
 

@@ -13,11 +13,92 @@ from transformers import AutoModel, AutoTokenizer
 from logicqa.vlm.base import VLMBase, VLMResponse
 from logicqa.config import InternVLConfig
 
+import importlib.util
+import sys
+
 # --------------------------------------------------------------------------- #
 # InternVL image pre-processing helpers (from official InternVL repo)
 # --------------------------------------------------------------------------- #
 IMAGENET_MEAN = (0.485, 0.456, 0.406)
 IMAGENET_STD = (0.229, 0.224, 0.225)
+
+def _apply_chat_patch(model) -> None:
+    """
+    Патчит model.chat() чтобы возвращать (text, history, scores).
+    Вызывать ПОСЛЕ AutoModel.from_pretrained().
+    Не требует отдельного файла — работает через перехват self.generate().
+    """
+    original_chat = model.__class__.chat
+
+    def patched_chat(
+        self,
+        tokenizer,
+        pixel_values,
+        question,
+        generation_config,
+        history=None,
+        return_history=False,
+        **kwargs,
+    ):
+        # Извлекаем флаги — chat() не умеет с ними работать напрямую
+        want_scores = generation_config.pop("output_scores", False)
+        generation_config.pop("return_dict_in_generate", False)
+
+        if not want_scores:
+            return original_chat(
+                self, tokenizer, pixel_values, question,
+                generation_config, history=history,
+                return_history=return_history, **kwargs,
+            )
+
+        # Временно подменяем self.generate чтобы перехватить scores
+        original_generate = self.generate
+        captured = {}
+
+        def capturing_generate(*args, **gen_kwargs):
+            gen_kwargs["output_scores"] = True
+            gen_kwargs["return_dict_in_generate"] = True
+            outputs = original_generate(*args, **gen_kwargs)
+            # Сохраняем scores, возвращаем только sequences
+            # чтобы chat() мог продолжить нормальную работу
+            captured["scores"] = getattr(outputs, "scores", None)
+            return outputs.sequences
+
+        self.generate = capturing_generate
+        try:
+            result = original_chat(
+                self, tokenizer, pixel_values, question,
+                generation_config, history=history,
+                return_history=return_history, **kwargs,
+            )
+        finally:
+            # Восстанавливаем generate() в любом случае
+            self.generate = original_generate
+
+        text = result[0] if isinstance(result, tuple) else result
+        history_out = (
+            result[1] if isinstance(result, tuple) and len(result) > 1 else None
+        )
+        return text, history_out, captured.get("scores")
+
+    model.__class__.chat = patched_chat
+    print("[Patch] chat() успешно пропатчен — scores будут возвращаться")
+
+
+# def _load_patched_internvl():
+#     """Load patched modeling_internvl_chat instead of cached."""
+#     patch_path = Path(__file__).parent / "modeling_internvl_chat_patched.py"
+#     if not patch_path.exists():
+#         return  # patch not installed — work as usual
+
+#     spec = importlib.util.spec_from_file_location(
+#         "modeling_internvl_chat", str(patch_path)
+#     )
+#     module = importlib.util.module_from_spec(spec)
+#     # Register under original name to intercept import
+#     sys.modules["modeling_internvl_chat"] = module
+#     spec.loader.exec_module(module)
+#     print("[Patch] Loaded patched modeling_internvl_chat")
 
 def _split_model(model_name: str) -> dict:
     """
@@ -150,7 +231,7 @@ class InternVLBackend(VLMBase):
             kwargs['device'] = 'cpu'
             return _orig_linspace(*args, **kwargs)
         torch.linspace = _safe_linspace
-
+        # _load_patched_internvl()
         try:
             self.model = AutoModel.from_pretrained(
                 cfg.model_name,
@@ -161,9 +242,13 @@ class InternVLBackend(VLMBase):
             ).eval()
         finally:
             torch.linspace = _orig_linspace
+        
+
         if not hasattr(self.model, 'all_tied_weights_keys'):
             tied = getattr(self.model, '_tied_weights_keys', []) or []
             self.model.all_tied_weights_keys = {k: None for k in tied}
+
+        _apply_chat_patch(self.model)
 
         self.model = self.model.eval()
         if n_gpus == 1:
@@ -253,12 +338,24 @@ class InternVLBackend(VLMBase):
         Query InternVL using model.generate directly to capture token log-probs.
         This is more accurate than _compute_log_prob_from_text but slower.
         """
+        pad_token_id = self.tokenizer.eos_token_id or self.tokenizer.pad_token_id or 2
+        # generation_config = dict(
+        #     max_new_tokens=self.cfg.max_new_tokens,
+        #     do_sample=self.cfg.do_sample,
+        #     temperature=self.cfg.temperature,
+        #     top_p=self.cfg.top_p,
+        #     repetition_penalty=self.cfg.repetition_penalty,
+        #     output_scores=True,
+        #     return_dict_in_generate=True,
+        #     pad_token_id=pad_token_id,
+        # )
         generation_config = dict(
             max_new_tokens=self.cfg.max_new_tokens,
             do_sample=self.cfg.do_sample,
             temperature=self.cfg.temperature,
             top_p=self.cfg.top_p,
             repetition_penalty=self.cfg.repetition_penalty,
+            pad_token_id=pad_token_id,
             output_scores=True,
             return_dict_in_generate=True,
         )
@@ -268,39 +365,86 @@ class InternVLBackend(VLMBase):
                 dtype=torch.bfloat16,
                 device=next(self.model.parameters()).device,
             )
+            conv_prompt = f"<image>\n{prompt}"
+            result = self.model.chat(
+                self.tokenizer, pixel_values, conv_prompt,
+                generation_config, history=None, return_history=True,
+            )
         else:
-            pixel_values = None
-
-        # Build input_ids manually
-        inputs = self.tokenizer(prompt, return_tensors="pt").to(
-            next(self.model.parameters()).device
-        )
-
-        with torch.no_grad():
-            outputs = self.model.generate(
-                **inputs,
-                pixel_values=pixel_values,
-                **generation_config,
+            result = self.model.chat(
+                self.tokenizer, None, prompt,
+                generation_config, history=None, return_history=True,
             )
+        if isinstance(result, tuple) and len(result) == 3:
+            generated_text, _, scores = result
+            print(f"[DEBUG] scores type={type(scores)}, "
+          f"len={len(scores) if scores is not None else 0}")
+            if scores:
+                print(f"[DEBUG] scores[0].shape={scores[0].shape}")
+        elif isinstance(result, tuple):
+            generated_text = result[0]
+            scores = None
+        else:
+            generated_text = result
+            scores = None
 
-        # Decode
-        seq = outputs.sequences[0][inputs["input_ids"].shape[1]:]
-        generated_text = self.tokenizer.decode(seq, skip_special_tokens=True)
         answer = self._extract_answer(generated_text)
-
-        # Extract log-prob of the first answer token
-        log_prob = None
-        if outputs.scores:
-            first_token_scores = outputs.scores[0][0]  # (vocab_size,)
-            first_token_log_probs = torch.nn.functional.log_softmax(
-                first_token_scores.float(), dim=-1
-            )
-            first_token_id = seq[0].item()
-            log_prob = first_token_log_probs[first_token_id].item()
+        log_prob = self._extract_answer_log_prob(generated_text, answer, scores)
 
         return VLMResponse(text=generated_text, answer=answer, log_prob=log_prob)
 
     # ------------------------------------------------------------------ #
+
+    def _extract_answer_log_prob(
+        self,
+        text: str,
+        answer: Optional[str],
+        scores,   # tuple of (vocab_size,) tensors | None
+    ) -> Optional[float]:
+        """
+        Extract log_prob of answer token ("Yes"/"No") from scores.
+
+        scores[i] — logits for i-th generated token (before softmax).
+        We look for the last occurrence of Yes/No in the generated sequence,
+        and take log_softmax of the corresponding scores[i].
+        """
+        if answer is None:
+            return None
+
+        # Fallback if patch did not return scores
+        if scores is None or len(scores) == 0:
+            print("[DEBUG] Fallback to _compute_log_prob_from_text")
+            return self._compute_log_prob_from_text(text, answer)
+
+        # Tokenize generated text (without special tokens)
+        token_ids = self.tokenizer.encode(text, add_special_tokens=False)
+
+        # ID tokens for "Yes" and "No"
+        yes_ids = set(self.tokenizer.encode("Yes", add_special_tokens=False))
+        no_ids  = set(self.tokenizer.encode("No",  add_special_tokens=False))
+        target_ids = yes_ids if answer == "Yes" else no_ids
+
+        # Find the last occurrence of the answer token in the generated sequence
+        answer_pos = None
+        max_pos = min(len(token_ids), len(scores))
+        for i in range(max_pos - 1, -1, -1):
+            if token_ids[i] in target_ids:
+                answer_pos = i
+                break
+
+        if answer_pos is None:
+            print("[DEBUG] Answer token not found in generated text")
+            print("[DEBUG] Fallback to _compute_log_prob_from_text")
+            return self._compute_log_prob_from_text(text, answer)
+
+        # scores[i] has shape (batch_size, vocab_size) or (vocab_size,)
+        raw_scores = scores[answer_pos]
+        if raw_scores.dim() == 2:
+            raw_scores = raw_scores[0]  # remove batch dimension
+
+        log_probs = torch.nn.functional.log_softmax(raw_scores.float(), dim=-1)
+        token_id  = token_ids[answer_pos]
+        return log_probs[token_id].item()
 
     @staticmethod
     def _compute_log_prob_from_text(text: str, answer: Optional[str]) -> Optional[float]:

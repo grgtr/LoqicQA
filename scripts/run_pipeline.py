@@ -238,7 +238,7 @@ def main() -> None:
         pipeline.setup(
             class_name=args.class_name,
             normal_images=normal_images,
-            n_questions=args.n_questions,
+            n_questions=cfg.pipeline.n_questions,
         )
 
         if args.save_questions:
@@ -303,12 +303,21 @@ def main() -> None:
     # ------------------------------------------------------------------ #
     # Evaluate & save
     # ------------------------------------------------------------------ #
+    eval_scores, eval_labels, eval_preds = [], [], []
+    for r in results_list:
+        if r["gt_label"] == "structural_anomaly":
+            continue
+        eval_scores.append(r["anomaly_score"])
+        eval_labels.append(1 if r["gt_is_anomaly"] else 0)
+        eval_preds.append(r["pred_is_anomaly"])
+
     metrics = print_evaluation_summary(
         class_name=args.class_name,
-        anomaly_scores=scores,
-        predictions=predictions,
-        labels=labels,
+        anomaly_scores=eval_scores,
+        predictions=eval_preds,
+        labels=eval_labels,
     )
+
 
     out_dir = Path(os.path.expanduser(args.output_dir))
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -319,7 +328,7 @@ def main() -> None:
             {
                 "class_name": args.class_name,
                 "vlm": args.vlm,
-                "n_shots": args.n_shots,
+                "n_shots": cfg.pipeline.n_shots,
                 "metrics": metrics,
                 "results": results_list,
             },

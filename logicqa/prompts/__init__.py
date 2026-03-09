@@ -42,16 +42,25 @@ GENERATE_QUESTIONS_PROMPT = """\
 [ Normal Constraints for {class_name} ]
 {normality_definition}
 
-Using the [ Normal Constraints for {class_name} ] and \
-[ Description of {class_name} ], create several but essential, simple and \
-important questions to determine whether the {class_name} in the image is \
+Using ONLY the constraints listed in [ Normal Constraints for {class_name} ] and \
+[ Description of {class_name} ], create exactly {n_questions} simple and \
+important YES/NO questions to determine whether the {class_name} in the image is \
 normal or abnormal. Ensure the questions are only based on visible \
 characteristics, excluding any aspects that cannot be determined from the \
 image. Also, simplify any difficult terms into easy-to-understand questions.
-
-(Q1) :
-(Q2) :
+STRICT RULES:
+- Every question MUST be directly traceable to a specific constraint in \
+[ Normal Constraints for {class_name} ].
+- Do NOT invent constraints that are not explicitly stated above.
+- NECESSARILY ask about quantity, presence, and arrangement as defined above.
+- A correct (normal) image must answer "Yes" to every question.
+- Keep questions short and simple.
+{question_slots}
 """
+
+def build_question_slots(n: int) -> str:
+    """Generate question slots like (Q1) :\n(Q2) :\n..."""
+    return "\n".join(f"(Q{i}) :" for i in range(1, n + 1))
 
 
 # ============================================================

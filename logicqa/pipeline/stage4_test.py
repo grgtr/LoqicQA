@@ -56,7 +56,12 @@ def _ask_sub_question(
 ) -> SubQResult:
     """Ask one sub-question about an image and return the result."""
     prompt = TEST_PROMPT.format(question=question, class_name=class_name)
-    response = vlm.query(prompt=prompt, image=image)
+    if hasattr(vlm, "query_with_logprobs"):
+        # print("[DEBUG] using query_with_logprobs in stage4_test")
+        response = vlm.query_with_logprobs(prompt=prompt, image=image)
+    else:
+        # print("[DEBUG] using query in stage4_test")
+        response = vlm.query(prompt=prompt, image=image)
     return SubQResult(
         question=question,
         answer=response.answer,
@@ -122,7 +127,7 @@ def _compute_anomaly_score(main_q_results: List[MainQResult]) -> float:
         lp = mq.best_log_prob if mq.best_log_prob is not None else -1.0
         S.append(math.exp(max(lp, -30)))
 
-    median_s = np.median(S)
+    median_s = float(np.median(S))
     is_anomaly = any(mq.voted_answer == "No" for mq in main_q_results)
 
     if is_anomaly:

@@ -51,6 +51,7 @@ class VLMConfig:
 @dataclass
 class PipelineConfig:
     n_shots: int = 5
+    n_questions: int = 5
     n_sub_questions: int = 5
     question_filter_threshold: float = 0.8
 

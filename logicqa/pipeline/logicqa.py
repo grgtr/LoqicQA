@@ -161,7 +161,11 @@ class LogicQAPipeline:
 
         # Stage 3a: Generate candidates
         candidates = generate_candidate_questions(
-            self.vlm, summary, self.normality_definition, n_questions=n_questions
+            self.vlm,
+            summary,
+            self.normality_definition,
+            class_name=self.class_name,
+            n_questions=n_questions
         )
 
         # Stage 3b: Filter

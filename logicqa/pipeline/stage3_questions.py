@@ -18,6 +18,7 @@ from logicqa.prompts import (
     GENERATE_QUESTIONS_PROMPT,
     SUBQUESTION_AUGMENT_PROMPT,
     TEST_PROMPT,
+    build_question_slots
 )
 
 
@@ -78,6 +79,11 @@ def _parse_questions(text: str) -> List[str]:
             ):
                 questions.append(line)
 
+    questions = [
+        q for q in questions
+        if (q.endswith("?") or
+        re.match(r"^(Is |Are |Does |Do |Can |Has |Have |Did )", q, re.IGNORECASE)) and 15 < len(q) < 200
+    ]
     return questions
 
 
@@ -143,11 +149,14 @@ def generate_candidate_questions(
         class_name=class_name,
         normality_summary=normality_summary,
         normality_definition=normality_definition,
+        n_questions=n_questions,
+        question_slots=build_question_slots(n_questions),
     )
     response = vlm.query(prompt=prompt, image=None)
 
-    print("DEBUG: response.text:", response.text)
+    print(f"   [DEBUG] Raw output:\n{response.text}\n")
     questions = _parse_questions(response.text)
+    print(f"   [DEBUG] Parsed questions:\n{questions}\n")
     print(f"    Generated {len(questions)} candidate questions.")
     return questions
 
@@ -206,8 +215,8 @@ def filter_questions_on_normal(
             if answer == "Yes":
                 correct += 1
         accuracy = correct / len(normal_images)
-        status = "✓ KEEP" if accuracy >= threshold else "✗ DROP"
-        print(f"    [{status}] acc={accuracy:.2f} | {q[:80]}")
+        status = "KEEP" if accuracy >= threshold else "DROP"
+        print(f"    [{status}] acc={accuracy:.2f} | {q}")
         if accuracy >= threshold:
             kept.append(q)
 

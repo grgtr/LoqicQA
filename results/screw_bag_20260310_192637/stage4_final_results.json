@@ -1,0 +1,482 @@
+[
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_001.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_009.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_012.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_013.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_015.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_016.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 1.0,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Does the screw_bag contain exactly two washers?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_018.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_024.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_026.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_029.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_030.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_047.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_049.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_060.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 1.0,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Does the screw_bag contain exactly two washers?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_069.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_070.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_071.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_080.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_086.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_087.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_099.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_102.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 1.0,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Does the screw_bag contain exactly two washers?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_103.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_112.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_119.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 1.0,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Does the screw_bag contain exactly two washers?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_010.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "screw_too_long",
+    "is_anomaly": true,
+    "anomaly_score": 1.0,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Does the screw_bag contain exactly two washers?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_018.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "screw_too_long",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_024.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "screw_too_short",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_025.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "screw_too_short",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_030.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "screw_too_short",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_035.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "screw_too_short",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_039.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "screw_too_short",
+    "is_anomaly": true,
+    "anomaly_score": 1.0,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Does the screw_bag contain exactly two washers?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_041.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_additional_nut",
+    "is_anomaly": true,
+    "anomaly_score": 1.0,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Does the screw_bag contain exactly two washers?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_044.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_additional_washer",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_047.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_additional_nut",
+    "is_anomaly": true,
+    "anomaly_score": 1.0,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Does the screw_bag contain exactly two washers?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_050.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_additional_short_screw",
+    "is_anomaly": true,
+    "anomaly_score": 1.0,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Does the screw_bag contain exactly two washers?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_051.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_additional_nut",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_052.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_additional_long_screw",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_056.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_additional_short_screw",
+    "is_anomaly": true,
+    "anomaly_score": 1.0,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Does the screw_bag contain exactly two washers?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_058.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_additional_long_screw",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_060.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_additional_short_screw",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_061.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_additional_nut",
+    "is_anomaly": true,
+    "anomaly_score": 1.0,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Does the screw_bag contain exactly two washers?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_063.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_additional_short_screw",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_064.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_additional_short_screw",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_066.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_missing_washer",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_067.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_missing_short_screw",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_068.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_missing_nut",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_076.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_missing_long_screw",
+    "is_anomaly": true,
+    "anomaly_score": 1.0,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Does the screw_bag contain exactly two washers?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_085.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_missing_long_screw",
+    "is_anomaly": true,
+    "anomaly_score": 1.0,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Does the screw_bag contain exactly two washers?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_088.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_missing_short_screw",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_089.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_very_short_screw",
+    "is_anomaly": true,
+    "anomaly_score": 1.0,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Does the screw_bag contain exactly two washers?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_091.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_very_short_screw",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_099.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_very_short_screw",
+    "is_anomaly": true,
+    "anomaly_score": 1.0,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Does the screw_bag contain exactly two washers?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_107.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_very_short_screw",
+    "is_anomaly": true,
+    "anomaly_score": 1.0,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Does the screw_bag contain exactly two washers?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_113.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "2_additional_nuts,2_missing_washers",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_116.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "2_additional_washers,2_missing_nuts",
+    "is_anomaly": true,
+    "anomaly_score": 1.0,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are all visible parts metallic with a silver color as described?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_117.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_additional_washer,1_missing_nut",
+    "is_anomaly": true,
+    "anomaly_score": 1.0,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Does the screw_bag contain exactly two washers?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_120.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_additional_nut,1_missing_washer",
+    "is_anomaly": true,
+    "anomaly_score": 1.0,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are all components located on the left side of the bag or inside a transparent plastic bag that is sealed at all edges except for an opening where they can be accessed by hand without damaging them from inside outwards?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_126.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "2_additional_washers,2_missing_nuts",
+    "is_anomaly": true,
+    "anomaly_score": 1.0,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Does the screw_bag contain exactly two washers?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_128.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "2_additional_washers,2_missing_nuts",
+    "is_anomaly": true,
+    "anomaly_score": 1.0,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Does the screw_bag contain exactly two washers?"
+  }
+]

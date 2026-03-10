@@ -176,7 +176,7 @@ class LogicQAPipeline:
             for img in normal_images
         ]
         descriptions = describe_normal_images(
-            self.vlm, preprocessed_normals, self.normality_definition, self.class_name, logger=self.logger
+            self.vlm, preprocessed_normals, self.normality_definition, self.class_name, image_paths=normal_images, logger=self.logger
         )
 
         # Stage 2
@@ -205,6 +205,7 @@ class LogicQAPipeline:
             preprocessed_vals,
             threshold=self.cfg.pipeline.question_filter_threshold,
             class_name=self.class_name,
+            image_paths=val_images,
             logger=self.logger
         )
 

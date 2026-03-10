@@ -22,7 +22,7 @@ vlm:
 
 pipeline:
   n_shots: 5                    # number of normal images for few-shot setup
-  n_questions: 5 
+  n_questions: 7 
   n_sub_questions: 5            # number of sub-questions per main question
   question_filter_threshold: 0.6  # drop main questions with accuracy < 80% on normal images
 

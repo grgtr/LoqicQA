@@ -1,0 +1,66 @@
+[
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/breakfast_box_good_000.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/breakfast_box_good_001.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 1.0,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Do the overall color scheme include shades of red from the peaches/tangerines contrasting against beige tones of the cereals/banana/almond mix?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/breakfast_box_good_002.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 1.0,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Do the overall color scheme include shades of red from the peaches/tangerines contrasting against beige tones of the cereals/banana/almond mix?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/breakfast_box_good_003.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 1.0,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there one nectarine located on the left-hand side of the box, slightly above and next to the tangerines due to its larger size compared with an average orange-sized fruit like a tangerine?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/breakfast_box_logical_anomalies_000.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "compartments_swapped",
+    "is_anomaly": true,
+    "anomaly_score": 1.0,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there one nectarine located on the left-hand side of the box, slightly above and next to the tangerines due to its larger size compared with an average orange-sized fruit like a tangerine?\n  - Is the granola/cereal mixture containing sliced bananas and whole almonds placed only on the right-hand side within another compartment filled with this mix?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/breakfast_box_logical_anomalies_001.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "compartments_swapped",
+    "is_anomaly": true,
+    "anomaly_score": 1.0,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there one nectarine located on the left-hand side of the box, slightly above and next to the tangerines due to its larger size compared with an average orange-sized fruit like a tangerine?\n  - Is the granola/cereal mixture containing sliced bananas and whole almonds placed only on the right-hand side within another compartment filled with this mix?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/breakfast_box_logical_anomalies_002.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "compartments_swapped",
+    "is_anomaly": true,
+    "anomaly_score": 1.0,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there one nectarine located on the left-hand side of the box, slightly above and next to the tangerines due to its larger size compared with an average orange-sized fruit like a tangerine?\n  - Is the granola/cereal mixture containing sliced bananas and whole almonds placed only on the right-hand side within another compartment filled with this mix?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/breakfast_box_logical_anomalies_003.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "missing_almonds",
+    "is_anomaly": true,
+    "anomaly_score": 1.0,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there one nectarine located on the left-hand side of the box, slightly above and next to the tangerines due to its larger size compared with an average orange-sized fruit like a tangerine?"
+  }
+]

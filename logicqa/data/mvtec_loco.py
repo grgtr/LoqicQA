@@ -24,6 +24,7 @@ class ImageSample:
     """A single image sample from the dataset."""
     path: Path
     label: str        # "good" / "logical_anomalies" / "structural_anomalies" (or similar from tags)
+    anomaly_type: Optional[str]  # "missing_cable", "broken_symmetry" 
     is_anomaly: bool  # True if label != "good"
     class_name: str
 
@@ -111,14 +112,14 @@ class MVTecLOCODataset:
     # Data loading helpers
     # ------------------------------------------------------------------ #
 
-    def _parse_annotation(self, ann_file: Path) -> Tuple[Optional[str], Optional[str]]:
+    def _parse_annotation(self, ann_file: Path) -> Tuple[Optional[str], Optional[str], Optional[str]]:
         """
-        Parse dataset-ninja JSON annotation to extract (class_name, label).
+        Parse dataset-ninja JSON annotation to extract (class_name, label, anomaly_type).
         Tags typically contain the class (e.g. 'breakfast_box') and the label (e.g. 'good').
         """
         with open(ann_file, "r") as f:
             data = json.load(f)
-
+        filename = ann_file.name.lower()
         tags = [t.get("name", "").lower() for t in data.get("tags", [])]
 
         found_class = None
@@ -131,7 +132,15 @@ class MVTecLOCODataset:
                 # E.g. "good", "logical_anomalies", "structural_anomalies"
                 found_label = t
 
-        return found_class, found_label
+        anomaly_types_set = set()
+        for obj in data.get("objects", []):
+            ct = obj.get("classTitle")
+            if ct:
+                anomaly_types_set.add(ct)
+                
+        anomaly_type = ",".join(sorted(list(anomaly_types_set))) if anomaly_types_set else None
+
+        return found_class, found_label, anomaly_type
 
     def _get_samples_from_split(self, split: str) -> List[ImageSample]:
         """Load all images from a specific split (train, test, validation) for this class."""
@@ -156,7 +165,7 @@ class MVTecLOCODataset:
                 if not ann_path.exists():
                     continue
 
-                cls_name, label = self._parse_annotation(ann_path)
+                cls_name, label, anomaly_type = self._parse_annotation(ann_path)
 
                 # Filter by our requested class
                 if cls_name == self.class_name:
@@ -164,6 +173,7 @@ class MVTecLOCODataset:
                     samples.append(ImageSample(
                         path=img_path,
                         label=label or "unknown",
+                        anomaly_type=anomaly_type,
                         is_anomaly=is_anomaly,
                         class_name=self.class_name,
                     ))
@@ -177,6 +187,7 @@ class MVTecLOCODataset:
     def get_train_normal(self) -> List[Path]:
         """Return sorted list of train-normal image paths."""
         samples = self._get_samples_from_split("train")
+        # print(set([s.label for s in samples]))
         normal_paths = [s.path for s in samples if not s.is_anomaly]
         
         if not normal_paths:

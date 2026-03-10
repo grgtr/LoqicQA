@@ -164,6 +164,7 @@ def test_image(
     class_name: str = "object",
     logger: Optional[PipelineLogger] = None,
     gt_label="unknown",
+    anomaly_type: Optional[str] = None,
 ) -> ImageResult:
     """
     Stage 4: Test a single query image with the generated question checklist.
@@ -178,6 +179,7 @@ def test_image(
     Returns:
         ImageResult with prediction, score, and per-question breakdown.
     """
+    print("[DEBUG] Test image, anomaly_type=",anomaly_type)
     if isinstance(image, (str, Path)):
         pil_img = Image.open(str(image)).convert("RGB")
         image_path = image_path or str(image)
@@ -185,7 +187,7 @@ def test_image(
         pil_img = image
     if logger:
         logger.log_stage4_image_start(
-            image_idx=0, image_path=image_path or "", gt_label=gt_label
+            image_idx=0, image_path=image_path or "", gt_label=gt_label, anomaly_type=anomaly_type
         )
     main_q_results: List[MainQResult] = []
     violating_questions: List[str] = []

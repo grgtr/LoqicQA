@@ -6,9 +6,10 @@ from __future__ import annotations
 
 import json
 import os
+import json
 from pathlib import Path
-from typing import Dict, List, Optional, Union
-
+from typing import Dict, List, Optional, Union, Any
+from dataclasses import dataclass, field, asdict
 from PIL import Image
 
 from logicqa.config import LogicQAConfig
@@ -30,6 +31,25 @@ from logicqa.pipeline.stage3_questions import (
 )
 from logicqa.pipeline.stage4_test import test_image, ImageResult
 from logicqa.logging import PipelineLogger
+
+@dataclass
+class LogicQAArtifacts:
+    # Stage 1: Describing
+    stage1_descriptions: List[Dict[str, str]] = field(default_factory=list)
+    
+    # Stage 2: Summarization
+    stage2_summary: str = ""
+    
+    # Stage 3: Questions
+    stage3_main_questions: List[str] = field(default_factory=list)
+    stage3_sub_questions: Dict[str, List[str]] = field(default_factory=dict)
+    
+    # Stage 4: Testing (inference)
+    stage4_results: List[Dict[str, Any]] = field(default_factory=list)
+
+    def save_to_json(self, filepath: str):
+        with open(filepath, 'w', encoding='utf-8') as f:
+            json.dump(asdict(self), f, indent=4, ensure_ascii=False)
 
 class LogicQAPipeline:
     """
@@ -211,6 +231,7 @@ class LogicQAPipeline:
         self,
         image: Union[Path, str, Image.Image],
         gt_label: Optional[str] = "unknown",
+        anomaly_type: Optional[str] = None,
     ) -> ImageResult:
         """
         Run Stage 4 on a single query image.
@@ -242,7 +263,8 @@ class LogicQAPipeline:
                     self.sub_questions,
                     class_name=self.class_name,
                     logger=self.logger,
-                    gt_label=gt_label
+                    gt_label=gt_label,
+                    anomaly_type=anomaly_type
                 )
                 for seg in preprocessed
             ]
@@ -271,6 +293,7 @@ class LogicQAPipeline:
             class_name=self.class_name,
             logger=self.logger,
             gt_label=gt_label,
+            anomaly_type=anomaly_type
         )
 
     # ------------------------------------------------------------------ #
@@ -302,3 +325,17 @@ class LogicQAPipeline:
         self.sub_questions = data["sub_questions"]
         self._setup_done = True
         print(f"[Pipeline] Questions loaded from {path}: {len(self.main_questions)} main-Qs")
+    
+    def export_run_artifacts(self, filepath: Optional[Union[str, Path]] = None) -> Optional[Path]:
+        """
+        [Evaluation Framework] Export the entire pipeline context (Stages 1-4)
+        in a single JSON file for 4-level quality analysis.
+        """
+        if self.logger:
+            # Enrich artifact with normality definition (required for Level 1 - CCR)
+            if self.normality_definition:
+                self.logger.record.normality_definition = self.normality_definition
+            
+            return self.logger.export_artifacts(filepath)
+        print("Warning: PipelineLogger is not initialized. Cannot export artifacts.")
+        return None

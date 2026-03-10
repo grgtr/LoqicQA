@@ -373,6 +373,12 @@ def main() -> None:
         )
     print(f"\n[Done] Results saved to {results_path}")
 
+    artifacts_path = pipeline.export_run_artifacts()
+    if artifacts_path:
+        print(f"\n[Evaluation Ready] Full run artifacts saved to: {artifacts_path}")
+        print("Next step: Run 'python scripts/evaluate.py --artifacts', artifacts_path")
+
+
 
 if __name__ == "__main__":
     main()

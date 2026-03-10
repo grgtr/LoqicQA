@@ -1,0 +1,58 @@
+[
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/breakfast_box_good_000.png",
+    "gt_label": "good",
+    "is_anomaly": true,
+    "anomaly_score": 1.0,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are both tangerines located on the bottom row and next to each other at the left-hand side area?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/breakfast_box_good_001.png",
+    "gt_label": "good",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/breakfast_box_good_002.png",
+    "gt_label": "good",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/breakfast_box_good_003.png",
+    "gt_label": "good",
+    "is_anomaly": true,
+    "anomaly_score": 1.0,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are both tangerines located on the bottom row and next to each other at the left-hand side area?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/breakfast_box_logical_anomalies_000.png",
+    "gt_label": "logical_anomaly",
+    "is_anomaly": true,
+    "anomaly_score": 1.0,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are both tangerines located on the bottom row and next to each other at the left-hand side area?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/breakfast_box_logical_anomalies_001.png",
+    "gt_label": "logical_anomaly",
+    "is_anomaly": true,
+    "anomaly_score": 1.0,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are both tangerines located on the bottom row and next to each other at the left-hand side area?\n  - Do all three fruits (two tangerines + 1 nectarine) have a smooth surface without any visible damage or blemishes that could indicate spoilage?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/breakfast_box_logical_anomalies_002.png",
+    "gt_label": "logical_anomaly",
+    "is_anomaly": true,
+    "anomaly_score": 1.0,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are both tangerines located on the bottom row and next to each other at the left-hand side area?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/breakfast_box_logical_anomalies_003.png",
+    "gt_label": "logical_anomaly",
+    "is_anomaly": true,
+    "anomaly_score": 1.0,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are both tangerines located on the bottom row and next to each other at the left-hand side area?\n  - Is the cereal mix containing banana chips and almonds positioned only within the right-hand side portion as described?"
+  }
+]

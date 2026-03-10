@@ -3,7 +3,6 @@ from __future__ import annotations
 
 import numpy as np
 from sklearn.metrics import roc_auc_score, f1_score, precision_recall_curve
-from logicqa.logging import PipelineLogger
 from typing import Optional
 
 
@@ -80,7 +79,7 @@ def print_evaluation_summary(
     anomaly_scores: list[float],
     predictions: list[bool],
     labels: list[int],
-    logger: Optional[PipelineLogger] = None,
+    logger,
 ) -> dict:
     """
     Print and return a full evaluation summary for a class.

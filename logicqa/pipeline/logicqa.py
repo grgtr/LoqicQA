@@ -29,7 +29,7 @@ from logicqa.pipeline.stage3_questions import (
     generate_sub_questions,
 )
 from logicqa.pipeline.stage4_test import test_image, ImageResult
-
+from logicqa.logging import PipelineLogger
 
 class LogicQAPipeline:
     """
@@ -46,6 +46,10 @@ class LogicQAPipeline:
         self.cfg = cfg
         self.vlm: VLMBase = get_vlm(cfg)
         self._langsam: Optional[LangSAMWrapper] = None
+        self.logger = PipelineLogger(
+            output_dir=cfg.pipeline.output_dir,
+            class_name=cfg.pipeline.class_name,
+        )
 
         # Will be set after setup()
         self.class_name: Optional[str] = None
@@ -121,6 +125,7 @@ class LogicQAPipeline:
         normality_definition: Optional[str] = None,
         n_questions: int = 6,
         validation_images: Optional[List[Union[Path, str]]] = None,
+        output_dir="results", **kwargs
     ) -> Dict:
         """
         Run Stages 1-3 to build the question checklist for a class.
@@ -151,17 +156,22 @@ class LogicQAPipeline:
             for img in normal_images
         ]
         descriptions = describe_normal_images(
-            self.vlm, preprocessed_normals, self.normality_definition, self.class_name
+            self.vlm, preprocessed_normals, self.normality_definition, self.class_name, logger=self.logger
         )
 
         # Stage 2
         summary = summarize_normal_context(
-            self.vlm, descriptions, self.normality_definition
+            self.vlm, descriptions, self.normality_definition, logger=self.logger
         )
 
         # Stage 3a: Generate candidates
         candidates = generate_candidate_questions(
-            self.vlm, summary, self.normality_definition, n_questions=n_questions
+            self.vlm,
+            summary,
+            self.normality_definition,
+            class_name=self.class_name,
+            n_questions=n_questions,
+            logger=self.logger
         )
 
         # Stage 3b: Filter
@@ -175,11 +185,15 @@ class LogicQAPipeline:
             preprocessed_vals,
             threshold=self.cfg.pipeline.question_filter_threshold,
             class_name=self.class_name,
+            logger=self.logger
         )
 
         # Stage 3c: Sub-questions
         sub_qs = generate_sub_questions(
-            self.vlm, kept, n_variants=self.cfg.pipeline.n_sub_questions
+            self.vlm,
+            kept,
+            n_variants=self.cfg.pipeline.n_sub_questions,
+            logger=self.logger
         )
 
         self.main_questions = kept
@@ -196,6 +210,7 @@ class LogicQAPipeline:
     def predict(
         self,
         image: Union[Path, str, Image.Image],
+        gt_label: Optional[str] = "unknown",
     ) -> ImageResult:
         """
         Run Stage 4 on a single query image.
@@ -220,7 +235,15 @@ class LogicQAPipeline:
         # If Lang-SAM returned multiple segments, test each and aggregate
         if isinstance(preprocessed, list):
             results = [
-                test_image(self.vlm, seg, self.main_questions, self.sub_questions, class_name=self.class_name)
+                test_image(
+                    self.vlm,
+                    seg,
+                    self.main_questions,
+                    self.sub_questions,
+                    class_name=self.class_name,
+                    logger=self.logger,
+                    gt_label=gt_label
+                )
                 for seg in preprocessed
             ]
             # Aggregate: anomaly if ANY segment is anomalous; max anomaly score
@@ -246,6 +269,8 @@ class LogicQAPipeline:
             self.sub_questions,
             image_path=image_path_str,
             class_name=self.class_name,
+            logger=self.logger,
+            gt_label=gt_label,
         )
 
     # ------------------------------------------------------------------ #

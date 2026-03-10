@@ -18,7 +18,11 @@ from logicqa.prompts import (
     GENERATE_QUESTIONS_PROMPT,
     SUBQUESTION_AUGMENT_PROMPT,
     TEST_PROMPT,
+    build_question_slots,
+    build_subquestion_slots
 )
+from logicqa.logging import PipelineLogger
+from logicqa.data.normality_definitions import CLASS_INSPECTION_CONTEXTS
 
 
 def _parse_numbered_list(text: str) -> List[str]:
@@ -78,6 +82,11 @@ def _parse_questions(text: str) -> List[str]:
             ):
                 questions.append(line)
 
+    questions = [
+        q for q in questions
+        if (q.endswith("?") or
+        re.match(r"^(Is |Are |Does |Do |Can |Has |Have |Did )", q, re.IGNORECASE)) and 15 < len(q) < 250
+    ]
     return questions
 
 
@@ -125,6 +134,7 @@ def generate_candidate_questions(
     normality_definition: str,
     class_name: str = "object",
     n_questions: int = 6,
+    logger: Optional[PipelineLogger] = None,
 ) -> List[str]:
     """
     Stage 3a: Generate candidate main questions from normality summary.
@@ -143,12 +153,21 @@ def generate_candidate_questions(
         class_name=class_name,
         normality_summary=normality_summary,
         normality_definition=normality_definition,
+        n_questions=n_questions,
+        question_slots=build_question_slots(n_questions),
     )
     response = vlm.query(prompt=prompt, image=None)
 
-    print("DEBUG: response.text:", response.text)
+    print(f"   [DEBUG] Raw output:\n{response.text}\n")
     questions = _parse_questions(response.text)
+    print(f"   [DEBUG] Parsed questions:\n{questions}\n")
     print(f"    Generated {len(questions)} candidate questions.")
+    if logger:
+        logger.log_stage3a_questions(
+            prompt=prompt,
+            response_text=response.text,
+            parsed_questions=questions,
+        )
     return questions
 
 
@@ -157,6 +176,9 @@ def _answer_single_question(
     question: str,
     image: Union[Path, Image.Image],
     class_name: str = "object",
+    logger: Optional[PipelineLogger] = None,
+    image_idx: int = 0,
+    image_path: str = "",
 ) -> Optional[str]:
     """Ask a single question about one image and return 'Yes'/'No'/None."""
     if isinstance(image, (str, Path)):
@@ -164,8 +186,19 @@ def _answer_single_question(
     else:
         img = image
 
-    prompt = TEST_PROMPT.format(question=question, class_name=class_name)
+    normalized_class_name = class_name.lower().replace(" ", "_")
+    class_context = CLASS_INSPECTION_CONTEXTS.get(normalized_class_name, "")
+    prompt = TEST_PROMPT.format(question=question, class_name=class_name, class_context=class_context)
     response = vlm.query(prompt=prompt, image=img)
+    if logger:
+        logger.log_stage3b_filter_answer(
+            question=question,
+            image_idx=image_idx,
+            image_path=image_path,
+            prompt=prompt,
+            response_text=response.text,
+            extracted_answer=response.answer,
+        )
     return response.answer
 
 
@@ -175,6 +208,7 @@ def filter_questions_on_normal(
     normal_images: List[Union[Path, Image.Image]],
     threshold: float = 0.8,
     class_name: str = "object",
+    logger: Optional[PipelineLogger] = None,
 ) -> List[str]:
     """
     Stage 3b: Filter candidate questions with < threshold accuracy on normals.
@@ -206,8 +240,10 @@ def filter_questions_on_normal(
             if answer == "Yes":
                 correct += 1
         accuracy = correct / len(normal_images)
-        status = "✓ KEEP" if accuracy >= threshold else "✗ DROP"
-        print(f"    [{status}] acc={accuracy:.2f} | {q[:80]}")
+        status = "KEEP" if accuracy >= threshold else "DROP"
+        print(f"    [{status}] acc={accuracy:.2f} | {q}")
+        if logger:
+            logger.log_stage3b_result(q, accuracy, accuracy >= threshold)
         if accuracy >= threshold:
             kept.append(q)
 
@@ -219,6 +255,7 @@ def generate_sub_questions(
     vlm: VLMBase,
     main_questions: List[str],
     n_variants: int = 5,
+    logger: Optional[PipelineLogger] = None,
 ) -> Dict[str, List[str]]:
     """
     Stage 3c: Generate sub-question variants for each accepted main question.
@@ -233,10 +270,11 @@ def generate_sub_questions(
     """
     print(f"  [Stage 3c] Generating {n_variants} sub-questions per main question ...")
     sub_questions: Dict[str, List[str]] = {}
+    subquestion_slots = build_subquestion_slots(n_variants)
     for i, mq in enumerate(main_questions):
-        prompt = SUBQUESTION_AUGMENT_PROMPT.format(
+        prompt = SUBQUESTION_AUGMENT_PROMPT.format(n_variants=n_variants,
             main_question=mq,
-            n_variants=n_variants,
+            subquestion_slots=subquestion_slots,
         )
         response = vlm.query(prompt=prompt, image=None)
         variants = _parse_output_list(response.text)
@@ -245,4 +283,11 @@ def generate_sub_questions(
             variants.append(mq)
         sub_questions[mq] = variants[:n_variants]
         print(f"    Q{i+1}: {mq[:60]} → {len(variants)} sub-Qs")
+        if logger:
+            logger.log_stage3c_subquestions(
+                main_question=mq,
+                prompt=prompt,
+                response_text=response.text,
+                sub_questions=sub_questions[mq],
+            )
     return sub_questions

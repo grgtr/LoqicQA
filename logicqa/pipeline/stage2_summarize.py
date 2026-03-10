@@ -3,13 +3,14 @@ from __future__ import annotations
 
 from logicqa.vlm.base import VLMBase
 from logicqa.prompts import SUMMARIZE_PROMPT, format_descriptions
-
+from logicqa.logging import PipelineLogger
 
 def summarize_normal_context(
     vlm: VLMBase,
     descriptions: list[str],
     normality_definition: str,
     class_name: str = "object",
+    logger: Optional[PipelineLogger] = None,
 ) -> str:
     """
     Stage 2: Distill multiple normal image descriptions into a single summary.
@@ -28,6 +29,12 @@ def summarize_normal_context(
         labeled_descriptions=labeled,
         n_descriptions=len(descriptions),
         normality_definition=normality_definition,
+        class_name=class_name,
+        
     )
     response = vlm.query(prompt=prompt, image=None)
-    return response.text.strip()
+    text = response.text.strip()
+
+    if logger:
+        logger.log_stage2_summary(prompt=prompt, response_text=text)
+    return text

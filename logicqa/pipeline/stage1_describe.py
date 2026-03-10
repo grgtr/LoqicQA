@@ -12,13 +12,15 @@ from PIL import Image
 
 from logicqa.vlm.base import VLMBase
 from logicqa.prompts import DESCRIBE_PROMPT
-
+from logicqa.logging import PipelineLogger
 
 def describe_normal_images(
     vlm: VLMBase,
     normal_images: List[Union[Path, Image.Image]],
     normality_definition: str,
     class_name: str = "object",
+    image_paths: Optional[List[str]] = None,
+    logger: Optional[PipelineLogger] = None,
 ) -> List[str]:
     """
     Stage 1: Generate textual descriptions of normal images.
@@ -42,5 +44,14 @@ def describe_normal_images(
         if isinstance(img, (str, Path)):
             img = Image.open(str(img)).convert("RGB")
         response = vlm.query(prompt=prompt, image=img)
-        descriptions.append(response.text.strip())
+        text = response.text.strip()
+        descriptions.append(text)
+        if logger:
+            img_path = image_paths[i] if image_paths else f"image_{i}"
+            logger.log_stage1_description(
+                image_idx=i + 1,
+                image_path=img_path,
+                prompt=prompt,
+                response_text=text,
+            )
     return descriptions

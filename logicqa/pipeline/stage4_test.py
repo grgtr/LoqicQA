@@ -22,6 +22,8 @@ from PIL import Image
 
 from logicqa.vlm.base import VLMBase
 from logicqa.prompts import TEST_PROMPT
+from logicqa.data.normality_definitions import CLASS_INSPECTION_CONTEXTS
+from logicqa.logging import PipelineLogger
 
 
 @dataclass
@@ -53,10 +55,33 @@ def _ask_sub_question(
     question: str,
     image: Image.Image,
     class_name: str = "object",
+    main_question: Optional[str] = None,
+    sub_q_idx: Optional[int] = None,
+    image_path: Optional[str] = None,
+    logger: Optional[PipelineLogger] = None,
 ) -> SubQResult:
     """Ask one sub-question about an image and return the result."""
-    prompt = TEST_PROMPT.format(question=question, class_name=class_name)
-    response = vlm.query(prompt=prompt, image=image)
+    normalized_class_name = class_name.lower().replace(" ", "_")
+    class_context = CLASS_INSPECTION_CONTEXTS.get(normalized_class_name, "")
+    prompt = TEST_PROMPT.format(question=question, class_name=class_name, class_context=class_context)
+    if hasattr(vlm, "query_with_logprobs"):
+        # print("[DEBUG] using query_with_logprobs in stage4_test")
+        response = vlm.query_with_logprobs(prompt=prompt, image=image)
+    else:
+        # print("[DEBUG] using query in stage4_test")
+        response = vlm.query(prompt=prompt, image=image)
+    if logger:
+        logger.log_stage4_sub_question(
+            image_path=image_path,
+            main_question=main_question,
+            sub_question=question,
+            sub_q_idx=sub_q_idx,
+            prompt=prompt,
+            response_text=response.text,
+            extracted_answer=response.answer,
+            log_prob=response.log_prob,
+            extraction_meta=response.extraction_meta
+        )
     return SubQResult(
         question=question,
         answer=response.answer,
@@ -122,7 +147,7 @@ def _compute_anomaly_score(main_q_results: List[MainQResult]) -> float:
         lp = mq.best_log_prob if mq.best_log_prob is not None else -1.0
         S.append(math.exp(max(lp, -30)))
 
-    median_s = np.median(S)
+    median_s = float(np.median(S))
     is_anomaly = any(mq.voted_answer == "No" for mq in main_q_results)
 
     if is_anomaly:
@@ -137,6 +162,8 @@ def test_image(
     sub_questions: Dict[str, List[str]],
     image_path: Optional[str] = None,
     class_name: str = "object",
+    logger: Optional[PipelineLogger] = None,
+    gt_label="unknown",
 ) -> ImageResult:
     """
     Stage 4: Test a single query image with the generated question checklist.
@@ -156,7 +183,10 @@ def test_image(
         image_path = image_path or str(image)
     else:
         pil_img = image
-
+    if logger:
+        logger.log_stage4_image_start(
+            image_idx=0, image_path=image_path or "", gt_label=gt_label
+        )
     main_q_results: List[MainQResult] = []
     violating_questions: List[str] = []
 
@@ -164,8 +194,15 @@ def test_image(
         sub_qs = sub_questions.get(mq, [mq])
         sub_results: List[SubQResult] = []
 
-        for sq in sub_qs:
-            sub_result = _ask_sub_question(vlm, sq, pil_img, class_name)
+        for idx, sq in enumerate(sub_qs):
+            sub_result = _ask_sub_question(
+                vlm, sq, pil_img,
+                class_name=class_name,
+                main_question=mq,
+                sub_q_idx=idx + 1,
+                image_path=image_path or "",
+                logger=logger,
+            )
             sub_results.append(sub_result)
 
         # Majority vote
@@ -187,6 +224,9 @@ def test_image(
         )
         main_q_results.append(mq_result)
 
+        if logger:
+            logger.log_stage4_main_question_result(mq, voted, answers)
+
         if voted == "No":
             violating_questions.append(mq)
 
@@ -195,14 +235,20 @@ def test_image(
     anomaly_score = _compute_anomaly_score(main_q_results)
 
     # Human-readable explanation
-    if is_anomaly:
+    if is_anomaly:  
         explanation = (
             "Logical anomaly detected. Violated constraints:\n"
             + "\n".join(f"  - {q}" for q in violating_questions)
         )
     else:
         explanation = "Image appears normal. All constraints satisfied."
-
+    if logger:
+        logger.log_stage4_image_result(
+            image_path=image_path or "",
+            is_anomaly=is_anomaly,
+            anomaly_score=anomaly_score,
+            explanation=explanation,
+        )
     return ImageResult(
         image_path=image_path,
         is_anomaly=is_anomaly,

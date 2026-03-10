@@ -208,7 +208,8 @@ def main() -> None:
         cfg.testing.random_seed = args.seed
     cfg.dataset.data_dir = args.data_dir
     cfg.dataset.download_if_missing = True
-
+    cfg.pipeline.output_dir = args.output_dir
+    cfg.pipeline.class_name = args.class_name
     # ------------------------------------------------------------------ #
     # Load dataset
     # ------------------------------------------------------------------ #
@@ -230,7 +231,7 @@ def main() -> None:
         print(f"[Setup] Loaded questions from {args.questions_file}")
     else:
         # Sample few-shot normal images and run setup (Stages 1-3)
-        print("[DEBUG] n_shots", args.n_shots)
+        # print("[DEBUG] n_shots", args.n_shots)
         normal_images = dataset.sample_train_normal(n=cfg.pipeline.n_shots, seed=args.seed)
         print(f"[Setup] Using {len(normal_images)} normal images: "
               f"{[p.name for p in normal_images]}")
@@ -238,7 +239,7 @@ def main() -> None:
         pipeline.setup(
             class_name=args.class_name,
             normal_images=normal_images,
-            n_questions=args.n_questions,
+            n_questions=cfg.pipeline.n_questions,
         )
 
         if args.save_questions:
@@ -272,9 +273,9 @@ def main() -> None:
         # print(f"  [{i+1}/{len(test_samples)}] {sample.path.name} "
         #       f"(label={sample.label})", end=" ", flush=True)
         tag = "ANOMALY" if sample.is_anomaly else "normal "
-        print(f"  [{i+1:03d}/{len(test_samples):03d}] [{tag}] {sample.path.name}",
+        print(f"  [{i+1:03d}/{len(test_samples):03d}] [{tag}] {sample.path.name} Ground truth: {sample.label}",
               end=" ", flush=True)
-        result = pipeline.predict(sample.path)
+        result = pipeline.predict(sample.path, gt_label=sample.label)
         pred_label = "anomaly" if result.is_anomaly else "normal"
         gt_label = 1 if sample.is_anomaly else 0
 
@@ -303,23 +304,67 @@ def main() -> None:
     # ------------------------------------------------------------------ #
     # Evaluate & save
     # ------------------------------------------------------------------ #
+    eval_scores, eval_labels, eval_preds = [], [], []
+    for r in results_list:
+        if r["gt_label"] == "structural_anomaly":
+            continue
+        eval_scores.append(r["anomaly_score"])
+        eval_labels.append(1 if r["gt_is_anomaly"] else 0)
+        eval_preds.append(r["pred_is_anomaly"])
+
     metrics = print_evaluation_summary(
         class_name=args.class_name,
-        anomaly_scores=scores,
-        predictions=predictions,
-        labels=labels,
+        anomaly_scores=eval_scores,
+        predictions=eval_preds,
+        labels=eval_labels,
+        logger=pipeline.logger,
     )
 
+    tp = fp = tn = fn = 0
+    # Предполагаем, что у вас есть списки ground_truths и predictions (из ImageResult)
+    # Для MVTec LOCO AD: если label == 'good', то это Normal. Иначе - Anomaly.
+    for gt_label, pred_is_anomaly in zip(labels, predictions):
+        if gt_label and pred_is_anomaly:
+            tp += 1
+        elif not gt_label and pred_is_anomaly:
+            fp += 1
+        elif not gt_label and not pred_is_anomaly:
+            tn += 1
+        elif gt_label and not pred_is_anomaly:
+            fn += 1
+    matrix_str = (
+    f"\n{'='*60}\n"
+    f"CONFUSION MATRIX (Logical Anomaly Detection)\n"
+    f"{'='*60}\n"
+    f"                  | Predicted Normal | Predicted Anomaly |\n"
+    f"----------------------------------------------------------\n"
+    f" Actual Normal    | {tn:<16} | {fp:<17} |\n"
+    f" Actual Anomaly   | {fn:<16} | {tp:<17} |\n"
+    f"{'='*60}\n"
+    f"Metrics Summary:\n"
+    f" - Accuracy:  {(tp + tn) / (tp + fp + tn + fn + 1e-9):.2%}\n"
+    f" - Precision: {tp / (tp + fp + 1e-9):.2%}\n"
+    f" - Recall:    {tp / (tp + fn + 1e-9):.2%}\n"
+    f"{'='*60}\n"
+    )
+
+    print(matrix_str)
     out_dir = Path(os.path.expanduser(args.output_dir))
     out_dir.mkdir(parents=True, exist_ok=True)
     results_path = out_dir / f"{args.class_name}_results.json"
-
+    if pipeline.logger:
+        if hasattr(pipeline.logger, "log"):
+            pipeline.logger.log(matrix_str)
+        else:
+            # Если это ваш кастомный логгер, добавьте метод или запишите в файл напрямую
+            with open(f"{cfg.output_dir}/evaluation_summary.txt", "w") as f:
+                f.write(matrix_str)
     with open(results_path, "w") as f:
         json.dump(
             {
                 "class_name": args.class_name,
                 "vlm": args.vlm,
-                "n_shots": args.n_shots,
+                "n_shots": cfg.pipeline.n_shots,
                 "metrics": metrics,
                 "results": results_list,
             },

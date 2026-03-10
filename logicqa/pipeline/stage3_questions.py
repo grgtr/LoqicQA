@@ -177,12 +177,12 @@ def _answer_single_question(
     image: Union[Path, Image.Image],
     class_name: str = "object",
     logger: Optional[PipelineLogger] = None,
-    image_idx: int = 0,
-    image_path: str = "",
+    gt_label: str = "unknown",
 ) -> Optional[str]:
     """Ask a single question about one image and return 'Yes'/'No'/None."""
     if isinstance(image, (str, Path)):
         img = Image.open(str(image)).convert("RGB")
+        image_path = str(image)
     else:
         img = image
 
@@ -193,8 +193,8 @@ def _answer_single_question(
     if logger:
         logger.log_stage3b_filter_answer(
             question=question,
-            image_idx=image_idx,
-            image_path=image_path,
+            image_path=str(image),
+            gt_label=gt_label,
             prompt=prompt,
             response_text=response.text,
             extracted_answer=response.answer,
@@ -226,6 +226,7 @@ def filter_questions_on_normal(
     Returns:
         Filtered list of main questions.
     """
+    print(f"[DEBUG] stage3b Filtering logger is: {'None' if logger is None else 'not None'}")
     if not normal_images:
         return candidate_questions
 
@@ -236,7 +237,8 @@ def filter_questions_on_normal(
     for q in candidate_questions:
         correct = 0
         for img in normal_images:
-            answer = _answer_single_question(vlm, q, img, class_name)
+            gt_label = "good"
+            answer = _answer_single_question(vlm, q, img, class_name, logger, gt_label)
             if answer == "Yes":
                 correct += 1
         accuracy = correct / len(normal_images)

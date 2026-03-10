@@ -7,6 +7,14 @@ LogicQA is a **training-free, annotation-free** few-shot logical anomaly detecti
 
 ---
 
+## How to run
+
+```bash
+python3 scripts/run_pipeline.py --class breakfast_box --vlm "internvl" --data_dir /home/chikibriki/LoqicQA/dataset-ninja/ --config /home/chikibriki/LoqicQA/config.yaml --questions_file /home/chikibriki/LoqicQA/results/breakfast_box_questions_ground_truth.json --seed 43
+```
+```bash
+python3 scripts/run_pipeline.py --class breakfast_box --vlm "internvl" --data_dir /home/chikibriki/LoqicQA/dataset-ninja/ --config /home/chikibriki/LoqicQA/config.yaml --save_questions --seed 43
+```
 ## Framework Overview
 
 ```

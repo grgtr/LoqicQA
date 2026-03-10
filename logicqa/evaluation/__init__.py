@@ -11,4 +11,5 @@ __all__ = [
     "compute_f1_max",
     "compute_binary_f1",
     "print_evaluation_summary",
+    "LogicQARunRecord",
 ]

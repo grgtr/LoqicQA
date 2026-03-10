@@ -118,10 +118,7 @@ class LLMJudge:
         return data.get("violation_detected", False)
 
     def map_question_to_constraints(self, question: str, constraints: List[str]) -> List[str]:
-        """
-        Уровень 2.5: Сопоставляет сгенерированный вопрос с реальными правилами.
-        Возвращает список правил, которые этот вопрос проверяет.
-        """
+
         system_prompt = (
             "You are a strict logical evaluator. Given a question and a list of official constraints, "
             "determine which constraints this question is trying to test. "
@@ -135,7 +132,6 @@ class LLMJudge:
         data = self._parse_json(response)
         
         if isinstance(data, list):
-            # Фильтруем, чтобы вернуть только точные совпадения из GT
             return [c for c in data if c in constraints]
         return []
 

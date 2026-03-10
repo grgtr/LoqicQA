@@ -1,0 +1,46 @@
+{
+  "Does the breakfast box contain exactly two tangerines and one nectarine?": {
+    "prompt": "You are an AI linguist assisting a Quality Control system.\nYour task is to rephrase the given target question into 5 different variations.\n\nTarget Question: \"Does the breakfast box contain exactly two tangerines and one nectarine?\"\n\nSTRICT RULES:\n- Must be answered with a simple \"Yes\" or \"No\".\n- A \"Yes\" answer MUST mean the image is NORMAL. A \"No\" answer MUST mean it is an ANOMALY.\n- The logical meaning and strictness MUST remain exactly the same.\n- If the original question specifies an exact number (e.g., \"exactly two\"), EVERY variation must include that exact constraint (e.g., \"precisely two\", \"exactly two\").\n- If the original question specifies a location (e.g., \"left side\"), EVERY variation must include it.\n\nOutput ONLY the rephrased questions, numbered 1 to 5.\n\nFormat:\nOutput1:\nOutput2:\nOutput3:\nOutput4:\nOutput5:\n",
+    "response": "1. Are there precisely two tangerines and one nectarine in the breakfast box?\n2. Does the breakfast box contain exactly two tangerines, located on either side of a single nectarine?\n3. Is it true that the breakfast box has an exact count of two tangerines next to just one nectarine?\n4. Can you confirm if the image shows only two tangerines placed alongside another fruit which is specifically a nectarine?\n5. Do we see accurately two pieces of citrus (tangerines) positioned adjacent to a singular stone fruit (nectarine), within this particular meal kit?",
+    "sub_questions": [
+      "1. Are there precisely two tangerines and one nectarine in the breakfast box?",
+      "2. Does the breakfast box contain exactly two tangerines, located on either side of a single nectarine?",
+      "3. Is it true that the breakfast box has an exact count of two tangerines next to just one nectarine?",
+      "4. Can you confirm if the image shows only two tangerines placed alongside another fruit which is specifically a nectarine?",
+      "5. Do we see accurately two pieces of citrus (tangerines) positioned adjacent to a singular stone fruit (nectarine), within this particular meal kit?"
+    ]
+  },
+  "Are all three fruits located on the left-hand side of the box?": {
+    "prompt": "You are an AI linguist assisting a Quality Control system.\nYour task is to rephrase the given target question into 5 different variations.\n\nTarget Question: \"Are all three fruits located on the left-hand side of the box?\"\n\nSTRICT RULES:\n- Must be answered with a simple \"Yes\" or \"No\".\n- A \"Yes\" answer MUST mean the image is NORMAL. A \"No\" answer MUST mean it is an ANOMALY.\n- The logical meaning and strictness MUST remain exactly the same.\n- If the original question specifies an exact number (e.g., \"exactly two\"), EVERY variation must include that exact constraint (e.g., \"precisely two\", \"exactly two\").\n- If the original question specifies a location (e.g., \"left side\"), EVERY variation must include it.\n\nOutput ONLY the rephrased questions, numbered 1 to 5.\n\nFormat:\nOutput1:\nOutput2:\nOutput3:\nOutput4:\nOutput5:\n",
+    "response": "Output1: \"Are all three fruits positioned on the left-hand side of the box?\"\nOutput2: \"Is every one of these three fruits located to the left in this image?\"\nOutput3: \"Do we see exactly three fruits situated at the left end of the container?\"\nOutput4: \"Are precisely two and a half fruits found towards the left part of our picture?\"\nOutput5: \"Can you confirm that there are no more than or less than three fruits placed toward the left edge?\"",
+    "sub_questions": [
+      "Are all three fruits located on the left-hand side of the box?",
+      "Are all three fruits located on the left-hand side of the box?",
+      "Are all three fruits located on the left-hand side of the box?",
+      "Are all three fruits located on the left-hand side of the box?",
+      "Are all three fruits located on the left-hand side of the box?"
+    ]
+  },
+  "Do the cereals occupy most lower area leaving some empty spaces around it below them, as specified for spatial arrangement?": {
+    "prompt": "You are an AI linguist assisting a Quality Control system.\nYour task is to rephrase the given target question into 5 different variations.\n\nTarget Question: \"Do the cereals occupy most lower area leaving some empty spaces around it below them, as specified for spatial arrangement?\"\n\nSTRICT RULES:\n- Must be answered with a simple \"Yes\" or \"No\".\n- A \"Yes\" answer MUST mean the image is NORMAL. A \"No\" answer MUST mean it is an ANOMALY.\n- The logical meaning and strictness MUST remain exactly the same.\n- If the original question specifies an exact number (e.g., \"exactly two\"), EVERY variation must include that exact constraint (e.g., \"precisely two\", \"exactly two\").\n- If the original question specifies a location (e.g., \"left side\"), EVERY variation must include it.\n\nOutput ONLY the rephrased questions, numbered 1 to 5.\n\nFormat:\nOutput1:\nOutput2:\nOutput3:\nOutput4:\nOutput5:\n",
+    "response": "Output1: \"Are the cereals positioned in such a way that they occupy most of the lower area, leaving some empty spaces around them below as specified for spatial arrangement?\"\nOutput2: \"Do the cereals adhere to their designated placement by occupying most of the lower space and creating voids beneath them according to the given layout requirements?\"\nOutput3: \"Is it true that the cereals are arranged so that they take up the majority of the bottom region while maintaining gaps underneath following the prescribed spatial configuration?\"\nOutput4: \"Does the image show the cereals correctly placed with most of the lower section occupied but still having unoccupied areas directly under them based on the intended design?\"\nOutput5: \"Are there any deviations from the expected pattern where the cereals should primarily fill the lower part yet leave certain spots vacant right above them?\"",
+    "sub_questions": [
+      "Do the cereals occupy most lower area leaving some empty spaces around it below them, as specified for spatial arrangement?",
+      "Do the cereals occupy most lower area leaving some empty spaces around it below them, as specified for spatial arrangement?",
+      "Do the cereals occupy most lower area leaving some empty spaces around it below them, as specified for spatial arrangement?",
+      "Do the cereals occupy most lower area leaving some empty spaces around it below them, as specified for spatial arrangement?",
+      "Do the cereals occupy most lower area leaving some empty spaces around it below them, as specified for spatial arrangement?"
+    ]
+  },
+  "Are bananas sliced into thin pieces while whole almonds are present within the mixture mentioned above?": {
+    "prompt": "You are an AI linguist assisting a Quality Control system.\nYour task is to rephrase the given target question into 5 different variations.\n\nTarget Question: \"Are bananas sliced into thin pieces while whole almonds are present within the mixture mentioned above?\"\n\nSTRICT RULES:\n- Must be answered with a simple \"Yes\" or \"No\".\n- A \"Yes\" answer MUST mean the image is NORMAL. A \"No\" answer MUST mean it is an ANOMALY.\n- The logical meaning and strictness MUST remain exactly the same.\n- If the original question specifies an exact number (e.g., \"exactly two\"), EVERY variation must include that exact constraint (e.g., \"precisely two\", \"exactly two\").\n- If the original question specifies a location (e.g., \"left side\"), EVERY variation must include it.\n\nOutput ONLY the rephrased questions, numbered 1 to 5.\n\nFormat:\nOutput1:\nOutput2:\nOutput3:\nOutput4:\nOutput5:\n",
+    "response": "Output1: \"Are bananas cut into thin slices while whole almonds are included in the mixture mentioned above?\"\nOutput2: \"Is it normal to have banana slices and whole almonds present together within this specific mix?\"\nOutput3: \"Do you see sliced bananas alongside unbroken almonds in the described blend?\"\nOutput4: \"Can we confirm that there's a combination of slender banana pieces with intact almonds in the given concoction?\"\nOutput5: \"Does our sample contain precisely two ingredients, namely thinly sliced bananas and complete almonds?\"",
+    "sub_questions": [
+      "Are bananas sliced into thin pieces while whole almonds are present within the mixture mentioned above?",
+      "Are bananas sliced into thin pieces while whole almonds are present within the mixture mentioned above?",
+      "Are bananas sliced into thin pieces while whole almonds are present within the mixture mentioned above?",
+      "Are bananas sliced into thin pieces while whole almonds are present within the mixture mentioned above?",
+      "Are bananas sliced into thin pieces while whole almonds are present within the mixture mentioned above?"
+    ]
+  }
+}

@@ -1,0 +1,474 @@
+[
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/breakfast_box_good_000.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/breakfast_box_good_001.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/breakfast_box_good_002.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/breakfast_box_good_004.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/breakfast_box_good_007.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/breakfast_box_good_009.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/breakfast_box_good_012.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 1.0,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Do the cereals occupy most lower area leaving some empty spaces around it below them, as specified for spatial arrangement?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/breakfast_box_good_016.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 1.0,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Do the cereals occupy most lower area leaving some empty spaces around it below them, as specified for spatial arrangement?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/breakfast_box_good_020.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/breakfast_box_good_023.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/breakfast_box_good_027.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/breakfast_box_good_028.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 1.0,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Do the cereals occupy most lower area leaving some empty spaces around it below them, as specified for spatial arrangement?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/breakfast_box_good_031.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/breakfast_box_good_037.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 1.0,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Do the cereals occupy most lower area leaving some empty spaces around it below them, as specified for spatial arrangement?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/breakfast_box_good_044.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/breakfast_box_good_046.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/breakfast_box_good_053.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 1.0,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Does the breakfast box contain exactly two tangerines and one nectarine?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/breakfast_box_good_055.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 1.0,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Do the cereals occupy most lower area leaving some empty spaces around it below them, as specified for spatial arrangement?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/breakfast_box_good_061.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/breakfast_box_good_070.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/breakfast_box_good_072.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/breakfast_box_good_083.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/breakfast_box_good_084.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/breakfast_box_good_087.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 1.0,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Does the breakfast box contain exactly two tangerines and one nectarine?\n  - Are bananas sliced into thin pieces while whole almonds are present within the mixture mentioned above?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/breakfast_box_good_098.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 1.0,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Do the cereals occupy most lower area leaving some empty spaces around it below them, as specified for spatial arrangement?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/breakfast_box_good_100.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 1.0,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are all three fruits located on the left-hand side of the box?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/breakfast_box_good_101.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 1.0,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Does the breakfast box contain exactly two tangerines and one nectarine?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/breakfast_box_logical_anomalies_000.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "compartments_swapped",
+    "is_anomaly": true,
+    "anomaly_score": 1.0,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are all three fruits located on the left-hand side of the box?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/breakfast_box_logical_anomalies_006.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "missing_almonds",
+    "is_anomaly": true,
+    "anomaly_score": 1.0,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are bananas sliced into thin pieces while whole almonds are present within the mixture mentioned above?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/breakfast_box_logical_anomalies_007.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "missing_almonds",
+    "is_anomaly": true,
+    "anomaly_score": 1.0,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Do the cereals occupy most lower area leaving some empty spaces around it below them, as specified for spatial arrangement?\n  - Are bananas sliced into thin pieces while whole almonds are present within the mixture mentioned above?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/breakfast_box_logical_anomalies_010.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "missing_almonds",
+    "is_anomaly": true,
+    "anomaly_score": 1.0,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Do the cereals occupy most lower area leaving some empty spaces around it below them, as specified for spatial arrangement?\n  - Are bananas sliced into thin pieces while whole almonds are present within the mixture mentioned above?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/breakfast_box_logical_anomalies_013.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "missing_almonds",
+    "is_anomaly": true,
+    "anomaly_score": 1.0,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Do the cereals occupy most lower area leaving some empty spaces around it below them, as specified for spatial arrangement?\n  - Are bananas sliced into thin pieces while whole almonds are present within the mixture mentioned above?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/breakfast_box_logical_anomalies_016.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "missing_bananas",
+    "is_anomaly": true,
+    "anomaly_score": 1.0,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are bananas sliced into thin pieces while whole almonds are present within the mixture mentioned above?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/breakfast_box_logical_anomalies_018.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "missing_bananas",
+    "is_anomaly": true,
+    "anomaly_score": 1.0,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Do the cereals occupy most lower area leaving some empty spaces around it below them, as specified for spatial arrangement?\n  - Are bananas sliced into thin pieces while whole almonds are present within the mixture mentioned above?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/breakfast_box_logical_anomalies_020.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "missing_bananas",
+    "is_anomaly": true,
+    "anomaly_score": 1.0,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are bananas sliced into thin pieces while whole almonds are present within the mixture mentioned above?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/breakfast_box_logical_anomalies_021.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "missing_bananas",
+    "is_anomaly": true,
+    "anomaly_score": 1.0,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are bananas sliced into thin pieces while whole almonds are present within the mixture mentioned above?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/breakfast_box_logical_anomalies_024.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "missing_bananas",
+    "is_anomaly": true,
+    "anomaly_score": 1.0,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are bananas sliced into thin pieces while whole almonds are present within the mixture mentioned above?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/breakfast_box_logical_anomalies_025.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "missing_cereals",
+    "is_anomaly": true,
+    "anomaly_score": 1.0,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Do the cereals occupy most lower area leaving some empty spaces around it below them, as specified for spatial arrangement?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/breakfast_box_logical_anomalies_028.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "missing_cereals",
+    "is_anomaly": true,
+    "anomaly_score": 1.0,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Do the cereals occupy most lower area leaving some empty spaces around it below them, as specified for spatial arrangement?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/breakfast_box_logical_anomalies_029.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "missing_cereals",
+    "is_anomaly": true,
+    "anomaly_score": 1.0,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Do the cereals occupy most lower area leaving some empty spaces around it below them, as specified for spatial arrangement?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/breakfast_box_logical_anomalies_032.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "missing_cereals",
+    "is_anomaly": true,
+    "anomaly_score": 1.0,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Do the cereals occupy most lower area leaving some empty spaces around it below them, as specified for spatial arrangement?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/breakfast_box_logical_anomalies_033.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "missing_cereals_and_toppings",
+    "is_anomaly": true,
+    "anomaly_score": 1.0,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Do the cereals occupy most lower area leaving some empty spaces around it below them, as specified for spatial arrangement?\n  - Are bananas sliced into thin pieces while whole almonds are present within the mixture mentioned above?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/breakfast_box_logical_anomalies_034.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "missing_cereals_and_toppings",
+    "is_anomaly": true,
+    "anomaly_score": 1.0,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Do the cereals occupy most lower area leaving some empty spaces around it below them, as specified for spatial arrangement?\n  - Are bananas sliced into thin pieces while whole almonds are present within the mixture mentioned above?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/breakfast_box_logical_anomalies_037.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "missing_toppings",
+    "is_anomaly": true,
+    "anomaly_score": 1.0,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Do the cereals occupy most lower area leaving some empty spaces around it below them, as specified for spatial arrangement?\n  - Are bananas sliced into thin pieces while whole almonds are present within the mixture mentioned above?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/breakfast_box_logical_anomalies_040.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "missing_toppings",
+    "is_anomaly": true,
+    "anomaly_score": 1.0,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are bananas sliced into thin pieces while whole almonds are present within the mixture mentioned above?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/breakfast_box_logical_anomalies_043.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "missing_toppings",
+    "is_anomaly": true,
+    "anomaly_score": 1.0,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are bananas sliced into thin pieces while whole almonds are present within the mixture mentioned above?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/breakfast_box_logical_anomalies_046.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "overflow",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/breakfast_box_logical_anomalies_047.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "overflow",
+    "is_anomaly": true,
+    "anomaly_score": 1.0,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Do the cereals occupy most lower area leaving some empty spaces around it below them, as specified for spatial arrangement?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/breakfast_box_logical_anomalies_050.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "underflow",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/breakfast_box_logical_anomalies_053.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "3_nectarines_0_tangerines",
+    "is_anomaly": true,
+    "anomaly_score": 1.0,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Does the breakfast box contain exactly two tangerines and one nectarine?\n  - Do the cereals occupy most lower area leaving some empty spaces around it below them, as specified for spatial arrangement?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/breakfast_box_logical_anomalies_056.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "2_nectarines_1_tangerine",
+    "is_anomaly": true,
+    "anomaly_score": 1.0,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Does the breakfast box contain exactly two tangerines and one nectarine?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/breakfast_box_logical_anomalies_058.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "0_nectarines_1_tangerine",
+    "is_anomaly": true,
+    "anomaly_score": 1.0,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Does the breakfast box contain exactly two tangerines and one nectarine?\n  - Are all three fruits located on the left-hand side of the box?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/breakfast_box_logical_anomalies_063.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "3_nectarines_0_tangerines",
+    "is_anomaly": true,
+    "anomaly_score": 1.0,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Does the breakfast box contain exactly two tangerines and one nectarine?\n  - Do the cereals occupy most lower area leaving some empty spaces around it below them, as specified for spatial arrangement?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/breakfast_box_logical_anomalies_066.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "0_nectarines_3_tangerines",
+    "is_anomaly": true,
+    "anomaly_score": 1.0,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Does the breakfast box contain exactly two tangerines and one nectarine?\n  - Do the cereals occupy most lower area leaving some empty spaces around it below them, as specified for spatial arrangement?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/breakfast_box_logical_anomalies_069.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_nectarine_1_tangerine",
+    "is_anomaly": true,
+    "anomaly_score": 1.0,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Does the breakfast box contain exactly two tangerines and one nectarine?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/breakfast_box_logical_anomalies_070.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "0_nectarines_4_tangerines",
+    "is_anomaly": true,
+    "anomaly_score": 1.0,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Does the breakfast box contain exactly two tangerines and one nectarine?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/breakfast_box_logical_anomalies_073.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "wrong_ratio",
+    "is_anomaly": true,
+    "anomaly_score": 1.0,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are bananas sliced into thin pieces while whole almonds are present within the mixture mentioned above?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/breakfast_box_logical_anomalies_075.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "wrong_ratio",
+    "is_anomaly": true,
+    "anomaly_score": 1.0,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Do the cereals occupy most lower area leaving some empty spaces around it below them, as specified for spatial arrangement?\n  - Are bananas sliced into thin pieces while whole almonds are present within the mixture mentioned above?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/breakfast_box_logical_anomalies_082.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "wrong_ratio",
+    "is_anomaly": true,
+    "anomaly_score": 1.0,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Do the cereals occupy most lower area leaving some empty spaces around it below them, as specified for spatial arrangement?"
+  }
+]

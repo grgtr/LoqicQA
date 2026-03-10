@@ -33,6 +33,7 @@ def describe_normal_images(
     Returns:
         List of N description strings, one per image.
     """
+    # print(f"[DEBUG] describe_normal_images, image_paths: {image_paths}, normal_images: {normal_images}")
     prompt = DESCRIBE_PROMPT.format(
         class_name=class_name,
         normality_definition=normality_definition,
@@ -47,7 +48,7 @@ def describe_normal_images(
         text = response.text.strip()
         descriptions.append(text)
         if logger:
-            img_path = image_paths[i] if image_paths else f"image_{i}"
+            img_path = str(image_paths[i]) if image_paths else f"image_{i}"
             logger.log_stage1_description(
                 image_idx=i + 1,
                 image_path=img_path,

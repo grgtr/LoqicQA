@@ -204,8 +204,8 @@ class MVTecLOCODataset:
         """
         samples = self._get_samples_from_split("test")
         # Optionally add validation if dataset separated them
-        samples.extend(self._get_samples_from_split("val"))
-        samples.extend(self._get_samples_from_split("validation"))
+        # samples.extend(self._get_samples_from_split("val"))
+        # samples.extend(self._get_samples_from_split("validation"))
         return sorted(samples, key=lambda s: s.path.name)
 
     def sample_train_normal(

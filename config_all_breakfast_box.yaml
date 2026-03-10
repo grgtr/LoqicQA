@@ -1,0 +1,167 @@
+# LogicQA default configuration
+
+vlm:
+  backend: "internvl"          # "internvl" | "gpt4o" | "gemini"
+  internvl:
+    # model_name: "OpenGVLab/InternVL2_5-38B"
+    model_name: "OpenGVLab/InternVL2_5-8B"
+    temperature: 0.2
+    top_p: 0.7
+    repetition_penalty: 1.1
+    do_sample: true
+    max_new_tokens: 512
+    device_map: "auto"          # multi-GPU via accelerate
+  gpt4o:
+    model_name: "gpt-4o"
+    temperature: 1.0
+  gemini:
+    model_name: "gemini-1.5-flash"
+    temperature: 1.0
+    top_p: 0.95
+    top_k: 40
+
+pipeline:
+  n_shots: 5                    # number of normal images for few-shot setup
+  n_questions: 6 
+  n_sub_questions: 5            # number of sub-questions per main question
+  question_filter_threshold: 0.6  # drop main questions with accuracy < 80% on normal images
+
+dataset:
+  name: "mvtec_loco"
+  data_dir: /home/chikibriki/LoqicQA/dataset-ninja/"
+  download_if_missing: true
+
+preprocessing:
+  # BPM applied to: screw_bag, splicing_connectors
+  bpm:
+    enabled: true
+    patch_size: 16
+    threshold: 0.05
+  # Lang-SAM applied to: pushpins, splicing_connectors
+  langsam:
+    enabled: true
+    prompts:
+      pushpins: "The individual black compartments within the transparent plastic storage box"
+      splicing_connectors: "Connector Block"
+
+output:
+  results_dir: "results"
+  save_questions: true         # save generated questions to JSON
+  save_per_image: true         # save per-image decisions and scores
+
+testing:
+  mode: "specific"
+
+  specific_samples:
+    - "breakfast_box_good_000.png"
+    - "breakfast_box_good_001.png"
+    - "breakfast_box_good_002.png"
+
+    - "breakfast_box_good_004.png"
+
+    - "breakfast_box_good_007.png"
+
+    - "breakfast_box_good_009.png"
+
+    - "breakfast_box_good_012.png"
+
+    - "breakfast_box_good_016.png"
+
+    - "breakfast_box_good_020.png"
+
+    - "breakfast_box_good_023.png"
+
+    - "breakfast_box_good_027.png"
+    - "breakfast_box_good_028.png"
+
+    - "breakfast_box_good_031.png"
+
+
+    - "breakfast_box_good_037.png"
+
+    - "breakfast_box_good_044.png"
+
+    - "breakfast_box_good_046.png"
+
+    - "breakfast_box_good_053.png"
+
+    - "breakfast_box_good_055.png"
+
+    - "breakfast_box_good_061.png"
+
+    - "breakfast_box_good_070.png"
+ 
+    - "breakfast_box_good_072.png"
+
+
+    - "breakfast_box_good_083.png"
+    - "breakfast_box_good_084.png"
+
+    - "breakfast_box_good_087.png"
+
+
+    - "breakfast_box_good_098.png"
+
+    - "breakfast_box_good_100.png"
+    - "breakfast_box_good_101.png"
+    - "breakfast_box_logical_anomalies_000.png"
+
+    - "breakfast_box_logical_anomalies_006.png"
+    - "breakfast_box_logical_anomalies_007.png"
+
+    - "breakfast_box_logical_anomalies_010.png"
+
+    - "breakfast_box_logical_anomalies_013.png"
+
+    - "breakfast_box_logical_anomalies_016.png"
+    - "breakfast_box_logical_anomalies_018.png"
+
+    - "breakfast_box_logical_anomalies_020.png"
+    - "breakfast_box_logical_anomalies_021.png"
+
+    - "breakfast_box_logical_anomalies_024.png"
+    - "breakfast_box_logical_anomalies_025.png"
+
+    - "breakfast_box_logical_anomalies_028.png"
+    - "breakfast_box_logical_anomalies_029.png"
+
+    - "breakfast_box_logical_anomalies_032.png"
+    - "breakfast_box_logical_anomalies_033.png"
+    - "breakfast_box_logical_anomalies_034.png"
+
+    - "breakfast_box_logical_anomalies_037.png"
+
+    - "breakfast_box_logical_anomalies_040.png"
+
+    - "breakfast_box_logical_anomalies_043.png"
+
+    - "breakfast_box_logical_anomalies_046.png"
+    - "breakfast_box_logical_anomalies_047.png"
+
+    - "breakfast_box_logical_anomalies_050.png"
+
+    - "breakfast_box_logical_anomalies_053.png"
+
+    - "breakfast_box_logical_anomalies_056.png"
+
+    - "breakfast_box_logical_anomalies_058.png"
+
+    - "breakfast_box_logical_anomalies_063.png"
+
+    - "breakfast_box_logical_anomalies_066.png"
+
+    - "breakfast_box_logical_anomalies_069.png"
+    - "breakfast_box_logical_anomalies_070.png"
+
+    - "breakfast_box_logical_anomalies_073.png"
+    - "breakfast_box_logical_anomalies_075.png"
+
+
+
+    - "breakfast_box_logical_anomalies_082.png"
+
+  random_count: 10
+  random_seed: 43
+
+  interleave: true
+

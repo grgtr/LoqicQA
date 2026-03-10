@@ -9,19 +9,19 @@
     "Are the fruits (tangerines and nectarine) only on the left-hand side, and are the cereals with banana chips and almonds only on the right-hand side?"
   ],
   "sub_questions": {
-    "Does the breakfast box contain exactly two tangerines and one nectarine on its left-hand side?": [
-      "1. Is there exactly two tangerines and one nectarine on the left-hand side of the breakfast box?",
-      "2. Does the left-hand side of the breakfast box have precisely two tangerines and a single nectarine?",
-      "3. Are there specifically two tangerines and an individual nectarine located to the left of the breakfast box?",
-      "4. On its left-hand side, does the breakfast box contain accurately two tangerines along with just one nectarine?",
-      "5. To the left of the breakfast box is it true that you can find exactly two tangerines plus only one nectarine?"
-    ],
     "Are there exactly two tangerines visible on the left-hand side of the breakfast box?": [
       "1. Can you see exactly two tangerines on the left side of the breakfast box?",
       "2. Is the left-hand side of the breakfast box showing precisely two tangerines?",
       "3. Do you observe exactly two tangerines on the left of the breakfast box?",
       "4. Are precisely two tangerines visible on the left side of the breakfast box?",
       "5. Does the left-hand side of the breakfast box contain exactly two tangerines?"
+    ],
+    "Is there one nectarine visible on the left-hand side of the breakfast box?": [
+      "1. Can you see a single nectarine on the left side of the breakfast box?",
+      "2. Is there a nectarine present on the left-hand side of the breakfast box?",
+      "3. Do you spot one nectarine on the left area of the breakfast box?",
+      "4. Is a nectarine visible on the left side within the breakfast box?",
+      "5. Is there one nectarine that can be seen on the left part of the breakfast box?"
     ],
     "Does the right-hand side of the breakfast box have cereals in the upper portion?": [
       "1. Are there cereals located in the upper part of the right side of the breakfast box?",

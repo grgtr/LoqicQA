@@ -99,33 +99,37 @@ def _parse_output_list(text: str) -> List[str]:
         if not line:
             continue
 
-            match = re.match(r"^Output\s*\d+\s*:\s*(.+)$", line, re.IGNORECASE)
-            if match:
-                variants.append(match.group(1).strip())
-                continue
-            match = re.match(r"^\d+[\.\)]\s*(.+)$", line)
-            if match:
-                q = match.group(1).strip()
-                if len(q) > 10:
-                    variants.append(q)
-                continue
+        match = re.match(r"^Output\s*\d+\s*:\s*(.+)$", line, re.IGNORECASE)
+        if match:
+            variants.append(match.group(1).strip())
+            continue
+        match = re.match(r"^\d+[\.\)]\s*(.+)$", line)
+        if match:
+            q = match.group(1).strip()
+            if len(q) > 10:
+                variants.append(q)
+            continue
 
-            match = re.match(r"^[-•]\s*(.+)$", line)
-            if match:
-                q = match.group(1).strip()
-                if len(q) > 10:
-                    variants.append(q)
+        match = re.match(r"^[-•]\s*(.+)$", line)
+        if match:
+            q = match.group(1).strip()
+            if len(q) > 10:
+                variants.append(q)
 
-        if not variants:
-            for line in text.strip().splitlines():
-                line = line.strip()
-                if len(line) > 15 and (
-                    line.endswith("?") or
-                    re.match(r"^(Is |Are |Does |Do |Can |Has |Have )", line, re.IGNORECASE)
-                ):
-                    variants.append(line)
-
-        return variants
+    if not variants:
+        for line in text.strip().splitlines():
+            line = line.strip()
+            if len(line) > 15 and (
+                line.endswith("?") or
+                re.match(r"^(Is |Are |Does |Do |Can |Has |Have )", line, re.IGNORECASE)
+            ):
+                variants.append(line)
+    variants = [
+        q for q in variants
+        if (q.endswith("?") or
+        re.match(r"^(Is |Are |Does |Do |Can |Has |Have |Did )", q, re.IGNORECASE)) and 15 < len(q) < 250
+    ]
+    return variants
 
 
 def generate_candidate_questions(
@@ -280,7 +284,9 @@ def generate_sub_questions(
             subquestion_slots=subquestion_slots,
         )
         response = vlm.query(prompt=prompt, image=None)
+        print("[DEBUG] generated sub_questions :", response.text)
         variants = _parse_output_list(response.text)
+        print(variants)
         # Ensure we always have exactly n_variants (pad with original if short)
         while len(variants) < n_variants:
             variants.append(mq)

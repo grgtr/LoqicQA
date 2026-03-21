@@ -24,7 +24,7 @@ pipeline:
   n_shots: 5                    # number of normal images for few-shot setup
   n_questions: 6 
   n_sub_questions: 5            # number of sub-questions per main question
-  question_filter_threshold: 0.6  # drop main questions with accuracy < 80% on normal images
+  question_filter_threshold: 0.8  # drop main questions with accuracy < 80% on normal images
 
 dataset:
   name: "mvtec_loco"
@@ -56,108 +56,187 @@ testing:
     - "breakfast_box_good_000.png"
     - "breakfast_box_good_001.png"
     - "breakfast_box_good_002.png"
-
+    - "breakfast_box_good_003.png"
     - "breakfast_box_good_004.png"
-
+    - "breakfast_box_good_005.png"
+    - "breakfast_box_good_006.png"
     - "breakfast_box_good_007.png"
-
+    - "breakfast_box_good_008.png"
     - "breakfast_box_good_009.png"
-
+    - "breakfast_box_good_010.png"
+    - "breakfast_box_good_011.png"
     - "breakfast_box_good_012.png"
-
+    - "breakfast_box_good_013.png"
+    - "breakfast_box_good_014.png"
+    - "breakfast_box_good_015.png"
     - "breakfast_box_good_016.png"
-
+    - "breakfast_box_good_017.png"
+    - "breakfast_box_good_018.png"
+    - "breakfast_box_good_019.png"
     - "breakfast_box_good_020.png"
-
+    - "breakfast_box_good_021.png"
+    - "breakfast_box_good_022.png"
     - "breakfast_box_good_023.png"
-
+    - "breakfast_box_good_024.png"
+    - "breakfast_box_good_025.png"
+    - "breakfast_box_good_026.png"
     - "breakfast_box_good_027.png"
     - "breakfast_box_good_028.png"
-
+    - "breakfast_box_good_029.png"
+    - "breakfast_box_good_030.png"
     - "breakfast_box_good_031.png"
-
-
+    - "breakfast_box_good_032.png"
+    - "breakfast_box_good_033.png"
+    - "breakfast_box_good_034.png"
+    - "breakfast_box_good_035.png"
+    - "breakfast_box_good_036.png"
     - "breakfast_box_good_037.png"
-
+    - "breakfast_box_good_038.png"
+    - "breakfast_box_good_039.png"
+    - "breakfast_box_good_040.png"
+    - "breakfast_box_good_041.png"
+    - "breakfast_box_good_042.png"
+    - "breakfast_box_good_043.png"
     - "breakfast_box_good_044.png"
-
+    - "breakfast_box_good_045.png"
     - "breakfast_box_good_046.png"
-
+    - "breakfast_box_good_047.png"
+    - "breakfast_box_good_048.png"
+    - "breakfast_box_good_049.png"
+    - "breakfast_box_good_050.png"
+    - "breakfast_box_good_051.png"
+    - "breakfast_box_good_052.png"
     - "breakfast_box_good_053.png"
-
+    - "breakfast_box_good_054.png"
     - "breakfast_box_good_055.png"
-
+    - "breakfast_box_good_056.png"
+    - "breakfast_box_good_057.png"
+    - "breakfast_box_good_058.png"
+    - "breakfast_box_good_059.png"
+    - "breakfast_box_good_060.png"
     - "breakfast_box_good_061.png"
-
+    - "breakfast_box_good_062.png"
+    - "breakfast_box_good_063.png"
+    - "breakfast_box_good_064.png"
+    - "breakfast_box_good_065.png"
+    - "breakfast_box_good_066.png"
+    - "breakfast_box_good_067.png"
+    - "breakfast_box_good_068.png"
+    - "breakfast_box_good_069.png"
     - "breakfast_box_good_070.png"
- 
+    - "breakfast_box_good_071.png"
     - "breakfast_box_good_072.png"
-
-
+    - "breakfast_box_good_073.png"
+    - "breakfast_box_good_074.png"
+    - "breakfast_box_good_075.png"
+    - "breakfast_box_good_076.png"
+    - "breakfast_box_good_077.png"
+    - "breakfast_box_good_078.png"
+    - "breakfast_box_good_079.png"
+    - "breakfast_box_good_080.png"
+    - "breakfast_box_good_081.png"
+    - "breakfast_box_good_082.png"
     - "breakfast_box_good_083.png"
     - "breakfast_box_good_084.png"
-
+    - "breakfast_box_good_085.png"
+    - "breakfast_box_good_086.png"
     - "breakfast_box_good_087.png"
-
-
+    - "breakfast_box_good_088.png"
+    - "breakfast_box_good_089.png"
+    - "breakfast_box_good_090.png"
+    - "breakfast_box_good_091.png"
+    - "breakfast_box_good_092.png"
+    - "breakfast_box_good_093.png"
+    - "breakfast_box_good_094.png"
+    - "breakfast_box_good_095.png"
+    - "breakfast_box_good_096.png"
+    - "breakfast_box_good_097.png"
     - "breakfast_box_good_098.png"
-
+    - "breakfast_box_good_099.png"
     - "breakfast_box_good_100.png"
     - "breakfast_box_good_101.png"
     - "breakfast_box_logical_anomalies_000.png"
-
+    - "breakfast_box_logical_anomalies_001.png"
+    - "breakfast_box_logical_anomalies_002.png"
+    - "breakfast_box_logical_anomalies_003.png"
+    - "breakfast_box_logical_anomalies_004.png"
+    - "breakfast_box_logical_anomalies_005.png"
     - "breakfast_box_logical_anomalies_006.png"
     - "breakfast_box_logical_anomalies_007.png"
-
+    - "breakfast_box_logical_anomalies_008.png"
+    - "breakfast_box_logical_anomalies_009.png"
     - "breakfast_box_logical_anomalies_010.png"
-
+    - "breakfast_box_logical_anomalies_011.png"
+    - "breakfast_box_logical_anomalies_012.png"
     - "breakfast_box_logical_anomalies_013.png"
-
+    - "breakfast_box_logical_anomalies_014.png"
+    - "breakfast_box_logical_anomalies_015.png"
     - "breakfast_box_logical_anomalies_016.png"
+    - "breakfast_box_logical_anomalies_017.png"
     - "breakfast_box_logical_anomalies_018.png"
-
+    - "breakfast_box_logical_anomalies_019.png"
     - "breakfast_box_logical_anomalies_020.png"
     - "breakfast_box_logical_anomalies_021.png"
-
+    - "breakfast_box_logical_anomalies_022.png"
+    - "breakfast_box_logical_anomalies_023.png"
     - "breakfast_box_logical_anomalies_024.png"
     - "breakfast_box_logical_anomalies_025.png"
-
+    - "breakfast_box_logical_anomalies_026.png"
+    - "breakfast_box_logical_anomalies_027.png"
     - "breakfast_box_logical_anomalies_028.png"
     - "breakfast_box_logical_anomalies_029.png"
-
+    - "breakfast_box_logical_anomalies_030.png"
+    - "breakfast_box_logical_anomalies_031.png"
     - "breakfast_box_logical_anomalies_032.png"
     - "breakfast_box_logical_anomalies_033.png"
     - "breakfast_box_logical_anomalies_034.png"
-
+    - "breakfast_box_logical_anomalies_035.png"
+    - "breakfast_box_logical_anomalies_036.png"
     - "breakfast_box_logical_anomalies_037.png"
-
+    - "breakfast_box_logical_anomalies_038.png"
+    - "breakfast_box_logical_anomalies_039.png"
     - "breakfast_box_logical_anomalies_040.png"
-
+    - "breakfast_box_logical_anomalies_041.png"
+    - "breakfast_box_logical_anomalies_042.png"
     - "breakfast_box_logical_anomalies_043.png"
-
+    - "breakfast_box_logical_anomalies_044.png"
+    - "breakfast_box_logical_anomalies_045.png"
     - "breakfast_box_logical_anomalies_046.png"
     - "breakfast_box_logical_anomalies_047.png"
-
+    - "breakfast_box_logical_anomalies_048.png"
+    - "breakfast_box_logical_anomalies_049.png"
     - "breakfast_box_logical_anomalies_050.png"
-
+    - "breakfast_box_logical_anomalies_051.png"
+    - "breakfast_box_logical_anomalies_052.png"
     - "breakfast_box_logical_anomalies_053.png"
-
+    - "breakfast_box_logical_anomalies_054.png"
+    - "breakfast_box_logical_anomalies_055.png"
     - "breakfast_box_logical_anomalies_056.png"
-
+    - "breakfast_box_logical_anomalies_057.png"
     - "breakfast_box_logical_anomalies_058.png"
-
+    - "breakfast_box_logical_anomalies_059.png"
+    - "breakfast_box_logical_anomalies_060.png"
+    - "breakfast_box_logical_anomalies_061.png"
+    - "breakfast_box_logical_anomalies_062.png"
     - "breakfast_box_logical_anomalies_063.png"
-
+    - "breakfast_box_logical_anomalies_064.png"
+    - "breakfast_box_logical_anomalies_065.png"
     - "breakfast_box_logical_anomalies_066.png"
-
+    - "breakfast_box_logical_anomalies_067.png"
+    - "breakfast_box_logical_anomalies_068.png"
     - "breakfast_box_logical_anomalies_069.png"
     - "breakfast_box_logical_anomalies_070.png"
-
+    - "breakfast_box_logical_anomalies_071.png"
+    - "breakfast_box_logical_anomalies_072.png"
     - "breakfast_box_logical_anomalies_073.png"
+    - "breakfast_box_logical_anomalies_074.png"
     - "breakfast_box_logical_anomalies_075.png"
-
-
-
+    - "breakfast_box_logical_anomalies_076.png"
+    - "breakfast_box_logical_anomalies_077.png"
+    - "breakfast_box_logical_anomalies_078.png"
+    - "breakfast_box_logical_anomalies_079.png"
+    - "breakfast_box_logical_anomalies_080.png"
+    - "breakfast_box_logical_anomalies_081.png"
     - "breakfast_box_logical_anomalies_082.png"
 
   random_count: 10

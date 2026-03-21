@@ -32,7 +32,7 @@ def summarize_normal_context(
         class_name=class_name,
         
     )
-    response = vlm.query(prompt=prompt, image=None)
+    response = vlm.query(prompt=prompt, image=None) # Try add images to promt
     text = response.text.strip()
 
     if logger:

@@ -61,8 +61,8 @@ def print_report(class_name: str, reports: dict):
     if "filtering" in reports:
         print("\n[STAGE 3: FILTERING] (Релевантность вопросов)")
         m = reports["filtering"]
-        print(f" ├─ Filter Precision (Нет мусора среди Kept): {m['Filter_Precision']:.2%}")
-        print(f" ├─ Filter Recall (Покрытие ГОСТа после фильтра): {m['Filter_Recall']:.2%}")
+        print(f" ├─ Filter Precision: {m['Filter_Precision']:.2%}")
+        print(f" ├─ Filter Recall: {m['Filter_Recall']:.2%}")
         print(f" └─ Statistics: {m['Total_Candidates']} generated -> {m['Kept']} kept, {m['Dropped']} dropped")
 
 

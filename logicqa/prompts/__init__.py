@@ -17,21 +17,86 @@ from __future__ import annotations
 # {normality_definition}
 # """
 
+# DESCRIBE_PROMPT = """\
+# This is a {class_name}. Analyze the image and describe the {class_name} in \
+# detail, including type, color, size (length, width), material, composition, \
+# quantity, relative location.
+
+# Analyze image and extract the core logical rules.
+# Format your output exactly like this:
+# 1. Components: [List every distinct object or part that MUST be present. Note any objects that must be absent or whose presence signals an anomaly. Example: "exactly two splicing connectors, exactly one cable — no extra cables allowed"]
+# 2. Quantities: [Exact required counts for every component. Use precise language: "exactly N", "at least N", "no more than N". Example: "exactly two washers, exactly two nuts, one long screw, one short screw"]
+# 3. Spatial Arrangement: [Where each component must be located relative to the scene or to other objects. Include absolute positions (left/right/center/top/bottom) and relative positions (above/below/adjacent to another object). Example: "fruits only on the left half; cereals and nuts only on the right half"]
+# 4. Visual Appearance and Fill Level: [Specific colors, shapes, surface textures, and orientations required. ALSO describe fill levels, occupancy of containers or regions: [Is any container/bottle/compartment required to be full, partially full, or empty? Are there required gaps, voids, or empty zones that must remain clear? Is the surface required to be uniform, smooth, or free of marks and spots?]. Example: "bottle filled to 90–99% capacity (visible gap at top); surface free of bright spots, streaks, or irregular dark regions"]
+# 5. Relational and Proportional Constraints: [Constraints that compare two or more objects to each other NOT absolute values. Include size ratios, length comparisons, color-to-count correspondences. Example: "each screw must be longer than 3x the washer diameter; number of cable clamps must match the cable color code (3 clamps → blue cable)"]
+# 6. Symmetry and Connectivity: [How objects must be aligned, mirrored, or connected to each other. Example: "Is mirror or rotational symmetry required?; Must a cable/wire/connector attach to the same position on both ends?; Must certain objects be parallel, perpendicular, or coaxial?; cable must enter the same clamp slot on both connectors (mirror symmetry); connectors must be parallel to each other"]
+# 7. Per-Slot Completeness: [If the scene contains repeating slots, cells, or compartments, state the rule that applies to EACH individual slot not just the total count. Example: "each pushpin compartment must contain exactly one pushpin — no empty compartments, no compartments with two or more pushpins"]
+
+# Keep every section concise, factual, and strictly grounded in the provided
+# descriptions and constraints. If a section does not apply to this class, write
+# "N/A" rather than leaving it blank.
+
+# < Normal Constraints for a {class_name} >
+# {normality_definition}
+# """
+
 DESCRIBE_PROMPT = """\
-This is a {class_name}. Analyze the image and describe the {class_name} in \
-detail, including type, color, size (length, width), material, composition, \
-quantity, relative location.
+You are a strict industrial quality control inspector.
+
+The following are the Original NORMALITY CONSTRAINTS for this class — treat them as ground truth:
+< Normal Constraints for a {class_name} >
+{normality_definition}
+
+Now analyze the image of a {class_name} and fill in the form below.
+Use ONLY what you can directly observe in the image.
+Do NOT speculate, estimate percentages, or add information not visible.
+If a section does not apply or cannot be determined from the image, write exactly: N/A
+
+IMPORTANT: You MUST describe EVERY region and compartment of the image.
+Do NOT omit any region even if it seems secondary or background.
+Every object or area explicitly named in the Normal Constraints MUST be described.
 
 Analyze image and extract the core logical rules.
 Format your output exactly like this:
-1. Components: [List the exact objects that must be present]
-2. Quantities: [Exact numbers required, e.g., "exactly two washers"]
-3. Spatial Arrangement: [Where items must be located, e.g., "only on the left side"]
-4. Visual Appearance: [Specific colors, shapes, or orientations required]
 
-< Normal Constraints for a {class_name} >
-{normality_definition}
+1. Components:
+   List every distinct object or part that is visible and must be present.
+   Format: short bullet list, one item per line, no sentences.
+
+2. Quantities:
+   Exact observed counts for every component.
+   Use precise language only: "exactly N", "at least N", "no more than N".
+   Do NOT write vague phrases like "some", "a few", "no specific count".
+   Format: short bullet list.
+
+3. Spatial Arrangement:
+   Where each component is located.
+   Use only: left/right/center/top/bottom and relative terms (above, below, adjacent to).
+   Format: short bullet list, one constraint per line.
+
+4. Visual Appearance and Fill Level:
+   Observable colors, shapes, textures.
+   If any container or compartment is visible: is it full, partially full, or empty?
+   Are there visible gaps, voids, or empty zones?
+   Do NOT estimate percentages unless the image makes it unambiguous.
+   Format: short bullet list.
+
+5. Relational and Proportional Constraints:
+   Constraints comparing two or more objects (size ratios, length comparisons,
+   color-to-count correspondences). Write N/A if none are visible.
+   Format: short bullet list or N/A.
+
+6. Symmetry and Connectivity:
+   Observable alignment, mirroring, or physical connections between objects.
+   Write N/A if none are visible.
+   Format: one line or N/A.
+
+7. Per-Slot Completeness:
+   If repeating slots or compartments are visible, state what each slot must contain.
+   Write N/A if no repeating slots exist.
+   Format: one line or N/A.
 """
+
 
 # ============================================================
 # Stage 2: Summarize multiple descriptions into normality context
@@ -45,31 +110,102 @@ Format your output exactly like this:
 # removing any redundant or unique details.
 # """
 
-SUMMARIZE_PROMPT = """You are an expert industrial quality control analyst.
-I will provide you with descriptions of {n_descriptions} NORMAL (defect-free) {class_name} samples.
+# SUMMARIZE_PROMPT = """You are an expert industrial quality control analyst.
 
-Your task is to identify the strict INVARIANTS — the characteristics that are completely identical and required across ALL normal samples.
+# I will provide you with descriptions of {n_descriptions} NORMAL (defect-free) {class_name} samples.
 
-[Descriptions of Normal Samples]
-{labeled_descriptions}
+# Your task is to identify the strict INVARIANTS — the characteristics that are completely identical and required across ALL normal samples.
 
-[Normality Constraints Provided by Engineer]
+# [Descriptions of Normal Samples]
+# {labeled_descriptions}
+
+# [Normality Constraints Provided by Engineer]
+# {normality_definition}
+
+# Analyze the descriptions and extract the core logical rules.
+# Format your output exactly like this:
+
+# 1. Components: [List every distinct object or part that MUST be present. Note any objects that must be absent or whose presence signals an anomaly. Example: "exactly two splicing connectors, exactly one cable — no extra cables allowed"]
+# 2. Quantities: [Exact required counts for every component. Use precise language: "exactly N", "at least N", "no more than N". Example: "exactly two washers, exactly two nuts, one long screw, one short screw"]
+# 3. Spatial Arrangement: [Where each component must be located relative to the scene or to other objects. Include absolute positions (left/right/center/top/bottom) and relative positions (above/below/adjacent to another object). Example: "fruits only on the left half; cereals and nuts only on the right half"]
+# 4. Visual Appearance and Fill Level: [Specific colors, shapes, surface textures, and orientations required. ALSO describe fill levels, occupancy of containers or regions: [Is any container/bottle/compartment required to be full, partially full, or empty? Are there required gaps, voids, or empty zones that must remain clear? Is the surface required to be uniform, smooth, or free of marks and spots?]. Example: "bottle filled to 90–99% capacity (visible gap at top); surface free of bright spots, streaks, or irregular dark regions"]
+# 5. Relational and Proportional Constraints: [Constraints that compare two or more objects to each other NOT absolute values. Include size ratios, length comparisons, color-to-count correspondences. Example: "each screw must be longer than 3x the washer diameter; number of cable clamps must match the cable color code (3 clamps → blue cable)"]
+# 6. Symmetry and Connectivity: [How objects must be aligned, mirrored, or connected to each other. Example: "Is mirror or rotational symmetry required?; Must a cable/wire/connector attach to the same position on both ends?; Must certain objects be parallel, perpendicular, or coaxial?; cable must enter the same clamp slot on both connectors (mirror symmetry); connectors must be parallel to each other"]
+# 7. Per-Slot Completeness: [If the scene contains repeating slots, cells, or compartments, state the rule that applies to EACH individual slot not just the total count. Example: "each pushpin compartment must contain exactly one pushpin — no empty compartments, no compartments with two or more pushpins"]
+
+# Keep every section concise, factual, and strictly grounded in the provided
+# descriptions and constraints. If a section does not apply to this class, write
+# "N/A" rather than leaving it blank."""
+
+SUMMARIZE_PROMPT = """\
+You are an expert industrial quality control analyst.
+
+Your task is to extract STRICT INVARIANTS — rules that hold true across ALL provided
+descriptions without exception.
+
+[Original Normality Constraints — These are ALWAYS correct and ALWAYS take priority]
 {normality_definition}
 
-Analyze the descriptions and extract the core logical rules.
-Format your output exactly like this:
-1. Components: [List the exact objects that must be present]
-2. Quantities: [Exact numbers required, e.g., "exactly two washers"]
-3. Spatial Arrangement: [Where items must be located, e.g., "only on the left side"]
-4. Visual Appearance: [Specific colors, shapes, or orientations required]
+RULE: Every object or region explicitly named in the Original Normality Constraints
+MUST appear in your output, regardless of what the descriptions say.
+The constraints are ground truth — they override any description.
 
-Keep it concise, factual, and strictly based on the provided descriptions."""
+[Descriptions of {n_descriptions} Normal {class_name} Samples]
+{labeled_descriptions}
+
+Instructions:
+1. The Original Normality Constraints are ground truth. Never omit or contradict them.
+2. ABSENCE of mention ≠ contradiction.
+   If some descriptions omit a component and others mention it → KEEP the component
+   if it is confirmed by the Original Normality Constraints OR by the majority of descriptions.
+3. Write N/A for a point ONLY IF descriptions EXPLICITLY disagree
+   (e.g., one says "symmetry required", another says "no symmetry required").
+   Silence on a topic is NOT a disagreement.
+4. Write ONLY facts. Forbidden phrases: "if applicable", "depending on", "unless stated",
+   "approximately", "seems to", "may be", "could be".
+5. Each section: maximum 3 bullet points. One fact per bullet. No full sentences.
+
+Output format — fill in each section exactly as shown:
+
+1. Components:
+   [bullet list of objects that MUST be present — include ALL items named in Original Constraints]
+
+2. Quantities:
+   [bullet list: "exactly N <object>" for every component]
+
+3. Spatial Arrangement:
+   [bullet list: one positional rule per line]
+
+4. Visual Appearance and Fill Level:
+   [bullet list: colors, shapes, fill states — only confirmed across ALL descriptions]
+
+5. Relational and Proportional Constraints:
+   [bullet list of cross-object rules, or N/A]
+
+6. Symmetry and Connectivity:
+   [bullet list of alignment/connection rules, or N/A]
+
+7. Per-Slot Completeness:
+   [rule per repeating slot/compartment, or N/A]
+"""
+
 
 
 
 # ============================================================
 # Stage 3a: Generate candidate main questions
 # ============================================================
+
+# GENERATE_QUESTIONS_PROMPT = """
+# [ Description of {class_name} ]
+# {normality_summary}
+
+# [ Normal Constraints for {class_name} ]
+# {normality_definition}
+
+# Using the [ Normal Constraints for {Class} ] and [ Description of {Class} ], create several but essential , simple and important questions to determine whether the {Class} ] in the image is normal or abnormal. Ensure the questions are only based on visible characteristics, excluding any aspects that cannot be determined from the image. Also, simplify any difficult terms into easy-to-understand questions.
+# {question_slots}
+# """
 
 GENERATE_QUESTIONS_PROMPT = """You are creating a strict inspection checklist for a Quality Control system.
 Based on the summary of a normal {class_name}, generate {n_questions} essential Yes/No questions to detect logical anomalies.
@@ -109,6 +245,11 @@ def build_subquestion_slots(n: int) -> str:
 # ============================================================
 # Stage 3b: Generate sub-question variants
 # ============================================================
+# SUBQUESTION_AUGMENT_PROMPT = """
+# Generate five variations of the following question while keeping the semantic meaning.
+# Input : {main_question}
+# {subquestion_slots}
+# """
 
 SUBQUESTION_AUGMENT_PROMPT = """You are an AI linguist assisting a Quality Control system.
 Your task is to rephrase the given target question into {n_variants} different variations.

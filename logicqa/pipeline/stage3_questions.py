@@ -25,20 +25,55 @@ from logicqa.logging import PipelineLogger
 from logicqa.data.normality_definitions import CLASS_INSPECTION_CONTEXTS
 
 
-def _parse_numbered_list(text: str) -> List[str]:
-    """Parse a numbered list (1. ... \n 2. ...) from VLM output."""
-    lines = text.strip().splitlines()
-    questions = []
-    for line in lines:
-        # Match "1. ", "1) ", or bare lines
-        match = re.match(r"^\s*\d+[\.\)]\s*(.+)$", line)
-        if match:
-            questions.append(match.group(1).strip())
-        elif line.strip() and not line.strip().isdigit():
-            # Fallback: non-empty line without a number prefix
-            # pass
-            questions.append(line.strip())
-    return questions
+def _normalize_text(text: str) -> str:
+    """
+    Pre-process VLM output before parsing:
+    - Replace newlines with spaces
+    - Remove/replace special characters that break regex matching
+    - Strip surrounding quotes from individual items
+    """
+    # Replace newlines and carriage returns with a single space
+    text = text.replace("\r\n", " ").replace("\r", " ").replace("\n", " ")
+    # Collapse multiple spaces
+    text = re.sub(r" {2,}", " ", text)
+    return text.strip()
+
+def _strip_quotes(s: str) -> str:
+    """Strip surrounding straight or curly quotes from a string."""
+    # Remove surrounding double/single/curly quotes (including nested)
+    s = s.strip()
+    # Iteratively strip outer quote pairs
+    quote_pairs = [('"', '"'), ("'", "'"), ("\u201c", "\u201d"), ("\u2018", "\u2019")]
+    changed = True
+    while changed:
+        changed = False
+        for open_q, close_q in quote_pairs:
+            if s.startswith(open_q) and s.endswith(close_q) and len(s) > 2:
+                s = s[1:-1].strip()
+                changed = True
+            # Also handle mismatched: starts with " ends with ?"
+            elif s.startswith(open_q) and s.endswith(close_q[0] if len(close_q) > 0 else "") :
+                pass
+    # Handle case: ends with `?"` or `?'` — quote after question mark
+    s = re.sub(r'\?["\'\u201d\u2019]+$', "?", s)
+    # Handle case: starts with quote char
+    s = re.sub(r'^["\'\u201c\u2018]+', "", s)
+    return s.strip()
+
+def _is_valid_question(q: str) -> bool:
+    """Check if a string looks like a valid Yes/No question."""
+    q = q.strip()
+    return (
+        15 < len(q) < 300
+        and (
+            q.endswith("?")
+            or re.match(
+                r"^(Is |Are |Does |Do |Can |Has |Have |Did |Was |Were )",
+                q,
+                re.IGNORECASE,
+            )
+        )
+    )
 
 def _parse_questions(text: str) -> List[str]:
     lines = text.strip().splitlines()
@@ -91,45 +126,81 @@ def _parse_questions(text: str) -> List[str]:
 
 
 def _parse_output_list(text: str) -> List[str]:
-    lines = text.strip().splitlines()
-    variants = []
+    """
+    Parse a numbered list of sub-question variants from VLM output.
 
-    for line in lines:
-        line = line.strip()
-        if not line:
-            continue
+    Handles all observed VLM response formats:
+      - Output1: "question text?"
+      - Output1:\n"question text?"
+      - 1. question text?
+      - 1) question text?
+      - - question text?
+      - Plain question lines (fallback)
 
-        match = re.match(r"^Output\s*\d+\s*:\s*(.+)$", line, re.IGNORECASE)
-        if match:
-            variants.append(match.group(1).strip())
-            continue
-        match = re.match(r"^\d+[\.\)]\s*(.+)$", line)
-        if match:
-            q = match.group(1).strip()
-            if len(q) > 10:
-                variants.append(q)
-            continue
+    Special characters are normalised before parsing:
+      - \\n  → space
+      - Surrounding quotes stripped from each candidate
+    """
+    variants: List[str] = []
 
-        match = re.match(r"^[-•]\s*(.+)$", line)
-        if match:
-            q = match.group(1).strip()
-            if len(q) > 10:
-                variants.append(q)
+    # ── Step 1: split on OutputN: markers (works even if question is on same line
+    #            or on the next line after the marker)
+    # First, try to find "OutputN:" anchored tokens to split the response
+    output_marker_pattern = re.compile(
+        r"Output\s*\d+\s*:", re.IGNORECASE
+    )
 
+    # Split text by "OutputN:" markers — handles multi-line values too
+    parts = output_marker_pattern.split(text)
+    if len(parts) > 1:
+        # parts[0] is text before the first marker (usually empty or preamble)
+        for part in parts[1:]:
+            # Each part is everything between two consecutive "OutputN:" markers
+            # Normalize: replace newlines with spaces
+            part_clean = _normalize_text(part)
+            # Strip surrounding quotes
+            part_clean = _strip_quotes(part_clean)
+            if part_clean:
+                variants.append(part_clean)
+
+    # ── Step 2: if OutputN: split found nothing useful, try line-by-line parsing
     if not variants:
-        for line in text.strip().splitlines():
-            line = line.strip()
-            if len(line) > 15 and (
-                line.endswith("?") or
-                re.match(r"^(Is |Are |Does |Do |Can |Has |Have )", line, re.IGNORECASE)
-            ):
+        for raw_line in text.splitlines():
+            line = raw_line.strip()
+            if not line:
+                continue
+
+            # "1. text" or "1) text"
+            m = re.match(r"^\d+[\.\)]\s*(.+)$", line)
+            if m:
+                q = _strip_quotes(m.group(1).strip())
+                if q:
+                    variants.append(q)
+                continue
+
+            # "- text" or "• text"
+            m = re.match(r"^[-•]\s*(.+)$", line)
+            if m:
+                q = _strip_quotes(m.group(1).strip())
+                if q:
+                    variants.append(q)
+                continue
+
+    # ── Step 3: final fallback — collect any line that looks like a question
+    if not variants:
+        for raw_line in text.splitlines():
+            line = _strip_quotes(raw_line.strip())
+            if _is_valid_question(line):
                 variants.append(line)
-    variants = [
-        q for q in variants
-        if (q.endswith("?") or
-        re.match(r"^(Is |Are |Does |Do |Can |Has |Have |Did )", q, re.IGNORECASE)) and 15 < len(q) < 250
-    ]
-    return variants
+
+    # ── Step 4: validate and clean every collected candidate
+    cleaned: List[str] = []
+    for q in variants:
+        q = _strip_quotes(q)
+        if _is_valid_question(q):
+            cleaned.append(q)
+
+    return cleaned
 
 
 def generate_candidate_questions(
@@ -288,8 +359,12 @@ def generate_sub_questions(
         variants = _parse_output_list(response.text)
         print(variants)
         # Ensure we always have exactly n_variants (pad with original if short)
+
+        n_parsed = len(variants)
         while len(variants) < n_variants:
             variants.append(mq)
+        print(f"  Q{i+1}: parsed={n_parsed}, padded={n_variants - n_parsed}, total={len(variants[:n_variants])}")
+
         sub_questions[mq] = variants[:n_variants]
         print(f"    Q{i+1}: {mq[:60]} → {len(variants)} sub-Qs")
         if logger:

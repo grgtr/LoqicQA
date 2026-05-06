@@ -14,6 +14,9 @@ from logicqa.vlm.base import VLMBase
 from logicqa.prompts import DESCRIBE_PROMPT
 from logicqa.logging import PipelineLogger
 
+from typing import Dict, List, Optional, Union
+
+
 def describe_normal_images(
     vlm: VLMBase,
     normal_images: List[Union[Path, Image.Image]],

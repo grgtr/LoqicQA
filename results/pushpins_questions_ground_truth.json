@@ -1,0 +1,40 @@
+{
+  "class_name": "pushpins",
+  "normality_definition": "- Each compartment of the box of pushpins contains exactly one pushpin.",
+  "main_questions": [
+    "Does each compartment in the pushpin box contain exactly one pushpin?",
+    "Is every compartment in the pushpin box occupied by a pushpin?",
+    "Does each compartment in the pushpin box contain no more than one pushpin?",
+    "Is the total number of pushpins equal to the total number of compartments in the box?"
+  ],
+  "sub_questions": {
+    "Does each compartment in the pushpin box contain exactly one pushpin?": [
+      "Is there precisely one pushpin in every single compartment of the box?",
+      "Does every compartment hold exactly one pushpin?",
+      "Are all compartments in the box occupied by exactly one pushpin each?",
+      "Can you confirm that each compartment contains one and only one pushpin?",
+      "Is the count of pushpins per compartment exactly one throughout the box?"
+    ],
+    "Is every compartment in the pushpin box occupied by a pushpin?": [
+      "Are there any empty compartments in the pushpin storage box?",
+      "Is each slot in the pushpin box filled with at least one pushpin?",
+      "Does every compartment in the box have a pushpin in it?",
+      "Are all compartments in the pushpin box non-empty?",
+      "Is there a pushpin present in each and every compartment of the box?"
+    ],
+    "Does each compartment in the pushpin box contain no more than one pushpin?": [
+      "Are there any compartments with more than one pushpin in the box?",
+      "Is every compartment in the pushpin box limited to a single pushpin?",
+      "Does each slot hold at most one pushpin?",
+      "Is there no compartment in the box containing two or more pushpins?",
+      "Is each compartment in the pushpin box free from overcrowding with multiple pins?"
+    ],
+    "Is the total number of pushpins equal to the total number of compartments in the box?": [
+      "Does the count of pushpins match the count of compartments in the box?",
+      "Are the number of pushpins and the number of compartments the same?",
+      "Is there a one-to-one correspondence between pushpins and compartments?",
+      "Do the pushpins and compartments match in total count?",
+      "Is the quantity of pushpins identical to the quantity of compartments in the box?"
+    ]
+  }
+}

@@ -22,7 +22,6 @@ from logicqa.prompts import (
     build_subquestion_slots
 )
 from logicqa.logging import PipelineLogger
-from logicqa.data.normality_definitions import CLASS_INSPECTION_CONTEXTS
 
 
 def _normalize_text(text: str) -> str:
@@ -74,6 +73,40 @@ def _is_valid_question(q: str) -> bool:
             )
         )
     )
+
+
+def _is_semantically_valid_question(q: str) -> bool:
+    """
+    Improvement 1: Programmatic semantic validation of generated questions.
+
+    Rejects questions that are structurally malformed for binary Yes/No anomaly detection:
+    - Negated constructions: the answer "Yes" would mean anomaly (inverted polarity)
+    - Double-constraint questions via "and"/"or": ambiguous vote if one holds but not the other
+    - Missing question mark: often indicates the model output a statement, not a question
+    """
+    q = q.strip()
+
+    # Must end with "?"
+    if not q.endswith("?"):
+        return False
+
+    q_lower = q.lower()
+
+    # Reject negated question starters — "Yes" would mean anomaly (wrong polarity)
+    negation_starters = (
+        "isn't ", "aren't ", "doesn't ", "don't ", "can't ", "won't ",
+        "is there no ", "are there no ", "is there not ", "are there not ",
+    )
+    if any(q_lower.startswith(neg) for neg in negation_starters):
+        return False
+
+    # Reject questions that couple two independent logical conditions with " and " or " or "
+    # Heuristic: if the question contains " and " AND has two verb-phrase anchors after it,
+    # it's likely a double-constraint. A simple count of "and" occurrences is sufficient.
+    if q_lower.count(" and ") >= 2:
+        return False
+
+    return True
 
 def _parse_questions(text: str) -> List[str]:
     lines = text.strip().splitlines()
@@ -235,6 +268,12 @@ def generate_candidate_questions(
 
     print(f"   [DEBUG] Raw output:\n{response.text}\n")
     questions = _parse_questions(response.text)
+    # Improvement 1: filter out structurally malformed questions before any VLM call
+    valid = [q for q in questions if _is_semantically_valid_question(q)]
+    dropped = [q for q in questions if q not in valid]
+    if dropped:
+        print(f"   [Improvement 1] Dropped {len(dropped)} malformed questions: {dropped}")
+    questions = valid
     print(f"   [DEBUG] Parsed questions:\n{questions}\n")
     print(f"    Generated {len(questions)} candidate questions.")
     if logger:
@@ -261,9 +300,7 @@ def _answer_single_question(
     else:
         img = image
 
-    normalized_class_name = class_name.lower().replace(" ", "_")
-    class_context = CLASS_INSPECTION_CONTEXTS.get(normalized_class_name, "")
-    prompt = TEST_PROMPT.format(question=question, class_name=class_name, class_context=class_context)
+    prompt = TEST_PROMPT.format(question=question, class_name=class_name)
     response = vlm.query(prompt=prompt, image=img)
     if logger:
         logger.log_stage3b_filter_answer(
@@ -277,6 +314,24 @@ def _answer_single_question(
     return response.answer
 
 
+def _adaptive_threshold(n_shots: Optional[int], base_threshold: float) -> float:
+    """
+    Improvement 2: Compute adaptive filtering threshold based on few-shot count.
+
+    With very few shots (≤5), any 1 wrong answer from 3 gives 67% accuracy —
+    below 0.8 threshold, so the default would drop too many good questions.
+    We require 100% to prevent noisy questions from slipping through.
+    With many shots (>8), 70% is a reasonable relaxed threshold.
+    """
+    if n_shots is None:
+        return base_threshold
+    if n_shots <= 5:
+        return 1.0
+    if n_shots <= 8:
+        return 0.8
+    return 0.7
+
+
 def filter_questions_on_normal(
     vlm: VLMBase,
     candidate_questions: List[str],
@@ -285,6 +340,7 @@ def filter_questions_on_normal(
     class_name: str = "object",
     image_paths: Optional[List[str]] = None,
     logger: Optional[PipelineLogger] = None,
+    n_shots: Optional[int] = None,
 ) -> List[str]:
     """
     Stage 3b: Filter candidate questions with < threshold accuracy on normals.
@@ -298,10 +354,15 @@ def filter_questions_on_normal(
         candidate_questions: From Stage 3a.
         normal_images:       Validation normal images (can be the same 3 few-shot).
         threshold:           Minimum accuracy to keep a question (default 0.8).
+        n_shots:             If provided, overrides threshold with adaptive schedule
+                             (Improvement 2): n_shots≤5 → 1.0, ≤8 → 0.8, >8 → 0.7.
 
     Returns:
         Filtered list of main questions.
     """
+    # Improvement 2: adaptive threshold
+    threshold = _adaptive_threshold(n_shots, threshold)
+
     print(f"[DEBUG] stage3b Filtering logger is: {'None' if logger is None else 'not None'}")
     if not normal_images:
         return candidate_questions

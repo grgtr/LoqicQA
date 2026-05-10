@@ -22,7 +22,6 @@ from PIL import Image
 
 from logicqa.vlm.base import VLMBase
 from logicqa.prompts import TEST_PROMPT
-from logicqa.data.normality_definitions import CLASS_INSPECTION_CONTEXTS
 from logicqa.logging import PipelineLogger
 
 
@@ -61,9 +60,7 @@ def _ask_sub_question(
     logger: Optional[PipelineLogger] = None,
 ) -> SubQResult:
     """Ask one sub-question about an image and return the result."""
-    normalized_class_name = class_name.lower().replace(" ", "_")
-    class_context = CLASS_INSPECTION_CONTEXTS.get(normalized_class_name, "")
-    prompt = TEST_PROMPT.format(question=question, class_name=class_name, class_context=class_context)
+    prompt = TEST_PROMPT.format(question=question, class_name=class_name)
     if hasattr(vlm, "query_with_logprobs"):
         # print("[DEBUG] using query_with_logprobs in stage4_test")
         response = vlm.query_with_logprobs(prompt=prompt, image=image)
@@ -138,22 +135,57 @@ def _majority_vote(answers: List[Optional[str]]) -> str:
 
 import numpy as np
 
+
+def _subq_consistency(sub_results: List[SubQResult]) -> float:
+    """
+    Improvement 3: Compute consistency score for a set of sub-question answers.
+
+    Measures how confidently the sub-questions agree:
+      - 5:0 or 0:5 split → variance=0 → consistency=1.0 (full agreement)
+      - 3:2 split        → variance=0.24 → consistency=0.0 (maximum confusion)
+
+    Used to weight each main question's contribution to the anomaly score.
+    """
+    if not sub_results:
+        return 1.0
+    yes_count = sum(1 for r in sub_results if r.answer == "Yes")
+    p = yes_count / len(sub_results)
+    variance = p * (1.0 - p)
+    return max(0.0, 1.0 - variance / 0.24)
+
+
 def _compute_anomaly_score(main_q_results: List[MainQResult]) -> float:
+    """
+    Improvement 3: Consistency-weighted anomaly score.
+
+    Each main question's log-prob score is weighted by its sub-question consistency.
+    Questions with unanimous 5:0 sub-question votes (consistency=1.0) dominate;
+    questions with 3:2 splits (consistency=0.0) contribute minimally.
+    Falls back to equal weighting if all consistencies are zero.
+    """
     if not main_q_results:
         return 0.5
 
     S = []
+    weights = []
     for mq in main_q_results:
         lp = mq.best_log_prob if mq.best_log_prob is not None else -1.0
         S.append(math.exp(max(lp, -30)))
+        weights.append(_subq_consistency(mq.sub_results))
 
-    median_s = float(np.median(S))
+    # Fallback: if all weights are 0, use equal weighting
+    total_w = sum(weights)
+    if total_w == 0.0:
+        weights = [1.0] * len(main_q_results)
+        total_w = float(len(main_q_results))
+
+    weighted_score = sum(s * w for s, w in zip(S, weights)) / total_w
     is_anomaly = any(mq.voted_answer == "No" for mq in main_q_results)
 
     if is_anomaly:
-        return min(median_s, 1.0)
+        return min(weighted_score, 1.0)
     else:
-        return max(1.0 - median_s, 0.0)
+        return max(1.0 - weighted_score, 0.0)
 
 def test_image(
     vlm: VLMBase,

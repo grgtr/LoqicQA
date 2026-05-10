@@ -1,0 +1,44 @@
+# Stage 1 validation: load ground-truth questions, test all class images.
+# Usage:
+#   python scripts/run_pipeline.py \
+#     --config config_paper_stage1_validation.yaml \
+#     --class_name breakfast_box \
+#     --questions_file results/breakfast_box_questions_ground_truth.json
+
+vlm:
+  backend: "internvl"
+  internvl:
+    model_name: "OpenGVLab/InternVL2_5-8B"
+    temperature: 0.2
+    top_p: 0.7
+    repetition_penalty: 1.1
+    do_sample: true
+    max_new_tokens: 512
+    device_map: "auto"
+
+pipeline:
+  n_shots: 3                      # paper uses exactly 3 few-shot normal images
+  n_questions: 6
+  n_sub_questions: 5
+  question_filter_threshold: 1.0  # not used when --questions_file is provided
+  class_name: "breakfast_box"
+  output_dir: "results"
+
+dataset:
+  name: "mvtec_loco"
+  data_dir: ~/dataset-ninja/
+  download_if_missing: true
+
+preprocessing:
+  bpm:
+    enabled: true
+    patch_size: 16
+    threshold: 0.05
+  langsam:
+    enabled: true
+    prompts:
+      pushpins: "The individual black compartments within the transparent plastic storage box"
+      splicing_connectors: "Connector Block"
+
+testing:
+  mode: "all"   # test ALL images of the class (normal + logical anomalies)

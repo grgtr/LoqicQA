@@ -1,0 +1,48 @@
+{
+  "class_name": "screw_bag",
+  "normality_definition": "- A screw bag contains exactly two washers, two nuts, one long screw, and one short screw.\n- All bolts (screws) are longer than 3 times the diameter of the washer.",
+  "main_questions": [
+    "Are there exactly two washers in the screw bag?",
+    "Are there exactly two nuts in the screw bag?",
+    "Is there exactly one long screw in the screw bag?",
+    "Is there exactly one short screw in the screw bag?",
+    "Are all the screws longer than three times the diameter of the washers?"
+  ],
+  "sub_questions": {
+    "Are there exactly two washers in the screw bag?": [
+      "Can you see precisely two washers inside the screw bag?",
+      "Does the screw bag contain exactly two flat ring-shaped washers?",
+      "Is the number of washers in the bag equal to two?",
+      "Are there two and only two washers present in the screw bag?",
+      "Does the screw bag hold exactly two washers, no more and no less?"
+    ],
+    "Are there exactly two nuts in the screw bag?": [
+      "Can you see precisely two nuts inside the screw bag?",
+      "Does the screw bag contain exactly two hexagonal nuts?",
+      "Is the number of nuts in the bag equal to two?",
+      "Are there two and only two nuts present in the screw bag?",
+      "Does the screw bag hold exactly two nuts, no more and no less?"
+    ],
+    "Is there exactly one long screw in the screw bag?": [
+      "Can you see precisely one long screw inside the screw bag?",
+      "Does the screw bag contain exactly one long screw?",
+      "Is there a single long screw and no additional long screws in the bag?",
+      "Is the count of long screws in the screw bag equal to one?",
+      "Does the screw bag hold exactly one long screw?"
+    ],
+    "Is there exactly one short screw in the screw bag?": [
+      "Can you see precisely one short screw inside the screw bag?",
+      "Does the screw bag contain exactly one short screw?",
+      "Is there a single short screw and no additional short screws in the bag?",
+      "Is the count of short screws in the screw bag equal to one?",
+      "Does the screw bag hold exactly one short screw?"
+    ],
+    "Are all the screws longer than three times the diameter of the washers?": [
+      "Is the length of each screw greater than three times the diameter of the washers?",
+      "Do all screws in the bag exceed three times the washer diameter in length?",
+      "Is every screw in the bag more than three times as long as the washer is wide?",
+      "Are the screws at least three times longer than the diameter of the washers?",
+      "Does the length of each screw surpass three times the washer diameter?"
+    ]
+  }
+}

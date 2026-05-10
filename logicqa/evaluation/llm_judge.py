@@ -1,8 +1,36 @@
 import json
 import re
 import torch
+from dataclasses import dataclass, field
 from typing import List, Dict, Optional
 from transformers import AutoModelForCausalLM, AutoTokenizer
+
+
+@dataclass
+class HallucinationReport:
+    impossible_objects: List[str] = field(default_factory=list)
+    count_violations: List[Dict] = field(default_factory=list)
+    spatial_violations: List[Dict] = field(default_factory=list)
+    absent_required: List[str] = field(default_factory=list)
+    self_contradictions: List[str] = field(default_factory=list)
+    overall_confidence: float = 0.0
+    is_hallucinated: bool = False
+
+    def severity(self) -> str:
+        total = (
+            len(self.impossible_objects)
+            + len(self.count_violations)
+            + len(self.spatial_violations)
+            + len(self.absent_required)
+            + len(self.self_contradictions)
+        )
+        if total == 0:
+            return "none"
+        if total == 1:
+            return "low"
+        if total <= 3:
+            return "medium"
+        return "high"
 
 class LLMJudge:
     def __init__(self, model_id: str = "Qwen/Qwen2.5-3B-Instruct", device: str = "cuda"):
@@ -127,11 +155,78 @@ class LLMJudge:
             "If the question is irrelevant (tests none of the constraints), output an empty list []."
         )
         user_prompt = f"Constraints:\n{json.dumps(constraints, indent=2)}\n\nQuestion:\n{question}"
-        
+
         response = self._generate(system_prompt, user_prompt)
         data = self._parse_json(response)
-        
+
         if isinstance(data, list):
             return [c for c in data if c in constraints]
         return []
+
+    def detect_hallucinations(
+        self,
+        description: str,
+        normality_definition: str,
+        class_name: str,
+        impossible_objects: Optional[List[str]] = None,
+    ) -> HallucinationReport:
+        """
+        Detect diverse hallucination types in a VLM-generated description.
+
+        Covers 5 categories via a single LLM call:
+          - impossible_objects: objects that cannot appear in this class
+          - count_violations: quantities contradicting the normality definition
+          - spatial_violations: positions/locations contradicting the definition
+          - absent_required: required objects not mentioned in the description
+          - self_contradictions: internally inconsistent claims
+        """
+        impossible_str = json.dumps(impossible_objects or [], ensure_ascii=False)
+        system_prompt = (
+            f"You are a hallucination detector for visual descriptions of a '{class_name}'.\n"
+            "Given a normality definition (ground truth) and a generated description, "
+            "identify ALL inconsistencies in exactly these 5 categories:\n"
+            f"- \"impossible_objects\": objects mentioned that CANNOT exist in a {class_name} "
+            f"(forbidden list: {impossible_str})\n"
+            "- \"count_violations\": list of {{\"mentioned\": \"...\", \"expected\": \"...\"}} "
+            "where quantities contradict the normality definition\n"
+            "- \"spatial_violations\": list of {{\"object\": \"...\", \"mentioned_position\": \"...\", "
+            "\"expected\": \"...\"}} where positions contradict the normality definition\n"
+            "- \"absent_required\": objects required by the normality definition but NOT mentioned\n"
+            "- \"self_contradictions\": internally inconsistent claims within the description\n"
+            "Also add:\n"
+            "- \"overall_confidence\": float 0-1 (how confident you are in your findings)\n"
+            "- \"is_hallucinated\": true if ANY category is non-empty, else false\n\n"
+            "Output ONLY valid JSON. Use empty lists [] if no issues found in a category."
+        )
+        user_prompt = (
+            f"Normality definition:\n{normality_definition}\n\n"
+            f"Description:\n{description}"
+        )
+
+        response = self._generate(system_prompt, user_prompt)
+        data = self._parse_json(response)
+
+        impossible = data.get("impossible_objects", [])
+        counts = data.get("count_violations", [])
+        spatial = data.get("spatial_violations", [])
+        absent = data.get("absent_required", [])
+        contradictions = data.get("self_contradictions", [])
+        confidence = float(data.get("overall_confidence", 0.0))
+
+        is_hallucinated = bool(
+            impossible or counts or spatial or absent or contradictions
+        )
+        # Honour explicit LLM override if no issues found by categories
+        if not is_hallucinated:
+            is_hallucinated = bool(data.get("is_hallucinated", False))
+
+        return HallucinationReport(
+            impossible_objects=impossible if isinstance(impossible, list) else [],
+            count_violations=counts if isinstance(counts, list) else [],
+            spatial_violations=spatial if isinstance(spatial, list) else [],
+            absent_required=absent if isinstance(absent, list) else [],
+            self_contradictions=contradictions if isinstance(contradictions, list) else [],
+            overall_confidence=confidence,
+            is_hallucinated=is_hallucinated,
+        )
 

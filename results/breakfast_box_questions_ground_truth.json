@@ -10,39 +10,39 @@
   ],
   "sub_questions": {
     "Are there exactly two tangerines visible on the left-hand side of the breakfast box?": [
-      "1. Can you see exactly two tangerines on the left side of the breakfast box?",
-      "2. Is the left-hand side of the breakfast box showing precisely two tangerines?",
-      "3. Do you observe exactly two tangerines on the left of the breakfast box?",
-      "4. Are precisely two tangerines visible on the left side of the breakfast box?",
-      "5. Does the left-hand side of the breakfast box contain exactly two tangerines?"
+      "Can you see exactly two tangerines on the left side of the breakfast box?",
+      "Is the left-hand side of the breakfast box showing precisely two tangerines?",
+      "Do you observe exactly two tangerines on the left of the breakfast box?",
+      "Are precisely two tangerines visible on the left side of the breakfast box?",
+      "Does the left-hand side of the breakfast box contain exactly two tangerines?"
     ],
     "Is there one nectarine visible on the left-hand side of the breakfast box?": [
-      "1. Can you see a single nectarine on the left side of the breakfast box?",
-      "2. Is there a nectarine present on the left-hand side of the breakfast box?",
-      "3. Do you spot one nectarine on the left area of the breakfast box?",
-      "4. Is a nectarine visible on the left side within the breakfast box?",
-      "5. Is there one nectarine that can be seen on the left part of the breakfast box?"
+      "Can you see a single nectarine on the left side of the breakfast box?",
+      "Is there a nectarine present on the left-hand side of the breakfast box?",
+      "Do you spot one nectarine on the left area of the breakfast box?",
+      "Is a nectarine visible on the left side within the breakfast box?",
+      "Is there one nectarine that can be seen on the left part of the breakfast box?"
     ],
     "Does the right-hand side of the breakfast box have cereals in the upper portion?": [
-      "1. Are there cereals located in the upper part of the right side of the breakfast box?",
-      "2. Is the upper portion of the right side of the breakfast box filled with cereals?",
-      "3. Can cereals be found in the top section on the right-hand side of the breakfast box?",
-      "4. Does the upper section of the right side of the breakfast box contain cereals?",
-      "5. Is the top of the right-hand side of the breakfast box occupied by cereals?"
+      "Are there cereals located in the upper part of the right side of the breakfast box?",
+      "Is the upper portion of the right side of the breakfast box filled with cereals?",
+      "Can cereals be found in the top section on the right-hand side of the breakfast box?",
+      "Does the upper section of the right side of the breakfast box contain cereals?",
+      "Is the top of the right-hand side of the breakfast box occupied by cereals?"
     ],
     "Is there a mix of banana chips and almonds in the lower portion of the right-hand side of the breakfast box?": [
-      "1. Does the lower section on the right side of the breakfast box contain a combination of banana chips and almonds?",
-      "2. Can you find a blend of banana chips and almonds in the bottom part of the right-hand side of the breakfast box?",
-      "3. Are banana chips and almonds mixed together in the lower right section of the breakfast box?",
-      "4. Is there a combination of banana chips and almonds located in the bottom right area of the breakfast box?",
-      "5. Are banana chips and almonds present together in the lower portion on the right side of the breakfast box?"
+      "Does the lower section on the right side of the breakfast box contain a combination of banana chips and almonds?",
+      "Can you find a blend of banana chips and almonds in the bottom part of the right-hand side of the breakfast box?",
+      "Are banana chips and almonds mixed together in the lower right section of the breakfast box?",
+      "Is there a combination of banana chips and almonds located in the bottom right area of the breakfast box?",
+      "Are banana chips and almonds present together in the lower portion on the right side of the breakfast box?"
     ],
     "Are the fruits (tangerines and nectarine) only on the left-hand side, and are the cereals with banana chips and almonds only on the right-hand side?": [
-      "1. Are tangerines and nectarines exclusively on the left, and are cereals with banana chips and almonds exclusively on the right?",
-      "2. Is it true that the fruits, such as tangerines and nectarines, are solely placed on the left while cereals with almonds and banana chips are only on the right?",
-      "3. Are the tangerines and nectarines located only on the left side, and are the cereals containing banana chips and almonds solely on the right side?",
-      "4. Are fruits like tangerines and nectarines restricted to the left-hand side, while cereals with banana chips and almonds are found only on the right?",
-      "5. Is the placement such that tangerines and nectarines are just on the left, and cereals with almonds and banana chips appear only on the right?"
+      "Are tangerines and nectarines exclusively on the left, and are cereals with banana chips and almonds exclusively on the right?",
+      "Is it true that the fruits, such as tangerines and nectarines, are solely placed on the left while cereals with almonds and banana chips are only on the right?",
+      "Are the tangerines and nectarines located only on the left side, and are the cereals containing banana chips and almonds solely on the right side?",
+      "Are fruits like tangerines and nectarines restricted to the left-hand side, while cereals with banana chips and almonds are found only on the right?",
+      "Is the placement such that tangerines and nectarines are just on the left, and cereals with almonds and banana chips appear only on the right?"
     ]
   }
 }

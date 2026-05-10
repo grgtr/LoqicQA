@@ -175,8 +175,19 @@ class LogicQAPipeline:
             self._preprocess_for_description(img, self.class_name)
             for img in normal_images
         ]
+        # Improvement 6: optionally load LLMJudge for hallucination detection
+        llm_judge = None
+        if getattr(self.cfg.pipeline, "use_llm_judge_hallucination", False):
+            try:
+                from logicqa.evaluation.llm_judge import LLMJudge
+                llm_judge = LLMJudge()
+                print("[Setup] LLMJudge loaded for hallucination detection (Improvement 6)")
+            except Exception as e:
+                print(f"[Setup] LLMJudge load failed, skipping: {e}")
+
         descriptions = describe_normal_images(
-            self.vlm, preprocessed_normals, self.normality_definition, self.class_name, image_paths=normal_images, logger=self.logger
+            self.vlm, preprocessed_normals, self.normality_definition, self.class_name,
+            image_paths=normal_images, logger=self.logger, llm_judge=llm_judge,
         )
 
         # Stage 2
@@ -206,7 +217,8 @@ class LogicQAPipeline:
             threshold=self.cfg.pipeline.question_filter_threshold,
             class_name=self.class_name,
             image_paths=val_images,
-            logger=self.logger
+            logger=self.logger,
+            n_shots=self.cfg.pipeline.n_shots,  # Improvement 2: adaptive threshold
         )
 
         # Stage 3c: Sub-questions
@@ -296,6 +308,100 @@ class LogicQAPipeline:
             gt_label=gt_label,
             anomaly_type=anomaly_type
         )
+
+    # ------------------------------------------------------------------ #
+    # Improvement 5: Multi-run Ensemble setup
+    # ------------------------------------------------------------------ #
+
+    def setup_ensemble(
+        self,
+        class_name: str,
+        normal_images: List[Union[Path, str]],
+        normality_definition: Optional[str] = None,
+        n_questions: int = 6,
+        seeds: Optional[List[int]] = None,
+        validation_images: Optional[List[Union[Path, str]]] = None,
+    ) -> Dict:
+        """
+        Improvement 5: Run Stage 3 multiple times with different random seeds
+        and merge all uniquely passing questions into the final checklist.
+
+        Each seed produces a different ordering of the VLM's token sampling,
+        yielding different question candidates that may cover different constraints.
+        The union of filtered questions increases L2.5 Recall without hurting Precision
+        (each question still passes the Stage 3b filter individually).
+
+        Args:
+            seeds: List of integer seeds. Defaults to config.pipeline.ensemble_seeds,
+                   or [42, 7, 13] if not configured.
+        """
+        import random
+
+        if seeds is None:
+            seeds = list(getattr(self.cfg.pipeline, "ensemble_seeds", [])) or [42, 7, 13]
+
+        self.class_name = class_name.lower().replace(" ", "_")
+        self.normality_definition = (
+            normality_definition or get_normality_definition(self.class_name)
+        )
+        val_images = validation_images or normal_images
+
+        print(f"\n{'='*60}")
+        print(f" LogicQA Ensemble Setup: {class_name} | seeds={seeds}")
+        print(f"{'='*60}")
+
+        # Stages 1-2 are deterministic — run once
+        preprocessed_normals = [
+            self._preprocess_for_description(img, self.class_name)
+            for img in normal_images
+        ]
+        descriptions = describe_normal_images(
+            self.vlm, preprocessed_normals, self.normality_definition, self.class_name,
+            image_paths=normal_images, logger=self.logger,
+        )
+        summary = summarize_normal_context(
+            self.vlm, descriptions, self.normality_definition, logger=self.logger
+        )
+
+        preprocessed_vals = [
+            self._preprocess_for_description(img, self.class_name)
+            for img in val_images
+        ]
+
+        # Stage 3: run with each seed, merge unique filtered questions
+        all_sub_questions: Dict[str, List[str]] = {}
+        for seed in seeds:
+            print(f"\n  [Ensemble] Seed={seed} — generating questions ...")
+            random.seed(seed)
+
+            candidates = generate_candidate_questions(
+                self.vlm, summary, self.normality_definition,
+                class_name=self.class_name, n_questions=n_questions,
+                logger=self.logger,
+            )
+            filtered = filter_questions_on_normal(
+                self.vlm, candidates, preprocessed_vals,
+                threshold=self.cfg.pipeline.question_filter_threshold,
+                class_name=self.class_name, image_paths=val_images,
+                logger=self.logger, n_shots=self.cfg.pipeline.n_shots,
+            )
+            sub_qs = generate_sub_questions(
+                self.vlm, filtered,
+                n_variants=self.cfg.pipeline.n_sub_questions,
+                logger=self.logger,
+            )
+            new = 0
+            for q, sqs in sub_qs.items():
+                if q not in all_sub_questions:
+                    all_sub_questions[q] = sqs
+                    new += 1
+            print(f"  [Ensemble] Seed={seed}: {len(filtered)} filtered, {new} new unique questions added")
+
+        self.main_questions = list(all_sub_questions.keys())
+        self.sub_questions = all_sub_questions
+        self._setup_done = True
+        print(f"\n[Ensemble complete] {len(self.main_questions)} unique main questions from {len(seeds)} seeds.")
+        return {"main_questions": self.main_questions, "sub_questions": self.sub_questions}
 
     # ------------------------------------------------------------------ #
     # Save / Load question checklist

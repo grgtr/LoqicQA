@@ -54,6 +54,54 @@ maintain mirror symmetry.
 connector terminal block.""",
 }
 
+# --------------------------------------------------------------------------- #
+# Improvement 6: Objects that are IMPOSSIBLE for each class.
+# Used by LLMJudge to detect hallucinations in Stage 1 descriptions.
+# If a description mentions any of these objects, it is likely hallucinated.
+# --------------------------------------------------------------------------- #
+
+IMPOSSIBLE_OBJECTS: Dict[str, list] = {
+    "breakfast_box": ["bolt", "screw", "nut", "washer", "cable", "wire", "connector",
+                      "pushpin", "pin", "plug", "clamp"],
+    "screw_bag":     ["fruit", "cereal", "oat", "chip", "almond", "nectarine",
+                      "tangerine", "orange", "mandarin", "banana", "juice", "label",
+                      "pushpin", "connector"],
+    "pushpins":      ["screw", "bolt", "nut", "washer", "cable", "wire", "fruit",
+                      "cereal", "connector", "juice", "label"],
+    "splicing_connectors": ["fruit", "cereal", "chip", "almond", "nectarine",
+                            "tangerine", "screw", "bolt", "nut", "washer",
+                            "pushpin", "juice", "label"],
+    "juice_bottle":  ["screw", "bolt", "nut", "washer", "cable", "wire", "connector",
+                      "pushpin", "pin", "cereal", "chip", "almond"],
+}
+
+
+SEMANTIC_CONFUSIONS: Dict[str, Dict[str, List[str]]] = {
+    "breakfast_box": {
+        "nectarine":    ["peach", "plum", "apricot", "berry", "cherry"],
+        "tangerine":    ["lemon", "lime", "grapefruit", "citrus"],
+        "banana chips": ["raisin", "dried fruit", "date"],
+        "almonds":      ["peanut", "cashew", "walnut", "hazelnut"],
+    },
+    "screw_bag": {
+        "washer": ["coin", "ring", "disk", "plate"],
+        "nut":    ["bolt head", "cap"],
+        "screw":  ["nail", "pin", "spike"],
+    },
+    "pushpins": {
+        "pushpin": ["thumbtack", "tack"],
+    },
+    "splicing_connectors": {
+        "splicing connector": ["terminal block", "junction box"],
+        "cable": ["wire rope", "cord"],
+    },
+    "juice_bottle": {
+        "juice":  ["syrup", "water", "soda"],
+        "bottle": ["jar", "can", "carton"],
+    },
+}
+
+
 CLASS_INSPECTION_CONTEXTS = {
     "breakfast_box": """
 Valid items to look for:

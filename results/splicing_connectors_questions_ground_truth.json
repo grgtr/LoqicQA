@@ -1,0 +1,56 @@
+{
+  "class_name": "splicing_connectors",
+  "normality_definition": "- Exactly two splicing connectors with the same number of cable clamps are linked by exactly one cable.\n- In addition, the number of clamps has a one-to-one correspondence to the color of the cable.\n- The cable must be connected to the same position on both connectors to maintain mirror symmetry.\n- The cable length is roughly longer than the length of the splicing connector terminal block.",
+  "main_questions": [
+    "Are there exactly two splicing connectors in the image?",
+    "Do both splicing connectors have the same number of cable clamps?",
+    "Is there exactly one cable linking the two splicing connectors?",
+    "Does the number of cable clamps correspond to the color of the cable?",
+    "Is the cable connected to the same position on both connectors, maintaining mirror symmetry?",
+    "Is the cable length longer than the length of the splicing connector terminal block?"
+  ],
+  "sub_questions": {
+    "Are there exactly two splicing connectors in the image?": [
+      "Can you see precisely two splicing connectors in the image?",
+      "Is the total count of splicing connectors in the image equal to two?",
+      "Are there two and only two splicing connectors visible?",
+      "Does the image show exactly two splicing connector units?",
+      "Is the number of splicing connectors exactly two, no more and no less?"
+    ],
+    "Do both splicing connectors have the same number of cable clamps?": [
+      "Is the number of clamps on the first connector equal to the number on the second connector?",
+      "Do the two splicing connectors share an identical count of cable clamps?",
+      "Are both connectors equipped with the same quantity of cable clamps?",
+      "Does each splicing connector have an equal number of cable clamps?",
+      "Is the clamp count identical across both splicing connectors?"
+    ],
+    "Is there exactly one cable linking the two splicing connectors?": [
+      "Can you see precisely one cable connecting the two splicing connectors?",
+      "Are the two splicing connectors linked by exactly one cable?",
+      "Is there a single cable, and only one cable, joining the two connectors?",
+      "Does exactly one cable run between the two splicing connectors?",
+      "Is the count of cables connecting the two splicing connectors equal to one?"
+    ],
+    "Does the number of cable clamps correspond to the color of the cable?": [
+      "Is there a one-to-one correspondence between the number of clamps and the cable color?",
+      "Does the clamp count match the expected count for the cable color used?",
+      "Is the number of cable clamps consistent with the color coding of the cable?",
+      "Does the cable color correctly indicate the number of clamps on the connectors?",
+      "Are the number of clamps and the cable color in proper correspondence?"
+    ],
+    "Is the cable connected to the same position on both connectors, maintaining mirror symmetry?": [
+      "Does the cable enter the same slot position on both splicing connectors?",
+      "Is there mirror symmetry in how the cable is attached to both connectors?",
+      "Is the cable connection point identical on both connectors?",
+      "Does the cable attach to the same relative position on each of the two connectors?",
+      "Are the cable entry points on both connectors symmetric to each other?"
+    ],
+    "Is the cable length longer than the length of the splicing connector terminal block?": [
+      "Does the cable extend beyond the length of the terminal block?",
+      "Is the visible cable longer than the splicing connector terminal block?",
+      "Is the length of the cable greater than the length of the connector block?",
+      "Does the cable span a greater length than the terminal block of the splicing connector?",
+      "Is the cable notably longer than the splicing connector terminal block?"
+    ]
+  }
+}

@@ -21,10 +21,10 @@ vlm:
     top_k: 40
 
 pipeline:
-  n_shots: 5                    # number of normal images for few-shot setup
+  n_shots: 10                    # number of normal images for few-shot setup
   n_questions: 6 
   n_sub_questions: 5            # number of sub-questions per main question
-  question_filter_threshold: 0.8  # drop main questions with accuracy < 80% on normal images
+  question_filter_threshold: 0.7  # drop main questions with accuracy <
 
 dataset:
   name: "mvtec_loco"

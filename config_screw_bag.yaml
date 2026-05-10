@@ -1,0 +1,122 @@
+# LogicQA default configuration
+
+vlm:
+  backend: "internvl"          # "internvl" | "gpt4o" | "gemini"
+  internvl:
+    # model_name: "OpenGVLab/InternVL2_5-38B"
+    model_name: "OpenGVLab/InternVL2_5-8B"
+    temperature: 0.2
+    top_p: 0.7
+    repetition_penalty: 1.1
+    do_sample: true
+    max_new_tokens: 512
+    device_map: "auto"          # multi-GPU via accelerate
+  gpt4o:
+    model_name: "gpt-4o"
+    temperature: 1.0
+  gemini:
+    model_name: "gemini-1.5-flash"
+    temperature: 1.0
+    top_p: 0.95
+    top_k: 40
+
+pipeline:
+  n_shots: 10                    # number of normal images for few-shot setup
+  n_questions: 6 
+  n_sub_questions: 5            # number of sub-questions per main question
+  question_filter_threshold: 0.6  # drop main questions with accuracy < 80% on normal images
+
+dataset:
+  name: "mvtec_loco"
+  data_dir: /home/chikibriki/LoqicQA/dataset-ninja/"
+  download_if_missing: true
+
+preprocessing:
+  # BPM applied to: screw_bag, splicing_connectors
+  bpm:
+    enabled: true
+    patch_size: 16
+    threshold: 0.05
+  # Lang-SAM applied to: pushpins, splicing_connectors
+  langsam:
+    enabled: true
+    prompts:
+      pushpins: "The individual black compartments within the transparent plastic storage box"
+      splicing_connectors: "Connector Block"
+
+output:
+  results_dir: "results"
+  save_questions: true         # save generated questions to JSON
+  save_per_image: true         # save per-image decisions and scores
+
+testing:
+  mode: "specific"
+
+  specific_samples:
+    - "screw_bag_good_001.png"
+    - "screw_bag_good_009.png"
+    - "screw_bag_good_012.png"
+    - "screw_bag_good_013.png"
+    - "screw_bag_good_015.png"
+    - "screw_bag_good_016.png"
+    - "screw_bag_good_018.png"
+    - "screw_bag_good_024.png"
+    - "screw_bag_good_026.png"
+    - "screw_bag_good_029.png"
+    - "screw_bag_good_030.png"
+    - "screw_bag_good_047.png"
+    - "screw_bag_good_049.png"
+    - "screw_bag_good_060.png"
+    - "screw_bag_good_069.png"
+    - "screw_bag_good_070.png"
+    - "screw_bag_good_071.png"
+    - "screw_bag_good_080.png"
+    - "screw_bag_good_086.png"
+    - "screw_bag_good_087.png"
+    - "screw_bag_good_099.png"
+    - "screw_bag_good_102.png"
+    - "screw_bag_good_103.png"
+    - "screw_bag_good_112.png"
+    - "screw_bag_good_119.png"
+    - "screw_bag_logical_anomalies_010.png"
+    - "screw_bag_logical_anomalies_018.png"
+    - "screw_bag_logical_anomalies_024.png"
+    - "screw_bag_logical_anomalies_025.png"
+    - "screw_bag_logical_anomalies_030.png"
+    - "screw_bag_logical_anomalies_035.png"
+    - "screw_bag_logical_anomalies_039.png"
+    - "screw_bag_logical_anomalies_041.png"
+    - "screw_bag_logical_anomalies_044.png"
+    - "screw_bag_logical_anomalies_047.png"
+    - "screw_bag_logical_anomalies_050.png"
+    - "screw_bag_logical_anomalies_051.png"
+    - "screw_bag_logical_anomalies_052.png"
+    - "screw_bag_logical_anomalies_056.png"
+    - "screw_bag_logical_anomalies_058.png"
+    - "screw_bag_logical_anomalies_060.png"
+    - "screw_bag_logical_anomalies_061.png"
+    - "screw_bag_logical_anomalies_063.png"
+    - "screw_bag_logical_anomalies_064.png"
+    - "screw_bag_logical_anomalies_066.png"
+    - "screw_bag_logical_anomalies_067.png"
+    - "screw_bag_logical_anomalies_068.png"
+    - "screw_bag_logical_anomalies_076.png"
+    - "screw_bag_logical_anomalies_085.png"
+    - "screw_bag_logical_anomalies_088.png"
+    - "screw_bag_logical_anomalies_089.png"
+    - "screw_bag_logical_anomalies_091.png"
+    - "screw_bag_logical_anomalies_099.png"
+    - "screw_bag_logical_anomalies_107.png"
+    - "screw_bag_logical_anomalies_113.png"
+    - "screw_bag_logical_anomalies_116.png"
+    - "screw_bag_logical_anomalies_117.png"
+    - "screw_bag_logical_anomalies_120.png"
+    - "screw_bag_logical_anomalies_126.png"
+    - "screw_bag_logical_anomalies_128.png"
+
+
+  random_count: 10
+  random_seed: 123
+
+  interleave: true
+

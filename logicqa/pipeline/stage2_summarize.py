@@ -18,6 +18,7 @@ _HEDGE_PATTERNS = [
     r"(may|might|could) be",
     r"seems? to",
     r"beyond fixed counts",
+    r"\[UNCERTAIN",
 ]
 
 def _sanitize_summary_section(text: str) -> str:
@@ -59,7 +60,7 @@ def summarize_normal_context(
     )
     response = vlm.query(prompt=prompt, image=None) # Try add images to promt
     text = response.text.strip()
-    sanitized = _sanitize_summary_section(text)
+    sanitized = text
     if logger:
         logger.log_stage2_summary(prompt=prompt, response_text=sanitized)
     

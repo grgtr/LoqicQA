@@ -83,8 +83,10 @@ class LangSAMWrapper:
         else:
             pil_img = image.convert("RGB")
 
-        # Run Lang-SAM
-        masks, boxes, phrases, logits = self._model.predict(pil_img, prompt)
+        # Run Lang-SAM (new API: takes lists, returns list of dicts)
+        results = self._model.predict([pil_img], [prompt])
+        result = results[0] if results else {}
+        masks = result.get("masks", [])
 
         if len(masks) == 0:
             # No objects found — return the original image

@@ -3,7 +3,7 @@ from __future__ import annotations
 
 import os
 from dataclasses import dataclass, field
-from typing import Dict, Optional
+from typing import Dict, List, Optional
 
 import yaml
 
@@ -54,6 +54,10 @@ class PipelineConfig:
     n_questions: int = 5
     n_sub_questions: int = 5
     question_filter_threshold: float = 0.8
+    # Improvement 5: multi-run ensemble seeds (empty list = ensemble disabled)
+    ensemble_seeds: List[int] = field(default_factory=list)
+    # Improvement 6: enable LLM Judge hallucination check in Stage 1
+    use_llm_judge_hallucination: bool = False
 
 
 @dataclass

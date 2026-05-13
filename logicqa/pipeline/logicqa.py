@@ -262,6 +262,7 @@ class LogicQAPipeline:
                     seg,
                     self.main_questions,
                     self.sub_questions,
+                    image_path=image_path_str,
                     class_name=self.class_name,
                     logger=self.logger,
                     gt_label=gt_label,

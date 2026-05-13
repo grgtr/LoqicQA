@@ -1,0 +1,56 @@
+{
+  "class_name": "juice_bottle",
+  "normality_definition": "- The juice bottle is filled with juice and carries exactly two labels.\n- The first label is attached to the center of the bottle, with the fruit icon positioned exactly at the center of the label, clearly indicating the type of juice.\n- The second label is attached to the lower part of the bottle with the text \"100% Juice\" written on it.\n- The fill level is the same for each bottle.\n- The bottle is filled with at least 90% of its capacity with juice, but not 100%.",
+  "main_questions": [
+    "Does the juice bottle have exactly two labels?",
+    "Is the first label attached to the center of the bottle?",
+    "Is the fruit icon positioned at the center of the main label?",
+    "Is the second label attached to the lower part of the bottle?",
+    "Does the lower label contain the text \"100% Juice\"?",
+    "Is the juice bottle filled to at least 90% of its capacity but not completely full?"
+  ],
+  "sub_questions": {
+    "Does the juice bottle have exactly two labels?": [
+      "Can you see precisely two labels on the juice bottle?",
+      "Is the total number of labels on the bottle equal to two?",
+      "Are there two and only two labels attached to the juice bottle?",
+      "Does the juice bottle carry exactly two labels, no more and no less?",
+      "Is the label count on the juice bottle exactly two?"
+    ],
+    "Is the first label attached to the center of the bottle?": [
+      "Is the main label located at the center of the juice bottle?",
+      "Does the first label appear in the middle section of the bottle?",
+      "Is the primary label positioned centrally on the bottle?",
+      "Can you confirm the first label is at the center of the juice bottle?",
+      "Is the larger label placed at the central part of the bottle?"
+    ],
+    "Is the fruit icon positioned at the center of the main label?": [
+      "Is the fruit graphic located at the center of the primary label?",
+      "Does the fruit icon appear in the middle of the main label?",
+      "Is the fruit image centered on the first label of the bottle?",
+      "Can you see the fruit icon at the center of the main label?",
+      "Is the fruit symbol positioned centrally within the main label?"
+    ],
+    "Is the second label attached to the lower part of the bottle?": [
+      "Is the second label located at the bottom section of the juice bottle?",
+      "Does the secondary label appear in the lower portion of the bottle?",
+      "Is the smaller label positioned at the lower part of the bottle?",
+      "Can you confirm the second label is at the lower area of the juice bottle?",
+      "Is there a label in the lower section of the bottle?"
+    ],
+    "Does the lower label contain the text \"100% Juice\"?": [
+      "Is the text \"100% Juice\" written on the lower label of the bottle?",
+      "Can you see \"100% Juice\" on the second label?",
+      "Does the bottom label display the phrase \"100% Juice\"?",
+      "Is \"100% Juice\" visible on the lower label of the juice bottle?",
+      "Does the lower label bear the inscription \"100% Juice\"?"
+    ],
+    "Is the juice bottle filled to at least 90% of its capacity but not completely full?": [
+      "Is the bottle filled with juice to at least 90% of its volume but not 100%?",
+      "Is there a small gap at the top of the bottle indicating it is not completely full?",
+      "Is the juice level in the bottle between 90% and 100% of its capacity?",
+      "Does the bottle appear nearly full with juice but with a visible gap at the top?",
+      "Is the fill level of the bottle high but below the very top?"
+    ]
+  }
+}

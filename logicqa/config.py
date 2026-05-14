@@ -62,6 +62,8 @@ class PipelineConfig:
     use_llm_judge_hallucination: bool = False
     # Stage 4: minimum number of main questions voting "No" to declare anomaly
     anomaly_min_failures: int = 2
+    # Stage 3a: "llm" = single VLM call for N questions, "structured" = one question per Stage 2 bullet
+    question_generation_mode: str = "llm"
 
 
 @dataclass

@@ -26,6 +26,7 @@ from logicqa.pipeline.stage1_describe import describe_normal_images
 from logicqa.pipeline.stage2_summarize import summarize_normal_context
 from logicqa.pipeline.stage3_questions import (
     generate_candidate_questions,
+    generate_questions_from_bullets,
     filter_questions_on_normal,
     generate_sub_questions,
 )
@@ -227,19 +228,28 @@ class LogicQAPipeline:
         )
 
         # Stage 2
-        summary = summarize_normal_context(
+        self.normality_summary = summarize_normal_context(
             self.vlm, descriptions, self.normality_definition, logger=self.logger
         )
 
         # Stage 3a: Generate candidates
-        candidates = generate_candidate_questions(
-            self.vlm,
-            summary,
-            self.normality_definition,
-            class_name=self.class_name,
-            n_questions=n_questions,
-            logger=self.logger
-        )
+        q_mode = getattr(self.cfg.pipeline, "question_generation_mode", "llm")
+        if q_mode == "structured":
+            candidates = generate_questions_from_bullets(
+                self.vlm,
+                self.normality_summary,
+                class_name=self.class_name,
+                logger=self.logger,
+            )
+        else:
+            candidates = generate_candidate_questions(
+                self.vlm,
+                self.normality_summary,
+                self.normality_definition,
+                class_name=self.class_name,
+                n_questions=n_questions,
+                logger=self.logger,
+            )
 
         # Stage 3b: Filter
         preprocessed_vals = [
@@ -412,7 +422,7 @@ class LogicQAPipeline:
             self.vlm, preprocessed_normals, self.normality_definition, self.class_name,
             image_paths=normal_images, logger=self.logger, llm_judge=ensemble_judge,
         )
-        summary = summarize_normal_context(
+        self.normality_summary = summarize_normal_context(
             self.vlm, descriptions, self.normality_definition, logger=self.logger
         )
 
@@ -421,17 +431,27 @@ class LogicQAPipeline:
             for img in val_images
         ]
 
+        q_mode = getattr(self.cfg.pipeline, "question_generation_mode", "llm")
+
         # Stage 3: run with each seed, merge unique filtered questions
         all_sub_questions: Dict[str, List[str]] = {}
         for seed in seeds:
             print(f"\n  [Ensemble] Seed={seed} — generating questions ...")
             random.seed(seed)
 
-            candidates = generate_candidate_questions(
-                self.vlm, summary, self.normality_definition,
-                class_name=self.class_name, n_questions=n_questions,
-                logger=self.logger,
-            )
+            if q_mode == "structured":
+                candidates = generate_questions_from_bullets(
+                    self.vlm,
+                    self.normality_summary,
+                    class_name=self.class_name,
+                    logger=self.logger,
+                )
+            else:
+                candidates = generate_candidate_questions(
+                    self.vlm, self.normality_summary, self.normality_definition,
+                    class_name=self.class_name, n_questions=n_questions,
+                    logger=self.logger,
+                )
             filtered = filter_questions_on_normal(
                 self.vlm, candidates, preprocessed_vals,
                 threshold=self.cfg.pipeline.question_filter_threshold,

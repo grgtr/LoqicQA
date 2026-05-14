@@ -13,7 +13,6 @@ Pipeline (per image):
 """
 from __future__ import annotations
 
-import math
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Dict, List, Optional, Union
@@ -156,36 +155,23 @@ def _subq_consistency(sub_results: List[SubQResult]) -> float:
 
 def _compute_anomaly_score(main_q_results: List[MainQResult]) -> float:
     """
-    Improvement 3: Consistency-weighted anomaly score.
+    Count-based anomaly score: fraction of main questions that voted "No".
 
-    Each main question's log-prob score is weighted by its sub-question consistency.
-    Questions with unanimous 5:0 sub-question votes (consistency=1.0) dominate;
-    questions with 3:2 splits (consistency=0.0) contribute minimally.
-    Falls back to equal weighting if all consistencies are zero.
+    Returns a value in [0, 1] that monotonically increases with the number of
+    violated constraints. This gives a smooth signal for AUROC computation even
+    when all binary predictions are identical.
+
+    Example with 8 questions:
+      0 fail → 0.000 (clearly normal)
+      1 fail → 0.125 (noisy / likely FP)
+      2 fail → 0.250 (borderline)
+      4 fail → 0.500 (likely anomaly)
     """
     if not main_q_results:
-        return 0.5
+        return 0.0
 
-    S = []
-    weights = []
-    for mq in main_q_results:
-        lp = mq.best_log_prob if mq.best_log_prob is not None else -1.0
-        S.append(math.exp(max(lp, -30)))
-        weights.append(_subq_consistency(mq.sub_results))
-
-    # Fallback: if all weights are 0, use equal weighting
-    total_w = sum(weights)
-    if total_w == 0.0:
-        weights = [1.0] * len(main_q_results)
-        total_w = float(len(main_q_results))
-
-    weighted_score = sum(s * w for s, w in zip(S, weights)) / total_w
-    is_anomaly = any(mq.voted_answer == "No" for mq in main_q_results)
-
-    if is_anomaly:
-        return min(weighted_score, 1.0)
-    else:
-        return max(1.0 - weighted_score, 0.0)
+    n_no = sum(1 for mq in main_q_results if mq.voted_answer == "No")
+    return n_no / len(main_q_results)
 
 def test_image(
     vlm: VLMBase,
@@ -197,6 +183,7 @@ def test_image(
     logger: Optional[PipelineLogger] = None,
     gt_label="unknown",
     anomaly_type: Optional[str] = None,
+    anomaly_min_failures: int = 2,
 ) -> ImageResult:
     """
     Stage 4: Test a single query image with the generated question checklist.
@@ -264,8 +251,7 @@ def test_image(
         if voted == "No":
             violating_questions.append(mq)
 
-    # Final decision: anomaly if ANY main-Q votes "No"
-    is_anomaly = len(violating_questions) > 0
+    is_anomaly = len(violating_questions) >= anomaly_min_failures
     anomaly_score = _compute_anomaly_score(main_q_results)
 
     # Human-readable explanation

@@ -89,6 +89,41 @@ class LogicQAPipeline:
         return self._langsam
 
     # ------------------------------------------------------------------ #
+    # Fix C: constraint relevance filter
+    # ------------------------------------------------------------------ #
+
+    def _filter_by_constraints(
+        self,
+        questions: List[str],
+        llm_judge,
+    ) -> List[str]:
+        """Drop questions that don't map to any known atomic constraint.
+
+        Requires LLMJudge and ATOMIC_CONSTRAINTS for the current class.
+        If either is unavailable, returns questions unchanged.
+        """
+        if llm_judge is None or not questions:
+            return questions
+        try:
+            from logicqa.data.evaluation_gt import ATOMIC_CONSTRAINTS
+        except ImportError:
+            return questions
+
+        constraints = ATOMIC_CONSTRAINTS.get(self.class_name, [])
+        if not constraints:
+            return questions
+
+        filtered = []
+        for q in questions:
+            mapped = llm_judge.map_question_to_constraints(q, constraints)
+            if mapped:
+                filtered.append(q)
+            else:
+                print(f"  [Constraint filter] DROPPED (no constraint match): {q[:80]}")
+        print(f"  [Constraint filter] {len(filtered)}/{len(questions)} questions map to known constraints")
+        return filtered
+
+    # ------------------------------------------------------------------ #
     # Preprocessing helpers
     # ------------------------------------------------------------------ #
 
@@ -221,6 +256,9 @@ class LogicQAPipeline:
             n_shots=self.cfg.pipeline.n_shots,  # Improvement 2: adaptive threshold
         )
 
+        # Fix C: drop questions that don't map to any known atomic constraint
+        kept = self._filter_by_constraints(kept, llm_judge)
+
         # Stage 3c: Sub-questions
         sub_qs = generate_sub_questions(
             self.vlm,
@@ -266,6 +304,8 @@ class LogicQAPipeline:
         # Preprocess
         preprocessed = self._preprocess(image, cls)
 
+        min_failures = getattr(self.cfg.pipeline, "anomaly_min_failures", 2)
+
         # If Lang-SAM returned multiple segments, test each and aggregate
         if isinstance(preprocessed, list):
             results = [
@@ -278,7 +318,8 @@ class LogicQAPipeline:
                     class_name=self.class_name,
                     logger=self.logger,
                     gt_label=gt_label,
-                    anomaly_type=anomaly_type
+                    anomaly_type=anomaly_type,
+                    anomaly_min_failures=min_failures,
                 )
                 for seg in preprocessed
             ]
@@ -286,10 +327,6 @@ class LogicQAPipeline:
             is_anomaly = any(r.is_anomaly for r in results)
             anomaly_score = max(r.anomaly_score for r in results)
             best = max(results, key=lambda r: r.anomaly_score)
-            # best.is_anomaly = is_anomaly
-            # best.anomaly_score = anomaly_score
-            # best.image_path = image_path_str
-            # return best
             return ImageResult(
                 image_path=image_path_str,
                 is_anomaly=is_anomaly,
@@ -307,7 +344,8 @@ class LogicQAPipeline:
             class_name=self.class_name,
             logger=self.logger,
             gt_label=gt_label,
-            anomaly_type=anomaly_type
+            anomaly_type=anomaly_type,
+            anomaly_min_failures=min_failures,
         )
 
     # ------------------------------------------------------------------ #
@@ -351,6 +389,16 @@ class LogicQAPipeline:
         print(f" LogicQA Ensemble Setup: {class_name} | seeds={seeds}")
         print(f"{'='*60}")
 
+        # Optionally load LLMJudge once for hallucination detection + Fix C filter
+        ensemble_judge = None
+        if getattr(self.cfg.pipeline, "use_llm_judge_hallucination", False):
+            try:
+                from logicqa.evaluation.llm_judge import LLMJudge
+                ensemble_judge = LLMJudge()
+                print("[Ensemble] LLMJudge loaded for hallucination detection + constraint filter")
+            except Exception as e:
+                print(f"[Ensemble] LLMJudge load failed, skipping: {e}")
+
         # Stages 1-2 are deterministic — run once
         preprocessed_normals = [
             self._preprocess_for_description(img, self.class_name)
@@ -358,7 +406,7 @@ class LogicQAPipeline:
         ]
         descriptions = describe_normal_images(
             self.vlm, preprocessed_normals, self.normality_definition, self.class_name,
-            image_paths=normal_images, logger=self.logger,
+            image_paths=normal_images, logger=self.logger, llm_judge=ensemble_judge,
         )
         summary = summarize_normal_context(
             self.vlm, descriptions, self.normality_definition, logger=self.logger
@@ -397,6 +445,10 @@ class LogicQAPipeline:
                     all_sub_questions[q] = sqs
                     new += 1
             print(f"  [Ensemble] Seed={seed}: {len(filtered)} filtered, {new} new unique questions added")
+
+        # Fix C: drop questions that don't map to any known atomic constraint
+        merged = self._filter_by_constraints(list(all_sub_questions.keys()), ensemble_judge)
+        all_sub_questions = {q: all_sub_questions[q] for q in merged}
 
         self.main_questions = list(all_sub_questions.keys())
         self.sub_questions = all_sub_questions

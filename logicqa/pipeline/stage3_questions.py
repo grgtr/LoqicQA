@@ -318,18 +318,25 @@ def _adaptive_threshold(n_shots: Optional[int], base_threshold: float) -> float:
     """
     Improvement 2: Compute adaptive filtering threshold based on few-shot count.
 
-    With very few shots (≤5), any 1 wrong answer from 3 gives 67% accuracy —
-    below 0.8 threshold, so the default would drop too many good questions.
-    We require 100% to prevent noisy questions from slipping through.
-    With many shots (>8), 70% is a reasonable relaxed threshold.
+    More shots → more reliable per-question accuracy estimate → can afford to
+    be slightly more lenient without letting noisy questions through.
+    Fewer shots → noisier estimate → require higher agreement to be safe.
+
+    Schedule:
+        n_shots <= 3  → 1.0  (all images must say Yes — 3 shots is very noisy)
+        n_shots <= 6  → 0.8  (4/5 or 5/6 must say Yes)
+        n_shots <= 10 → 0.7
+        n_shots > 10  → 0.6
     """
     if n_shots is None:
         return base_threshold
-    if n_shots <= 5:
+    if n_shots <= 3:
         return 1.0
-    if n_shots <= 8:
+    if n_shots <= 6:
         return 0.8
-    return 0.7
+    if n_shots <= 10:
+        return 0.7
+    return 0.6
 
 
 def filter_questions_on_normal(

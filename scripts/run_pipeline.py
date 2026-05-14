@@ -207,7 +207,6 @@ def main() -> None:
     if args.seed is not None:
         cfg.testing.random_seed = args.seed
     cfg.dataset.data_dir = args.data_dir
-    cfg.dataset.download_if_missing = True
     cfg.pipeline.output_dir = args.output_dir
     cfg.pipeline.class_name = args.class_name
     # ------------------------------------------------------------------ #
@@ -217,7 +216,7 @@ def main() -> None:
     dataset = MVTecLOCODataset(
         data_dir=args.data_dir,
         class_name=args.class_name,
-        download_if_missing=True,
+        download_if_missing=cfg.dataset.download_if_missing,
     )
 
     # ------------------------------------------------------------------ #
@@ -233,19 +232,42 @@ def main() -> None:
         # Sample few-shot normal images and run setup (Stages 1-3)
         # print("[DEBUG] n_shots", args.n_shots)
         normal_images = dataset.sample_train_normal(n=cfg.pipeline.n_shots, seed=args.seed)
-        print(f"[Setup] Using {len(normal_images)} normal images: "
+        print(f"[Setup] Using {len(normal_images)} few-shot normal images: "
               f"{[p.name for p in normal_images]}")
 
-        pipeline.setup(
-            class_name=args.class_name,
-            normal_images=normal_images,
-            n_questions=cfg.pipeline.n_questions,
-        )
+        # Fix A: separate validation set for Stage 3b to avoid overfitting
+        n_val = getattr(cfg.pipeline, "n_val_shots", 0)
+        if n_val > 0:
+            val_seed = (args.seed or 0) + 1000
+            val_candidates = dataset.sample_train_normal(n=n_val + cfg.pipeline.n_shots, seed=val_seed)
+            normal_set = set(normal_images)
+            val_images = [p for p in val_candidates if p not in normal_set][:n_val]
+            print(f"[Setup] Using {len(val_images)} separate val images for Stage 3b: "
+                  f"{[p.name for p in val_images]}")
+        else:
+            val_images = None  # falls back to normal_images inside setup()
+
+        ensemble_seeds = list(getattr(cfg.pipeline, "ensemble_seeds", []))
+        if ensemble_seeds:
+            print(f"[Setup] Ensemble mode: seeds={ensemble_seeds}")
+            pipeline.setup_ensemble(
+                class_name=args.class_name,
+                normal_images=normal_images,
+                n_questions=cfg.pipeline.n_questions,
+                seeds=ensemble_seeds,
+                validation_images=val_images,
+            )
+        else:
+            pipeline.setup(
+                class_name=args.class_name,
+                normal_images=normal_images,
+                n_questions=cfg.pipeline.n_questions,
+                validation_images=val_images,
+            )
 
         if args.save_questions:
-            out_dir = Path(os.path.expanduser(args.output_dir))
-            out_dir.mkdir(parents=True, exist_ok=True)
-            q_path = out_dir / f"{args.class_name}_questions.json"
+            run_dir = pipeline.logger.run_dir if pipeline.logger else Path(os.path.expanduser(args.output_dir))
+            q_path = run_dir / f"{args.class_name}_questions.json"
             pipeline.save_questions(q_path)
 
     # ------------------------------------------------------------------ #
@@ -350,9 +372,8 @@ def main() -> None:
     )
 
     print(matrix_str)
-    out_dir = Path(os.path.expanduser(args.output_dir))
-    out_dir.mkdir(parents=True, exist_ok=True)
-    results_path = out_dir / f"{args.class_name}_results.json"
+    run_dir = pipeline.logger.run_dir if pipeline.logger else Path(os.path.expanduser(args.output_dir))
+    results_path = run_dir / f"{args.class_name}_results.json"
     if pipeline.logger:
         if hasattr(pipeline.logger, "log"):
             pipeline.logger.log(matrix_str)

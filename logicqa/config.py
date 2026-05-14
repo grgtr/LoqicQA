@@ -64,6 +64,8 @@ class PipelineConfig:
     anomaly_min_failures: int = 2
     # Stage 3a: "llm" = single VLM call for N questions, "structured" = one question per Stage 2 bullet
     question_generation_mode: str = "llm"
+    # Stage 4: targeted component localization before each question (Visual Primitives inspired)
+    use_grounded_reasoning: bool = False
 
 
 @dataclass

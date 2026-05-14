@@ -1,0 +1,109 @@
+# Visual Grounding experiment on breakfast_box
+# Inspired by "Thinking with Visual Primitives" (DeepSeek, 2026)
+#
+# New features vs config_improved_test_bb50.yaml:
+#   - use_grounded_reasoning: true  → localize each component before answering questions
+#   - extract_all_components (union from Stage 1) fixes missing banana chips / almonds
+#
+# Run:
+#   .venv/bin/python3 scripts/run_pipeline.py \
+#       --class_name breakfast_box \
+#       --config config_visual_grounding_bb50.yaml \
+#       --output_dir results/visual_grounding_bb50 \
+#       --data_dir /home/chikibriki/LoqicQA/dataset-ninja/ \
+#       --seed 42 --save_questions 2>&1 | tee /tmp/run8_vg_bb50.log
+
+vlm:
+  backend: "internvl"
+  internvl:
+    model_name: "OpenGVLab/InternVL2_5-8B"
+    temperature: 0.2
+    top_p: 0.7
+    repetition_penalty: 1.1
+    do_sample: true
+    max_new_tokens: 512
+    device_map: "auto"
+
+pipeline:
+  n_shots: 5
+  n_val_shots: 15
+  n_questions: 8
+  n_sub_questions: 5
+  question_filter_threshold: 0.8
+  ensemble_seeds: [42, 7, 13]
+  use_llm_judge_hallucination: true
+  anomaly_min_failures: 2
+  question_generation_mode: "structured"
+  use_grounded_reasoning: true          # ← Visual Primitives inspired grounding
+
+dataset:
+  name: "mvtec_loco"
+  data_dir: "/home/chikibriki/LoqicQA/dataset-ninja/"
+  download_if_missing: false
+
+preprocessing:
+  bpm:
+    enabled: false
+  langsam:
+    enabled: false
+
+output:
+  results_dir: "results/visual_grounding_bb50"
+  save_questions: true
+  save_per_image: true
+
+testing:
+  mode: "specific"
+  specific_samples:
+    # 25 normal (good)
+    - breakfast_box_good_003.png
+    - breakfast_box_good_004.png
+    - breakfast_box_good_011.png
+    - breakfast_box_good_013.png
+    - breakfast_box_good_014.png
+    - breakfast_box_good_017.png
+    - breakfast_box_good_025.png
+    - breakfast_box_good_027.png
+    - breakfast_box_good_028.png
+    - breakfast_box_good_029.png
+    - breakfast_box_good_031.png
+    - breakfast_box_good_035.png
+    - breakfast_box_good_054.png
+    - breakfast_box_good_064.png
+    - breakfast_box_good_069.png
+    - breakfast_box_good_071.png
+    - breakfast_box_good_075.png
+    - breakfast_box_good_077.png
+    - breakfast_box_good_081.png
+    - breakfast_box_good_086.png
+    - breakfast_box_good_090.png
+    - breakfast_box_good_091.png
+    - breakfast_box_good_092.png
+    - breakfast_box_good_094.png
+    - breakfast_box_good_099.png
+    # 25 logical anomalies (no structural)
+    - breakfast_box_logical_anomalies_000.png   # compartments_swapped
+    - breakfast_box_logical_anomalies_002.png   # compartments_swapped
+    - breakfast_box_logical_anomalies_006.png   # missing_almonds
+    - breakfast_box_logical_anomalies_011.png   # missing_almonds
+    - breakfast_box_logical_anomalies_013.png   # missing_almonds
+    - breakfast_box_logical_anomalies_016.png   # missing_bananas
+    - breakfast_box_logical_anomalies_019.png   # missing_bananas
+    - breakfast_box_logical_anomalies_020.png   # missing_bananas
+    - breakfast_box_logical_anomalies_022.png   # missing_bananas
+    - breakfast_box_logical_anomalies_027.png   # missing_cereals
+    - breakfast_box_logical_anomalies_028.png   # missing_cereals
+    - breakfast_box_logical_anomalies_039.png   # missing_toppings
+    - breakfast_box_logical_anomalies_042.png   # missing_toppings
+    - breakfast_box_logical_anomalies_047.png   # overflow
+    - breakfast_box_logical_anomalies_050.png   # underflow
+    - breakfast_box_logical_anomalies_052.png   # 3_nectarines_0_tangerines
+    - breakfast_box_logical_anomalies_055.png   # 0_nectarines_3_tangerines
+    - breakfast_box_logical_anomalies_057.png   # 2_nectarines_1_tangerine
+    - breakfast_box_logical_anomalies_058.png   # 0_nectarines_1_tangerine
+    - breakfast_box_logical_anomalies_061.png   # 0_nectarines_1_tangerine
+    - breakfast_box_logical_anomalies_065.png   # 0_nectarines_0_tangerines
+    - breakfast_box_logical_anomalies_074.png   # wrong_ratio
+    - breakfast_box_logical_anomalies_075.png   # wrong_ratio
+    - breakfast_box_logical_anomalies_078.png   # wrong_ratio
+    - breakfast_box_logical_anomalies_079.png   # wrong_ratio

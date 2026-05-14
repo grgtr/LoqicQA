@@ -20,7 +20,7 @@ from typing import Dict, List, Optional, Union
 from PIL import Image
 
 from logicqa.vlm.base import VLMBase
-from logicqa.prompts import TEST_PROMPT
+from logicqa.prompts import TEST_PROMPT, LOCALIZATION_PROMPT
 from logicqa.logging import PipelineLogger
 
 
@@ -48,6 +48,35 @@ class ImageResult:
     explanation: str = ""                     # human-readable explanation
 
 
+def localize_components(
+    vlm: VLMBase,
+    image: Image.Image,
+    components: List[str],
+    class_name: str = "object",
+) -> Dict[str, str]:
+    """Ask the VLM to locate each known component in the image.
+
+    Returns a dict mapping component name → one-line position description.
+    Called once per test image before the question loop.
+    """
+    result: Dict[str, str] = {}
+    for comp in components:
+        prompt = LOCALIZATION_PROMPT.format(class_name=class_name, component=comp)
+        response = vlm.query(prompt=prompt, image=image)
+        first_line = response.text.strip().splitlines()[0] if response.text.strip() else "Not found"
+        result[comp] = first_line
+        print(f"  [Grounding] {comp}: {first_line}")
+    return result
+
+
+def format_grounding_map(grounding_map: Dict[str, str]) -> str:
+    """Format grounding results as a structured string for injection into TEST_PROMPT."""
+    if not grounding_map:
+        return ""
+    lines = ["Located objects:"] + [f"- {k}: {v}" for k, v in grounding_map.items()]
+    return "\n".join(lines)
+
+
 def _ask_sub_question(
     vlm: VLMBase,
     question: str,
@@ -58,9 +87,13 @@ def _ask_sub_question(
     image_path: Optional[str] = None,
     logger: Optional[PipelineLogger] = None,
     normality_summary: str = "",
+    grounding_context: str = "",
 ) -> SubQResult:
     """Ask one sub-question about an image and return the result."""
-    prompt = TEST_PROMPT.format(question=question, class_name=class_name, class_context=normality_summary)
+    full_context = normality_summary
+    if grounding_context:
+        full_context = normality_summary + "\n\n" + grounding_context
+    prompt = TEST_PROMPT.format(question=question, class_name=class_name, class_context=full_context)
     if hasattr(vlm, "query_with_logprobs"):
         # print("[DEBUG] using query_with_logprobs in stage4_test")
         response = vlm.query_with_logprobs(prompt=prompt, image=image)
@@ -186,6 +219,8 @@ def test_image(
     anomaly_type: Optional[str] = None,
     anomaly_min_failures: int = 2,
     normality_summary: str = "",
+    components: Optional[List[str]] = None,
+    use_grounded_reasoning: bool = False,
 ) -> ImageResult:
     """
     Stage 4: Test a single query image with the generated question checklist.
@@ -210,6 +245,15 @@ def test_image(
         logger.log_stage4_image_start(
             image_idx=0, image_path=image_path or "", gt_label=gt_label, anomaly_type=anomaly_type
         )
+
+    # Grounded reasoning: localize all known components once before the question loop
+    grounding_context = ""
+    if use_grounded_reasoning and components:
+        print(f"  [Grounding] Localizing {len(components)} components ...")
+        grounding_map = localize_components(vlm, pil_img, components, class_name)
+        grounding_context = format_grounding_map(grounding_map)
+        print(f"  [Grounding] Context built:\n{grounding_context}")
+
     main_q_results: List[MainQResult] = []
     violating_questions: List[str] = []
 
@@ -226,6 +270,7 @@ def test_image(
                 image_path=image_path or "",
                 logger=logger,
                 normality_summary=normality_summary,
+                grounding_context=grounding_context,
             )
             sub_results.append(sub_result)
 

@@ -247,6 +247,18 @@ Output ONLY the questions, numbered 1 to {n_questions}. Do not add any introduct
 {question_slots}
 """
 
+LOCALIZATION_PROMPT = """You are inspecting a {class_name} image.
+
+Locate '{component}' in the image.
+
+Answer in ONE line using this exact format:
+  <position> (<count> instance(s))
+  or: Not found
+
+Use only spatial terms: left side / right side / center / top / bottom.
+Do NOT explain. Output ONLY the location line."""
+
+
 BULLET_TO_QUESTION_PROMPT = """You are converting a quality control fact into an inspection question.
 
 Fact about a normal {class_name}: {fact}

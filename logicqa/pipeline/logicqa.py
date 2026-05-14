@@ -23,7 +23,7 @@ from logicqa.data.normality_definitions import (
     LANGSAM_CLASSES,
 )
 from logicqa.pipeline.stage1_describe import describe_normal_images
-from logicqa.pipeline.stage2_summarize import summarize_normal_context
+from logicqa.pipeline.stage2_summarize import summarize_normal_context, extract_all_components
 from logicqa.pipeline.stage3_questions import (
     generate_candidate_questions,
     generate_questions_from_bullets,
@@ -76,6 +76,7 @@ class LogicQAPipeline:
         self.class_name: Optional[str] = None
         self.normality_definition: Optional[str] = None
         self.normality_summary: str = ""
+        self.components: List[str] = []
         self.main_questions: List[str] = []
         self.sub_questions: Dict[str, List[str]] = {}
         self._setup_done = False
@@ -226,6 +227,8 @@ class LogicQAPipeline:
             self.vlm, preprocessed_normals, self.normality_definition, self.class_name,
             image_paths=normal_images, logger=self.logger, llm_judge=llm_judge,
         )
+        self.components = extract_all_components(descriptions)
+        print(f"[Setup] Extracted {len(self.components)} unique components: {self.components}")
 
         # Stage 2
         self.normality_summary = summarize_normal_context(
@@ -317,6 +320,7 @@ class LogicQAPipeline:
         preprocessed = self._preprocess(image, cls)
 
         min_failures = getattr(self.cfg.pipeline, "anomaly_min_failures", 2)
+        use_grounded = getattr(self.cfg.pipeline, "use_grounded_reasoning", False)
 
         # If Lang-SAM returned multiple segments, test each and aggregate
         if isinstance(preprocessed, list):
@@ -333,10 +337,11 @@ class LogicQAPipeline:
                     anomaly_type=anomaly_type,
                     anomaly_min_failures=min_failures,
                     normality_summary=self.normality_summary,
+                    components=self.components if use_grounded else None,
+                    use_grounded_reasoning=use_grounded,
                 )
                 for seg in preprocessed
             ]
-            # Aggregate: anomaly if ANY segment is anomalous; max anomaly score
             is_anomaly = any(r.is_anomaly for r in results)
             anomaly_score = max(r.anomaly_score for r in results)
             best = max(results, key=lambda r: r.anomaly_score)
@@ -360,6 +365,8 @@ class LogicQAPipeline:
             anomaly_type=anomaly_type,
             anomaly_min_failures=min_failures,
             normality_summary=self.normality_summary,
+            components=self.components if use_grounded else None,
+            use_grounded_reasoning=use_grounded,
         )
 
     # ------------------------------------------------------------------ #
@@ -422,6 +429,8 @@ class LogicQAPipeline:
             self.vlm, preprocessed_normals, self.normality_definition, self.class_name,
             image_paths=normal_images, logger=self.logger, llm_judge=ensemble_judge,
         )
+        self.components = extract_all_components(descriptions)
+        print(f"[Ensemble] Extracted {len(self.components)} unique components: {self.components}")
         self.normality_summary = summarize_normal_context(
             self.vlm, descriptions, self.normality_definition, logger=self.logger
         )

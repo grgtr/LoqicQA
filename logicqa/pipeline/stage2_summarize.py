@@ -44,6 +44,34 @@ def _sanitize_summary_section(text: str) -> str:
             return "N/A"
     return text
 
+def extract_all_components(descriptions: List[str]) -> List[str]:
+    """
+    Parse the '1. Components:' section from every Stage 1 description and return
+    the deduplicated union of all mentioned objects.
+
+    Uses union (not intersection) so that objects mentioned in even one description
+    (e.g., banana chips present in 1/5 images) are not silently dropped.
+    """
+    seen: set = set()
+    components: List[str] = []
+    for desc in descriptions:
+        in_components = False
+        for line in desc.splitlines():
+            line = line.strip()
+            if re.match(r"^1\.\s*(components|Components)", line):
+                in_components = True
+                continue
+            if re.match(r"^\d+\.\s", line) and in_components:
+                break
+            if in_components and line.startswith("- "):
+                obj = line[2:].strip().rstrip(".")
+                key = obj.lower()
+                if key not in seen and len(obj) > 2:
+                    seen.add(key)
+                    components.append(obj)
+    return components
+
+
 def summarize_normal_context(
     vlm: VLMBase,
     descriptions: list[str],

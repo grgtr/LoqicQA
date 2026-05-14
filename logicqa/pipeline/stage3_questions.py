@@ -16,6 +16,7 @@ from PIL import Image
 from logicqa.vlm.base import VLMBase
 from logicqa.prompts import (
     GENERATE_QUESTIONS_PROMPT,
+    BULLET_TO_QUESTION_PROMPT,
     SUBQUESTION_AUGMENT_PROMPT,
     TEST_PROMPT,
     build_question_slots,
@@ -234,6 +235,63 @@ def _parse_output_list(text: str) -> List[str]:
             cleaned.append(q)
 
     return cleaned
+
+
+def _parse_stage2_bullets(summary: str) -> List[str]:
+    """Extract atomic fact bullet-points from Stage 2's 7-section structured output."""
+    bullets = []
+    for line in summary.splitlines():
+        line = line.strip()
+        if not line:
+            continue
+        if re.match(r"^\d+\.\s", line):
+            continue
+        if line.lower().strip(".:") == "n/a":
+            continue
+        if line.startswith("- "):
+            fact = line[2:].strip().rstrip(".")
+            if len(fact) > 10:
+                bullets.append(fact)
+    seen: set = set()
+    return [b for b in bullets if not (b in seen or seen.add(b))]  # type: ignore[func-returns-value]
+
+
+def generate_questions_from_bullets(
+    vlm: VLMBase,
+    normality_summary: str,
+    class_name: str = "object",
+    logger: Optional[PipelineLogger] = None,
+) -> List[str]:
+    """
+    Stage 3a (structured mode): generate one Yes/No question per Stage 2 bullet-point.
+
+    Guarantees that every atomic constraint section (Components, Quantities, Spatial,
+    Visual, Relational, Symmetry, Per-Slot) is covered rather than letting the VLM
+    cluster questions around the most salient constraint.
+    """
+    bullets = _parse_stage2_bullets(normality_summary)
+    print(f"  [Stage 3a/structured] {len(bullets)} bullets parsed from Stage 2 summary.")
+    questions: List[str] = []
+    seen: set = set()
+    for fact in bullets:
+        prompt = BULLET_TO_QUESTION_PROMPT.format(class_name=class_name, fact=fact)
+        response = vlm.query(prompt=prompt, image=None)
+        q = response.text.strip()
+        q = _strip_quotes(q)
+        if q and q not in seen and _is_valid_question(q) and _is_semantically_valid_question(q):
+            questions.append(q)
+            seen.add(q)
+            print(f"    fact: {fact[:60]} → {q[:80]}")
+        else:
+            print(f"    fact: {fact[:60]} → DROPPED ({q[:60]})")
+    print(f"  [Stage 3a/structured] Generated {len(questions)} questions from {len(bullets)} bullets.")
+    if logger:
+        logger.log_stage3a_questions(
+            prompt="(structured-from-bullets)",
+            response_text=str(questions),
+            parsed_questions=questions,
+        )
+    return questions
 
 
 def generate_candidate_questions(

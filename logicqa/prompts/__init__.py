@@ -247,6 +247,24 @@ Output ONLY the questions, numbered 1 to {n_questions}. Do not add any introduct
 {question_slots}
 """
 
+BULLET_TO_QUESTION_PROMPT = """You are converting a quality control fact into an inspection question.
+
+Fact about a normal {class_name}: {fact}
+
+Convert this fact into a single Yes/No inspection question where:
+- "Yes" means the image IS normal (the fact holds)
+- "No" means the image is anomalous (the fact is violated)
+
+Rules:
+- Output ONE question only, ending with "?"
+- Use simple, direct language
+- Test exactly ONE observable property
+- No negative phrasing (use "Is there X?" not "Is X absent?")
+- No subjective words ("good", "proper", "normal")
+
+Output ONLY the question, nothing else."""
+
+
 def build_question_slots(n: int) -> str:
     """Generate question slots like (Q1) :\n(Q2) :\n..."""
     return "\n".join(f"(Q{i}) :" for i in range(1, n + 1))

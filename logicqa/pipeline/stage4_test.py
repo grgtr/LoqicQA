@@ -57,9 +57,10 @@ def _ask_sub_question(
     sub_q_idx: Optional[int] = None,
     image_path: Optional[str] = None,
     logger: Optional[PipelineLogger] = None,
+    normality_summary: str = "",
 ) -> SubQResult:
     """Ask one sub-question about an image and return the result."""
-    prompt = TEST_PROMPT.format(question=question, class_name=class_name)
+    prompt = TEST_PROMPT.format(question=question, class_name=class_name, class_context=normality_summary)
     if hasattr(vlm, "query_with_logprobs"):
         # print("[DEBUG] using query_with_logprobs in stage4_test")
         response = vlm.query_with_logprobs(prompt=prompt, image=image)
@@ -184,6 +185,7 @@ def test_image(
     gt_label="unknown",
     anomaly_type: Optional[str] = None,
     anomaly_min_failures: int = 2,
+    normality_summary: str = "",
 ) -> ImageResult:
     """
     Stage 4: Test a single query image with the generated question checklist.
@@ -223,6 +225,7 @@ def test_image(
                 sub_q_idx=idx + 1,
                 image_path=image_path or "",
                 logger=logger,
+                normality_summary=normality_summary,
             )
             sub_results.append(sub_result)
 

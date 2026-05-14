@@ -15,19 +15,6 @@ from logicqa.prompts import DESCRIBE_PROMPT
 from logicqa.logging import PipelineLogger
 
 
-def _flag_hallucinations(description: str, impossible_objects: List[str]) -> bool:
-    """
-    Improvement 6: Lightweight keyword check for impossible objects in a description.
-
-    Returns True if the description likely contains hallucinated content
-    (mentions objects that cannot appear in this class).
-    """
-    desc_lower = description.lower()
-    for obj in impossible_objects:
-        if obj.lower() in desc_lower:
-            return True
-    return False
-
 
 def describe_normal_images(
     vlm: VLMBase,
@@ -38,21 +25,7 @@ def describe_normal_images(
     logger: Optional[PipelineLogger] = None,
     llm_judge=None,
 ) -> List[str]:
-    """
-    Stage 1: Generate textual descriptions of normal images.
-
-    Args:
-        vlm:                  VLM backend instance.
-        normal_images:        List of N normal image paths or PIL Images.
-        normality_definition: Normality definition string from Appendix C.2.
-        llm_judge:            Optional LLMJudge instance for hallucination detection
-                              (Improvement 6). If provided, descriptions containing
-                              impossible objects are flagged with a warning tag so
-                              Stage 2 sanitization can suppress them.
-
-    Returns:
-        List of N description strings, one per image.
-    """
+    """Stage 1: Generate textual descriptions of normal images."""
     from logicqa.data.normality_definitions import IMPOSSIBLE_OBJECTS
 
     prompt = DESCRIBE_PROMPT.format(
@@ -70,6 +43,10 @@ def describe_normal_images(
         text = response.text.strip()
 
         # Improvement 6: hallucination detection
+        # Only flag descriptions with HIGH severity (4+ issues) or confirmed
+        # impossible objects — Qwen2.5-3B produces many false positives on
+        # count/spatial categories for normal images, so low/medium severity
+        # is treated as noise and ignored to avoid corrupting Stage 2.
         if llm_judge is not None:
             try:
                 report = llm_judge.detect_hallucinations(
@@ -78,8 +55,13 @@ def describe_normal_images(
                     class_name=class_name,
                     impossible_objects=impossible,
                 )
-                if report.is_hallucinated:
-                    severity = report.severity()
+                severity = report.severity()
+                flag = (
+                    report.is_hallucinated
+                    and report.overall_confidence >= 0.8
+                    and (severity == "high" or len(report.impossible_objects) > 0)
+                )
+                if flag:
                     print(
                         f"  [Hallucination] description {i+1} severity={severity}: "
                         f"impossible={report.impossible_objects}, "
@@ -88,16 +70,13 @@ def describe_normal_images(
                         f"absent={report.absent_required}"
                     )
                     text = text + f"\n[UNCERTAIN: hallucination detected (severity={severity})]"
+                elif report.is_hallucinated:
+                    print(
+                        f"  [Hallucination] description {i+1} severity={severity} "
+                        f"(confidence={report.overall_confidence:.2f}) — below flag threshold, ignored"
+                    )
             except Exception as e:
                 print(f"  [Improvement 6] LLMJudge check failed: {e}")
-                # Keyword fallback on LLMJudge failure
-                if impossible and _flag_hallucinations(text, impossible):
-                    text = text + "\n[UNCERTAIN: possible hallucination detected]"
-        elif impossible:
-            # Lightweight keyword fallback (no LLMJudge needed)
-            if _flag_hallucinations(text, impossible):
-                print(f"  [Improvement 6] Keyword hallucination flag in description {i+1}")
-                text = text + "\n[UNCERTAIN: possible hallucination detected]"
 
         descriptions.append(text)
         if logger:

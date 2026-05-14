@@ -21,6 +21,19 @@ _HEDGE_PATTERNS = [
     r"\[UNCERTAIN",
 ]
 
+# Fix B: pattern to strip [UNCERTAIN: ...] tags added by Stage 1 hallucination detector
+_UNCERTAIN_TAG_RE = re.compile(r"\n?\[UNCERTAIN:[^\]]*\]", re.IGNORECASE)
+
+
+def _strip_uncertain_tags(description: str) -> str:
+    """Strip [UNCERTAIN: ...] suffixes from a Stage 1 description.
+
+    Preserves the useful description text while removing the warning tag so
+    Stage 2 receives clean context instead of the raw annotation.
+    """
+    return _UNCERTAIN_TAG_RE.sub("", description).strip()
+
+
 def _sanitize_summary_section(text: str) -> str:
     """
     Replace a summary section with N/A if it contains hedge language
@@ -50,7 +63,10 @@ def summarize_normal_context(
         A normality summary string.
     """
     print(" [Stage 2] Summarizing normal image context ...")
-    labeled = format_descriptions(descriptions, class_name=class_name)
+    # Fix B: strip [UNCERTAIN: ...] tags before building the prompt so that
+    # hallucination warnings from Stage 1 don't corrupt the Stage 2 context.
+    clean_descriptions = [_strip_uncertain_tags(d) for d in descriptions]
+    labeled = format_descriptions(clean_descriptions, class_name=class_name)
     prompt = SUMMARIZE_PROMPT.format(
         labeled_descriptions=labeled,
         n_descriptions=len(descriptions),

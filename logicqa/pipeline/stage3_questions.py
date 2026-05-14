@@ -293,6 +293,7 @@ def _answer_single_question(
     logger: Optional[PipelineLogger] = None,
     gt_label: str = "unknown",
     image_path: Optional[str] = None,
+    normality_summary: str = "",
 ) -> Optional[str]:
     """Ask a single question about one image and return 'Yes'/'No'/None."""
     if isinstance(image, (str, Path)):
@@ -300,7 +301,7 @@ def _answer_single_question(
     else:
         img = image
 
-    prompt = TEST_PROMPT.format(question=question, class_name=class_name)
+    prompt = TEST_PROMPT.format(question=question, class_name=class_name, class_context=normality_summary)
     response = vlm.query(prompt=prompt, image=img)
     if logger:
         logger.log_stage3b_filter_answer(
@@ -348,6 +349,7 @@ def filter_questions_on_normal(
     image_paths: Optional[List[str]] = None,
     logger: Optional[PipelineLogger] = None,
     n_shots: Optional[int] = None,
+    normality_summary: str = "",
 ) -> List[str]:
     """
     Stage 3b: Filter candidate questions with < threshold accuracy on normals.
@@ -382,7 +384,7 @@ def filter_questions_on_normal(
         correct = 0
         for i, img in enumerate(normal_images):
             gt_label = "good"
-            answer = _answer_single_question(vlm, q, img, class_name, logger, gt_label, str(image_paths[i]))
+            answer = _answer_single_question(vlm, q, img, class_name, logger, gt_label, str(image_paths[i]), normality_summary)
             if answer == "Yes":
                 correct += 1
         accuracy = correct / len(normal_images)

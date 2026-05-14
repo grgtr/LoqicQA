@@ -74,6 +74,7 @@ class LogicQAPipeline:
         # Will be set after setup()
         self.class_name: Optional[str] = None
         self.normality_definition: Optional[str] = None
+        self.normality_summary: str = ""
         self.main_questions: List[str] = []
         self.sub_questions: Dict[str, List[str]] = {}
         self._setup_done = False
@@ -253,7 +254,8 @@ class LogicQAPipeline:
             class_name=self.class_name,
             image_paths=val_images,
             logger=self.logger,
-            n_shots=self.cfg.pipeline.n_shots,  # Improvement 2: adaptive threshold
+            n_shots=self.cfg.pipeline.n_shots,
+            normality_summary=self.normality_summary,
         )
 
         # Fix C: drop questions that don't map to any known atomic constraint
@@ -320,6 +322,7 @@ class LogicQAPipeline:
                     gt_label=gt_label,
                     anomaly_type=anomaly_type,
                     anomaly_min_failures=min_failures,
+                    normality_summary=self.normality_summary,
                 )
                 for seg in preprocessed
             ]
@@ -346,6 +349,7 @@ class LogicQAPipeline:
             gt_label=gt_label,
             anomaly_type=anomaly_type,
             anomaly_min_failures=min_failures,
+            normality_summary=self.normality_summary,
         )
 
     # ------------------------------------------------------------------ #
@@ -433,6 +437,7 @@ class LogicQAPipeline:
                 threshold=self.cfg.pipeline.question_filter_threshold,
                 class_name=self.class_name, image_paths=val_images,
                 logger=self.logger, n_shots=self.cfg.pipeline.n_shots,
+                normality_summary=self.normality_summary,
             )
             sub_qs = generate_sub_questions(
                 self.vlm, filtered,

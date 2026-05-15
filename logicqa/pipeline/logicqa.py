@@ -125,6 +125,14 @@ class LogicQAPipeline:
     # Fix C: constraint relevance filter
     # ------------------------------------------------------------------ #
 
+    @staticmethod
+    def _constraint_keywords(constraint: str) -> set:
+        """Extract meaningful content words from a constraint string."""
+        stopwords = {"the", "a", "an", "is", "are", "in", "on", "of", "to",
+                     "and", "or", "its", "at", "with", "by", "than", "that",
+                     "there", "has", "have", "be", "been", "not", "no", "for"}
+        return {w.lower().strip(".,()") for w in constraint.split() if w.lower().strip(".,()") not in stopwords and len(w) > 2}
+
     def _filter_by_constraints(
         self,
         questions: List[str],
@@ -132,10 +140,12 @@ class LogicQAPipeline:
     ) -> List[str]:
         """Drop questions that don't map to any known atomic constraint.
 
-        Requires LLMJudge and ATOMIC_CONSTRAINTS for the current class.
-        If either is unavailable, returns questions unchanged.
+        Uses keyword-overlap matching (Jaccard ≥ 0.15 with any constraint) as
+        primary check, falling back to the LLM judge only for borderline cases.
+        Keyword matching is much more robust than pure LLM matching for the
+        vocabulary gap between generated questions and hand-written constraints.
         """
-        if llm_judge is None or not questions:
+        if not questions:
             return questions
         try:
             from logicqa.data.evaluation_gt import ATOMIC_CONSTRAINTS
@@ -146,13 +156,33 @@ class LogicQAPipeline:
         if not constraints:
             return questions
 
+        constraint_kw_sets = [self._constraint_keywords(c) for c in constraints]
+
+        def _keyword_matches(q: str) -> bool:
+            q_words = self._constraint_keywords(q)
+            if not q_words:
+                return False
+            for ckw in constraint_kw_sets:
+                if not ckw:
+                    continue
+                overlap = len(q_words & ckw) / len(q_words | ckw)
+                if overlap >= 0.15:
+                    return True
+            return False
+
         filtered = []
         for q in questions:
-            mapped = llm_judge.map_question_to_constraints(q, constraints)
-            if mapped:
+            if _keyword_matches(q):
                 filtered.append(q)
+            elif llm_judge is not None:
+                # LLM as fallback for questions with unusual phrasing
+                mapped = llm_judge.map_question_to_constraints(q, constraints)
+                if mapped:
+                    filtered.append(q)
+                else:
+                    print(f"  [Constraint filter] DROPPED (no match): {q[:80]}")
             else:
-                print(f"  [Constraint filter] DROPPED (no constraint match): {q[:80]}")
+                print(f"  [Constraint filter] DROPPED (no keyword match): {q[:80]}")
         print(f"  [Constraint filter] {len(filtered)}/{len(questions)} questions map to known constraints")
         return filtered
 

@@ -482,6 +482,7 @@ def generate_sub_questions(
     main_questions: List[str],
     n_variants: int = 5,
     logger: Optional[PipelineLogger] = None,
+    mode: str = "rephrase",
 ) -> Dict[str, List[str]]:
     """
     Stage 3c: Generate sub-question variants for each accepted main question.
@@ -490,10 +491,16 @@ def generate_sub_questions(
         vlm:            VLM backend.
         main_questions: Filtered main questions from Stage 3b.
         n_variants:     Number of sub-question variants per main question.
+        mode:           "rephrase" = LLM generates N paraphrases;
+                        "self_consistency" = repeat main-Q N times (no LLM call).
 
     Returns:
         Dict mapping each main question → list of n_variants sub-questions.
     """
+    if mode == "self_consistency":
+        print(f"  [Stage 3c] self_consistency mode: repeating each main-Q {n_variants}x (no rephrasing)")
+        return {mq: [mq] * n_variants for mq in main_questions}
+
     print(f"  [Stage 3c] Generating {n_variants} sub-questions per main question ...")
     sub_questions: Dict[str, List[str]] = {}
     subquestion_slots = build_subquestion_slots(n_variants)

@@ -142,6 +142,7 @@ def summarize_normal_context(
     normality_definition: str,
     class_name: str = "object",
     logger: Optional[PipelineLogger] = None,
+    all_components: Optional[List[str]] = None,
 ) -> str:
     """
     Stage 2: Distill multiple normal image descriptions into a single summary.
@@ -150,6 +151,8 @@ def summarize_normal_context(
         vlm:                  VLM backend.
         descriptions:         List of descriptions from Stage 1.
         normality_definition: Normality definition string.
+        all_components:       Union of all components from Stage 1 (injected into prompt
+                              to prevent consensus-filtering from dropping rare items).
 
     Returns:
         A normality summary string.
@@ -159,12 +162,16 @@ def summarize_normal_context(
     # hallucination warnings from Stage 1 don't corrupt the Stage 2 context.
     clean_descriptions = [_strip_uncertain_tags(d) for d in descriptions]
     labeled = format_descriptions(clean_descriptions, class_name=class_name)
+    if all_components:
+        all_components_hint = "\n".join(f"- {c}" for c in all_components)
+    else:
+        all_components_hint = "N/A"
     prompt = SUMMARIZE_PROMPT.format(
         labeled_descriptions=labeled,
         n_descriptions=len(descriptions),
         normality_definition=normality_definition,
         class_name=class_name,
-        
+        all_components_hint=all_components_hint,
     )
     response = vlm.query(prompt=prompt, image=None) # Try add images to promt
     text = response.text.strip()

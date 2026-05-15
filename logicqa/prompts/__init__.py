@@ -115,14 +115,21 @@ RULE: Every object or region explicitly named in the Original Normality Constrai
 MUST appear in your output, regardless of what the descriptions say.
 The constraints are ground truth — they override any description.
 
+[Complete component inventory — extracted from ALL Stage 1 descriptions]
+Every item below was observed in at least one normal image.
+ALL items MUST appear in your section 1. Components output.
+Do NOT drop items just because they appear in only some descriptions.
+{all_components_hint}
+
 [Descriptions of {n_descriptions} Normal {class_name} Samples]
 {labeled_descriptions}
 
 Instructions:
-1. The Original Normality Constraints are ground truth. Never omit or contradict them.
+1. The Original Normality Constraints and the complete component inventory are both ground truth.
+   Every component listed in the inventory MUST appear in section 1. Components, even if only one description mentions it.
 2. ABSENCE of mention ≠ contradiction.
    If some descriptions omit a component and others mention it → KEEP the component
-   if it is confirmed by the Original Normality Constraints OR by the majority of descriptions.
+   if it is confirmed by the Original Normality Constraints OR by the component inventory.
 3. Write N/A for a point ONLY IF descriptions EXPLICITLY disagree
    (e.g., one says "symmetry required", another says "no symmetry required").
    Silence on a topic is NOT a disagreement.

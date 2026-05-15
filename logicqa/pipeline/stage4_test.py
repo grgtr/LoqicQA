@@ -22,6 +22,7 @@ from PIL import Image
 from logicqa.vlm.base import VLMBase
 from logicqa.prompts import TEST_PROMPT, LOCALIZATION_PROMPT
 from logicqa.logging import PipelineLogger
+from logicqa.pipeline.stage2_summarize import _dedup_key
 
 
 @dataclass
@@ -46,6 +47,24 @@ class ImageResult:
     anomaly_score: float                      # for AUROC/F1-max (higher = more anomalous)
     main_q_results: List[MainQResult] = field(default_factory=list)
     explanation: str = ""                     # human-readable explanation
+
+
+def _dedup_components_for_grounding(components: List[str]) -> List[str]:
+    """
+    Deduplicate raw component names before grounding using canonical key.
+
+    Prevents sending redundant VLM queries for "Two tangerines", "Tangerine",
+    and "Two tangerines (one above the other)" — all map to the same object.
+    Returns one display name per unique canonical key (first occurrence wins).
+    """
+    seen_keys: set = set()
+    result: List[str] = []
+    for comp in components:
+        key = _dedup_key(comp)
+        if key and key not in seen_keys:
+            seen_keys.add(key)
+            result.append(comp)
+    return result
 
 
 def localize_components(
@@ -249,8 +268,9 @@ def test_image(
     # Grounded reasoning: localize all known components once before the question loop
     grounding_context = ""
     if use_grounded_reasoning and components:
-        print(f"  [Grounding] Localizing {len(components)} components ...")
-        grounding_map = localize_components(vlm, pil_img, components, class_name)
+        deduped = _dedup_components_for_grounding(components)
+        print(f"  [Grounding] Localizing {len(deduped)} components (deduped from {len(components)}) ...")
+        grounding_map = localize_components(vlm, pil_img, deduped, class_name)
         grounding_context = format_grounding_map(grounding_map)
         print(f"  [Grounding] Context built:\n{grounding_context}")
 

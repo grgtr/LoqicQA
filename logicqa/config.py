@@ -66,6 +66,8 @@ class PipelineConfig:
     question_generation_mode: str = "llm"
     # Stage 4: targeted component localization before each question (Visual Primitives inspired)
     use_grounded_reasoning: bool = False
+    # Stage 3c: "rephrase" = LLM generates N variants, "self_consistency" = repeat main-Q N times
+    sub_question_mode: str = "rephrase"
 
 
 @dataclass

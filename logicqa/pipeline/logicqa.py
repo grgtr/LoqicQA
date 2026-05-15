@@ -342,7 +342,8 @@ class LogicQAPipeline:
             self.vlm,
             kept,
             n_variants=self.cfg.pipeline.n_sub_questions,
-            logger=self.logger
+            logger=self.logger,
+            mode=self.cfg.pipeline.sub_question_mode,
         )
 
         self.main_questions = kept
@@ -538,6 +539,7 @@ class LogicQAPipeline:
                 self.vlm, filtered,
                 n_variants=self.cfg.pipeline.n_sub_questions,
                 logger=self.logger,
+                mode=self.cfg.pipeline.sub_question_mode,
             )
             new = 0
             for q, sqs in sub_qs.items():

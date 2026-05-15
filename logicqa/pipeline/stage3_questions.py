@@ -256,6 +256,24 @@ def _parse_stage2_bullets(summary: str) -> List[str]:
     return [b for b in bullets if not (b in seen or seen.add(b))]  # type: ignore[func-returns-value]
 
 
+def _is_semantic_duplicate(q: str, seen_questions: "set[str]", jaccard_threshold: float = 0.65, containment_threshold: float = 0.90) -> bool:
+    """Check if q is a near-duplicate of any question already in seen_questions."""
+    w_q = set(q.lower().replace("?", "").split())
+    if not w_q:
+        return False
+    for sq in seen_questions:
+        w_sq = set(sq.lower().replace("?", "").split())
+        if not w_sq:
+            continue
+        jaccard = len(w_q & w_sq) / len(w_q | w_sq)
+        if jaccard >= jaccard_threshold:
+            return True
+        shorter = w_q if len(w_q) <= len(w_sq) else w_sq
+        if shorter and len(w_q & w_sq) / len(shorter) >= containment_threshold:
+            return True
+    return False
+
+
 def generate_questions_from_bullets(
     vlm: VLMBase,
     normality_summary: str,
@@ -278,12 +296,14 @@ def generate_questions_from_bullets(
         response = vlm.query(prompt=prompt, image=None)
         q = response.text.strip()
         q = _strip_quotes(q)
-        if q and q not in seen and _is_valid_question(q) and _is_semantically_valid_question(q):
+        is_dup = _is_semantic_duplicate(q, seen)
+        if q and not is_dup and _is_valid_question(q) and _is_semantically_valid_question(q):
             questions.append(q)
             seen.add(q)
             print(f"    fact: {fact[:60]} → {q[:80]}")
         else:
-            print(f"    fact: {fact[:60]} → DROPPED ({q[:60]})")
+            reason = "NEAR-DUP" if is_dup else "INVALID"
+            print(f"    fact: {fact[:60]} → {reason} ({q[:60]})")
     print(f"  [Stage 3a/structured] Generated {len(questions)} questions from {len(bullets)} bullets.")
     if logger:
         logger.log_stage3a_questions(

@@ -33,6 +33,36 @@ from logicqa.pipeline.stage3_questions import (
 from logicqa.pipeline.stage4_test import test_image, ImageResult
 from logicqa.logging import PipelineLogger
 
+def _is_near_duplicate(q: str, existing_questions: "set[str]", jaccard_threshold: float = 0.65, containment_threshold: float = 0.90) -> bool:
+    """
+    Semantic near-duplicate check using word Jaccard and subset-containment.
+
+    Catches two types of duplicates that exact-string matching misses:
+    - Rephrasing across ensemble seeds ("Are the tangerines on the left?" vs
+      "Are there tangerines located on the left-hand side?") → high Jaccard
+    - One question is a sub-phrase of another ("Is there exactly two tangerines?"
+      vs "Is there exactly two tangerines in the breakfast box?") → high containment
+    """
+    w_q = set(q.lower().replace("?", "").split())
+    if not w_q:
+        return False
+    for eq in existing_questions:
+        w_eq = set(eq.lower().replace("?", "").split())
+        if not w_eq:
+            continue
+        union = w_q | w_eq
+        intersection = w_q & w_eq
+        jaccard = len(intersection) / len(union)
+        if jaccard >= jaccard_threshold:
+            return True
+        # containment: smaller set almost entirely within larger
+        smaller = intersection
+        shorter = w_q if len(w_q) <= len(w_eq) else w_eq
+        if shorter and len(smaller) / len(shorter) >= containment_threshold:
+            return True
+    return False
+
+
 @dataclass
 class LogicQAArtifacts:
     # Stage 1: Describing
@@ -232,7 +262,10 @@ class LogicQAPipeline:
 
         # Stage 2
         self.normality_summary = summarize_normal_context(
-            self.vlm, descriptions, self.normality_definition, logger=self.logger
+            self.vlm, descriptions, self.normality_definition,
+            class_name=self.class_name,
+            logger=self.logger,
+            all_components=self.components,
         )
 
         # Stage 3a: Generate candidates
@@ -432,7 +465,10 @@ class LogicQAPipeline:
         self.components = extract_all_components(descriptions)
         print(f"[Ensemble] Extracted {len(self.components)} unique components: {self.components}")
         self.normality_summary = summarize_normal_context(
-            self.vlm, descriptions, self.normality_definition, logger=self.logger
+            self.vlm, descriptions, self.normality_definition,
+            class_name=self.class_name,
+            logger=self.logger,
+            all_components=self.components,
         )
 
         preprocessed_vals = [
@@ -475,7 +511,9 @@ class LogicQAPipeline:
             )
             new = 0
             for q, sqs in sub_qs.items():
-                if q not in all_sub_questions:
+                if _is_near_duplicate(q, set(all_sub_questions.keys())):
+                    print(f"  [Ensemble] DEDUP: '{q[:70]}' is near-duplicate, skipping")
+                else:
                     all_sub_questions[q] = sqs
                     new += 1
             print(f"  [Ensemble] Seed={seed}: {len(filtered)} filtered, {new} new unique questions added")

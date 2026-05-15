@@ -44,16 +44,76 @@ def _sanitize_summary_section(text: str) -> str:
             return "N/A"
     return text
 
+_QUANTITY_PREFIX_RE = re.compile(
+    r"^(exactly\s+)?(one|two|three|four|five|six|seven|eight|nine|ten|\d+)\s+",
+    re.IGNORECASE,
+)
+
+
+def _dedup_key(raw: str) -> str:
+    """
+    Canonical form of a component name used only for deduplication.
+
+    Steps:
+      1. Strip leading quantity words ("Two tangerines" → "tangerines")
+      2. Strip parenthetical qualifiers ("Cereal mixture (grains and nuts)" → "cereal mixture")
+      3. Strip "with ..." suffixes ("Cereal mixture with almonds" → "cereal mixture")
+      4. Strip trailing plural 's' for a language-neutral key ("tangerines" → "tangerine")
+      5. Lowercase and strip whitespace
+    """
+    s = _QUANTITY_PREFIX_RE.sub("", raw)
+    s = re.sub(r"\s*\(.*?\)", "", s)
+    s = re.split(r"\s+with\s+", s, maxsplit=1)[0]
+    s = s.strip().lower()
+    # simple singularisation: "tangerines"→"tangerine", "chips"→"chip"
+    if s.endswith("ies") and len(s) > 4:
+        s = s[:-3] + "y"
+    elif s.endswith("s") and not s.endswith("ss") and len(s) > 4:
+        s = s[:-1]
+    return s
+
+
+def _expand_raw_component(raw: str) -> List[str]:
+    """
+    Expand one raw bullet string into individual component display names.
+
+    "Cereal mixture with banana chips and almonds"
+        → ["Cereal mixture", "banana chips", "almonds"]
+    "Two tangerines (one above the other)"
+        → ["tangerines"]          (parenthetical stripped)
+    "Banana chips"
+        → ["Banana chips"]
+    """
+    # Base: strip quantity prefix and parenthetical
+    base = _QUANTITY_PREFIX_RE.sub("", raw)
+    base = re.sub(r"\s*\(.*?\)", "", base)
+
+    # Split on "with" to get base and extras
+    parts = re.split(r"\s+with\s+", base, maxsplit=1, flags=re.IGNORECASE)
+    items = [parts[0].strip()]
+
+    if len(parts) == 2:
+        # "banana chips and almonds" → ["banana chips", "almonds"]
+        extras = re.split(r",\s*|\s+and\s+", parts[1], flags=re.IGNORECASE)
+        items.extend(e.strip().rstrip(".") for e in extras if e.strip())
+
+    return [i for i in items if len(i) > 2]
+
+
 def extract_all_components(descriptions: List[str]) -> List[str]:
     """
-    Parse the '1. Components:' section from every Stage 1 description and return
-    the deduplicated union of all mentioned objects.
+    Parse '1. Components:' from every Stage 1 description and return a
+    deduplicated union of all mentioned objects.
 
-    Uses union (not intersection) so that objects mentioned in even one description
-    (e.g., banana chips present in 1/5 images) are not silently dropped.
+    Handles:
+    - Quantity prefixes: "Two tangerines" and "Tangerine" → same component
+    - Parenthetical qualifiers: "Cereal mixture (grains and nuts)" → "Cereal mixture"
+    - Compound entries: "Cereal mixture with banana chips and almonds"
+                        → ["Cereal mixture", "banana chips", "almonds"]
     """
-    seen: set = set()
+    seen_keys: set = set()
     components: List[str] = []
+
     for desc in descriptions:
         in_components = False
         for line in desc.splitlines():
@@ -64,11 +124,15 @@ def extract_all_components(descriptions: List[str]) -> List[str]:
             if re.match(r"^\d+\.\s", line) and in_components:
                 break
             if in_components and line.startswith("- "):
-                obj = line[2:].strip().rstrip(".")
-                key = obj.lower()
-                if key not in seen and len(obj) > 2:
-                    seen.add(key)
-                    components.append(obj)
+                raw = line[2:].strip().rstrip(".")
+                if len(raw) < 3:
+                    continue
+                for item in _expand_raw_component(raw):
+                    key = _dedup_key(item)
+                    if key and key not in seen_keys:
+                        seen_keys.add(key)
+                        components.append(item)
+
     return components
 
 

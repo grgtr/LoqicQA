@@ -10,9 +10,13 @@ ATOMIC_CONSTRAINTS: Dict[str, List[str]] = {
         "There are exactly two tangerines",
         "There is exactly one nectarine",
         "The tangerines and nectarine are located on the left-hand side",
+        "The left compartment contains exactly three fruits: two tangerines and one nectarine",
         "Cereals are present on the right-hand side",
+        "A cereal mixture (grains and nuts) occupies the right compartment",
+        "The right compartment contains cereal mixture with banana chips and almonds",
         "A mix of banana chips and almonds is present on the right-hand side",
-        "The ratio and relative position of cereals, banana chips, and almonds is fixed"
+        "The ratio and relative position of cereals, banana chips, and almonds is fixed",
+        "The cereal compartment is partially full with visible gaps at the top edge",
     ],
     "juice_bottle": [
         "The bottle carries exactly two labels",

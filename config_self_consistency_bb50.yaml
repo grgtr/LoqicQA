@@ -25,7 +25,7 @@ pipeline:
   n_sub_questions: 5
   question_filter_threshold: 0.8
   ensemble_seeds: [42, 7, 13]
-  use_llm_judge_hallucination: true
+  use_llm_judge_hallucination: false  # saves ~6 GB: keyword filter handles constraints without LLM fallback
   anomaly_min_failures: 2
   question_generation_mode: "structured"
   use_grounded_reasoning: true

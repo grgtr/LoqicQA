@@ -308,19 +308,29 @@ def build_subquestion_slots(n: int) -> str:
 # {subquestion_slots}
 # """
 
-SUBQUESTION_AUGMENT_PROMPT = """You are an AI linguist assisting a Quality Control system.
-Your task is to rephrase the given target question into {n_variants} different variations.
+SUBQUESTION_AUGMENT_PROMPT = """You are designing visual inspection tests for a quality control system.
 
-Target Question: "{main_question}"
+A NORMAL image satisfies this constraint:
+  "{main_question}"
+(Yes = normal / constraint satisfied, No = anomaly detected)
+
+Generate {n_variants} sub-questions that each verify the SAME constraint from a DIFFERENT visual angle.
+Do NOT simply rephrase — each question must probe different visual evidence.
+
+Use these probe types (use each at most once, mix them):
+  PRESENCE  — "Can you see [object] in [location]?"
+  ABSENCE   — "Is [location] empty / missing [object]?"
+  FEATURE   — "Do you see [specific visual property: texture, shape, color]?"
+  COUNT     — "How many [object] are visible?" (rephrase as Yes/No: "Are there [N] [objects]?")
+  SPATIAL   — "Is [object] located on [specific side / position]?"
 
 STRICT RULES:
-- Must be answered with a simple "Yes" or "No".
-- A "Yes" answer MUST mean the image is NORMAL. A "No" answer MUST mean it is an ANOMALY.
-- The logical meaning and strictness MUST remain exactly the same.
-- If the original question specifies an exact number (e.g., "exactly two"), EVERY variation must include that exact constraint (e.g., "precisely two", "exactly two").
-- If the original question specifies a location (e.g., "left side"), EVERY variation must include it.
+- Every question must be answerable with only "Yes" or "No".
+- "Yes" MUST mean the image is NORMAL. "No" MUST mean an anomaly is present.
+- Preserve exact numbers and locations from the original constraint.
+- Each question must be genuinely different from all others.
 
-Output ONLY the rephrased questions, numbered 1 to {n_variants}.
+Output ONLY the {n_variants} questions, numbered 1 to {n_variants}.
 
 Format:
 {subquestion_slots}

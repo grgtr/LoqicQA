@@ -15,7 +15,8 @@ vlm:
     top_p: 0.7
     repetition_penalty: 1.1
     do_sample: true
-    max_new_tokens: 512
+    max_new_tokens: 128   # yes/no answers don't need more; saves KV-cache memory
+    max_tiles: 4          # 4 tiles (vs default 12) reduces attention peak memory ~3x
     device_map: "auto"
 
 pipeline:

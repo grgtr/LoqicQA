@@ -24,6 +24,7 @@ class InternVLConfig:
     do_sample: bool = True
     max_new_tokens: int = 512
     device_map: str = "auto"
+    max_tiles: int = 12  # max image tiles for dynamic tiling (lower = less attention memory)
 
 
 @dataclass

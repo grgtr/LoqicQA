@@ -287,7 +287,8 @@ class InternVLBackend(VLMBase):
         )
 
         if image is not None:
-            pixel_values = _load_image(image).to(
+            max_tiles = getattr(self.cfg, "max_tiles", 12)
+            pixel_values = _load_image(image, max_num=max_tiles).to(
                 dtype=torch.bfloat16,
                 device=next(self.model.parameters()).device,
             )
@@ -358,7 +359,8 @@ class InternVLBackend(VLMBase):
         )
 
         if image is not None:
-            pixel_values = _load_image(image).to(
+            max_tiles = getattr(self.cfg, "max_tiles", 12)
+            pixel_values = _load_image(image, max_num=max_tiles).to(
                 dtype=torch.bfloat16,
                 device=next(self.model.parameters()).device,
             )

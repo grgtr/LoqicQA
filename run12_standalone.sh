@@ -57,6 +57,8 @@ fi
 wait_for_gpu
 
 echo "[run12] Starting at $(date)"
+# Reduce allocator fragmentation to avoid OOM on tight memory budgets
+export PYTORCH_ALLOC_CONF=expandable_segments:True
 # Note: no 'set -e' — script survives pipeline errors; results always saved
 "${VENV_PYTHON}" "${SCRIPT}" \
     --class_name breakfast_box \

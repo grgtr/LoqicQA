@@ -12,7 +12,7 @@ SCRIPT="${MAIN_REPO}/scripts/run_pipeline.py"
 DATA_DIR="${MAIN_REPO}/dataset-ninja/"
 # Results go to MAIN REPO — survives worktree deletion
 OUTPUT_DIR="${MAIN_REPO}/results/self_consistency_bb50"
-GPU_THRESHOLD_MB=30000
+GPU_THRESHOLD_MB=18000  # InternVL2.5-8B bf16 ~16GB; no LLMJudge loaded (disabled in config)
 POLL_INTERVAL=30
 LOG="/tmp/run12_sc.log"
 SENTINEL="/tmp/run12.done"

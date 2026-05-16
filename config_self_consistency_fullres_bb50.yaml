@@ -19,8 +19,9 @@ vlm:
     top_p: 0.7
     repetition_penalty: 1.1
     do_sample: true
-    max_new_tokens: 512   # original value — full descriptions in Stage 1
-    max_tiles: 12         # original value — full image resolution
+    max_new_tokens: 512   # restored — full descriptions in Stage 1
+    max_tiles: 6          # compromise: 2x resolution vs Run 12 (max_tiles=4), fits in 22 GB
+                          # max_tiles=12 OOM: needs 22.39 GB, only 22.41 GB nominally free
     device_map: "auto"
 
 pipeline:

@@ -18,7 +18,7 @@ VENV_PYTHON="${MAIN_REPO}/.venv/bin/python3"
 SCRIPT="${MAIN_REPO}/scripts/run_pipeline.py"
 DATA_DIR="${MAIN_REPO}/dataset-ninja/"
 OUTPUT_DIR="${MAIN_REPO}/results/self_consistency_fullres_bb50"
-GPU_THRESHOLD_MB=22000  # needs ~22.4 GB for InternVL bf16 + max_tiles=12 inference; waits for prior run to fully unload
+GPU_THRESHOLD_MB=18000  # max_tiles=6 needs ~18-19 GB; well within 22 GB free
 POLL_INTERVAL=30
 LOG="/tmp/run13_sc_full.log"
 SENTINEL="/tmp/run13.done"

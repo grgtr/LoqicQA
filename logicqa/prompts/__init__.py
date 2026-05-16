@@ -308,31 +308,25 @@ def build_subquestion_slots(n: int) -> str:
 # {subquestion_slots}
 # """
 
-SUBQUESTION_AUGMENT_PROMPT = """You are designing visual inspection tests for a quality control system.
+SUBQUESTION_AUGMENT_PROMPT = """You are a quality control assistant verifying images of a packaged product.
 
-A NORMAL image satisfies this constraint:
+The following constraint must hold for a NORMAL image:
   "{main_question}"
-(Yes = normal / constraint satisfied, No = anomaly detected)
+(Yes = image is normal, No = anomaly detected)
 
-Generate {n_variants} sub-questions that each verify the SAME constraint from a DIFFERENT visual angle.
-Do NOT simply rephrase — each question must probe different visual evidence.
+Write {n_variants} verification questions about the SAME constraint. Each question must:
+1. Be answerable with ONLY "Yes" (normal) or "No" (anomaly).
+2. Ask about the SAME objects and locations as the original — do NOT introduce any new objects.
+3. Be genuinely different from the others (vary the phrasing or visual angle).
 
-Use these probe types (use each at most once, mix them):
-  PRESENCE  — "Can you see [object] in [location]?"
-  ABSENCE   — "Is [location] empty / missing [object]?"
-  FEATURE   — "Do you see [specific visual property: texture, shape, color]?"
-  COUNT     — "How many [object] are visible?" (rephrase as Yes/No: "Are there [N] [objects]?")
-  SPATIAL   — "Is [object] located on [specific side / position]?"
+Suggested angles (pick different ones, keep objects from the original):
+- direct presence: "Can you see [exact object from original] in [exact location from original]?"
+- emptiness: "Is [exact location] missing [exact object]?" (Yes = object IS present = normal)
+- visual feature: "Do you see [color/shape/texture of the exact object]?"
+- count: rephrase the exact number from the original
 
-STRICT RULES:
-- Every question must be answerable with only "Yes" or "No".
-- "Yes" MUST mean the image is NORMAL. "No" MUST mean an anomaly is present.
-- Preserve exact numbers and locations from the original constraint.
-- Each question must be genuinely different from all others.
+Output ONLY {n_variants} numbered questions, nothing else.
 
-Output ONLY the {n_variants} questions, numbered 1 to {n_variants}.
-
-Format:
 {subquestion_slots}
 """
 

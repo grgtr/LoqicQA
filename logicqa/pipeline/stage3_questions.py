@@ -14,6 +14,7 @@ from typing import Dict, List, Optional, Union
 from PIL import Image
 
 from logicqa.vlm.base import VLMBase
+from logicqa.pipeline.stage2_summarize import _dedup_key
 from logicqa.prompts import (
     GENERATE_QUESTIONS_PROMPT,
     BULLET_TO_QUESTION_PROMPT,
@@ -512,16 +513,29 @@ def generate_sub_questions(
         response = vlm.query(prompt=prompt, image=None)
         print("[DEBUG] generated sub_questions :", response.text)
         variants = _parse_output_list(response.text)
-        print(variants)
-        # Ensure we always have exactly n_variants (pad with original if short)
 
-        n_parsed = len(variants)
-        while len(variants) < n_variants:
-            variants.append(mq)
-        print(f"  Q{i+1}: parsed={n_parsed}, padded={n_variants - n_parsed}, total={len(variants[:n_variants])}")
+        # Post-generation validation: deduplicate among generated sub-questions
+        validated: List[str] = []
+        seen_keys: set = set()
+        for sq in variants:
+            if not sq or len(sq) < 10:
+                continue
+            key = _dedup_key(sq)
+            if key in seen_keys:
+                print(f"    [SubQ dedup] SKIP duplicate: {sq[:60]}")
+                continue
+            seen_keys.add(key)
+            validated.append(sq)
 
-        sub_questions[mq] = variants[:n_variants]
-        print(f"    Q{i+1}: {mq[:60]} → {len(variants)} sub-Qs")
+        n_parsed = len(validated)
+        # Pad with main question if too few passed validation
+        while len(validated) < n_variants:
+            validated.append(mq)
+        print(f"  Q{i+1}: parsed={len(variants)}, valid={n_parsed}, "
+              f"padded={n_variants - n_parsed}, total={n_variants}")
+
+        sub_questions[mq] = validated[:n_variants]
+        print(f"    Q{i+1}: {mq[:60]} → {n_variants} sub-Qs")
         if logger:
             logger.log_stage3c_subquestions(
                 main_question=mq,

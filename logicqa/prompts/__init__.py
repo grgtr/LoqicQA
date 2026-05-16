@@ -314,16 +314,14 @@ The following constraint must hold for a NORMAL image:
   "{main_question}"
 (Yes = image is normal, No = anomaly detected)
 
-Write {n_variants} verification questions about the SAME constraint. Each question must:
-1. Be answerable with ONLY "Yes" (normal) or "No" (anomaly).
-2. Ask about the SAME objects and locations as the original — do NOT introduce any new objects.
-3. Be genuinely different from the others (vary the phrasing or visual angle).
-
-Suggested angles (pick different ones, keep objects from the original):
-- direct presence: "Can you see [exact object from original] in [exact location from original]?"
-- emptiness: "Is [exact location] missing [exact object]?" (Yes = object IS present = normal)
-- visual feature: "Do you see [color/shape/texture of the exact object]?"
-- count: rephrase the exact number from the original
+Write {n_variants} different verification questions about this constraint. Rules:
+1. ONLY "Yes" or "No" answers allowed. "Yes" = normal, "No" = anomaly.
+2. ONLY use objects and locations that appear in the original constraint. No new objects.
+3. ALWAYS phrase questions so that "Yes" means the object/condition IS present or correct.
+   WRONG: "Is the left side empty of tangerines?" (Yes = missing = anomaly)
+   RIGHT: "Can you see tangerines on the left side?" (Yes = present = normal)
+4. Each question must be different from the others and from the original.
+5. Preserve exact numbers (e.g., "exactly two", "precisely one") when relevant.
 
 Output ONLY {n_variants} numbered questions, nothing else.
 

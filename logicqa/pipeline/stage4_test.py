@@ -20,7 +20,16 @@ from typing import Dict, List, Optional, Union
 from PIL import Image
 
 from logicqa.vlm.base import VLMBase
-from logicqa.prompts import TEST_PROMPT, LOCALIZATION_PROMPT
+from logicqa.prompts import (
+    TEST_PROMPT,
+    LOCALIZATION_PROMPT,
+    DESCRIBE_COMPONENT_PROMPT,
+    DESCRIBE_RELATIONAL_SLOT_PROMPT,
+)
+from logicqa.pipeline.stage1_describe import (
+    ComponentObs,
+    _parse_component_obs,
+)
 from logicqa.logging import PipelineLogger
 from logicqa.pipeline.stage2_summarize import _dedup_key
 
@@ -107,12 +116,16 @@ def _ask_sub_question(
     logger: Optional[PipelineLogger] = None,
     normality_summary: str = "",
     grounding_context: str = "",
+    current_image_description: str = "",
 ) -> SubQResult:
     """Ask one sub-question about an image and return the result."""
-    full_context = normality_summary
-    if grounding_context:
-        full_context = normality_summary + "\n\n" + grounding_context
-    prompt = TEST_PROMPT.format(question=question, class_name=class_name, class_context=full_context)
+    prompt = TEST_PROMPT.format(
+        question=question,
+        class_name=class_name,
+        class_context=normality_summary,
+        current_image_description=current_image_description or "(not available)",
+        grounding_context=grounding_context or "(not available)",
+    )
     if hasattr(vlm, "query_with_logprobs"):
         # print("[DEBUG] using query_with_logprobs in stage4_test")
         response = vlm.query_with_logprobs(prompt=prompt, image=image)
@@ -226,6 +239,54 @@ def _compute_anomaly_score(main_q_results: List[MainQResult]) -> float:
     n_no = sum(1 for mq in main_q_results if mq.voted_answer == "No")
     return n_no / len(main_q_results)
 
+def _describe_test_image_decomposed(
+    vlm: VLMBase,
+    image: Image.Image,
+    components: List[str],
+    class_name: str,
+) -> tuple:
+    """Describe a test image using per-component calls (same approach as Stage 1).
+
+    Returns:
+        (current_image_description: str, grounding_context: str)
+    """
+    all_components_bullet = "\n".join(f"- {c}" for c in components)
+    per_comp: Dict[str, ComponentObs] = {}
+
+    for c in components:
+        prompt = DESCRIBE_COMPONENT_PROMPT.format(
+            class_name=class_name,
+            component=c,
+            all_components_bullet=all_components_bullet,
+        )
+        resp = vlm.query(prompt=prompt, image=image)
+        per_comp[c] = _parse_component_obs(resp.text)
+
+    rel_prompt = DESCRIBE_RELATIONAL_SLOT_PROMPT.format(
+        class_name=class_name,
+        all_components_bullet=all_components_bullet,
+    )
+    relational = vlm.query(prompt=rel_prompt, image=image).text.strip()
+
+    # Format as current_image_description text
+    desc_lines = ["Observed in this image:"]
+    for c, obs in per_comp.items():
+        desc_lines.append(
+            f"- {c}: count={obs.count}, position={obs.position}, "
+            f"appearance={obs.appearance}, relative size={obs.rel_size}"
+        )
+    desc_lines.append(relational)
+    current_image_description = "\n".join(desc_lines)
+
+    # Grounding derived from position field — no separate LOCALIZATION_PROMPT needed
+    grounding_lines = ["Located objects:"]
+    for c, obs in per_comp.items():
+        grounding_lines.append(f"- {c}: {obs.position} ({obs.count})")
+    grounding_context = "\n".join(grounding_lines)
+
+    return current_image_description, grounding_context
+
+
 def test_image(
     vlm: VLMBase,
     image: Union[Path, Image.Image],
@@ -240,6 +301,7 @@ def test_image(
     normality_summary: str = "",
     components: Optional[List[str]] = None,
     use_grounded_reasoning: bool = False,
+    use_decomposed_description: bool = False,
 ) -> ImageResult:
     """
     Stage 4: Test a single query image with the generated question checklist.
@@ -265,9 +327,16 @@ def test_image(
             image_idx=0, image_path=image_path or "", gt_label=gt_label, anomaly_type=anomaly_type
         )
 
-    # Grounded reasoning: localize all known components once before the question loop
+    # Pre-description + grounding: describe the test image before the question loop
+    current_image_description = ""
     grounding_context = ""
-    if use_grounded_reasoning and components:
+    if use_decomposed_description and components:
+        print(f"  [Stage 4 Decomposed] Describing test image ({len(components)} components) ...")
+        current_image_description, grounding_context = _describe_test_image_decomposed(
+            vlm, pil_img, components, class_name
+        )
+        print(f"  [Grounding] Context built from per-component describe:\n{grounding_context}")
+    elif use_grounded_reasoning and components:
         deduped = _dedup_components_for_grounding(components)
         print(f"  [Grounding] Localizing {len(deduped)} components (deduped from {len(components)}) ...")
         grounding_map = localize_components(vlm, pil_img, deduped, class_name)
@@ -291,6 +360,7 @@ def test_image(
                 logger=logger,
                 normality_summary=normality_summary,
                 grounding_context=grounding_context,
+                current_image_description=current_image_description,
             )
             sub_results.append(sub_result)
 

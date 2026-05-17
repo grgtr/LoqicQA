@@ -5,7 +5,6 @@ prompt and the image, and collect the textual descriptions.
 """
 from __future__ import annotations
 
-import re
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Dict, List, Optional, Union
@@ -92,13 +91,40 @@ def _parse_component_obs(text: str) -> ComponentObs:
     return ComponentObs(**fields)
 
 
-def _union_components(per_image: List[List[str]], normality_def: str) -> List[str]:
-    """Deduplicated union of per-image component lists, anchored by normality_def.
+_WORD_STOP = {"and", "or", "the", "a", "an", "of", "in", "on", "with", "to"}
 
-    The anchor only uses short noun phrases (≤ 4 words) extracted from
-    normality_def so that full sentences don't pollute the component list.
-    The IDENTIFY_COMPONENTS_PROMPT already grounds the model to normality_def,
-    so this anchor mainly catches edge cases where the model missed an item.
+
+def _content_words(phrase: str) -> frozenset:
+    """Lower-cased content words of a phrase, excluding stop words."""
+    return frozenset(w for w in phrase.lower().split() if w not in _WORD_STOP)
+
+
+def _is_dominated(words_c: frozenset, existing_sets: List[frozenset]) -> bool:
+    """Return True if words_c is a near-duplicate of any existing word set.
+
+    Dominated when content words are a subset/superset of an existing entry,
+    or Jaccard similarity ≥ 0.5 (catches 'Banana chips and almonds' vs 'banana chips').
+    """
+    for ws in existing_sets:
+        if not ws or not words_c:
+            continue
+        if words_c <= ws or ws <= words_c:
+            return True
+        if len(words_c | ws) > 0 and len(words_c & ws) / len(words_c | ws) >= 0.5:
+            return True
+    return False
+
+
+def _union_components(
+    per_image: List[List[str]],
+    normality_components: Optional[List[str]] = None,
+) -> List[str]:
+    """Deduplicated union of per-image component lists.
+
+    Pass 1: basic _dedup_key dedup (case/plural normalization).
+            Adds any normality_components not seen in Phase A as anchor.
+    Pass 2: word-subset + Jaccard dedup removes composite near-duplicates
+            like 'Banana chips and almonds' when 'banana chips' already exists.
     """
     from logicqa.pipeline.stage2_summarize import _dedup_key
     seen: set = set()
@@ -111,26 +137,23 @@ def _union_components(per_image: List[List[str]], normality_def: str) -> List[st
                 seen.add(k)
                 result.append(c)
 
-    # Anchor: extract short noun phrases (≤ 4 words) from normality_def lines
-    for line in normality_def.splitlines():
-        # Split on common delimiters to isolate candidate phrases
-        for phrase in re.split(r"[,;.]|\band\b|\bthe\b|\bof\b|\bon\b|\bin\b|\bwith\b", line, flags=re.IGNORECASE):
-            phrase = phrase.strip().lstrip("-").strip()
-            # Strip quantity prefixes
-            phrase = re.sub(r"^(exactly|at least|no more than|one|two|three|four|five|\d+)\s+", "", phrase, flags=re.IGNORECASE)
-            phrase = phrase.strip()
-            # Only keep short noun phrases (1–3 words, not spatial/relational terms)
-            _SPATIAL_STOP = {"side", "ratio", "position", "left", "right", "center",
-                             "top", "bottom", "fixed", "always", "contains", "located"}
-            words = phrase.split()
-            if 1 <= len(words) <= 3 and len(phrase) > 3:
-                if not any(w.lower() in _SPATIAL_STOP for w in words):
-                    k = _dedup_key(phrase)
-                    if k and k not in seen:
-                        seen.add(k)
-                        result.append(phrase)
+    # Anchor: add any known components the VLM may have missed in Phase A
+    for c in (normality_components or []):
+        k = _dedup_key(c)
+        if k and k not in seen:
+            seen.add(k)
+            result.append(c)
 
-    return result
+    # Pass 2: word-subset / Jaccard dedup to remove composite near-duplicates
+    deduped: List[str] = []
+    accepted_word_sets: List[frozenset] = []
+    for c in result:
+        cw = _content_words(c)
+        if not _is_dominated(cw, accepted_word_sets):
+            deduped.append(c)
+            accepted_word_sets.append(cw)
+
+    return deduped
 
 
 
@@ -253,8 +276,10 @@ def describe_normal_images_decomposed(
                 response_text=response.text,
             )
 
-    # Phase B: union + normality_definition anchor
-    all_components = _union_components(raw_per_image, normality_definition)
+    # Phase B: union + NORMALITY_COMPONENTS anchor
+    from logicqa.data.normality_definitions import NORMALITY_COMPONENTS
+    anchor = NORMALITY_COMPONENTS.get(class_name.lower().replace(" ", "_"), [])
+    all_components = _union_components(raw_per_image, normality_components=anchor)
     all_components_bullet = "\n".join(f"- {c}" for c in all_components)
     print(f"  [Stage 1 Decomposed] Component union ({len(all_components)}): {all_components}")
 
@@ -307,3 +332,51 @@ def describe_normal_images_decomposed(
     total_calls = n + n * (len(all_components) + 1)
     print(f"  [Stage 1 Decomposed] Done: {total_calls} VLM calls for {n} images, {len(all_components)} components")
     return descriptions
+
+
+def describe_image_decomposed(
+    vlm: VLMBase,
+    image: Image.Image,
+    components: List[str],
+    class_name: str,
+) -> tuple:
+    """Describe a single image using per-component calls (same approach as Stage 1 Phase C).
+
+    Used by Stage 3b and Stage 4 to describe validation/test images before answering questions.
+
+    Returns:
+        (current_image_description: str, grounding_context: str)
+    """
+    all_components_bullet = "\n".join(f"- {c}" for c in components)
+    per_comp: Dict[str, ComponentObs] = {}
+
+    for c in components:
+        prompt = DESCRIBE_COMPONENT_PROMPT.format(
+            class_name=class_name,
+            component=c,
+            all_components_bullet=all_components_bullet,
+        )
+        resp = vlm.query(prompt=prompt, image=image)
+        per_comp[c] = _parse_component_obs(resp.text)
+
+    rel_prompt = DESCRIBE_RELATIONAL_SLOT_PROMPT.format(
+        class_name=class_name,
+        all_components_bullet=all_components_bullet,
+    )
+    relational = vlm.query(prompt=rel_prompt, image=image).text.strip()
+
+    desc_lines = ["Observed in this image:"]
+    for c, obs in per_comp.items():
+        desc_lines.append(
+            f"- {c}: count={obs.count}, position={obs.position}, "
+            f"appearance={obs.appearance}, relative size={obs.rel_size}"
+        )
+    desc_lines.append(relational)
+    current_image_description = "\n".join(desc_lines)
+
+    grounding_lines = ["Located objects:"]
+    for c, obs in per_comp.items():
+        grounding_lines.append(f"- {c}: {obs.position} ({obs.count})")
+    grounding_context = "\n".join(grounding_lines)
+
+    return current_image_description, grounding_context

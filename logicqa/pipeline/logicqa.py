@@ -350,6 +350,8 @@ class LogicQAPipeline:
             logger=self.logger,
             n_shots=self.cfg.pipeline.n_shots,
             normality_summary=self.normality_summary,
+            components=self.components,
+            use_decomposed_description=use_decomposed,
         )
 
         # Fix C: drop questions that don't map to any known atomic constraint
@@ -568,6 +570,8 @@ class LogicQAPipeline:
                 class_name=self.class_name, image_paths=val_images,
                 logger=self.logger, n_shots=self.cfg.pipeline.n_shots,
                 normality_summary=self.normality_summary,
+                components=self.components,
+                use_decomposed_description=use_decomposed,
             )
             sub_qs = generate_sub_questions(
                 self.vlm, filtered,

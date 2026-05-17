@@ -15,6 +15,7 @@ from PIL import Image
 
 from logicqa.vlm.base import VLMBase
 from logicqa.pipeline.stage2_summarize import _dedup_key
+from logicqa.pipeline.stage1_describe import describe_image_decomposed
 from logicqa.prompts import (
     GENERATE_QUESTIONS_PROMPT,
     BULLET_TO_QUESTION_PROMPT,
@@ -373,6 +374,8 @@ def _answer_single_question(
     gt_label: str = "unknown",
     image_path: Optional[str] = None,
     normality_summary: str = "",
+    components: Optional[List[str]] = None,
+    use_decomposed_description: bool = False,
 ) -> Optional[str]:
     """Ask a single question about one image and return 'Yes'/'No'/None."""
     if isinstance(image, (str, Path)):
@@ -380,7 +383,20 @@ def _answer_single_question(
     else:
         img = image
 
-    prompt = TEST_PROMPT.format(question=question, class_name=class_name, class_context=normality_summary)
+    current_image_description = ""
+    grounding_context = ""
+    if use_decomposed_description and components:
+        current_image_description, grounding_context = describe_image_decomposed(
+            vlm, img, components, class_name
+        )
+
+    prompt = TEST_PROMPT.format(
+        question=question,
+        class_name=class_name,
+        class_context=normality_summary,
+        current_image_description=current_image_description or "(not available)",
+        grounding_context=grounding_context or "(not available)",
+    )
     response = vlm.query(prompt=prompt, image=img)
     if logger:
         logger.log_stage3b_filter_answer(
@@ -429,6 +445,8 @@ def filter_questions_on_normal(
     logger: Optional[PipelineLogger] = None,
     n_shots: Optional[int] = None,
     normality_summary: str = "",
+    components: Optional[List[str]] = None,
+    use_decomposed_description: bool = False,
 ) -> List[str]:
     """
     Stage 3b: Filter candidate questions with < threshold accuracy on normals.
@@ -463,7 +481,12 @@ def filter_questions_on_normal(
         correct = 0
         for i, img in enumerate(normal_images):
             gt_label = "good"
-            answer = _answer_single_question(vlm, q, img, class_name, logger, gt_label, str(image_paths[i]), normality_summary)
+            answer = _answer_single_question(
+                vlm, q, img, class_name, logger, gt_label,
+                str(image_paths[i]), normality_summary,
+                components=components,
+                use_decomposed_description=use_decomposed_description,
+            )
             if answer == "Yes":
                 correct += 1
         accuracy = correct / len(normal_images)

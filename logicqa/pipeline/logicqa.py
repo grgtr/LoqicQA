@@ -22,8 +22,15 @@ from logicqa.data.normality_definitions import (
     BPM_CLASSES,
     LANGSAM_CLASSES,
 )
-from logicqa.pipeline.stage1_describe import describe_normal_images
-from logicqa.pipeline.stage2_summarize import summarize_normal_context, extract_all_components
+from logicqa.pipeline.stage1_describe import (
+    describe_normal_images,
+    describe_normal_images_decomposed,
+)
+from logicqa.pipeline.stage2_summarize import (
+    summarize_normal_context,
+    extract_all_components,
+    summarize_decomposed,
+)
 from logicqa.pipeline.stage3_questions import (
     generate_candidate_questions,
     generate_questions_from_bullets,
@@ -283,20 +290,31 @@ class LogicQAPipeline:
             except Exception as e:
                 print(f"[Setup] LLMJudge load failed, skipping: {e}")
 
-        descriptions = describe_normal_images(
-            self.vlm, preprocessed_normals, self.normality_definition, self.class_name,
-            image_paths=normal_images, logger=self.logger, llm_judge=llm_judge,
-        )
-        self.components = extract_all_components(descriptions)
-        print(f"[Setup] Extracted {len(self.components)} unique components: {self.components}")
-
-        # Stage 2
-        self.normality_summary = summarize_normal_context(
-            self.vlm, descriptions, self.normality_definition,
-            class_name=self.class_name,
-            logger=self.logger,
-            all_components=self.components,
-        )
+        use_decomposed = getattr(self.cfg.pipeline, "decomposed_description", False)
+        if use_decomposed:
+            decomposed = describe_normal_images_decomposed(
+                self.vlm, preprocessed_normals, self.normality_definition, self.class_name,
+                image_paths=normal_images, logger=self.logger,
+            )
+            self.components = list(decomposed[0].per_component.keys())
+            print(f"[Setup] Decomposed Stage 1 done. Components: {self.components}")
+            self.normality_summary = summarize_decomposed(
+                self.vlm, decomposed, self.normality_definition,
+                class_name=self.class_name, logger=self.logger,
+            )
+        else:
+            descriptions = describe_normal_images(
+                self.vlm, preprocessed_normals, self.normality_definition, self.class_name,
+                image_paths=normal_images, logger=self.logger, llm_judge=llm_judge,
+            )
+            self.components = extract_all_components(descriptions)
+            print(f"[Setup] Extracted {len(self.components)} unique components: {self.components}")
+            self.normality_summary = summarize_normal_context(
+                self.vlm, descriptions, self.normality_definition,
+                class_name=self.class_name,
+                logger=self.logger,
+                all_components=self.components,
+            )
 
         # Stage 3a: Generate candidates
         q_mode = getattr(self.cfg.pipeline, "question_generation_mode", "llm")
@@ -385,6 +403,7 @@ class LogicQAPipeline:
 
         min_failures = getattr(self.cfg.pipeline, "anomaly_min_failures", 2)
         use_grounded = getattr(self.cfg.pipeline, "use_grounded_reasoning", False)
+        use_decomposed = getattr(self.cfg.pipeline, "decomposed_description", False)
 
         # If Lang-SAM returned multiple segments, test each and aggregate
         if isinstance(preprocessed, list):
@@ -401,8 +420,9 @@ class LogicQAPipeline:
                     anomaly_type=anomaly_type,
                     anomaly_min_failures=min_failures,
                     normality_summary=self.normality_summary,
-                    components=self.components if use_grounded else None,
-                    use_grounded_reasoning=use_grounded,
+                    components=self.components,
+                    use_grounded_reasoning=use_grounded and not use_decomposed,
+                    use_decomposed_description=use_decomposed,
                 )
                 for seg in preprocessed
             ]
@@ -429,8 +449,9 @@ class LogicQAPipeline:
             anomaly_type=anomaly_type,
             anomaly_min_failures=min_failures,
             normality_summary=self.normality_summary,
-            components=self.components if use_grounded else None,
-            use_grounded_reasoning=use_grounded,
+            components=self.components,
+            use_grounded_reasoning=use_grounded and not use_decomposed,
+            use_decomposed_description=use_decomposed,
         )
 
     # ------------------------------------------------------------------ #
@@ -489,18 +510,31 @@ class LogicQAPipeline:
             self._preprocess_for_description(img, self.class_name)
             for img in normal_images
         ]
-        descriptions = describe_normal_images(
-            self.vlm, preprocessed_normals, self.normality_definition, self.class_name,
-            image_paths=normal_images, logger=self.logger, llm_judge=ensemble_judge,
-        )
-        self.components = extract_all_components(descriptions)
-        print(f"[Ensemble] Extracted {len(self.components)} unique components: {self.components}")
-        self.normality_summary = summarize_normal_context(
-            self.vlm, descriptions, self.normality_definition,
-            class_name=self.class_name,
-            logger=self.logger,
-            all_components=self.components,
-        )
+        use_decomposed = getattr(self.cfg.pipeline, "decomposed_description", False)
+        if use_decomposed:
+            decomposed = describe_normal_images_decomposed(
+                self.vlm, preprocessed_normals, self.normality_definition, self.class_name,
+                image_paths=normal_images, logger=self.logger,
+            )
+            self.components = list(decomposed[0].per_component.keys())
+            print(f"[Ensemble] Decomposed Stage 1 done. Components: {self.components}")
+            self.normality_summary = summarize_decomposed(
+                self.vlm, decomposed, self.normality_definition,
+                class_name=self.class_name, logger=self.logger,
+            )
+        else:
+            descriptions = describe_normal_images(
+                self.vlm, preprocessed_normals, self.normality_definition, self.class_name,
+                image_paths=normal_images, logger=self.logger, llm_judge=ensemble_judge,
+            )
+            self.components = extract_all_components(descriptions)
+            print(f"[Ensemble] Extracted {len(self.components)} unique components: {self.components}")
+            self.normality_summary = summarize_normal_context(
+                self.vlm, descriptions, self.normality_definition,
+                class_name=self.class_name,
+                logger=self.logger,
+                all_components=self.components,
+            )
 
         preprocessed_vals = [
             self._preprocess_for_description(img, self.class_name)

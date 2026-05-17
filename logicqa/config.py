@@ -69,6 +69,8 @@ class PipelineConfig:
     use_grounded_reasoning: bool = False
     # Stage 3c: "rephrase" = LLM generates N variants, "self_consistency" = repeat main-Q N times
     sub_question_mode: str = "rephrase"
+    # Decomposed Stage 1/2/4: per-component sequential VLM calls instead of one big prompt
+    decomposed_description: bool = False
 
 
 @dataclass

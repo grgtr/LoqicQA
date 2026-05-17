@@ -266,6 +266,115 @@ Use only spatial terms: left side / right side / center / top / bottom.
 Do NOT explain. Output ONLY the location line."""
 
 
+# ============================================================
+# Decomposed Stage 1: per-component description prompts
+# ============================================================
+
+IDENTIFY_COMPONENTS_PROMPT = """You are inspecting a {class_name} image.
+
+The following objects MUST be present in a normal {class_name}:
+{normality_definition}
+
+Look at the image and list ALL distinct objects you can see.
+You MUST include every object named in the normality constraints above,
+even if it is hard to see clearly. Add any additional objects you observe.
+
+Output ONLY a bullet list, one item per line, no sentences:
+- <object name>
+- <object name>
+"""
+
+DESCRIBE_COMPONENT_PROMPT = """You are inspecting a {class_name} image.
+Focus ONLY on: '{component}'
+
+All components present in this {class_name}:
+{all_components_bullet}
+
+Answer exactly these four lines and nothing else:
+1. Count: How many '{component}' do you see? Use exact language: "exactly N".
+   If not clearly visible, write "not clearly visible".
+2. Position: Where is the '{component}'? Use: left/right/center/top/bottom.
+3. Appearance: Color, shape, texture, fill level of '{component}'.
+4. Relative size: Compared to the other components listed above, how much space
+   does '{component}' occupy?
+   Use generic comparisons such as: "largest item", "smaller than <other component>,
+   larger than <other component>", "roughly equal to <other component>".
+
+Be brief and factual. Do NOT describe any other component."""
+
+DESCRIBE_RELATIONAL_SLOT_PROMPT = """You are inspecting a {class_name} image.
+
+All components present in this {class_name}:
+{all_components_bullet}
+
+Answer the following three sections about cross-component relationships.
+Be brief and factual.
+
+5. Relational and Proportional Constraints:
+   Which component occupies the most space? The least? Any fixed size ratios between components?
+
+6. Symmetry and Connectivity:
+   Are any components strictly separated (e.g., left side vs right side)?
+   Are any components required to be parallel, adjacent, or connected?
+
+7. Per-Slot Completeness:
+   Are there repeating slots or compartments? If so, what must each slot contain?
+   Write N/A if no repeating slots exist."""
+
+SUMMARIZE_COMPONENT_PROMPT = """You are summarizing observations of '{component}' across {n} normal {class_name} images.
+
+[Normality constraints — ground truth]
+{normality_definition}
+
+[Observations of '{component}' across {n} images]
+{component_observations}
+
+Extract STRICT INVARIANTS — facts true in ALL observations.
+If an observation says "not clearly visible", treat it as missing data, not a contradiction.
+Forbidden words: "if applicable", "may", "could", "approximately", "seems".
+
+Output exactly four lines:
+Count: [exact invariant count, e.g. "exactly two"]
+Position: [exact invariant position]
+Appearance: [exact invariant visual attributes]
+Relative size: [invariant size comparison vs other components, or N/A]"""
+
+SUMMARIZE_RELATIONAL_PROMPT = """You are summarizing cross-component constraints across {n} normal {class_name} images.
+
+[Normality constraints — ground truth]
+{normality_definition}
+
+[Cross-component observations across {n} images]
+{relational_observations}
+
+Extract STRICT INVARIANTS — facts true in ALL observations.
+Forbidden words: "if applicable", "may", "could", "approximately", "seems".
+
+Output in this exact format:
+
+5. Relational and Proportional Constraints:
+   Constraints comparing two or more components to each other.
+   Include: which component occupies more space, size ratios, count-to-count
+   correspondences, any rule that links two components.
+   Example: "component_X fills more space than component_Y",
+            "count of component_A must equal 2x the count of component_B".
+   [bullet list, or N/A]
+
+6. Symmetry and Connectivity:
+   Observable alignment, mirroring, or physical connections between components.
+   Include: must components be parallel / mirror-symmetric?
+   Must they share a boundary or be in separate compartments?
+   Example: "component_X on left side, component_Y on right side — strict split".
+   [bullet list, or N/A]
+
+7. Per-Slot Completeness:
+   If repeating slots or compartments exist, what must each slot contain?
+   State the rule per individual slot, not just the total count.
+   Example: "each slot must contain exactly one component_X — no empty slots,
+            no slots with two or more items".
+   [bullet list, or N/A]"""
+
+
 BULLET_TO_QUESTION_PROMPT = """You are converting a quality control fact into an inspection question.
 
 Fact about a normal {class_name}: {fact}
@@ -352,17 +461,23 @@ Output ONLY {n_variants} numbered questions, nothing else.
 TEST_PROMPT = """You are a strict industrial quality control inspector.
 Your task is to inspect a {class_name} and answer a specific constraint question.
 
+[What a NORMAL {class_name} looks like]
 {class_context}
+
+[What I observe in the current image under inspection]
+{current_image_description}
+
+[Located objects in the current image]
+{grounding_context}
 
 Question: {question}
 
 Strict Rules:
-1. Base your answer ONLY on direct visual evidence from the image.
-2. DO NOT output general knowledge, advice, or hallucinate objects not listed above.
-3. Keep your reasoning strictly factual and brief (max 3-4 sentences).
+1. Compare [What I observe] against [What a NORMAL {class_name} looks like].
+2. Base your answer ONLY on the observations listed above.
+3. Keep your reasoning strictly factual and brief (max 2-3 sentences).
 
-Analyze step-by-step based on the rules, then conclude.
-Your response MUST end with exactly:
+Conclude with exactly:
 Result: Yes
 or
 Result: No"""

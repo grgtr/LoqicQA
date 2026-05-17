@@ -2,7 +2,12 @@
 from __future__ import annotations
 
 from logicqa.vlm.base import VLMBase
-from logicqa.prompts import SUMMARIZE_PROMPT, format_descriptions
+from logicqa.prompts import (
+    SUMMARIZE_PROMPT,
+    SUMMARIZE_COMPONENT_PROMPT,
+    SUMMARIZE_RELATIONAL_PROMPT,
+    format_descriptions,
+)
 from logicqa.logging import PipelineLogger
 
 from typing import Dict, List, Optional, Union
@@ -178,6 +183,116 @@ def summarize_normal_context(
     sanitized = text
     if logger:
         logger.log_stage2_summary(prompt=prompt, response_text=sanitized)
-    
+
     return sanitized
+
+
+# ============================================================
+# Decomposed Stage 2: per-component summarization
+# ============================================================
+
+def _assemble_summary(
+    all_components: List[str],
+    component_summaries: Dict,
+    relational_summary: str,
+) -> str:
+    """Reconstruct 7-section normality_summary string compatible with Stage 3."""
+    lines: List[str] = []
+    lines.append("1. Components:")
+    for c in all_components:
+        lines.append(f"   - {c}")
+    lines.append("")
+    lines.append("2. Quantities:")
+    for c in all_components:
+        obs = component_summaries.get(c)
+        lines.append(f"   - {c}: {obs.count if obs else 'N/A'}")
+    lines.append("")
+    lines.append("3. Spatial Arrangement:")
+    for c in all_components:
+        obs = component_summaries.get(c)
+        lines.append(f"   - {c}: {obs.position if obs else 'N/A'}")
+    lines.append("")
+    lines.append("4. Visual Appearance and Fill Level:")
+    for c in all_components:
+        obs = component_summaries.get(c)
+        lines.append(f"   - {c}: {obs.appearance if obs else 'N/A'}")
+    lines.append("   Relative sizes:")
+    for c in all_components:
+        obs = component_summaries.get(c)
+        lines.append(f"     - {c}: {obs.rel_size if obs else 'N/A'}")
+    lines.append("")
+    lines.append(relational_summary)
+    return "\n".join(lines)
+
+
+def summarize_decomposed(
+    vlm: VLMBase,
+    decomposed: List,
+    normality_definition: str,
+    class_name: str = "object",
+    logger: Optional[PipelineLogger] = None,
+) -> str:
+    """Stage 2 (decomposed): per-component summarization across normal images.
+
+    Args:
+        decomposed: List[DecomposedDescription] from describe_normal_images_decomposed().
+
+    Returns:
+        Standard 7-section normality_summary string compatible with Stage 3.
+    """
+    from logicqa.pipeline.stage1_describe import ComponentObs, _union_components
+
+    print(" [Stage 2 Decomposed] Summarizing per-component context ...")
+
+    # Union of all components across all descriptions
+    all_components = _union_components(
+        [list(d.per_component.keys()) for d in decomposed],
+        normality_definition,
+    )
+
+    # Per-component summaries
+    component_summaries: Dict[str, ComponentObs] = {}
+    for c in all_components:
+        obs_lines: List[str] = []
+        for i, d in enumerate(decomposed):
+            obs = d.per_component.get(c)
+            if obs:
+                obs_lines.append(
+                    f"Image {i+1}: count={obs.count}, position={obs.position}, "
+                    f"appearance={obs.appearance}, relative_size={obs.rel_size}"
+                )
+            else:
+                obs_lines.append(f"Image {i+1}: not observed")
+
+        prompt = SUMMARIZE_COMPONENT_PROMPT.format(
+            component=c,
+            n=len(decomposed),
+            class_name=class_name,
+            normality_definition=normality_definition,
+            component_observations="\n".join(obs_lines),
+        )
+        resp = vlm.query(prompt=prompt, image=None)
+        from logicqa.pipeline.stage1_describe import _parse_component_obs
+        component_summaries[c] = _parse_component_obs(resp.text)
+        print(f"    [{c}] count={component_summaries[c].count}, pos={component_summaries[c].position}")
+        if logger:
+            logger.log_stage2_summary(prompt=prompt, response_text=resp.text)
+
+    # Relational summary (sections 5-7)
+    rel_obs = "\n\n".join(
+        f"[Image {i+1}]\n{d.relational}" for i, d in enumerate(decomposed)
+    )
+    rel_prompt = SUMMARIZE_RELATIONAL_PROMPT.format(
+        n=len(decomposed),
+        class_name=class_name,
+        normality_definition=normality_definition,
+        relational_observations=rel_obs,
+    )
+    rel_resp = vlm.query(prompt=rel_prompt, image=None)
+    relational_summary = rel_resp.text.strip()
+    print(f"  [Stage 2 Decomposed] Relational summary done.")
+    if logger:
+        logger.log_stage2_summary(prompt=rel_prompt, response_text=relational_summary)
+
+    return _assemble_summary(all_components, component_summaries, relational_summary)
 

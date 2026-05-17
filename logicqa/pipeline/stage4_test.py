@@ -23,13 +23,8 @@ from logicqa.vlm.base import VLMBase
 from logicqa.prompts import (
     TEST_PROMPT,
     LOCALIZATION_PROMPT,
-    DESCRIBE_COMPONENT_PROMPT,
-    DESCRIBE_RELATIONAL_SLOT_PROMPT,
 )
-from logicqa.pipeline.stage1_describe import (
-    ComponentObs,
-    _parse_component_obs,
-)
+from logicqa.pipeline.stage1_describe import describe_image_decomposed
 from logicqa.logging import PipelineLogger
 from logicqa.pipeline.stage2_summarize import _dedup_key
 
@@ -239,52 +234,6 @@ def _compute_anomaly_score(main_q_results: List[MainQResult]) -> float:
     n_no = sum(1 for mq in main_q_results if mq.voted_answer == "No")
     return n_no / len(main_q_results)
 
-def _describe_test_image_decomposed(
-    vlm: VLMBase,
-    image: Image.Image,
-    components: List[str],
-    class_name: str,
-) -> tuple:
-    """Describe a test image using per-component calls (same approach as Stage 1).
-
-    Returns:
-        (current_image_description: str, grounding_context: str)
-    """
-    all_components_bullet = "\n".join(f"- {c}" for c in components)
-    per_comp: Dict[str, ComponentObs] = {}
-
-    for c in components:
-        prompt = DESCRIBE_COMPONENT_PROMPT.format(
-            class_name=class_name,
-            component=c,
-            all_components_bullet=all_components_bullet,
-        )
-        resp = vlm.query(prompt=prompt, image=image)
-        per_comp[c] = _parse_component_obs(resp.text)
-
-    rel_prompt = DESCRIBE_RELATIONAL_SLOT_PROMPT.format(
-        class_name=class_name,
-        all_components_bullet=all_components_bullet,
-    )
-    relational = vlm.query(prompt=rel_prompt, image=image).text.strip()
-
-    # Format as current_image_description text
-    desc_lines = ["Observed in this image:"]
-    for c, obs in per_comp.items():
-        desc_lines.append(
-            f"- {c}: count={obs.count}, position={obs.position}, "
-            f"appearance={obs.appearance}, relative size={obs.rel_size}"
-        )
-    desc_lines.append(relational)
-    current_image_description = "\n".join(desc_lines)
-
-    # Grounding derived from position field — no separate LOCALIZATION_PROMPT needed
-    grounding_lines = ["Located objects:"]
-    for c, obs in per_comp.items():
-        grounding_lines.append(f"- {c}: {obs.position} ({obs.count})")
-    grounding_context = "\n".join(grounding_lines)
-
-    return current_image_description, grounding_context
 
 
 def test_image(
@@ -332,7 +281,7 @@ def test_image(
     grounding_context = ""
     if use_decomposed_description and components:
         print(f"  [Stage 4 Decomposed] Describing test image ({len(components)} components) ...")
-        current_image_description, grounding_context = _describe_test_image_decomposed(
+        current_image_description, grounding_context = describe_image_decomposed(
             vlm, pil_img, components, class_name
         )
         print(f"  [Grounding] Context built from per-component describe:\n{grounding_context}")

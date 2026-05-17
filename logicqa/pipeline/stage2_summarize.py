@@ -241,13 +241,15 @@ def summarize_decomposed(
         Standard 7-section normality_summary string compatible with Stage 3.
     """
     from logicqa.pipeline.stage1_describe import ComponentObs, _union_components
+    from logicqa.data.normality_definitions import NORMALITY_COMPONENTS
 
     print(" [Stage 2 Decomposed] Summarizing per-component context ...")
 
-    # Union of all components across all descriptions
+    # Union of all components across all descriptions, anchored by known components
+    anchor = NORMALITY_COMPONENTS.get(class_name.lower().replace(" ", "_"), [])
     all_components = _union_components(
         [list(d.per_component.keys()) for d in decomposed],
-        normality_definition,
+        normality_components=anchor,
     )
 
     # Per-component summaries

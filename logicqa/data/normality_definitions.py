@@ -9,7 +9,7 @@ depending on cable color / fruit type. A parametrized version is provided.
 """
 from __future__ import annotations
 
-from typing import Dict, Optional
+from typing import Dict, List, Optional
 
 
 # --------------------------------------------------------------------------- #
@@ -19,10 +19,29 @@ from typing import Dict, Optional
 _NORMALITY_DEFINITIONS: Dict[str, str] = {
 
     "breakfast_box": """\
-- The breakfast box always contains exactly two tangerines and one nectarine \
-that are always located on the left-hand side of the box.
-- The ratio and relative position of the cereals and the mix of banana chips \
-and almonds on the right-hand side are fixed.""",
+COUNTABLE components (exact count matters):
+- Tangerines: exactly 2. Always on the LEFT half of the box. Roughly equal size, \
+placed side by side or stacked. Medium-sized round citrus fruit.
+- Nectarine: exactly 1. Always on the LEFT half of the box, next to the tangerines. \
+Smooth round stone fruit, similar size to a tangerine.
+
+UNCOUNTABLE components (describe as a layer or mix — do NOT count individual pieces):
+- Cereal mixture: a layer of oat-based granola/cereals. On the RIGHT half, \
+typically occupying the upper or larger portion of the right side. \
+Occupies MORE space than the banana chips and almonds combined.
+- Banana chips: a scattered layer of dried banana slices. On the RIGHT half, \
+mixed with or adjacent to the almonds. Do NOT count individual chips.
+- Almonds: a scattered layer of whole or halved almonds. On the RIGHT half, \
+mixed with or adjacent to the banana chips. Do NOT count individual almonds.
+
+Spatial layout:
+- LEFT half: tangerines + nectarine only.
+- RIGHT half: cereal mixture (larger portion) + banana chips and almonds mix (smaller portion).
+
+Relative sizes:
+- Cereal mixture occupies more space than banana chips and almonds combined.
+- Tangerines are roughly equal in size to each other and similar to the nectarine.
+- The left half (fruits) and right half (dry goods) each occupy roughly half the box.""",
 
     "juice_bottle": """\
 - The juice bottle is filled with {fruit} juice and carries exactly two labels.
@@ -59,6 +78,42 @@ connector terminal block.""",
 # Used by LLMJudge to detect hallucinations in Stage 1 descriptions.
 # If a description mentions any of these objects, it is likely hallucinated.
 # --------------------------------------------------------------------------- #
+
+# --------------------------------------------------------------------------- #
+# Explicit component lists for decomposed Stage 1/2.
+# Used as the anchor in _union_components to guarantee no component is dropped
+# regardless of what the VLM identifies in Phase A.
+# Keys must match class names (lowercase, underscores).
+# --------------------------------------------------------------------------- #
+
+NORMALITY_COMPONENTS: Dict[str, List[str]] = {
+    "breakfast_box": [
+        "tangerines",
+        "nectarine",
+        "cereal mixture",
+        "banana chips",
+        "almonds",
+    ],
+    "screw_bag": [
+        "washer",
+        "nut",
+        "long screw",
+        "short screw",
+    ],
+    "pushpins": [
+        "pushpin",
+    ],
+    "juice_bottle": [
+        "bottle",
+        "center label",
+        "lower label",
+    ],
+    "splicing_connectors": [
+        "splicing connector",
+        "cable",
+    ],
+}
+
 
 IMPOSSIBLE_OBJECTS: Dict[str, list] = {
     "breakfast_box": ["bolt", "screw", "nut", "washer", "cable", "wire", "connector",

@@ -14,7 +14,6 @@ from PIL import Image
 from logicqa.vlm.base import VLMBase
 from logicqa.prompts import (
     DESCRIBE_PROMPT,
-    IDENTIFY_COMPONENTS_PROMPT,
     DESCRIBE_COMPONENT_PROMPT,
     DESCRIBE_RELATIONAL_SLOT_PROMPT,
 )
@@ -51,24 +50,13 @@ class DecomposedDescription:
 # Parsing helpers
 # ============================================================
 
-def _parse_bullet_list(text: str) -> List[str]:
-    items = []
-    for line in text.splitlines():
-        line = line.strip()
-        if line.startswith("- "):
-            item = line[2:].strip().rstrip(".")
-            if len(item) > 2:
-                items.append(item)
-    return items
-
-
 def _parse_component_obs(text: str) -> ComponentObs:
     fields: Dict[str, str] = {"count": "N/A", "position": "N/A", "appearance": "N/A", "rel_size": "N/A"}
     # Map lowercase line prefixes → field key
     # Numbered form: "1. Count: exactly two"  or  "1. exactly two"
     # Labeled form:  "Count: exactly two"
     label_map = {
-        "1.": "count", "count:": "count",
+        "1.": "count", "count:": "count", "coverage:": "count",
         "2.": "position", "position:": "position",
         "3.": "appearance", "appearance:": "appearance",
         "4.": "rel_size", "relative size:": "rel_size",
@@ -247,6 +235,9 @@ def describe_normal_images_decomposed(
 
     Returns List[DecomposedDescription] — one entry per normal image.
     """
+    from logicqa.data.normality_definitions import get_normality_components
+    from logicqa.prompts import COUNT_INSTR_COUNTABLE, COUNT_INSTR_UNCOUNTABLE
+
     pil_images: List[Image.Image] = []
     for img in normal_images:
         if isinstance(img, (str, Path)):
@@ -254,47 +245,30 @@ def describe_normal_images_decomposed(
         pil_images.append(img)
 
     n = len(pil_images)
-    print(f"  [Stage 1 Decomposed] Phase A: identifying components in {n} images ...")
 
-    # Phase A: identify components per image
-    raw_per_image: List[List[str]] = []
-    for i, img in enumerate(pil_images):
-        prompt = IDENTIFY_COMPONENTS_PROMPT.format(
-            class_name=class_name,
-            normality_definition=normality_definition,
-        )
-        response = vlm.query(prompt=prompt, image=img)
-        comps = _parse_bullet_list(response.text)
-        print(f"    image {i+1}: {comps}")
-        raw_per_image.append(comps)
-        if logger:
-            img_path = str(image_paths[i]) if image_paths else f"image_{i}"
-            logger.log_stage1_description(
-                image_idx=f"{i+1}.identify",
-                image_path=img_path,
-                prompt=prompt,
-                response_text=response.text,
-            )
-
-    # Phase B: union + NORMALITY_COMPONENTS anchor
-    from logicqa.data.normality_definitions import NORMALITY_COMPONENTS
-    anchor = NORMALITY_COMPONENTS.get(class_name.lower().replace(" ", "_"), [])
-    all_components = _union_components(raw_per_image, normality_components=anchor)
+    # Components come directly from NORMALITY_COMPONENTS — no Phase A needed.
+    countable, _, all_components = get_normality_components(class_name)
+    countable_set = {c.lower() for c in countable}
     all_components_bullet = "\n".join(f"- {c}" for c in all_components)
-    print(f"  [Stage 1 Decomposed] Component union ({len(all_components)}): {all_components}")
+    print(f"  [Stage 1 Decomposed] Components from NORMALITY_COMPONENTS "
+          f"({len(all_components)}): {all_components}")
+    print(f"  [Stage 1 Decomposed] Phase C: per-component calls "
+          f"({n} images × {len(all_components) + 1} calls) ...")
 
-    # Phase C: per-component describe + relational
-    print(f"  [Stage 1 Decomposed] Phase C: per-component calls ({n} images × {len(all_components)+1} calls) ...")
     descriptions: List[DecomposedDescription] = []
     for i, img in enumerate(pil_images):
         img_path = str(image_paths[i]) if image_paths else f"image_{i}"
         per_comp: Dict[str, ComponentObs] = {}
 
         for c in all_components:
+            is_countable = c.lower() in countable_set
+            count_instr = (COUNT_INSTR_COUNTABLE if is_countable else COUNT_INSTR_UNCOUNTABLE).format(component=c)
             prompt = DESCRIBE_COMPONENT_PROMPT.format(
                 class_name=class_name,
                 component=c,
+                normality_definition=normality_definition,
                 all_components_bullet=all_components_bullet,
+                count_instruction=count_instr,
             )
             resp = vlm.query(prompt=prompt, image=img)
             obs = _parse_component_obs(resp.text)
@@ -323,7 +297,7 @@ def describe_normal_images_decomposed(
 
         descriptions.append(DecomposedDescription(
             image_path=img_path,
-            components=raw_per_image[i],
+            components=all_components,
             per_component=per_comp,
             relational=relational,
         ))
@@ -339,6 +313,7 @@ def describe_image_decomposed(
     image: Image.Image,
     components: List[str],
     class_name: str,
+    normality_definition: str = "",
 ) -> tuple:
     """Describe a single image using per-component calls (same approach as Stage 1 Phase C).
 
@@ -347,14 +322,24 @@ def describe_image_decomposed(
     Returns:
         (current_image_description: str, grounding_context: str)
     """
+    from logicqa.data.normality_definitions import get_normality_components
+    from logicqa.prompts import COUNT_INSTR_COUNTABLE, COUNT_INSTR_UNCOUNTABLE
+
+    countable, _, _ = get_normality_components(class_name)
+    countable_set = {c.lower() for c in countable}
+
     all_components_bullet = "\n".join(f"- {c}" for c in components)
     per_comp: Dict[str, ComponentObs] = {}
 
     for c in components:
+        is_countable = c.lower() in countable_set
+        count_instr = (COUNT_INSTR_COUNTABLE if is_countable else COUNT_INSTR_UNCOUNTABLE).format(component=c)
         prompt = DESCRIBE_COMPONENT_PROMPT.format(
             class_name=class_name,
             component=c,
+            normality_definition=normality_definition,
             all_components_bullet=all_components_bullet,
+            count_instruction=count_instr,
         )
         resp = vlm.query(prompt=prompt, image=image)
         per_comp[c] = _parse_component_obs(resp.text)

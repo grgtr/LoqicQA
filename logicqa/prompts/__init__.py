@@ -284,15 +284,31 @@ Output ONLY a bullet list, one item per line, no sentences:
 - <object name>
 """
 
+# Count/coverage instruction strings — injected into DESCRIBE_COMPONENT_PROMPT.
+# Countable: exact count expected ("exactly N").
+# Uncountable: coverage description expected ("a layer", "a handful").
+COUNT_INSTR_COUNTABLE = (
+    "Count: How many '{component}' do you see? "
+    'Use exact language: "exactly N". '
+    'If not clearly visible, write "not clearly visible".'
+)
+COUNT_INSTR_UNCOUNTABLE = (
+    "Coverage: '{component}' is an uncountable bulk item — describe its "
+    'coverage as "a layer", "a handful", "sparse", etc. '
+    "Do NOT count individual pieces."
+)
+
 DESCRIBE_COMPONENT_PROMPT = """You are inspecting a {class_name} image.
 Focus ONLY on: '{component}'
+
+[Normality constraints for reference]
+{normality_definition}
 
 All components present in this {class_name}:
 {all_components_bullet}
 
 Answer exactly these four lines and nothing else:
-1. Count: How many '{component}' do you see? Use exact language: "exactly N".
-   If not clearly visible, write "not clearly visible".
+1. {count_instruction}
 2. Position: Where is the '{component}'? Use: left/right/center/top/bottom.
 3. Appearance: Color, shape, texture, fill level of '{component}'.
 4. Relative size: Compared to the other components listed above, how much space

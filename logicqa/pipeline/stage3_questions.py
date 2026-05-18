@@ -258,12 +258,39 @@ def _parse_stage2_bullets(summary: str) -> List[str]:
     return [b for b in bullets if not (b in seen or seen.add(b))]  # type: ignore[func-returns-value]
 
 
-def _is_semantic_duplicate(q: str, seen_questions: "set[str]", jaccard_threshold: float = 0.65, containment_threshold: float = 0.90) -> bool:
-    """Check if q is a near-duplicate of any question already in seen_questions."""
+def _question_component(text: str, components: List[str]) -> Optional[str]:
+    """Return the component name (lowercased) found in text, or None.
+
+    Checks longer names first to avoid 'banana' matching before 'banana chips'.
+    """
+    text_lower = text.lower()
+    for c in sorted(components, key=len, reverse=True):
+        if c.lower() in text_lower:
+            return c.lower()
+    return None
+
+
+def _is_semantic_duplicate(
+    q: str,
+    seen_questions: "set[str]",
+    jaccard_threshold: float = 0.65,
+    containment_threshold: float = 0.90,
+    components: Optional[List[str]] = None,
+) -> bool:
+    """Check if q is a near-duplicate of any question in seen_questions.
+
+    Questions about *different* components are never duplicates even if
+    structurally similar (e.g. 'exactly two tangerines' vs 'exactly two nectarines').
+    """
     w_q = set(q.lower().replace("?", "").split())
     if not w_q:
         return False
+    comp_q = _question_component(q, components) if components else None
     for sq in seen_questions:
+        if components:
+            comp_sq = _question_component(sq, components)
+            if comp_q and comp_sq and comp_q != comp_sq:
+                continue  # different component → never a duplicate
         w_sq = set(sq.lower().replace("?", "").split())
         if not w_sq:
             continue
@@ -281,6 +308,7 @@ def generate_questions_from_bullets(
     normality_summary: str,
     class_name: str = "object",
     logger: Optional[PipelineLogger] = None,
+    components: Optional[List[str]] = None,
 ) -> List[str]:
     """
     Stage 3a (structured mode): generate one Yes/No question per Stage 2 bullet-point.
@@ -298,7 +326,7 @@ def generate_questions_from_bullets(
         response = vlm.query(prompt=prompt, image=None)
         q = response.text.strip()
         q = _strip_quotes(q)
-        is_dup = _is_semantic_duplicate(q, seen)
+        is_dup = _is_semantic_duplicate(q, seen, components=components)
         if q and not is_dup and _is_valid_question(q) and _is_semantically_valid_question(q):
             questions.append(q)
             seen.add(q)
@@ -387,7 +415,8 @@ def _answer_single_question(
     grounding_context = ""
     if use_decomposed_description and components:
         current_image_description, grounding_context = describe_image_decomposed(
-            vlm, img, components, class_name
+            vlm, img, components, class_name,
+            normality_definition=normality_summary,
         )
 
     prompt = TEST_PROMPT.format(

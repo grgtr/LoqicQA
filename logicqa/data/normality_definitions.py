@@ -81,38 +81,41 @@ connector terminal block.""",
 
 # --------------------------------------------------------------------------- #
 # Explicit component lists for decomposed Stage 1/2.
-# Used as the anchor in _union_components to guarantee no component is dropped
-# regardless of what the VLM identifies in Phase A.
+# countable   — exact count matters; VLM is asked "How many?"
+# uncountable — bulk/mass items; VLM is asked for coverage, not a count.
 # Keys must match class names (lowercase, underscores).
 # --------------------------------------------------------------------------- #
 
-NORMALITY_COMPONENTS: Dict[str, List[str]] = {
-    "breakfast_box": [
-        "tangerines",
-        "nectarine",
-        "cereal mixture",
-        "banana chips",
-        "almonds",
-    ],
-    "screw_bag": [
-        "washer",
-        "nut",
-        "long screw",
-        "short screw",
-    ],
-    "pushpins": [
-        "pushpin",
-    ],
-    "juice_bottle": [
-        "bottle",
-        "center label",
-        "lower label",
-    ],
-    "splicing_connectors": [
-        "splicing connector",
-        "cable",
-    ],
+NORMALITY_COMPONENTS: Dict[str, Dict[str, List[str]]] = {
+    "breakfast_box": {
+        "countable":   ["tangerines", "nectarine"],
+        "uncountable": ["cereal mixture", "banana chips", "almonds"],
+    },
+    "screw_bag": {
+        "countable":   ["washer", "nut", "long screw", "short screw"],
+        "uncountable": [],
+    },
+    "pushpins": {
+        "countable":   ["pushpin"],
+        "uncountable": [],
+    },
+    "juice_bottle": {
+        "countable":   ["center label", "lower label"],
+        "uncountable": ["bottle"],
+    },
+    "splicing_connectors": {
+        "countable":   ["splicing connector", "cable"],
+        "uncountable": [],
+    },
 }
+
+
+def get_normality_components(class_name: str):
+    """Return (countable, uncountable, all_components) lists for a class."""
+    info = NORMALITY_COMPONENTS.get(class_name.lower().replace(" ", "_"), {})
+    countable = info.get("countable", [])
+    uncountable = info.get("uncountable", [])
+    return countable, uncountable, countable + uncountable
 
 
 IMPOSSIBLE_OBJECTS: Dict[str, list] = {

@@ -297,6 +297,14 @@ COUNT_INSTR_UNCOUNTABLE = (
     'coverage as "a layer", "a handful", "sparse", etc. '
     "Do NOT count individual pieces."
 )
+SUMMARIZE_COUNT_INSTR_COUNTABLE = (
+    'Count: [exact invariant count across all observations, use exact language: "exactly N".]'
+)
+SUMMARIZE_COUNT_INSTR_UNCOUNTABLE = (
+    "Coverage: '{component}' is an uncountable bulk item — summarize its typical "
+    'coverage across all observations, e.g. "a layer", "a handful", "sparse". '
+    "Do NOT write an exact count."
+)
 
 DESCRIBE_COMPONENT_PROMPT = """You are inspecting a {class_name} image.
 Focus ONLY on: '{component}'
@@ -350,7 +358,7 @@ If an observation says "not clearly visible", treat it as missing data, not a co
 Forbidden words: "if applicable", "may", "could", "approximately", "seems".
 
 Output exactly four lines:
-Count: [exact invariant count, e.g. "exactly two"]
+{count_instruction}
 Position: [exact invariant position]
 Appearance: [exact invariant visual attributes]
 Relative size: [invariant size comparison vs other components, or N/A]"""

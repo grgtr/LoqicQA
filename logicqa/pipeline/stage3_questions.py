@@ -319,6 +319,7 @@ def generate_questions_from_bullets(
     """
     bullets = _parse_stage2_bullets(normality_summary)
     print(f"  [Stage 3a/structured] {len(bullets)} bullets parsed from Stage 2 summary.")
+    print(f"  [Stage 3a/structured] {bullets}")
     questions: List[str] = []
     seen: set = set()
     for fact in bullets:

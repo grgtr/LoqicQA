@@ -6,6 +6,8 @@ from logicqa.prompts import (
     SUMMARIZE_PROMPT,
     SUMMARIZE_COMPONENT_PROMPT,
     SUMMARIZE_RELATIONAL_PROMPT,
+    SUMMARIZE_COUNT_INSTR_COUNTABLE,
+    SUMMARIZE_COUNT_INSTR_UNCOUNTABLE,
     format_descriptions,
 )
 from logicqa.logging import PipelineLogger
@@ -241,18 +243,21 @@ def summarize_decomposed(
         Standard 7-section normality_summary string compatible with Stage 3.
     """
     from logicqa.pipeline.stage1_describe import ComponentObs, _union_components
-    from logicqa.data.normality_definitions import NORMALITY_COMPONENTS
+    from logicqa.data.normality_definitions import get_normality_components
 
     print(" [Stage 2 Decomposed] Summarizing per-component context ...")
 
     # Union of all components across all descriptions, anchored by known components
-    anchor = NORMALITY_COMPONENTS.get(class_name.lower().replace(" ", "_"), [])
+    _, _, anchor = get_normality_components(class_name)
     all_components = _union_components(
         [list(d.per_component.keys()) for d in decomposed],
         normality_components=anchor,
     )
 
     # Per-component summaries
+    countable, _, _ = get_normality_components(class_name)
+    countable_set = {c.lower() for c in countable}
+
     component_summaries: Dict[str, ComponentObs] = {}
     for c in all_components:
         obs_lines: List[str] = []
@@ -266,12 +271,18 @@ def summarize_decomposed(
             else:
                 obs_lines.append(f"Image {i+1}: not observed")
 
+        is_countable = c.lower() in countable_set
+        count_instr = (
+            SUMMARIZE_COUNT_INSTR_COUNTABLE if is_countable
+            else SUMMARIZE_COUNT_INSTR_UNCOUNTABLE.format(component=c)
+        )
         prompt = SUMMARIZE_COMPONENT_PROMPT.format(
             component=c,
             n=len(decomposed),
             class_name=class_name,
             normality_definition=normality_definition,
             component_observations="\n".join(obs_lines),
+            count_instruction=count_instr,
         )
         resp = vlm.query(prompt=prompt, image=None)
         from logicqa.pipeline.stage1_describe import _parse_component_obs

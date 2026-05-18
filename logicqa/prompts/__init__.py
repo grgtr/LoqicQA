@@ -441,25 +441,53 @@ def build_subquestion_slots(n: int) -> str:
 # {subquestion_slots}
 # """
 
-SUBQUESTION_AUGMENT_PROMPT = """You are a quality control assistant verifying images of a packaged product.
+SUBQUESTION_AUGMENT_PROMPT = """You are a quality control assistant verifying images of a {class_name}.
+
+[What a NORMAL {class_name} contains]
+{normality_summary}
+
+Known components (use ONLY these, do NOT invent new objects, numbers, or locations):
+{components_list}
 
 The following constraint must hold for a NORMAL image:
   "{main_question}"
-(Yes = image is normal, No = anomaly detected)
+(Yes = constraint satisfied = normal. No = constraint violated = anomaly.)
 
-Write {n_variants} different verification questions about this constraint. Rules:
-1. ONLY "Yes" or "No" answers allowed. "Yes" = normal, "No" = anomaly.
-2. ONLY use objects and locations that appear in the original constraint. No new objects.
-3. ALWAYS phrase questions so that "Yes" means the object/condition IS present or correct.
-   WRONG: "Is the left side empty of tangerines?" (Yes = missing = anomaly)
-   RIGHT: "Can you see tangerines on the left side?" (Yes = present = normal)
-4. Each question must be different from the others and from the original.
-5. Preserve exact numbers (e.g., "exactly two", "precisely one") when relevant.
+Write {n_variants} verification questions about this constraint.
+Each question must test the constraint from a DIFFERENT observable angle.
+Vary what you focus on — but only include angles actually present in the original constraint.
+
+Rules:
+1. "Yes" ALWAYS means the image is normal / the condition is satisfied.
+2. Forbidden words and phrases: "missing", "absent", "empty of", "without",
+   "no other", "(Yes = anomaly)", "No =", "outside", "foreign".
+3. Do NOT copy the original question verbatim.
+4. Do NOT invent objects, positions, or numbers not present in the constraint or components list.
+5. Preserve exact numbers when they appear (e.g. "exactly N", "precisely N").
 
 Output ONLY {n_variants} numbered questions, nothing else.
 
 {subquestion_slots}
 """
+
+# Fallback templates when a generated sub-question fails validation.
+# Use component name extracted from the main question.
+_SUBQ_FALLBACK_TEMPLATES = [
+    "Can you see {component} in the {class_name}?",
+    "Is {component} visible in the image?",
+    "Is {component} present as expected in the {class_name}?",
+    "Is {component} in its correct position in the {class_name}?",
+    "Does {component} appear as it should in the {class_name}?",
+]
+
+# Markers that indicate an inverted Yes=anomaly question.
+_SUBQ_INVERSION_MARKERS = [
+    "yes = anomaly", "yes=anomaly",
+    "no =", "no=",
+    "(yes = anomaly", "(no = normal",
+    "missing", "absent", "empty of", "without any",
+    "no other food", "foreign object",
+]
 
 
 # ============================================================

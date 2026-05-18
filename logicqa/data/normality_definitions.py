@@ -29,10 +29,12 @@ UNCOUNTABLE components (describe as a layer or mix — do NOT count individual p
 - Cereal mixture: a layer of oat-based granola/cereals. On the RIGHT half, \
 typically occupying the upper or larger portion of the right side. \
 Occupies MORE space than the banana chips and almonds combined.
-- Banana chips: a scattered layer of dried banana slices. On the RIGHT half, \
-mixed with or adjacent to the almonds. Do NOT count individual chips.
-- Almonds: a scattered layer of whole or halved almonds. On the RIGHT half, \
-mixed with or adjacent to the banana chips. Do NOT count individual almonds.
+- Banana chips: a scattered layer of dried banana slices. In the LOWER portion \
+of the RIGHT half, mixed together with almonds beneath the cereal mixture. \
+Their relative proportion to almonds varies across images. Do NOT count individual chips.
+- Almonds: a scattered layer of whole or halved almonds. In the LOWER portion \
+of the RIGHT half, mixed together with banana chips beneath the cereal mixture. \
+Their relative proportion to banana chips varies across images. Do NOT count individual almonds.
 
 Spatial layout:
 - LEFT half: tangerines + nectarine only.

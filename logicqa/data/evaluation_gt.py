@@ -17,6 +17,10 @@ ATOMIC_CONSTRAINTS: Dict[str, List[str]] = {
         "A mix of banana chips and almonds is present on the right-hand side",
         "The ratio and relative position of cereals, banana chips, and almonds is fixed",
         "The cereal compartment is partially full with visible gaps at the top edge",
+        "Almonds are present in the right compartment of the breakfast box",
+        "Banana chips are present in the right compartment of the breakfast box",
+        "The cereal mixture occupies more space than banana chips and almonds combined",
+        "Both banana chips and almonds are present together in the lower portion of the right compartment, beneath the cereal mixture",
     ],
     "juice_bottle": [
         "The bottle carries exactly two labels",

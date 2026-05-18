@@ -379,6 +379,9 @@ class LogicQAPipeline:
             n_variants=self.cfg.pipeline.n_sub_questions,
             logger=self.logger,
             mode=self.cfg.pipeline.sub_question_mode,
+            normality_summary=self.normality_summary,
+            components=self.components,
+            class_name=self.class_name,
         )
 
         self.main_questions = kept
@@ -594,6 +597,9 @@ class LogicQAPipeline:
                 n_variants=self.cfg.pipeline.n_sub_questions,
                 logger=self.logger,
                 mode=self.cfg.pipeline.sub_question_mode,
+                normality_summary=self.normality_summary,
+                components=self.components,
+                class_name=self.class_name,
             )
             new = 0
             for q, sqs in sub_qs.items():

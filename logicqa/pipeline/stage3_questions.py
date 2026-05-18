@@ -20,6 +20,8 @@ from logicqa.prompts import (
     GENERATE_QUESTIONS_PROMPT,
     BULLET_TO_QUESTION_PROMPT,
     SUBQUESTION_AUGMENT_PROMPT,
+    _SUBQ_FALLBACK_TEMPLATES,
+    _SUBQ_INVERSION_MARKERS,
     TEST_PROMPT,
     build_question_slots,
     build_subquestion_slots
@@ -536,22 +538,40 @@ def filter_questions_on_normal(
     return kept
 
 
+def _is_inverted_polarity(q: str) -> bool:
+    """Return True if the question has Yes=anomaly polarity (should be dropped)."""
+    q_lower = q.lower()
+    return any(marker in q_lower for marker in _SUBQ_INVERSION_MARKERS)
+
+
+def _subq_fallback(component: str, class_name: str, idx: int) -> str:
+    """Return a safe fallback sub-question for the given slot index."""
+    tpl = _SUBQ_FALLBACK_TEMPLATES[idx % len(_SUBQ_FALLBACK_TEMPLATES)]
+    return tpl.format(component=component, class_name=class_name)
+
+
 def generate_sub_questions(
     vlm: VLMBase,
     main_questions: List[str],
     n_variants: int = 5,
     logger: Optional[PipelineLogger] = None,
     mode: str = "rephrase",
+    normality_summary: str = "",
+    components: Optional[List[str]] = None,
+    class_name: str = "object",
 ) -> Dict[str, List[str]]:
     """
     Stage 3c: Generate sub-question variants for each accepted main question.
 
     Args:
-        vlm:            VLM backend.
-        main_questions: Filtered main questions from Stage 3b.
-        n_variants:     Number of sub-question variants per main question.
-        mode:           "rephrase" = LLM generates N paraphrases;
-                        "self_consistency" = repeat main-Q N times (no LLM call).
+        vlm:               VLM backend.
+        main_questions:    Filtered main questions from Stage 3b.
+        n_variants:        Number of sub-question variants per main question.
+        mode:              "rephrase" = LLM generates N paraphrases;
+                           "self_consistency" = repeat main-Q N times (no LLM call).
+        normality_summary: Stage 2 summary injected into prompt (Fix 1).
+        components:        Known component names for fallback generation (Fix 2).
+        class_name:        Product class name for prompt and fallbacks.
 
     Returns:
         Dict mapping each main question → list of n_variants sub-questions.
@@ -561,22 +581,36 @@ def generate_sub_questions(
         return {mq: [mq] * n_variants for mq in main_questions}
 
     print(f"  [Stage 3c] Generating {n_variants} sub-questions per main question ...")
+    components = components or []
+    components_list = "\n".join(f"- {c}" for c in components) if components else "(not specified)"
     sub_questions: Dict[str, List[str]] = {}
     subquestion_slots = build_subquestion_slots(n_variants)
+
     for i, mq in enumerate(main_questions):
-        prompt = SUBQUESTION_AUGMENT_PROMPT.format(n_variants=n_variants,
+        # Extract known component from main question for fallback generation
+        component = _question_component(mq, components) if components else class_name
+
+        prompt = SUBQUESTION_AUGMENT_PROMPT.format(
+            class_name=class_name,
+            normality_summary=normality_summary or "(not provided)",
+            components_list=components_list,
+            n_variants=n_variants,
             main_question=mq,
             subquestion_slots=subquestion_slots,
         )
         response = vlm.query(prompt=prompt, image=None)
-        print("[DEBUG] generated sub_questions :", response.text)
         variants = _parse_output_list(response.text)
 
-        # Post-generation validation: deduplicate among generated sub-questions
+        # Post-generation validation: dedup + polarity check (Fix 3)
         validated: List[str] = []
         seen_keys: set = set()
+        n_inverted = 0
         for sq in variants:
             if not sq or len(sq) < 10:
+                continue
+            if _is_inverted_polarity(sq):
+                print(f"    [SubQ polarity] SKIP inverted: {sq[:70]}")
+                n_inverted += 1
                 continue
             key = _dedup_key(sq)
             if key in seen_keys:
@@ -585,15 +619,24 @@ def generate_sub_questions(
             seen_keys.add(key)
             validated.append(sq)
 
-        n_parsed = len(validated)
-        # Pad with main question if too few passed validation
+        n_valid = len(validated)
+        # Fix 2: fill remaining slots with fallback templates, not main-Q copies
+        fallback_idx = 0
         while len(validated) < n_variants:
-            validated.append(mq)
-        print(f"  Q{i+1}: parsed={len(variants)}, valid={n_parsed}, "
-              f"padded={n_variants - n_parsed}, total={n_variants}")
+            fb = _subq_fallback(component or class_name, class_name, fallback_idx)
+            key = _dedup_key(fb)
+            if key not in seen_keys:
+                seen_keys.add(key)
+                validated.append(fb)
+                print(f"    [SubQ fallback] slot {len(validated)}: {fb[:70]}")
+            fallback_idx += 1
+            if fallback_idx > len(_SUBQ_FALLBACK_TEMPLATES) * 2:
+                break  # safety: avoid infinite loop if all fallbacks deduplicate
+
+        print(f"  Q{i+1}: parsed={len(variants)}, valid={n_valid}, "
+              f"inverted={n_inverted}, fallback={len(validated)-n_valid}, total={len(validated)}")
 
         sub_questions[mq] = validated[:n_variants]
-        print(f"    Q{i+1}: {mq[:60]} → {n_variants} sub-Qs")
         if logger:
             logger.log_stage3c_subquestions(
                 main_question=mq,

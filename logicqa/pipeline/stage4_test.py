@@ -24,7 +24,6 @@ from logicqa.prompts import (
     TEST_PROMPT,
     LOCALIZATION_PROMPT,
 )
-from logicqa.pipeline.stage1_describe import describe_image_decomposed
 from logicqa.logging import PipelineLogger
 from logicqa.pipeline.stage2_summarize import _dedup_key
 
@@ -118,8 +117,6 @@ def _ask_sub_question(
         question=question,
         class_name=class_name,
         class_context=normality_summary,
-        current_image_description=current_image_description or "(not available)",
-        grounding_context=grounding_context or "(not available)",
     )
     if hasattr(vlm, "query_with_logprobs"):
         # print("[DEBUG] using query_with_logprobs in stage4_test")
@@ -276,17 +273,10 @@ def test_image(
             image_idx=0, image_path=image_path or "", gt_label=gt_label, anomaly_type=anomaly_type
         )
 
-    # Pre-description + grounding: describe the test image before the question loop
+    # Pre-description removed (RC4-A): VLM inspects the image fresh per question via inline CoT.
     current_image_description = ""
     grounding_context = ""
-    if use_decomposed_description and components:
-        print(f"  [Stage 4 Decomposed] Describing test image ({len(components)} components) ...")
-        current_image_description, grounding_context = describe_image_decomposed(
-            vlm, pil_img, components, class_name,
-            normality_definition=normality_summary,
-        )
-        print(f"  [Grounding] Context built from per-component describe:\n{grounding_context}")
-    elif use_grounded_reasoning and components:
+    if use_grounded_reasoning and components:
         deduped = _dedup_components_for_grounding(components)
         print(f"  [Grounding] Localizing {len(deduped)} components (deduped from {len(components)}) ...")
         grounding_map = localize_components(vlm, pil_img, deduped, class_name)

@@ -40,20 +40,36 @@ from logicqa.pipeline.stage3_questions import (
 from logicqa.pipeline.stage4_test import test_image, ImageResult
 from logicqa.logging import PipelineLogger
 
-def _is_near_duplicate(q: str, existing_questions: "set[str]", jaccard_threshold: float = 0.65, containment_threshold: float = 0.90) -> bool:
-    """
-    Semantic near-duplicate check using word Jaccard and subset-containment.
+def _question_component(text: str, components: List[str]) -> Optional[str]:
+    """Return the component name (lowercased) found in text, or None."""
+    text_lower = text.lower()
+    for c in sorted(components, key=len, reverse=True):
+        if c.lower() in text_lower:
+            return c.lower()
+    return None
 
-    Catches two types of duplicates that exact-string matching misses:
-    - Rephrasing across ensemble seeds ("Are the tangerines on the left?" vs
-      "Are there tangerines located on the left-hand side?") → high Jaccard
-    - One question is a sub-phrase of another ("Is there exactly two tangerines?"
-      vs "Is there exactly two tangerines in the breakfast box?") → high containment
+
+def _is_near_duplicate(
+    q: str,
+    existing_questions: "set[str]",
+    jaccard_threshold: float = 0.65,
+    containment_threshold: float = 0.90,
+    components: Optional[List[str]] = None,
+) -> bool:
+    """Semantic near-duplicate check using word Jaccard and subset-containment.
+
+    Questions about *different* components are never duplicates even if
+    structurally similar (e.g. 'exactly two tangerines' vs 'exactly two nectarines').
     """
     w_q = set(q.lower().replace("?", "").split())
     if not w_q:
         return False
+    comp_q = _question_component(q, components) if components else None
     for eq in existing_questions:
+        if components:
+            comp_eq = _question_component(eq, components)
+            if comp_q and comp_eq and comp_q != comp_eq:
+                continue  # different component → never a duplicate
         w_eq = set(eq.lower().replace("?", "").split())
         if not w_eq:
             continue
@@ -62,10 +78,8 @@ def _is_near_duplicate(q: str, existing_questions: "set[str]", jaccard_threshold
         jaccard = len(intersection) / len(union)
         if jaccard >= jaccard_threshold:
             return True
-        # containment: smaller set almost entirely within larger
-        smaller = intersection
         shorter = w_q if len(w_q) <= len(w_eq) else w_eq
-        if shorter and len(smaller) / len(shorter) >= containment_threshold:
+        if shorter and len(intersection) / len(shorter) >= containment_threshold:
             return True
     return False
 
@@ -324,6 +338,7 @@ class LogicQAPipeline:
                 self.normality_summary,
                 class_name=self.class_name,
                 logger=self.logger,
+                components=self.components,
             )
         else:
             candidates = generate_candidate_questions(
@@ -557,6 +572,7 @@ class LogicQAPipeline:
                     self.normality_summary,
                     class_name=self.class_name,
                     logger=self.logger,
+                    components=self.components,
                 )
             else:
                 candidates = generate_candidate_questions(
@@ -581,7 +597,8 @@ class LogicQAPipeline:
             )
             new = 0
             for q, sqs in sub_qs.items():
-                if _is_near_duplicate(q, set(all_sub_questions.keys())):
+                if _is_near_duplicate(q, set(all_sub_questions.keys()),
+                                      components=self.components):
                     print(f"  [Ensemble] DEDUP: '{q[:70]}' is near-duplicate, skipping")
                 else:
                     all_sub_questions[q] = sqs

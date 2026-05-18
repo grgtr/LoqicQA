@@ -24,7 +24,7 @@ pipeline:
   n_questions: 8
   n_sub_questions: 5
   question_filter_threshold: 0.8
-  ensemble_seeds: [42, 7, 13]
+  ensemble_seeds: [42]
   use_llm_judge_hallucination: false
   anomaly_min_failures: 2
   use_grounded_reasoning: false   # replaced by decomposed describe in Stage 4

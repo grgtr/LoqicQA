@@ -282,7 +282,8 @@ def test_image(
     if use_decomposed_description and components:
         print(f"  [Stage 4 Decomposed] Describing test image ({len(components)} components) ...")
         current_image_description, grounding_context = describe_image_decomposed(
-            vlm, pil_img, components, class_name
+            vlm, pil_img, components, class_name,
+            normality_definition=normality_summary,
         )
         print(f"  [Grounding] Context built from per-component describe:\n{grounding_context}")
     elif use_grounded_reasoning and components:

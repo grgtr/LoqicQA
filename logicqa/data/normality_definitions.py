@@ -43,7 +43,11 @@ Spatial layout:
 Relative sizes:
 - Cereal mixture occupies more space than banana chips and almonds combined.
 - Tangerines are roughly equal in size to each other and similar to the nectarine.
-- The left half (fruits) and right half (dry goods) each occupy roughly half the box.""",
+- The left half (fruits) and right half (dry goods) each occupy roughly half the box.
+
+Strict compartment exclusivity:
+- LEFT half: tangerines and nectarine ONLY. Cereal mixture, banana chips, and almonds are NEVER present on the left side.
+- RIGHT half: cereal mixture, banana chips, and almonds ONLY. Tangerines and nectarine are NEVER present on the right side.""",
 
     "juice_bottle": """\
 - The juice bottle is filled with {fruit} juice and carries exactly two labels.

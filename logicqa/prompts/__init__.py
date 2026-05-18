@@ -510,28 +510,22 @@ _SUBQ_INVERSION_MARKERS = [
 # Let's think step by step.
 # """
 
-TEST_PROMPT = """You are a strict industrial quality control inspector.
+TEST_PROMPT = """\
+You are a strict industrial quality control inspector.
 Your task is to inspect a {class_name} and answer a specific constraint question.
 
 [What a NORMAL {class_name} looks like]
 {class_context}
 
-[What I observe in the current image under inspection]
-{current_image_description}
+Question to verify: {question}
 
-[Located objects in the current image]
-{grounding_context}
-
-Question: {question}
-
-Strict Rules:
-1. Compare [What I observe] against [What a NORMAL {class_name} looks like].
-2. Base your answer ONLY on the observations listed above.
-3. Keep your reasoning strictly factual and brief (max 2-3 sentences).
-
-Conclude with exactly:
+Look carefully at the image.
+Step 1 — Observe: Describe what you see in the image that is directly relevant \
+to this question. Be specific: count visible objects, note their location \
+(left/right/center), and explicitly state if an expected component appears \
+absent or is in the wrong position.
+Step 2 — Conclude with exactly one of:
 Result: Yes
-or
 Result: No"""
 
 

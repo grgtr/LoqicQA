@@ -63,7 +63,8 @@ git -C "${MAIN_REPO}" worktree add --detach "${WORKTREE}" "${COMMIT}"
 
 echo "[run18] Starting at $(date)"
 export PYTORCH_ALLOC_CONF=expandable_segments:True
-"${VENV_PYTHON}" "${SCRIPT}" \
+export PYTHONUNBUFFERED=1
+"${VENV_PYTHON}" -u "${SCRIPT}" \
     --class_name breakfast_box \
     --config "${WORKTREE}/config_decomposed_bb50.yaml" \
     --output_dir "${OUTPUT_DIR}" \

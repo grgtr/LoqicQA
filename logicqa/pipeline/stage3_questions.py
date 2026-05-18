@@ -319,9 +319,9 @@ def generate_questions_from_bullets(
     """
     bullets = _parse_stage2_bullets(normality_summary)
     print(f"  [Stage 3a/structured] {len(bullets)} bullets parsed from Stage 2 summary.")
-    print(f"  [Stage 3a/structured] {bullets}")
     questions: List[str] = []
     seen: set = set()
+    bullet_results: List[dict] = []
     for fact in bullets:
         prompt = BULLET_TO_QUESTION_PROMPT.format(class_name=class_name, fact=fact)
         response = vlm.query(prompt=prompt, image=None)
@@ -329,18 +329,23 @@ def generate_questions_from_bullets(
         q = _strip_quotes(q)
         is_dup = _is_semantic_duplicate(q, seen, components=components)
         if q and not is_dup and _is_valid_question(q) and _is_semantically_valid_question(q):
+            status = "KEPT"
             questions.append(q)
             seen.add(q)
-            print(f"    fact: {fact[:60]} → {q[:80]}")
         else:
-            reason = "NEAR-DUP" if is_dup else "INVALID"
-            print(f"    fact: {fact[:60]} → {reason} ({q[:60]})")
-    print(f"  [Stage 3a/structured] Generated {len(questions)} questions from {len(bullets)} bullets.")
+            status = "NEAR-DUP" if is_dup else "INVALID"
+        bullet_results.append({"bullet": fact, "question": q, "status": status})
+        print(f"    [{status}] {fact[:60]} → {q[:80]}")
+    n_dup = sum(1 for r in bullet_results if r["status"] == "NEAR-DUP")
+    n_inv = sum(1 for r in bullet_results if r["status"] == "INVALID")
+    print(f"  [Stage 3a/structured] {len(questions)} kept / {len(bullets)} bullets "
+          f"({n_dup} near-dup, {n_inv} invalid)")
     if logger:
         logger.log_stage3a_questions(
             prompt="(structured-from-bullets)",
-            response_text=str(questions),
+            response_text="",
             parsed_questions=questions,
+            bullet_results=bullet_results,
         )
     return questions
 

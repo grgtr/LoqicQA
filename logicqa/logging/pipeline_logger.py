@@ -108,19 +108,34 @@ class PipelineLogger:
         prompt: str,
         response_text: str,
         parsed_questions: List[str],
+        bullet_results: Optional[List[Dict]] = None,
     ) -> None:
         entry = {
             "prompt": prompt,
             "response": response_text,
             "parsed_questions": parsed_questions,
+            "bullet_results": bullet_results or [],
         }
         self._stage3a = entry
         self._save_json("stage3a_questions.json", entry)
 
-        self._log("\n--- Stage 3a | Generated questions ---")
-        self._log(f"[PROMPT]\n{prompt}")
-        self._log(f"[RESPONSE]\n{response_text}")
-        self._log(f"[PARSED] {parsed_questions}")
+        n_total = len(bullet_results) if bullet_results else 0
+        n_kept = len(parsed_questions)
+        n_dup = sum(1 for r in (bullet_results or []) if r.get("status") == "NEAR-DUP")
+        n_invalid = n_total - n_kept - n_dup
+
+        self._log(f"\n--- Stage 3a | Generated questions: {n_kept} kept / {n_total} bullets "
+                  f"({n_dup} near-dup, {n_invalid} invalid) ---")
+        if bullet_results:
+            for r in bullet_results:
+                status = r.get("status", "?")
+                bullet = r.get("bullet", "")[:60]
+                question = r.get("question", "")[:80]
+                self._log(f"  [{status:8s}] {bullet!r} → {question!r}")
+        else:
+            self._log(f"[PROMPT]\n{prompt}")
+            self._log(f"[RESPONSE]\n{response_text}")
+        self._log(f"[KEPT] " + " | ".join(f"{i+1}. {q[:70]}" for i, q in enumerate(parsed_questions)))
 
     # ------------------------------------------------------------------ #
     # Stage 3b — фильтрация

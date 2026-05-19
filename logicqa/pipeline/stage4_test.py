@@ -287,7 +287,7 @@ def test_image(
     violating_questions: List[str] = []
 
     for mq in main_questions:
-        sub_qs = sub_questions.get(mq, [mq])
+        sub_qs = [mq] + sub_questions.get(mq, [])[:4]
         sub_results: List[SubQResult] = []
 
         for idx, sq in enumerate(sub_qs):

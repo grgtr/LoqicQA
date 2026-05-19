@@ -22,6 +22,7 @@ from logicqa.prompts import (
     SUBQUESTION_AUGMENT_PROMPT,
     _SUBQ_FALLBACK_TEMPLATES,
     _SUBQ_INVERSION_MARKERS,
+    _SUBQ_MULTI_IMAGE_MARKERS,
     TEST_PROMPT,
     build_question_slots,
     build_subquestion_slots
@@ -544,6 +545,12 @@ def _is_inverted_polarity(q: str) -> bool:
     return any(marker in q_lower for marker in _SUBQ_INVERSION_MARKERS)
 
 
+def _is_multi_image(q: str) -> bool:
+    """Return True if the question references multiple images or temporal states."""
+    q_lower = q.lower()
+    return any(marker in q_lower for marker in _SUBQ_MULTI_IMAGE_MARKERS)
+
+
 def _subq_fallback(component: str, class_name: str, idx: int) -> str:
     """Return a safe fallback sub-question for the given slot index."""
     tpl = _SUBQ_FALLBACK_TEMPLATES[idx % len(_SUBQ_FALLBACK_TEMPLATES)]
@@ -601,16 +608,21 @@ def generate_sub_questions(
         response = vlm.query(prompt=prompt, image=None)
         variants = _parse_output_list(response.text)
 
-        # Post-generation validation: dedup + polarity check (Fix 3)
+        # Post-generation validation: dedup + polarity check + multi-image check
         validated: List[str] = []
         seen_keys: set = set()
         n_inverted = 0
+        n_multi_img = 0
         for sq in variants:
             if not sq or len(sq) < 10:
                 continue
             if _is_inverted_polarity(sq):
                 print(f"    [SubQ polarity] SKIP inverted: {sq[:70]}")
                 n_inverted += 1
+                continue
+            if _is_multi_image(sq):
+                print(f"    [SubQ multi-img] SKIP: {sq[:70]}")
+                n_multi_img += 1
                 continue
             key = _dedup_key(sq)
             if key in seen_keys:
@@ -634,7 +646,8 @@ def generate_sub_questions(
                 break  # safety: avoid infinite loop if all fallbacks deduplicate
 
         print(f"  Q{i+1}: parsed={len(variants)}, valid={n_valid}, "
-              f"inverted={n_inverted}, fallback={len(validated)-n_valid}, total={len(validated)}")
+              f"inverted={n_inverted}, multi-img={n_multi_img}, "
+              f"fallback={len(validated)-n_valid}, total={len(validated)}")
 
         sub_questions[mq] = validated[:n_variants]
         if logger:

@@ -22,7 +22,7 @@ pipeline:
   n_shots: 5
   n_val_shots: 15
   n_questions: 8
-  n_sub_questions: 5
+  n_sub_questions: 4
   question_filter_threshold: 0.8
   ensemble_seeds: [42]
   use_llm_judge_hallucination: false

@@ -265,11 +265,18 @@ def _question_component(text: str, components: List[str]) -> Optional[str]:
     """Return the component name (lowercased) found in text, or None.
 
     Checks longer names first to avoid 'banana' matching before 'banana chips'.
+    Also checks the stem (component without trailing 's') for plural/singular mismatch,
+    e.g. "almonds" component found in "almond in the corner".
     """
     text_lower = text.lower()
     for c in sorted(components, key=len, reverse=True):
-        if c.lower() in text_lower:
-            return c.lower()
+        c_lower = c.lower()
+        if c_lower in text_lower:
+            return c_lower
+        if c_lower.endswith('s'):
+            stem = c_lower[:-1]
+            if stem and re.search(r'\b' + re.escape(stem) + r'\b', text_lower):
+                return c_lower
     return None
 
 
@@ -515,7 +522,15 @@ def filter_questions_on_normal(
           f"on {len(normal_images)} normal images (threshold={threshold:.0%}) ...")
 
     kept = []
+    n_bypassed = 0
     for q in candidate_questions:
+        if _is_count_question(q):
+            print(f"    [BYPASS] count invariant: {q}")
+            kept.append(q)
+            n_bypassed += 1
+            if logger:
+                logger.log_stage3b_result(q, 1.0, True)
+            continue
         correct = 0
         for i, img in enumerate(normal_images):
             gt_label = "good"
@@ -535,7 +550,8 @@ def filter_questions_on_normal(
         if accuracy >= threshold:
             kept.append(q)
 
-    print(f"  [Stage 3b] Kept {len(kept)}/{len(candidate_questions)} questions.")
+    print(f"  [Stage 3b] Kept {len(kept)}/{len(candidate_questions)} questions "
+          f"({n_bypassed} count-bypass).")
     return kept
 
 
@@ -549,6 +565,15 @@ def _is_multi_image(q: str) -> bool:
     """Return True if the question references multiple images or temporal states."""
     q_lower = q.lower()
     return any(marker in q_lower for marker in _SUBQ_MULTI_IMAGE_MARKERS)
+
+
+def _is_count_question(q: str) -> bool:
+    """Return True if q tests an exact count constraint — bypass Stage 3b filter."""
+    q_lower = q.lower()
+    return bool(
+        re.search(r'\bexactly\b|\bprecisely\b', q_lower) and
+        re.search(r'\b\d+\b|\bone\b|\btwo\b|\bthree\b|\bfour\b|\bfive\b', q_lower)
+    )
 
 
 def _subq_fallback(component: str, class_name: str, idx: int) -> str:

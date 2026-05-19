@@ -3,6 +3,8 @@ Adopted verbatim from Appendix A of the paper (arXiv:2503.20252).
 """
 from __future__ import annotations
 
+from typing import List
+
 
 # ============================================================
 # Stage 1: Describe a normal image
@@ -464,6 +466,11 @@ Rules:
 3. Do NOT copy the original question verbatim.
 4. Do NOT invent objects, positions, or numbers not present in the constraint or components list.
 5. Preserve exact numbers when they appear (e.g. "exactly N", "precisely N").
+6. Every question must be answerable from THIS SINGLE image alone.
+   FORBIDDEN phrases: "each image", "every image", "all images", "in every picture",
+   "some images", "across images", "Image 1", "Image 2", "Image 3", "Image 4", "Image 5".
+7. Do NOT reference assembly, history, or hypothetical scenarios
+   ("during assembly", "at some point", "was placed", "hypothetical line").
 
 Output ONLY {n_variants} numbered questions, nothing else.
 
@@ -487,6 +494,15 @@ _SUBQ_INVERSION_MARKERS = [
     "(yes = anomaly", "(no = normal",
     "missing", "absent", "empty of", "without any",
     "no other food", "foreign object",
+]
+
+# Markers that indicate a multi-image or temporal question (invalid for single-image testing).
+_SUBQ_MULTI_IMAGE_MARKERS: List[str] = [
+    "each image", "every image", "all images",
+    "in every picture", "some images", "does each image",
+    "across images", "image 1", "image 2", "image 3",
+    "image 4", "image 5", "image 6",
+    "during assembly", "at some point",
 ]
 
 

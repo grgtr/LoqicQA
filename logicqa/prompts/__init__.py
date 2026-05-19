@@ -456,8 +456,14 @@ The following constraint must hold for a NORMAL image:
 (Yes = constraint satisfied = normal. No = constraint violated = anomaly.)
 
 Write {n_variants} verification questions about this constraint.
-Each question must test the constraint from a DIFFERENT observable angle.
-Vary what you focus on — but only include angles actually present in the original constraint.
+Vary only the sentence opener and phrasing — the substance must stay identical.
+Allowed openers: "Can you see", "Is there", "Do you observe", "Are ... visible",
+"Does the {class_name} contain", "Is ... present".
+Keep each question under 15 words where possible.
+Do NOT combine multiple conditions in one question (avoid AND, OR, IF, WHILE).
+Do NOT test a different aspect — all {n_variants} questions must verify the exact same
+constraint as the main question, just phrased differently.
+Focus ONLY on the component mentioned in the main question. Do NOT introduce other components.
 
 Rules:
 1. "Yes" ALWAYS means the image is normal / the condition is satisfied.
@@ -469,8 +475,9 @@ Rules:
 6. Every question must be answerable from THIS SINGLE image alone.
    FORBIDDEN phrases: "each image", "every image", "all images", "in every picture",
    "some images", "across images", "Image 1", "Image 2", "Image 3", "Image 4", "Image 5".
-7. Do NOT reference assembly, history, or hypothetical scenarios
-   ("during assembly", "at some point", "was placed", "hypothetical line").
+7. Do NOT reference hypothetical scenarios, history, or reasoning steps.
+   FORBIDDEN: "if you were to", "would it be possible", "imaginary", "were to remove",
+   "if we remove", "hypothetical", "during assembly", "at some point", "was placed".
 
 Output ONLY {n_variants} numbered questions, nothing else.
 
@@ -481,10 +488,12 @@ Output ONLY {n_variants} numbered questions, nothing else.
 # Use component name extracted from the main question.
 _SUBQ_FALLBACK_TEMPLATES = [
     "Can you see {component} in the {class_name}?",
-    "Is {component} visible in the image?",
-    "Is {component} present as expected in the {class_name}?",
-    "Is {component} in its correct position in the {class_name}?",
-    "Does {component} appear as it should in the {class_name}?",
+    "Is {component} visible in the {class_name}?",
+    "Do you observe {component} in the {class_name}?",
+    "Is {component} present in the {class_name}?",
+    "Does the {class_name} contain {component}?",
+    "Is {component} there in the {class_name}?",
+    "Can {component} be found in the {class_name}?",
 ]
 
 # Markers that indicate an inverted Yes=anomaly question.
@@ -494,15 +503,20 @@ _SUBQ_INVERSION_MARKERS = [
     "(yes = anomaly", "(no = normal",
     "missing", "absent", "empty of", "without any",
     "no other food", "foreign object",
+    "empty",
 ]
 
 # Markers that indicate a multi-image or temporal question (invalid for single-image testing).
 _SUBQ_MULTI_IMAGE_MARKERS: List[str] = [
+    # multi-image references
     "each image", "every image", "all images",
     "in every picture", "some images", "does each image",
     "across images", "image 1", "image 2", "image 3",
     "image 4", "image 5", "image 6",
     "during assembly", "at some point",
+    # hypothetical / reasoning steps
+    "if you were to", "would it be possible", "imaginary",
+    "were to remove", "if we remove", "hypothetical",
 ]
 
 

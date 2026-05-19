@@ -6,7 +6,7 @@ from __future__ import annotations
 
 import json
 import os
-import json
+import re
 from pathlib import Path
 from typing import Dict, List, Optional, Union, Any
 from dataclasses import dataclass, field, asdict
@@ -152,7 +152,8 @@ class LogicQAPipeline:
         stopwords = {"the", "a", "an", "is", "are", "in", "on", "of", "to",
                      "and", "or", "its", "at", "with", "by", "than", "that",
                      "there", "has", "have", "be", "been", "not", "no", "for"}
-        return {w.lower().strip(".,()") for w in constraint.split() if w.lower().strip(".,()") not in stopwords and len(w) > 2}
+        return {w for w in re.findall(r'[a-z]+', constraint.lower())
+                if len(w) > 2 and w not in stopwords}
 
     def _filter_by_constraints(
         self,

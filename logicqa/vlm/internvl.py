@@ -232,9 +232,13 @@ class InternVLBackend(VLMBase):
         # _load_patched_internvl()
         try:
             if is_awq:
-                # AWQ models must use device_map="auto" so transformers activates
-                # the quantization_config and loads weights in 4-bit (not bfloat16).
-                # low_cpu_mem_usage=True avoids materialising the full fp16 model in RAM.
+                # InternVL2.5-38B-AWQ has quantization_config=null at config.json top level
+                # (it's buried in llm_config.quantization_config), so transformers doesn't
+                # auto-detect AWQ and loads dense fp16 weights → uninitialized LLM → garbage.
+                # Fix: explicitly pass AwqConfig so transformers replaces Linear→WQLinear
+                # and properly loads qweight/qzeros/scales from the checkpoint.
+                from transformers import AwqConfig
+                _awq_cfg = AwqConfig(bits=4, group_size=128, version="gemm", zero_point=True)
                 self.model = AutoModel.from_pretrained(
                     cfg.model_name,
                     torch_dtype=torch.bfloat16,
@@ -242,6 +246,7 @@ class InternVLBackend(VLMBase):
                     use_flash_attn=False,
                     trust_remote_code=True,
                     device_map="auto",
+                    quantization_config=_awq_cfg,
                 ).eval()
             else:
                 self.model = AutoModel.from_pretrained(
@@ -274,6 +279,13 @@ class InternVLBackend(VLMBase):
             trust_remote_code=True,
             use_fast=False,
         )
+        # tokenizer_config.json for some models (e.g. 38B-AWQ) has eos_token_id=null
+        # even though eos_token is set. Fix so generation stops at the right token.
+        if self.tokenizer.eos_token_id is None and self.tokenizer.eos_token:
+            eos_id = self.tokenizer.convert_tokens_to_ids(self.tokenizer.eos_token)
+            if eos_id is not None and eos_id != self.tokenizer.unk_token_id:
+                self.tokenizer.eos_token_id = eos_id
+                print(f"[InternVL] Fixed eos_token_id → {eos_id} ('{self.tokenizer.eos_token}')")
         print(f"[InternVL] Model loaded. GPUs used: {n_gpus}")
 
 

@@ -138,6 +138,8 @@ def _ensure_awq_config_patched(model_name: str) -> None:
 
     llm_qcfg = config.get("llm_config", {}).get("quantization_config")
     if llm_qcfg:
+        # Exclude vision encoder and projector — only the LLM part is AWQ-quantized.
+        llm_qcfg.setdefault("modules_to_not_convert", ["vision_model", "mlp1"])
         config["quantization_config"] = llm_qcfg
         with open(cfg_path, "w") as f:
             _json.dump(config, f, indent=2)

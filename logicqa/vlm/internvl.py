@@ -222,6 +222,8 @@ class InternVLBackend(VLMBase):
         print("Number of GPUs:", n_gpus)
         assert n_gpus > 0
 
+        is_awq = "awq" in cfg.model_name.lower()
+
         _orig_linspace = torch.linspace
         def _safe_linspace(*args, **kwargs):
             kwargs['device'] = 'cpu'
@@ -229,16 +231,28 @@ class InternVLBackend(VLMBase):
         torch.linspace = _safe_linspace
         # _load_patched_internvl()
         try:
-            self.model = AutoModel.from_pretrained(
-                cfg.model_name,
-                torch_dtype=torch.bfloat16,
-                low_cpu_mem_usage=False,
-                use_flash_attn=False,
-                trust_remote_code=True,
-            ).eval()
+            if is_awq:
+                # AWQ models must use device_map="auto" so transformers activates
+                # the quantization_config and loads weights in 4-bit (not bfloat16).
+                # low_cpu_mem_usage=True avoids materialising the full fp16 model in RAM.
+                self.model = AutoModel.from_pretrained(
+                    cfg.model_name,
+                    torch_dtype=torch.bfloat16,
+                    low_cpu_mem_usage=True,
+                    use_flash_attn=False,
+                    trust_remote_code=True,
+                    device_map="auto",
+                ).eval()
+            else:
+                self.model = AutoModel.from_pretrained(
+                    cfg.model_name,
+                    torch_dtype=torch.bfloat16,
+                    low_cpu_mem_usage=False,
+                    use_flash_attn=False,
+                    trust_remote_code=True,
+                ).eval()
         finally:
             torch.linspace = _orig_linspace
-        
 
         if not hasattr(self.model, 'all_tied_weights_keys'):
             tied = getattr(self.model, '_tied_weights_keys', []) or []
@@ -247,12 +261,14 @@ class InternVLBackend(VLMBase):
         _apply_chat_patch(self.model)
 
         self.model = self.model.eval()
-        if n_gpus == 1:
-            self.model = self.model.cuda()
-        else:
-            from accelerate import dispatch_model
-            device_map = _split_model(cfg.model_name)
-            self.model = dispatch_model(self.model, device_map=device_map)
+        if not is_awq:
+            # AWQ: device_map="auto" already placed the model; skip manual dispatch.
+            if n_gpus == 1:
+                self.model = self.model.cuda()
+            else:
+                from accelerate import dispatch_model
+                device_map = _split_model(cfg.model_name)
+                self.model = dispatch_model(self.model, device_map=device_map)
         self.tokenizer = AutoTokenizer.from_pretrained(
             cfg.model_name,
             trust_remote_code=True,

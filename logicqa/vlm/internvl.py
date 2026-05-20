@@ -96,6 +96,54 @@ def _apply_chat_patch(model) -> None:
 #     spec.loader.exec_module(module)
 #     print("[Patch] Loaded patched modeling_internvl_chat")
 
+def _ensure_awq_config_patched(model_name: str) -> None:
+    """Lift llm_config.quantization_config to top-level in cached config.json.
+
+    InternVL2.5-38B-AWQ ships with quantization_config=null at the top level of
+    config.json (the AWQ config is only in llm_config.quantization_config).
+    Transformers reads the top-level field to decide whether the checkpoint is
+    pre-quantized. Without it, it treats the model as dense → qweight/scales are
+    ignored → uninitialized LLM weights → garbage output. This function patches the
+    cached config.json once so all subsequent loads work correctly.
+    """
+    import json as _json
+    from pathlib import Path as _Path
+    from huggingface_hub import snapshot_download as _snap
+
+    # Locate the snapshot directory
+    try:
+        from huggingface_hub import try_to_load_from_cache
+        cfg_path = try_to_load_from_cache(model_name, "config.json")
+    except Exception:
+        cfg_path = None
+
+    if cfg_path is None:
+        # Fall back to finding it in the hub cache
+        import glob as _glob
+        safe_name = model_name.replace("/", "--")
+        patterns = _glob.glob(
+            f"{_Path.home()}/.cache/huggingface/hub/models--{safe_name}/snapshots/*/config.json"
+        )
+        cfg_path = patterns[0] if patterns else None
+
+    if cfg_path is None:
+        print(f"[AWQ patch] Could not locate cached config.json for {model_name} — skipping patch")
+        return
+
+    with open(cfg_path) as f:
+        config = _json.load(f)
+
+    if config.get("quantization_config") is not None:
+        return  # already patched or has a top-level config
+
+    llm_qcfg = config.get("llm_config", {}).get("quantization_config")
+    if llm_qcfg:
+        config["quantization_config"] = llm_qcfg
+        with open(cfg_path, "w") as f:
+            _json.dump(config, f, indent=2)
+        print(f"[AWQ patch] Lifted llm_config.quantization_config to top level in {cfg_path}")
+
+
 def _split_model(model_name: str) -> dict:
     """
     Returns device_map for even distribution of layers across GPUs.
@@ -232,13 +280,11 @@ class InternVLBackend(VLMBase):
         # _load_patched_internvl()
         try:
             if is_awq:
-                # InternVL2.5-38B-AWQ has quantization_config=null at config.json top level
-                # (it's buried in llm_config.quantization_config), so transformers doesn't
-                # auto-detect AWQ and loads dense fp16 weights → uninitialized LLM → garbage.
-                # Fix: explicitly pass AwqConfig so transformers replaces Linear→WQLinear
-                # and properly loads qweight/qzeros/scales from the checkpoint.
-                from transformers import AwqConfig
-                _awq_cfg = AwqConfig(bits=4, group_size=128, version="gemm", zero_point=True)
+                # InternVL2.5-38B-AWQ has quantization_config=null at top-level config.json
+                # (buried in llm_config.quantization_config). We patch the cached config.json
+                # once via _ensure_awq_config_patched() so transformers auto-detects AWQ,
+                # sets pre_quantized=True, and loads qweight/qzeros/scales correctly.
+                _ensure_awq_config_patched(cfg.model_name)
                 self.model = AutoModel.from_pretrained(
                     cfg.model_name,
                     torch_dtype=torch.bfloat16,
@@ -246,7 +292,6 @@ class InternVLBackend(VLMBase):
                     use_flash_attn=False,
                     trust_remote_code=True,
                     device_map="auto",
-                    quantization_config=_awq_cfg,
                 ).eval()
             else:
                 self.model = AutoModel.from_pretrained(

@@ -1,0 +1,85 @@
+{
+  "class_name": "juice_bottle",
+  "normality_definition": "A small square glass bottle with a screw cap. The bottle carries exactly two labels.\n\nLABELS:\n- Top label (fruit icon label): attached to the center of the bottle body. Contains a clearly visible fruit icon/image positioned at the center of the label. This label is positioned in the upper portion of the bottle body.\n- Bottom label: attached to the lower part of the bottle body, below the top label. Contains the text '100% Juice'. The top label is always higher on the bottle than the bottom label.\n\nFILL LEVEL:\n- The bottle is filled with juice to at least 90% of its capacity, but not 100%. A small but visible gap exists between the juice surface and the bottle cap/neck.\n- The bottle is never empty or nearly empty.\n\nJUICE-LABEL CONSISTENCY:\n- The color and type of the juice inside the bottle matches the fruit depicted in the icon on the top label (e.g., orange juice with an orange icon, banana juice with a banana icon).\n\nNote: Juice type and fruit icon vary across normal images — what matters is that they are consistent with each other.",
+  "main_questions": [
+    "Is there a label with a fruit icon attached to the body of the bottle?",
+    "Is there a label with '100% Juice' text attached to the lower part of the bottle?",
+    "Does the fruit icon label display a clearly visible fruit image?",
+    "Is the fruit icon positioned at the center of its label (not shifted to one side)?",
+    "Is the fruit icon label positioned in the upper or center portion of the bottle body — not too close to the bottom?",
+    "Is the '100% Juice' label positioned below the fruit icon label on the bottle?",
+    "Is the fruit icon label higher on the bottle than the '100% Juice' label?",
+    "Is the bottle filled with juice (not empty or nearly empty)?",
+    "Is the juice level below the bottle's neck, with a visible gap between the juice and the cap?",
+    "Is the bottle at least three-quarters full of juice?",
+    "Is the color and type of the juice consistent with the fruit depicted on the label?"
+  ],
+  "sub_questions": {
+    "Is there a label with a fruit icon attached to the body of the bottle?": [
+      "Can you see a label containing a fruit icon or image on the body of the bottle?",
+      "Is a fruit icon label present and attached to the bottle body?",
+      "Does the bottle have a label showing a fruit image somewhere on its body?",
+      "Is there a visible sticker or label with a fruit picture on the bottle?"
+    ],
+    "Is there a label with '100% Juice' text attached to the lower part of the bottle?": [
+      "Can you see a label with the text '100% Juice' on the lower portion of the bottle?",
+      "Is a '100% Juice' label present on the bottle?",
+      "Does the bottle have a label that reads '100% Juice' attached to it?",
+      "Is there a '100% Juice' sticker visible anywhere on the bottle?"
+    ],
+    "Does the fruit icon label display a clearly visible fruit image?": [
+      "Is there a recognizable fruit illustration or icon visible on the top label?",
+      "Can you clearly see a fruit depicted on the upper label of the bottle?",
+      "Does the top label show a fruit image rather than being blank or plain?",
+      "Is a fruit icon or graphic clearly printed on the top label?"
+    ],
+    "Is the fruit icon positioned at the center of its label (not shifted to one side)?": [
+      "Does the fruit icon appear centered within its label, not displaced to one edge?",
+      "Is the fruit image located in the middle of the top label rather than off to one side?",
+      "Is the fruit icon in the center of the label rather than shifted left, right, up, or down?",
+      "Does the fruit graphic sit centrally on the label without being misaligned?"
+    ],
+    "Is the fruit icon label positioned in the upper or center portion of the bottle body — not too close to the bottom?": [
+      "Is the top label located in the center or upper half of the bottle body, not near the bottom?",
+      "Does the fruit icon label appear in the middle or upper area of the bottle rather than near the base?",
+      "Is the label with the fruit icon placed at approximately the center or above on the bottle body?",
+      "Is the fruit icon label clearly above the lower portion of the bottle?"
+    ],
+    "Is the '100% Juice' label positioned below the fruit icon label on the bottle?": [
+      "Is the '100% Juice' label located lower on the bottle than the fruit icon label?",
+      "Does the '100% Juice' label appear at the bottom portion of the bottle body, beneath the top label?",
+      "Is the text label '100% Juice' situated in the lower section of the bottle, below the fruit label?",
+      "Is the '100% Juice' label positioned underneath the fruit icon label on the bottle?"
+    ],
+    "Is the fruit icon label higher on the bottle than the '100% Juice' label?": [
+      "Does the fruit icon label appear above the '100% Juice' label on the bottle?",
+      "Is the label with the fruit image located higher up the bottle than the label saying '100% Juice'?",
+      "Is the top label (with the fruit) positioned above the bottom label (with '100% Juice')?",
+      "Can you confirm the fruit icon is on the upper label and '100% Juice' is on the lower label?"
+    ],
+    "Is the bottle filled with juice (not empty or nearly empty)?": [
+      "Does the bottle contain a visible amount of juice inside it?",
+      "Is there juice present in the bottle — is the bottle not empty?",
+      "Can you see colored liquid (juice) filling the bottle body?",
+      "Is the bottle clearly containing juice rather than being empty or transparent throughout?"
+    ],
+    "Is the juice level below the bottle's neck, with a visible gap between the juice and the cap?": [
+      "Is the juice surface visibly below the bottle's neck, leaving a small air gap before the cap?",
+      "Is there a clear gap between the top of the juice and the bottle opening or cap?",
+      "Does the juice fall short of reaching the very top of the bottle, leaving a visible space at the neck?",
+      "Is the bottle not filled all the way to the cap — is there a noticeable unfilled space at the top?"
+    ],
+    "Is the bottle at least three-quarters full of juice?": [
+      "Does the juice fill at least the lower three-quarters of the bottle's main body?",
+      "Is the bottle mostly full — with juice filling at least 75% of the bottle?",
+      "Can you see that the bottle is substantially filled with juice, not just partially?",
+      "Is the juice level high enough to fill most of the bottle body — not just the bottom portion?"
+    ],
+    "Is the color and type of the juice consistent with the fruit depicted on the label?": [
+      "Does the color of the juice in the bottle match the type of fruit shown on the label?",
+      "Is the juice inside the bottle the same type as the fruit pictured on the top label?",
+      "Do the juice color and the fruit icon on the label correspond to the same fruit type?",
+      "Is the fruit shown on the label consistent with what the juice inside appears to be?"
+    ]
+  }
+}

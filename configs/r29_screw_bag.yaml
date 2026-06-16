@@ -1,0 +1,50 @@
+# Run 29: screw_bag — 8B model, prebuilt questions, logical anomalies only
+# Pipeline: run25-identical (decomposed Stage 1/4, RC4-A CoT, structured Q-gen)
+# Questions: loaded from questions/screw_bag_questions.json (skip Stage 1-3)
+# Note: screw_bag is in BPM_CLASSES — BPM enabled to mask metal mesh background
+
+vlm:
+  backend: "internvl"
+  internvl:
+    model_name: "OpenGVLab/InternVL2_5-8B"
+    temperature: 0.2
+    top_p: 0.7
+    repetition_penalty: 1.1
+    do_sample: true
+    max_new_tokens: 512
+    max_tiles: 12
+    device_map: "auto"
+
+pipeline:
+  decomposed_description: true
+  question_generation_mode: "structured"
+  n_shots: 5
+  n_val_shots: 15
+  n_questions: 8
+  n_sub_questions: 4
+  question_filter_threshold: 0.8
+  ensemble_seeds: [42]
+  use_llm_judge_hallucination: false
+  anomaly_min_failures: 1
+  use_grounded_reasoning: false
+  sub_question_mode: "rephrase"
+
+dataset:
+  name: "mvtec_loco"
+  data_dir: "/home/chikibriki/LoqicQA/dataset-ninja/"
+  download_if_missing: false
+
+preprocessing:
+  bpm:
+    enabled: true   # screw_bag in BPM_CLASSES: masks metal mesh background
+  langsam:
+    enabled: false  # LangSAM disabled: our questions target whole image, not segments
+
+output:
+  results_dir: "results/r29_screw_bag"
+  save_questions: true
+  save_per_image: true
+
+testing:
+  mode: "all"
+  exclude_labels: ["structural_anomaly"]

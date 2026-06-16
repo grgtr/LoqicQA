@@ -50,33 +50,135 @@ Strict compartment exclusivity:
 - RIGHT half: cereal mixture, banana chips, and almonds ONLY. Tangerines and nectarine are NEVER present on the right side.""",
 
     "juice_bottle": """\
-- The juice bottle is filled with {fruit} juice and carries exactly two labels.
-- The first label is attached to the center of the bottle, with the {fruit} \
-icon positioned exactly at the center of the label, clearly indicating the \
-type of {fruit} juice.
-- The second label is attached to the lower part of the bottle with the text \
-"100% Juice" written on it.
-- The fill level is the same for each bottle.
-- The bottle is filled with at least 90% of its capacity with juice, \
-but not 100%.""",
+COMPONENTS (exact count matters):
+- Fruit icon label: exactly 1. Attached to the center or upper portion of the bottle body. \
+Contains a clearly visible fruit icon/image centered within the label. \
+The fruit type (e.g., orange, banana, apple) varies across normal images, \
+but the icon must always be present and centered.
+- "100% Juice" label: exactly 1. Attached to the lower portion of the bottle body, \
+below the fruit icon label. Contains the text "100% Juice".
+- Juice (liquid fill): the bottle body is filled with colored juice. \
+Fill level is at least 90% of the bottle's capacity but NOT 100% — \
+a small but visible gap must exist between the juice surface and the bottle cap/neck.
+
+Spatial layout:
+- Fruit icon label is in the UPPER or CENTER portion of the bottle body.
+- "100% Juice" label is BELOW the fruit icon label, in the LOWER portion of the bottle body.
+- The fruit icon label is ALWAYS higher on the bottle than the "100% Juice" label. \
+They are never swapped.
+
+Visual appearance:
+- The bottle is a small square glass bottle with a screw cap.
+- The fruit icon is positioned at the CENTER of its label — not shifted left, right, up, or down.
+- The juice color matches the fruit depicted on the label \
+(e.g., orange juice → orange color, banana juice → yellow color).
+- The juice surface is visible inside the bottle; the bottle is never empty or nearly empty.
+
+Fill level constraints:
+- Juice fills at least 90% of the bottle body but not 100%.
+- A visible gap (air space) exists between the juice surface and the bottle cap.
+- The bottle is not filled so high that juice reaches the very neck or cap.
+
+Juice-label consistency:
+- The color and type of the juice inside the bottle MUST match the fruit depicted \
+on the fruit icon label. A mismatch (e.g., orange juice with a banana icon) is an anomaly.
+
+Strict ordering rule:
+- Fruit icon label is ALWAYS above the "100% Juice" label on the bottle. \
+Swapped positions are an anomaly.""",
 
     "pushpins": """\
-- Each compartment of the box of pushpins contains exactly one pushpin.""",
+COMPONENTS (exact count matters):
+- Pushpins: exactly 15 in total (one per compartment). Round-capped pins with a metal needle. \
+All pushpins are the same color (yellow or orange) and the same size.
+- Compartments: exactly 15, arranged in a 3-row by 5-column grid inside a transparent \
+rectangular plastic box.
+- Separators (dividers): transparent plastic walls forming the internal 3×5 grid. \
+All dividers must be present and clearly visible on all four sides of every compartment.
+
+Spatial layout:
+- The box forms a complete 3-row × 5-column grid of 15 individual compartments.
+- Dividers run both horizontally (separating rows) and vertically (separating columns).
+- Every adjacent pair of compartments is separated by a visible plastic wall.
+
+Per-compartment rule (strict):
+- Each of the 15 compartments contains EXACTLY ONE pushpin — no more, no less.
+- No compartment is empty.
+- No compartment contains two or more pushpins.
+- Every pushpin is in its own dedicated compartment, not sharing space with another pin.
+
+Divider/separator integrity:
+- ALL internal plastic walls between compartments are intact and clearly visible.
+- No wall between adjacent compartments is missing, broken, or absent.
+- The full 3×5 grid pattern is complete with no merged or open sections.
+
+Visual appearance:
+- Pushpins have round colored caps (yellow or orange) and metallic needles pointing downward.
+- The box is transparent, allowing all compartments and pushpins to be seen clearly.
+- The grid is regular and uniform — all compartments are the same size.""",
 
     "screw_bag": """\
-- A screw bag contains exactly two washers, two nuts, one long screw, \
-and one short screw.
-- All bolts (screws) are longer than 3 times the diameter of the washer.""",
+COUNTABLE components (exact count matters):
+- Washers: exactly 2. Small flat split rings with a visible gap/cut (split-ring washers). \
+Silver colored. Both washers are the same size.
+- Nuts: exactly 2. Hexagonal silver metal pieces. Both nuts are the same size.
+- Long screw: exactly 1. Hex socket head screw with a long threaded shaft. \
+Clearly longer than the short screw.
+- Short screw: exactly 1. Hex socket head screw with a shorter threaded shaft. \
+Clearly shorter than the long screw.
+
+Total item count: exactly 6 hardware items in the bag (2 washers + 2 nuts + 1 long screw + 1 short screw).
+
+Size proportions (strict):
+- The long screw is CLEARLY longer than the short screw — the length difference is visually obvious.
+- The long screw is at least 3× as long as the diameter of a washer.
+- The short screw is at least as long as the height of a hexagonal nut (not abnormally tiny).
+- Both screws are of standard proportional length — neither screw is abnormally tiny \
+nor excessively long relative to the bag size.
+- Neither screw extends close to the full height of the bag.
+
+Visual appearance:
+- Washers: flat rings with a visible split/gap, silver metal.
+- Nuts: six-sided (hexagonal) silver metal pieces.
+- Screws: hex socket head (recessed hexagonal socket on top), threaded shaft, silver metal.
+- All items are silver/metallic in color.
+
+Completeness rule:
+- All four component types MUST be present: washers, nuts, long screw, short screw.
+- No component type is missing.
+- No extra items beyond the 6 expected pieces.""",
 
     "splicing_connectors": """\
-- Exactly two splicing connectors with the same number of cable clamps are \
-linked by exactly one cable.
-- In addition, the number of clamps has a one-to-one correspondence to the \
-{color} of the cable.
-- The cable must be connected to the same position on both connectors to \
-maintain mirror symmetry.
-- The cable length is roughly longer than the length of the splicing \
-connector terminal block.""",
+COUNTABLE components (exact count matters):
+- Splicing connectors: exactly 2. Transparent plastic push-wire connectors with orange \
+lever clamps. Both connectors are the same type — the same model with the same number \
+of wire-entry slots and the same physical size. One connector on the LEFT, one on the RIGHT.
+- Cable: exactly 1. A single yellow cable linking the two connectors. \
+No extra cables, no missing cable.
+
+Spatial layout:
+- Two connectors are placed horizontally on opposite sides, connected by the cable in the center.
+- The arrangement is bilaterally symmetric — the left connector and right connector \
+are approximate mirror images of each other.
+- The cable enters both connectors at the same relative slot position \
+(symmetric entry on both sides).
+
+Cable properties:
+- Exactly one cable is present — not zero, not two or more.
+- The cable is YELLOW in color. A cable of any other color (blue, red, etc.) is an anomaly.
+- The cable is undamaged and continuous — no cuts, nicks, breaks, or exposed wire along its length.
+- The cable is longer than the width of a single connector terminal block.
+
+Connector matching rule (strict):
+- Both connectors must be the same type: same number of orange lever clamps, same height, \
+same physical size.
+- A mismatch between connector types (e.g., one 2-slot and one 3-slot connector, \
+or one 3-slot and one 5-slot) is an anomaly.
+
+Symmetry rule:
+- The cable must connect to the same relative slot position on both connectors.
+- Inserting the cable into a non-standard slot position on one connector is an anomaly.
+- Both connectors must appear as approximate mirror images of each other in the layout.""",
 }
 
 # --------------------------------------------------------------------------- #

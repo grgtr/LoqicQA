@@ -280,6 +280,12 @@ def main() -> None:
     all_test = dataset.get_test_images()
     test_samples = select_test_samples(all_test, cfg)
 
+    exclude_labels = getattr(cfg.testing, "exclude_labels", [])
+    if exclude_labels:
+        before = len(test_samples)
+        test_samples = [s for s in test_samples if s.label not in exclude_labels]
+        print(f"[TestSelect] exclude_labels={exclude_labels} → {before}→{len(test_samples)} samples")
+
     if not test_samples:
         print("[ERROR] No test samples selected. Check config.testing settings.")
         sys.exit(1)

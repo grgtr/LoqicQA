@@ -1,0 +1,78 @@
+{
+  "class_name": "splicing_connectors",
+  "normality_definition": "Two transparent push-wire splicing connectors with orange lever clamps, placed horizontally on a metal mesh background. A single cable connects the two connectors.\n\nCONNECTORS:\n- Exactly two connectors are present, one on the left and one on the right.\n- Both connectors are the same type: they have the same number of wire-entry slots and the same overall size and height.\n- Connectors are transparent with orange lever clamps visible through the housing.\n\nCABLE:\n- Exactly one cable runs between the two connectors.\n- The cable is yellow in color.\n- The cable is undamaged and continuous — no cuts, breaks, or exposed wire visible anywhere along its length.\n- The cable enters both connectors at the same relative slot position (symmetric entry on both sides).\n\nLAYOUT:\n- The two connectors are arranged symmetrically on either side of the cable, appearing as approximate mirror images of each other.\n- Neither connector is visibly taller, wider, or larger than the other.",
+  "main_questions": [
+    "Is there exactly one cable connecting the two connectors?",
+    "Is the cable yellow in color?",
+    "Does the cable appear uncut and intact, with no visible damage, breaks, or exposed wire along its length?",
+    "Are exactly two connectors present in the image?",
+    "Do both connectors appear to be the same type, with the same number of wire-entry slots?",
+    "Are both connectors the same size — neither one visibly taller or larger than the other?",
+    "Does the cable enter both connectors at the same relative slot position on each side?",
+    "Is the overall arrangement symmetric, with both connectors appearing as approximate mirror images of each other?",
+    "Does each connector show the same number of orange lever clamps as the other?",
+    "Is the cable the same color along its entire visible length?"
+  ],
+  "sub_questions": {
+    "Is there exactly one cable connecting the two connectors?": [
+      "Can you see precisely one cable running between the left and right connectors?",
+      "Is the number of cables between the two connectors exactly one — not zero and not two or more?",
+      "Is there a single cable present connecting both connectors, with no additional cables alongside it?",
+      "Does only one wire or cable span the gap between the two connectors?"
+    ],
+    "Is the cable yellow in color?": [
+      "Does the cable connecting the two connectors appear yellow in color?",
+      "Is the cable between the connectors yellow rather than blue, red, or any other color?",
+      "Can you confirm the cable is yellow — not a different color such as blue or orange?",
+      "Is the color of the connecting cable yellow?"
+    ],
+    "Does the cable appear uncut and intact, with no visible damage, breaks, or exposed wire along its length?": [
+      "Does the cable run continuously between the connectors without any visible cut, nick, or break?",
+      "Is the cable undamaged — with no exposed inner wire or visible damage anywhere along it?",
+      "Does the cable's insulation appear complete and uninterrupted from one connector to the other?",
+      "Is there no visible cut, notch, or break in the cable between the two connectors?"
+    ],
+    "Are exactly two connectors present in the image?": [
+      "Can you count exactly two splicing connectors in the image?",
+      "Is the number of connectors precisely two — one on the left and one on the right?",
+      "Are there two and only two connectors visible, with no connector missing?",
+      "Does the image show a pair of connectors — neither just one nor more than two?"
+    ],
+    "Do both connectors appear to be the same type, with the same number of wire-entry slots?": [
+      "Do both connectors have the same number of orange lever clamps, indicating the same number of wire slots?",
+      "Are the two connectors identical in type — the same model with the same slot count?",
+      "Does the left connector have the same number of wire-entry slots as the right connector?",
+      "Do both connectors look like the same product, not two different sizes or models?"
+    ],
+    "Are both connectors the same size — neither one visibly taller or larger than the other?": [
+      "Are the two connectors equal in height — neither one appearing taller than the other?",
+      "Do both connectors appear to be the same physical size, with no size difference between them?",
+      "Is there no visible discrepancy in the height or bulk of the left versus the right connector?",
+      "Do the two connectors look the same size when compared side by side?"
+    ],
+    "Does the cable enter both connectors at the same relative slot position on each side?": [
+      "Does the cable plug into the same slot position on the left connector as it does on the right?",
+      "Is the cable inserted at the same relative location on both connectors — symmetric entry on each side?",
+      "Does the cable enter each connector at a matching position, rather than at different slots on each side?",
+      "Is the cable entry point at the same relative position (e.g., top slot, center slot) on both connectors?"
+    ],
+    "Is the overall arrangement symmetric, with both connectors appearing as approximate mirror images of each other?": [
+      "Does the left connector appear to be a mirror image of the right connector in the arrangement?",
+      "Is the layout of the two connectors symmetric — each side a reflection of the other?",
+      "Do the two connectors look like a symmetric pair with the cable between them?",
+      "Is the visual arrangement balanced, with both connectors appearing equal in size and position relative to the cable?"
+    ],
+    "Does each connector show the same number of orange lever clamps as the other?": [
+      "Can you count the same number of orange levers on the left connector as on the right?",
+      "Are the orange lever clamps equal in number on both connectors?",
+      "Is the number of visible orange clamps on the left connector identical to the number on the right?",
+      "Do both connectors have an equal count of orange lever tabs visible?"
+    ],
+    "Is the cable the same color along its entire visible length?": [
+      "Does the cable maintain a consistent color from one connector to the other?",
+      "Is the cable one uniform color throughout — with no color change or discoloration along its length?",
+      "Is the cable's color the same at the left connector end, in the middle, and at the right connector end?",
+      "Does the cable appear uniformly colored with no sections of a different color?"
+    ]
+  }
+}

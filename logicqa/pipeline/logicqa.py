@@ -647,6 +647,10 @@ class LogicQAPipeline:
             data = json.load(f)
         self.class_name = data["class_name"]
         self.normality_definition = data["normality_definition"]
+        # Use normality_definition as class_context in Stage 4 TEST_PROMPT
+        # (normality_summary is normally set by Stage 2; when loading pre-built
+        # questions we skip Stage 1-3, so fall back to the definition itself)
+        self.normality_summary = data.get("normality_summary", data.get("normality_definition", ""))
         self.main_questions = data["main_questions"]
         self.sub_questions = data["sub_questions"]
         self._setup_done = True

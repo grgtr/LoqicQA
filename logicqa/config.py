@@ -14,6 +14,7 @@ class TestingConfig:
     random_count: int = 10
     random_seed: int = 42
     interleave: bool = True
+    exclude_labels: List[str] = field(default_factory=list)  # e.g. ["structural_anomalies"]
 
 @dataclass
 class InternVLConfig:
@@ -170,6 +171,7 @@ class LogicQAConfig:
                 random_count=t.get("random_count", 10),
                 random_seed=t.get("random_seed", 42),
                 interleave=t.get("interleave", True),
+                exclude_labels=t.get("exclude_labels", []),
             )
 
         return cfg

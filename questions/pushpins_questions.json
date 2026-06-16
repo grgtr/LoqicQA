@@ -1,0 +1,57 @@
+{
+  "class_name": "pushpins",
+  "normality_definition": "A box of pushpins consists of a transparent rectangular plastic box divided into a 3-row by 5-column grid of 15 individual compartments. Each compartment is fully enclosed by clear plastic dividers/separators on all four sides.\n\nCOMPONENTS:\n- Pushpins: yellow/orange round-capped pins with a metal needle. All pushpins are the same color and size.\n- Separators: transparent plastic walls forming the internal grid. All walls must be intact and clearly visible.\n\nRULES (exact):\n- Every compartment contains exactly one pushpin — no more, no less.\n- No compartment is empty.\n- No compartment contains two or more pushpins.\n- All internal plastic dividers between adjacent compartments are present and clearly visible.\n- The box forms a complete, uninterrupted grid with no missing walls between compartments.",
+  "main_questions": [
+    "Does every compartment in the box contain at least one pushpin?",
+    "Does every compartment in the box contain no more than one pushpin?",
+    "Does each compartment contain exactly one pushpin?",
+    "Are all internal separators between compartments present and clearly visible?",
+    "Is the plastic grid of the box complete with no missing walls between adjacent compartments?",
+    "Is every pushpin in its own dedicated compartment, not sharing a cell with another pushpin?",
+    "Does the box show a regular grid pattern with every compartment clearly separated from its neighbors?"
+  ],
+  "sub_questions": {
+    "Does every compartment in the box contain at least one pushpin?": [
+      "Can you confirm that no compartment in the box is empty?",
+      "Is there a pushpin present in each and every compartment of the box?",
+      "Do all compartments have at least one pushpin inside them?",
+      "Are there any unoccupied or empty compartments visible in the box?"
+    ],
+    "Does every compartment in the box contain no more than one pushpin?": [
+      "Is it true that no compartment holds two or more pushpins?",
+      "Does each compartment have at most one pushpin inside it?",
+      "Are there any compartments that appear to have multiple pushpins crowded together?",
+      "Is every compartment free from having more than a single pushpin?"
+    ],
+    "Does each compartment contain exactly one pushpin?": [
+      "Is the number of pushpins in every compartment precisely one?",
+      "Can you verify that each individual cell in the box holds exactly one pushpin?",
+      "Is there one and only one pushpin in each compartment of the box?",
+      "Does every section of the box have a single pushpin — neither empty nor doubled up?"
+    ],
+    "Are all internal separators between compartments present and clearly visible?": [
+      "Can you see clear plastic dividers separating every pair of adjacent compartments?",
+      "Are the internal walls between all compartments intact and easy to distinguish?",
+      "Is every separator between neighboring compartments present and unbroken?",
+      "Do the plastic dividers between all adjacent compartments appear complete and undamaged?"
+    ],
+    "Is the plastic grid of the box complete with no missing walls between adjacent compartments?": [
+      "Does the internal grid structure of the box appear fully intact with all dividers in place?",
+      "Are there any places where two adjacent compartments appear to be merged due to a missing wall?",
+      "Is the full grid of separators visible with no gaps or absent dividers between cells?",
+      "Does every boundary between neighboring compartments have a visible plastic wall separating them?"
+    ],
+    "Is every pushpin in its own dedicated compartment, not sharing a cell with another pushpin?": [
+      "Does each pushpin occupy a separate compartment without sharing the space with another pin?",
+      "Is it the case that no two pushpins are found in the same compartment?",
+      "Are all pushpins individually housed in their own compartment?",
+      "Can you confirm that every compartment holds at most one pushpin with no crowding?"
+    ],
+    "Does the box show a regular grid pattern with every compartment clearly separated from its neighbors?": [
+      "Is the overall grid layout of the box regular and complete, with all compartments distinctly bordered?",
+      "Does the box display a consistent 3-by-5 grid with clear boundaries between all 15 compartments?",
+      "Are the compartments of the box uniformly arranged in a complete grid with no merged or open sections?",
+      "Is the internal structure of the box an intact rectangular grid with visible walls on all sides of every compartment?"
+    ]
+  }
+}

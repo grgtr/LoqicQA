@@ -1,0 +1,71 @@
+{
+  "class_name": "screw_bag",
+  "normality_definition": "A screw bag contains exactly six hardware items: two split washers (flat rings with a visible gap/cut), two hexagonal nuts, one long hex-socket-head screw, and one short hex-socket-head screw.\n\nCOUNTS (exact):\n- Washers: exactly 2. Small flat rings with a visible split/gap, silver colored.\n- Nuts: exactly 2. Hexagonal silver metal pieces.\n- Long screw: exactly 1. Hex socket head, long threaded shaft.\n- Short screw: exactly 1. Hex socket head, shorter threaded shaft.\n\nSIZE PROPORTIONS:\n- The long screw is clearly longer than the short screw — the difference is visually obvious.\n- The long screw is at least 3 times as long as the diameter of a washer.\n- The short screw is at least as long as the height of a hexagonal nut.\n- Both screws are of standard proportional length — neither abnormally tiny nor excessively long relative to the bag.\n- Neither screw extends close to the full height of the bag.",
+  "main_questions": [
+    "Are there exactly two washers in the bag?",
+    "Are there exactly two nuts in the bag?",
+    "Are there exactly two screws in the bag?",
+    "Is one screw clearly longer than the other?",
+    "Is the longer screw at least 3 times as long as the diameter of a washer?",
+    "Is the shorter screw at least as long as the height of a hexagonal nut?",
+    "Are both screws of proportionate length — neither abnormally tiny nor excessively long relative to the bag?",
+    "Does the bag contain exactly one long screw and one short screw of standard sizes?",
+    "Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  ],
+  "sub_questions": {
+    "Are there exactly two washers in the bag?": [
+      "Can you count exactly two washers (flat rings with a split) in the bag?",
+      "Is the number of washers in the bag precisely two?",
+      "Do you see two and only two split-ring washers inside the bag?",
+      "Are there neither more nor fewer than two washers visible in the bag?"
+    ],
+    "Are there exactly two nuts in the bag?": [
+      "Can you count exactly two hexagonal nuts in the bag?",
+      "Is the number of nuts in the bag precisely two?",
+      "Do you see two and only two hexagonal nuts inside the bag?",
+      "Are there neither more nor fewer than two nuts visible in the bag?"
+    ],
+    "Are there exactly two screws in the bag?": [
+      "Can you count exactly two screws in the bag?",
+      "Is the total number of screws in the bag precisely two?",
+      "Do you see two and only two screws (hex socket head bolts) inside the bag?",
+      "Are there neither more nor fewer than two screws visible in the bag?"
+    ],
+    "Is one screw clearly longer than the other?": [
+      "Can you see a clear difference in length between the two screws?",
+      "Is one of the two screws visibly and noticeably longer than the other?",
+      "Do the two screws differ clearly in length, with one being the long screw and the other the short screw?",
+      "Is the length difference between the two screws immediately obvious at a glance?"
+    ],
+    "Is the longer screw at least 3 times as long as the diameter of a washer?": [
+      "Does the longer screw measure at least 3 washer-diameters in length?",
+      "Is the long screw's length clearly greater than 3 times the width of a washer?",
+      "Would the long screw span more than three washers placed side by side?",
+      "Is the long screw substantially longer than 3 times the diameter of the flat washers in the bag?"
+    ],
+    "Is the shorter screw at least as long as the height of a hexagonal nut?": [
+      "Is the shorter screw's length at least equal to the height of a nut?",
+      "Does the short screw appear at least as tall as one of the hexagonal nuts?",
+      "Is the short screw visibly longer than the height of a nut (not abnormally tiny)?",
+      "Does the short screw have a shaft that is at least as long as one nut is tall?"
+    ],
+    "Are both screws of proportionate length — neither abnormally tiny nor excessively long relative to the bag?": [
+      "Do both screws appear to be of a standard, proportionate size relative to the bag?",
+      "Are the screws neither unusually short nor excessively long compared to the overall bag size?",
+      "Do the two screws look like standard hardware items — not miniature and not oversized?",
+      "Is neither screw abnormally small or disproportionately large relative to the other items in the bag?"
+    ],
+    "Does the bag contain exactly one long screw and one short screw of standard sizes?": [
+      "Is there precisely one long screw and one short screw present in the bag, both of normal size?",
+      "Can you confirm the bag has one long-format screw and one short-format screw of standard proportions?",
+      "Are exactly two screws present — one clearly longer and one clearly shorter — both of appropriate size?",
+      "Does the bag hold one long screw and one short screw, neither being abnormally tiny or excessively large?"
+    ],
+    "Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?": [
+      "Are all four component types present in the bag: washers, nuts, a long screw, and a short screw?",
+      "Can you identify washers, nuts, a long screw, and a short screw all present inside the bag?",
+      "Is the bag complete with all expected hardware: two washers, two nuts, one long screw, and one short screw?",
+      "Does the bag contain every required item type — flat washers, hexagonal nuts, a long bolt, and a short bolt?"
+    ]
+  }
+}

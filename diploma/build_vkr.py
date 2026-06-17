@@ -243,17 +243,22 @@ def add_table_with_borders(doc, headers, rows, col_widths=None):
 
 
 def add_abbrev_item(doc, abbr, definition):
+    """Сокращение в две колонки через табуляцию (как в Приложении Г):
+    «СОКР<таб>расшифровка;». Висячий отступ выравнивает перенос определения."""
+    from docx.enum.text import WD_TAB_ALIGNMENT
+    TAB_CM = 4.5
     p = doc.add_paragraph()
     p.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
-    p.paragraph_format.first_line_indent = Cm(0)
-    p.paragraph_format.space_before = Pt(1)
-    p.paragraph_format.space_after = Pt(1)
+    p.paragraph_format.left_indent = Cm(TAB_CM)
+    p.paragraph_format.first_line_indent = Cm(-TAB_CM)
+    p.paragraph_format.space_before = Pt(0)
+    p.paragraph_format.space_after = Pt(0)
     _set_spacing(p)
-    run1 = p.add_run(abbr + " ")
-    run1.bold = True
+    p.paragraph_format.tab_stops.add_tab_stop(Cm(TAB_CM), WD_TAB_ALIGNMENT.LEFT)
+    run1 = p.add_run(abbr + "\t")
     run1.font.name = "Times New Roman"
     run1.font.size = Pt(14)
-    run2 = p.add_run("— " + definition)
+    run2 = p.add_run(definition)
     run2.font.name = "Times New Roman"
     run2.font.size = Pt(14)
     return p
@@ -427,28 +432,33 @@ add_toc(doc)
 
 add_heading1(doc, "Обозначения и сокращения")
 
+# Расшифровки строчными буквами, в алфавитном порядке (латиница, затем кириллица).
+# Каждая позиция завершается «;», последняя — «.» (как в Приложении Г).
 abbrevs = [
-    ("VLM", "Visual-Language Model — визуально-языковая модель"),
-    ("LLM", "Large Language Model — большая языковая модель"),
-    ("AUROC", "Area Under the ROC Curve — площадь под ROC-кривой"),
-    ("F1-max", "максимальное значение F1-меры по порогу"),
-    ("CCR", "Constraint Coverage Rate — доля покрытых ограничений нормальности"),
-    ("CoT", "Chain-of-Thought — метод пошагового рассуждения в промптинге"),
-    ("MACE", "Mean Absolute Count Error — средняя абсолютная ошибка счёта"),
-    ("SRA", "Spatial Relation Accuracy — точность пространственных отношений"),
-    ("AWQ", "Activation-aware Weight Quantization — квантизация весов с учётом активаций"),
-    ("MVTec LOCO AD", "MVTec Logical Constraints Anomaly Detection Dataset"),
-    ("InternVL", "модель семейства InternVL2.5 (8B и 38B параметров)"),
-    ("CLIP", "Contrastive Language–Image Pre-training — модель сопоставления текста и изображений"),
+    ("AUROC", "площадь под ROC-кривой (Area Under the ROC Curve)"),
+    ("AWQ", "квантизация весов с учётом активаций (Activation-aware Weight Quantization)"),
+    ("CCR", "доля покрытых ограничений нормальности (Constraint Coverage Rate)"),
+    ("CLIP", "модель сопоставления текста и изображений (Contrastive Language–Image Pre-training)"),
     ("CLIPScore", "метрика семантического сходства текста и изображения на основе CLIP"),
-    ("TP / FP / FN / TN", "True Positive / False Positive / False Negative / True Negative"),
-    ("Sub-Q", "вопрос-вариант (sub-question), перефразировка основного вопроса"),
-    ("RC4-A", "версия Stage 4 с inline Chain-of-Thought рассуждением"),
-    ("ГОСТ", "Государственный стандарт"),
+    ("CoT", "метод пошагового рассуждения в промптинге (Chain-of-Thought)"),
+    ("F1-max", "максимальное значение F1-меры по порогу"),
+    ("InternVL", "визуально-языковая модель семейства InternVL2.5 (8B и 38B параметров)"),
+    ("LLM", "большая языковая модель (Large Language Model)"),
+    ("MACE", "средняя абсолютная ошибка счёта (Mean Absolute Count Error)"),
+    ("MVTec LOCO AD", "датасет обнаружения аномалий с логическими ограничениями "
+                      "(MVTec Logical Constraints Anomaly Detection)"),
+    ("RC4-A", "версия стадии 4 с inline-рассуждением Chain-of-Thought"),
+    ("SRA", "точность пространственных отношений (Spatial Relation Accuracy)"),
+    ("Sub-Q", "вопрос-вариант, перефразировка основного вопроса (sub-question)"),
+    ("TP / FP / FN / TN", "истинно- и ложноположительные, ложно- и истинноотрицательные "
+                          "срабатывания (True/False Positive/Negative)"),
+    ("VLM", "визуально-языковая модель (Visual-Language Model)"),
+    ("ГОСТ", "государственный стандарт"),
 ]
 
-for abbr, defn in abbrevs:
-    add_abbrev_item(doc, abbr, defn)
+for i, (abbr, defn) in enumerate(abbrevs):
+    tail = "." if i == len(abbrevs) - 1 else ";"
+    add_abbrev_item(doc, abbr, defn + tail)
 
 # ===========================================================================
 # ВВЕДЕНИЕ
@@ -1855,6 +1865,13 @@ add_body(doc,
 # ===========================================================================
 # SAVE
 # ===========================================================================
+
+# Заставить Word пересчитать поля (Содержание/TOC и номера страниц) при открытии
+settings = doc.settings.element
+if settings.find(qn('w:updateFields')) is None:
+    uf = OxmlElement('w:updateFields')
+    uf.set(qn('w:val'), 'true')
+    settings.append(uf)
 
 doc.save(OUTPUT)
 print(f"Saved: {OUTPUT}")

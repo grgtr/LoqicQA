@@ -25,45 +25,87 @@ def clear_document(doc):
 
 
 def _set_spacing(p, line=360):
+    # Переиспользуем существующий w:spacing (его мог создать paragraph_format
+    # при установке space_before/after), иначе Word проигнорирует второй элемент
+    # и межстрочный интервал останется одинарным.
     pPr = p._element.get_or_add_pPr()
-    spacing = OxmlElement('w:spacing')
+    spacing = pPr.find(qn('w:spacing'))
+    if spacing is None:
+        spacing = OxmlElement('w:spacing')
+        pPr.append(spacing)
     spacing.set(qn('w:line'), str(line))
     spacing.set(qn('w:lineRule'), 'auto')
     spacing.set(qn('w:before'), '0')
     spacing.set(qn('w:after'), '0')
-    pPr.append(spacing)
+
+
+def add_blank_line(doc):
+    """Пустой абзац — для разделения 'пустыми строками' (п.4.7–4.11)."""
+    p = doc.add_paragraph()
+    p.paragraph_format.first_line_indent = Pt(0)
+    p.paragraph_format.space_before = Pt(0)
+    p.paragraph_format.space_after = Pt(0)
+    run = p.add_run("")
+    run.font.name = "Times New Roman"
+    run.font.size = Pt(14)
+    return p
 
 
 def add_page_break(doc):
     p = doc.add_paragraph()
+    p.paragraph_format.first_line_indent = Pt(0)
     run = p.add_run()
-    run.add_break(docx_module.enum.text.WD_BREAK.PAGE)
+    br = OxmlElement('w:br')
+    br.set(qn('w:type'), 'page')
+    run._r.append(br)
     return p
 
 
-def add_heading1(doc, text):
+def _set_outline_level(p, level):
+    """Назначить уровень структуры для сбора полем TOC (0 = Heading1, 1 = Heading2)."""
+    pPr = p._element.get_or_add_pPr()
+    ol = OxmlElement('w:outlineLvl')
+    ol.set(qn('w:val'), str(level))
+    pPr.append(ol)
+
+
+def add_heading1(doc, text, page_break=True):
+    """Структурный элемент 1-го уровня: 16 пт, по центру, с новой страницы (п.4.4, 4.7)."""
+    if page_break:
+        add_page_break(doc)
     p = doc.add_paragraph()
     p.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    p.paragraph_format.space_before = Pt(18)
-    p.paragraph_format.space_after = Pt(12)
+    p.paragraph_format.space_before = Pt(0)
+    p.paragraph_format.space_after = Pt(0)
     p.paragraph_format.first_line_indent = Pt(0)
+    _set_spacing(p)
     run = p.add_run(text)
     run.bold = True
     run.font.name = "Times New Roman"
-    run.font.size = Pt(14)
+    run.font.size = Pt(16)
+    _set_outline_level(p, 0)
+    # Две пустые строки после заголовка раздела (п.4.7)
+    add_blank_line(doc)
+    add_blank_line(doc)
     return p
 
 
 def add_heading2(doc, text):
+    """Подраздел: 14 пт полужирный; 2 пустые строки до, 1 после (п.4.8)."""
+    add_blank_line(doc)
+    add_blank_line(doc)
     p = doc.add_paragraph()
     p.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.LEFT
-    p.paragraph_format.space_before = Pt(14)
-    p.paragraph_format.space_after = Pt(6)
+    p.paragraph_format.space_before = Pt(0)
+    p.paragraph_format.space_after = Pt(0)
     p.paragraph_format.first_line_indent = Pt(0)
+    _set_spacing(p)
     run = p.add_run(text)
     run.bold = True
     run.font.name = "Times New Roman"
     run.font.size = Pt(14)
+    _set_outline_level(p, 1)
+    add_blank_line(doc)
     return p
 
 
@@ -88,7 +130,7 @@ def add_list_item(doc, text, indent_cm=1.25):
     p.paragraph_format.space_before = Pt(2)
     p.paragraph_format.space_after = Pt(2)
     _set_spacing(p)
-    run = p.add_run(f"– {text}")
+    run = p.add_run(f"— {text}")
     run.font.name = "Times New Roman"
     run.font.size = Pt(14)
     return p
@@ -102,35 +144,41 @@ def add_numbered_item(doc, num, text, indent_cm=1.25):
     p.paragraph_format.space_before = Pt(2)
     p.paragraph_format.space_after = Pt(2)
     _set_spacing(p)
-    run = p.add_run(f"{num}) {text}")
+    run = p.add_run(f"{num}. {text}")
     run.font.name = "Times New Roman"
     run.font.size = Pt(14)
     return p
 
 
 def add_table_caption(doc, text):
+    """Заголовок таблицы: по центру, 14 пт, интервал 1.5, без точки в конце (п.4.11).
+    Перед заголовком — пустая строка (отделение от предшествующего текста)."""
+    add_blank_line(doc)
     p = doc.add_paragraph()
-    p.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.LEFT
-    p.paragraph_format.space_before = Pt(10)
-    p.paragraph_format.space_after = Pt(4)
+    p.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    p.paragraph_format.space_before = Pt(0)
+    p.paragraph_format.space_after = Pt(0)
     p.paragraph_format.first_line_indent = Pt(0)
+    _set_spacing(p)
     run = p.add_run(text)
     run.font.name = "Times New Roman"
-    run.font.size = Pt(12)
+    run.font.size = Pt(14)
     run.bold = True
     return p
 
 
 def add_figure_caption(doc, text):
+    """Подпись рисунка: по центру, 14 пт, обычный, без точки в конце (п.4.10)."""
+    add_blank_line(doc)
     p = doc.add_paragraph()
     p.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    p.paragraph_format.space_before = Pt(4)
-    p.paragraph_format.space_after = Pt(10)
+    p.paragraph_format.space_before = Pt(0)
+    p.paragraph_format.space_after = Pt(0)
     p.paragraph_format.first_line_indent = Pt(0)
+    _set_spacing(p)
     run = p.add_run(text)
     run.font.name = "Times New Roman"
-    run.font.size = Pt(12)
-    run.italic = True
+    run.font.size = Pt(14)
     return p
 
 
@@ -200,14 +248,14 @@ def add_abbrev_item(doc, abbr, definition):
     p.paragraph_format.first_line_indent = Cm(0)
     p.paragraph_format.space_before = Pt(1)
     p.paragraph_format.space_after = Pt(1)
-    _set_spacing(p, line=300)
+    _set_spacing(p)
     run1 = p.add_run(abbr + " ")
     run1.bold = True
     run1.font.name = "Times New Roman"
-    run1.font.size = Pt(13)
+    run1.font.size = Pt(14)
     run2 = p.add_run("— " + definition)
     run2.font.name = "Times New Roman"
-    run2.font.size = Pt(13)
+    run2.font.size = Pt(14)
     return p
 
 
@@ -218,11 +266,111 @@ def add_ref_item(doc, num, text):
     p.paragraph_format.first_line_indent = Cm(-1.0)
     p.paragraph_format.space_before = Pt(2)
     p.paragraph_format.space_after = Pt(2)
-    _set_spacing(p, line=300)
-    run = p.add_run(f"{num}. {text}")
+    _set_spacing(p)
+    run = p.add_run(f"{num}. {text}")
     run.font.name = "Times New Roman"
-    run.font.size = Pt(12)
+    run.font.size = Pt(14)
     return p
+
+
+# ===========================================================================
+# Структурные элементы: титульный лист, нумерация страниц, содержание
+# ===========================================================================
+
+def _center_line(doc, text, bold=False, size=14, before=0, after=0):
+    p = doc.add_paragraph()
+    p.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    p.paragraph_format.first_line_indent = Pt(0)
+    p.paragraph_format.space_before = Pt(before)
+    p.paragraph_format.space_after = Pt(after)
+    _set_spacing(p)
+    run = p.add_run(text)
+    run.bold = bold
+    run.font.name = "Times New Roman"
+    run.font.size = Pt(size)
+    return p
+
+
+def add_title_page(doc):
+    """Титульный лист (Приложение А). Отдельная страница, по центру, без номера."""
+    _center_line(doc, "Федеральное государственное автономное образовательное учреждение")
+    _center_line(doc, "высшего образования")
+    _center_line(doc, "«Московский физико-технический институт")
+    _center_line(doc, "(национальный исследовательский университет)»")
+    _center_line(doc, "Высшая школа программной инженерии", before=6)
+    add_blank_line(doc)
+    _center_line(doc, "Направление подготовки: 09.03.04 — Программная инженерия")
+    _center_line(doc, "Направленность (профиль): Разработка программно-информационных систем")
+    for _ in range(4):
+        add_blank_line(doc)
+    _center_line(doc, "РАЗРАБОТКА МОДЕЛЕЙ ОБНАРУЖЕНИЯ АНОМАЛИЙ", bold=True)
+    _center_line(doc, "В БОЛЬШИХ ДАННЫХ", bold=True)
+    add_blank_line(doc)
+    _center_line(doc, "(бакалаврская работа)")
+    for _ in range(5):
+        add_blank_line(doc)
+    # Студент
+    p = doc.add_paragraph()
+    p.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.RIGHT
+    p.paragraph_format.first_line_indent = Pt(0)
+    _set_spacing(p)
+    r = p.add_run("Студент:")
+    r.font.name = "Times New Roman"; r.font.size = Pt(14)
+    _center_line(doc, "Сахаров Даниэль Александрович")
+    _center_line(doc, "__________________________")
+    _center_line(doc, "(подпись студента)", size=12)
+    add_blank_line(doc)
+    p = doc.add_paragraph()
+    p.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.RIGHT
+    p.paragraph_format.first_line_indent = Pt(0)
+    _set_spacing(p)
+    r = p.add_run("Научный руководитель:")
+    r.font.name = "Times New Roman"; r.font.size = Pt(14)
+    _center_line(doc, "Копылов Иван Станиславович,")
+    _center_line(doc, "к.т.н., доцент ВШПИ")
+    _center_line(doc, "__________________________")
+    _center_line(doc, "(подпись научного руководителя)", size=12)
+    for _ in range(4):
+        add_blank_line(doc)
+    _center_line(doc, "Москва 2026")
+
+
+def setup_page_numbers(doc):
+    """Нумерация страниц: нижний колонтитул справа, поле PAGE; титульный без номера (п.4.3)."""
+    section = doc.sections[0]
+    section.different_first_page_header_footer = True
+    footer = section.footer
+    footer.is_linked_to_previous = False
+    p = footer.paragraphs[0] if footer.paragraphs else footer.add_paragraph()
+    p.text = ""
+    p.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.RIGHT
+    p.paragraph_format.first_line_indent = Pt(0)
+    run = p.add_run()
+    run.font.name = "Times New Roman"
+    run.font.size = Pt(14)
+    fldBegin = OxmlElement('w:fldChar'); fldBegin.set(qn('w:fldCharType'), 'begin')
+    instr = OxmlElement('w:instrText'); instr.set(qn('xml:space'), 'preserve'); instr.text = ' PAGE '
+    fldEnd = OxmlElement('w:fldChar'); fldEnd.set(qn('w:fldCharType'), 'end')
+    run._r.append(fldBegin); run._r.append(instr); run._r.append(fldEnd)
+
+
+def add_toc(doc):
+    """Содержание: поле TOC \\o '1-2' (обновляется по F9 в Word)."""
+    add_heading1(doc, "Содержание")
+    p = doc.add_paragraph()
+    p.paragraph_format.first_line_indent = Pt(0)
+    _set_spacing(p)
+    run = p.add_run()
+    run.font.name = "Times New Roman"
+    run.font.size = Pt(14)
+    fldBegin = OxmlElement('w:fldChar'); fldBegin.set(qn('w:fldCharType'), 'begin')
+    instr = OxmlElement('w:instrText'); instr.set(qn('xml:space'), 'preserve')
+    instr.text = 'TOC \\o "1-2" \\h \\z \\u'
+    fldSep = OxmlElement('w:fldChar'); fldSep.set(qn('w:fldCharType'), 'separate')
+    placeholder = OxmlElement('w:t'); placeholder.text = "Обновите поле (F9), чтобы сформировать содержание."
+    fldEnd = OxmlElement('w:fldChar'); fldEnd.set(qn('w:fldCharType'), 'end')
+    run._r.append(fldBegin); run._r.append(instr); run._r.append(fldSep)
+    run._r.append(placeholder); run._r.append(fldEnd)
 
 
 # ===========================================================================
@@ -231,12 +379,26 @@ def add_ref_item(doc, num, text):
 
 doc = Document(TEMPLATE)
 clear_document(doc)
+setup_page_numbers(doc)
+
+# ===========================================================================
+# ТИТУЛЬНЫЙ ЛИСТ
+# ===========================================================================
+
+add_title_page(doc)
 
 # ===========================================================================
 # АННОТАЦИЯ
 # ===========================================================================
 
-add_heading1(doc, "АННОТАЦИЯ")
+add_heading1(doc, "Аннотация")
+
+add_body(doc,
+    "Выпускная квалификационная работа, 55 с., 1 рис., 16 табл., 36 источн., 2 прил.")
+
+add_body(doc,
+    "ОБНАРУЖЕНИЕ ЛОГИЧЕСКИХ АНОМАЛИЙ, ВИЗУАЛЬНО-ЯЗЫКОВЫЕ МОДЕЛИ, MVTEC LOCO AD, "
+    "CHAIN-OF-THOUGHT, TRAINING-FREE ОБНАРУЖЕНИЕ, INTERNVL, ПРОМЫШЛЕННЫЙ КОНТРОЛЬ КАЧЕСТВА.")
 
 add_body(doc,
     "Выпускная квалификационная работа посвящена разработке и экспериментальной оценке "
@@ -254,10 +416,16 @@ add_body(doc,
     "качества без разметки аномалий.")
 
 # ===========================================================================
+# СОДЕРЖАНИЕ
+# ===========================================================================
+
+add_toc(doc)
+
+# ===========================================================================
 # ОБОЗНАЧЕНИЯ И СОКРАЩЕНИЯ
 # ===========================================================================
 
-add_heading1(doc, "ОБОЗНАЧЕНИЯ И СОКРАЩЕНИЯ")
+add_heading1(doc, "Обозначения и сокращения")
 
 abbrevs = [
     ("VLM", "Visual-Language Model — визуально-языковая модель"),
@@ -286,7 +454,7 @@ for abbr, defn in abbrevs:
 # ВВЕДЕНИЕ
 # ===========================================================================
 
-add_heading1(doc, "ВВЕДЕНИЕ")
+add_heading1(doc, "Введение")
 
 add_body(doc,
     "Автоматизация визуального контроля качества является одной из ключевых задач "
@@ -380,16 +548,16 @@ add_body(doc,
     "«Многоуровневый оценочный фреймворк для VLM-based обнаружения логических аномалий».")
 
 add_body(doc,
-    "Структура работы. Работа состоит из введения, четырёх глав, заключения и списка "
-    "использованных источников. Глава 1 содержит анализ предметной области. Глава 2 "
-    "описывает разработанный метод. Глава 3 посвящена программной реализации. "
-    "Глава 4 представляет результаты экспериментов.")
+    "Структура работы. Работа состоит из введения, четырёх разделов, заключения и списка "
+    "использованных источников. Раздел 1 содержит анализ предметной области. Раздел 2 "
+    "описывает разработанный метод. Раздел 3 посвящён программной реализации. "
+    "Раздел 4 представляет результаты экспериментов.")
 
 # ===========================================================================
 # ГЛАВА 1
 # ===========================================================================
 
-add_heading1(doc, "ГЛАВА 1. АНАЛИЗ ПРЕДМЕТНОЙ ОБЛАСТИ И ПОСТАНОВКА ЗАДАЧИ")
+add_heading1(doc, "Раздел 1. Анализ предметной области и постановка задачи")
 
 # 1.1
 add_heading2(doc, "1.1 Задача обнаружения визуальных аномалий в промышленном контроле")
@@ -427,7 +595,7 @@ add_body(doc,
     "Каждый класс содержит как нормальные образцы, так и изображения с логическими "
     "и/или структурными аномалиями.")
 
-add_table_caption(doc, "Таблица 1 — Статистика датасета MVTec LOCO AD по классам")
+add_table_caption(doc, "Таблица 1.1. Статистика датасета MVTec LOCO AD по классам")
 add_table_with_borders(doc,
     ["Класс", "Тип объекта", "Нормальных (train)", "Good (test)", "Anomaly (test)", "Тип аномалий"],
     [
@@ -438,6 +606,12 @@ add_table_with_borders(doc,
         ["splicing_connectors", "Соединительные клеммы","89",  "13",  "299", "логические"],
     ]
 )
+
+add_body(doc,
+    "Как видно из таблицы 1.1, классы существенно различаются по числу компонентов и типу "
+    "аномалий: классы breakfast_box, juice_bottle и splicing_connectors содержат "
+    "преимущественно логические аномалии, тогда как pushpins и screw_bag — оба типа. "
+    "Это определяет необходимость единого подхода, устойчивого к различной структуре объектов.")
 
 # 1.2
 add_heading2(doc, "1.2 Обзор и сравнение существующих методов")
@@ -477,7 +651,7 @@ add_body(doc,
     "агентом, который формирует контрольный список семантических ограничений нормальности "
     "и проверяет каждое ограничение для тестового изображения.")
 
-add_table_caption(doc, "Таблица 2 — Сравнение методов обнаружения аномалий")
+add_table_caption(doc, "Таблица 1.2. Сравнение методов обнаружения аномалий")
 add_table_with_borders(doc,
     ["Метод", "Тип аномалий", "Разметка аномалий", "Интерпретируемость", "AUROC (лог.)"],
     [
@@ -489,6 +663,13 @@ add_table_with_borders(doc,
         ["Наш метод (8B)",    "логические",   "нет",  "высокая",  "0.852"],
     ]
 )
+
+add_body(doc,
+    "Сравнение в таблице 1.2 показывает, что классические методы обеспечивают высокую "
+    "точность лишь на структурных аномалиях и обладают низкой интерпретируемостью. "
+    "Только VLM-based подходы сочетают применимость к логическим аномалиям с высокой "
+    "интерпретируемостью без разметки аномальных данных, что и обусловливает выбор данного "
+    "направления в настоящей работе.")
 
 # 1.3
 add_heading2(doc, "1.3 Визуально-языковые модели: архитектура и принципы")
@@ -611,23 +792,29 @@ add_body(doc,
     "площадь под кривой зависимости True Positive Rate от False Positive Rate при изменении "
     "порога аномальности от 0 до 1; не зависит от выбора порога классификации. "
     "F1-max — максимальное значение F1-меры: F1 = 2·TP / (2·TP + FP + FN), "
-    "оптимизированное по порогу. Иерархические метрики L1–L4 (детально описаны в главе 2) "
+    "оптимизированное по порогу. Иерархические метрики L1–L4 (детально описаны в разделе 2) "
     "оценивают промежуточные компоненты пайплайна.")
 
-add_body(doc,
-    "Таким образом, анализ предметной области показывает, что логические аномалии "
-    "представляют принципиально иной класс задач по сравнению со структурными аномалиями: "
-    "традиционные методы, работающие с локальными признаками, не применимы. "
-    "Единственным перспективным направлением является применение VLM как рассуждающих агентов, "
-    "способных верифицировать семантические ограничения нормальности. "
-    "Задача, формализованная как бинарная классификация с few-shot нормальными примерами, "
-    "требует специализированного пайплайна генерации и проверки ограничений.")
+add_heading2(doc, "Выводы по разделу 1")
+add_numbered_item(doc, 1,
+    "Логические аномалии представляют принципиально иной класс задач по сравнению со "
+    "структурными: дефект проявляется только на уровне глобального семантического контекста, "
+    "тогда как каждый отдельный пиксель остаётся визуально нормальным.")
+add_numbered_item(doc, 2,
+    "Традиционные reconstruction-based и embedding-based методы, работающие с локальными "
+    "признаками, не применимы к логическим аномалиям; единственным перспективным направлением "
+    "является применение визуально-языковых моделей как рассуждающих агентов, способных "
+    "верифицировать семантические ограничения нормальности.")
+add_numbered_item(doc, 3,
+    "Задача формализована как бинарная классификация с few-shot набором нормальных примеров, "
+    "что требует разработки специализированного пайплайна генерации и проверки ограничений "
+    "нормальности.")
 
 # ===========================================================================
 # ГЛАВА 2
 # ===========================================================================
 
-add_heading1(doc, "ГЛАВА 2. РАЗРАБОТАННЫЙ МЕТОД ОБНАРУЖЕНИЯ ЛОГИЧЕСКИХ АНОМАЛИЙ")
+add_heading1(doc, "Раздел 2. Разработанный метод обнаружения логических аномалий")
 
 # 2.1
 add_heading2(doc, "2.1 Общая архитектура пайплайна")
@@ -639,7 +826,7 @@ add_body(doc,
     "аномальным, если достаточное число вопросов получает ответ «No» (нарушение ограничения). "
     "Пайплайн состоит из четырёх последовательных стадий.")
 
-add_body(doc, "Рисунок 1 — Схема четырёхстадийного пайплайна:")
+add_body(doc, "Общая схема разработанного четырёхстадийного пайплайна приведена на рисунке 2.1.")
 
 for line in [
     "  ┌─────────────────────────────────────────────────────────────────┐",
@@ -668,9 +855,9 @@ for line in [
 ]:
     add_code_block(doc, line)
 
-add_figure_caption(doc, "Рисунок 1 — Четырёхстадийный пайплайн обнаружения логических аномалий")
+add_figure_caption(doc, "Рисунок 2.1. Четырёхстадийный пайплайн обнаружения логических аномалий")
 
-add_table_caption(doc, "Таблица 3 — Ключевые модули системы")
+add_table_caption(doc, "Таблица 2.1. Ключевые модули системы")
 add_table_with_borders(doc,
     ["Модуль / файл", "Стадия", "Назначение"],
     [
@@ -683,6 +870,12 @@ add_table_with_borders(doc,
         ["scripts/evaluate_run.py",              "CLI",     "оценка сохранённого run"],
     ]
 )
+
+add_body(doc,
+    "Приведённое в таблице 2.1 разбиение на модули отражает прямое соответствие между "
+    "стадиями пайплайна и компонентами кодовой базы; такое разделение ответственности "
+    "упрощает воспроизведение и независимую отладку каждой стадии. Далее каждая стадия "
+    "рассматривается подробно.")
 
 # 2.2
 add_heading2(doc, "2.2 Stage 1: декомпозированное описание нормальных изображений")
@@ -766,7 +959,7 @@ add_body(doc,
     "Это позволяет проводить majority vote при тестировании: аномалия по вопросу "
     "детектируется, если большинство (≥3 из 4) sub-questions получают ответ «No».")
 
-add_table_caption(doc, "Таблица 4 — Пример фильтрации вопросов (Stage 3b, класс breakfast_box)")
+add_table_caption(doc, "Таблица 2.2. Пример фильтрации вопросов (Stage 3b, класс breakfast_box)")
 add_table_with_borders(doc,
     ["Вопрос-кандидат", "Val Score", "Статус", "Причина"],
     [
@@ -778,6 +971,13 @@ add_table_with_borders(doc,
         ["Are the banana chips on the right side?", "78%", "Dropped", "<80% threshold"],
     ]
 )
+
+add_body(doc,
+    "Пример в таблице 2.2 иллюстрирует работу фильтрации: вопросы на точное количество "
+    "сохраняются механизмом count-bypass независимо от валидационного балла, тогда как "
+    "неустойчивые вопросы с баллом ниже 80% (о визуальной однородности и пространственном "
+    "расположении) отбраковываются. Таким образом в итоговый набор попадают только "
+    "инвариантные проверочные вопросы.")
 
 # 2.5
 add_heading2(doc, "2.5 Stage 4: тестирование с inline Chain-of-Thought (RC4-A)")
@@ -893,7 +1093,7 @@ add_list_item(doc,
 add_body(doc,
     "L4 — Уровень задачи (Task). Стандартные метрики обнаружения аномалий: AUROC и F1-max.")
 
-add_table_caption(doc, "Таблица 5 — Иерархическая система оценки L1–L4")
+add_table_caption(doc, "Таблица 2.3. Иерархическая система оценки L1–L4")
 add_table_with_borders(doc,
     ["Уровень", "Компонент", "Метрика"],
     [
@@ -908,19 +1108,30 @@ add_table_with_borders(doc,
 )
 
 add_body(doc,
-    "Подводя итог второй главы, следует отметить, что разработанный пайплайн реализует "
-    "четыре последовательные стадии: per-component описание нормальных изображений, "
-    "формирование нормативного определения, структурированную генерацию и фильтрацию вопросов, "
-    "CoT-тестирование с majority vote. Ключевые нововведения — per-component Stage 1 и "
-    "inline CoT (RC4-A) — обеспечивают рост CCR до 100% и устранение FP. "
-    "Иерархическая система оценки L1–L4 позволяет диагностировать узкие места "
-    "на каждом этапе пайплайна.")
+    "Сведённые в таблице 2.3 уровни L1–L4 образуют сквозную диагностическую цепочку: от "
+    "качества восприятия (описания) через точность атрибутов и фильтрации вопросов к "
+    "устойчивости рассуждения и итоговому обнаружению. Такое разбиение позволяет локализовать "
+    "источник ошибки на конкретной стадии пайплайна, а не ограничиваться итоговой метрикой.")
+
+add_heading2(doc, "Выводы по разделу 2")
+add_numbered_item(doc, 1,
+    "Разработан четырёхстадийный пайплайн, реализующий per-component описание нормальных "
+    "изображений, формирование нормативного определения, структурированную генерацию и "
+    "фильтрацию вопросов, а также CoT-тестирование с механизмом majority vote.")
+add_numbered_item(doc, 2,
+    "Ключевые нововведения — per-component декомпозиция Stage 1 и inline Chain-of-Thought "
+    "(RC4-A) — обеспечивают рост Constraint Coverage Rate до 100% и полное устранение "
+    "ложноположительных срабатываний.")
+add_numbered_item(doc, 3,
+    "Предложенная иерархическая система оценки L1–L4 позволяет диагностировать узкие места "
+    "на каждом этапе пайплайна, связывая качество восприятия, атрибутов, фильтрации и "
+    "конечного обнаружения.")
 
 # ===========================================================================
 # ГЛАВА 3
 # ===========================================================================
 
-add_heading1(doc, "ГЛАВА 3. ПРОГРАММНАЯ РЕАЛИЗАЦИЯ И ЭКСПЕРИМЕНТАЛЬНАЯ ИНФРАСТРУКТУРА")
+add_heading1(doc, "Раздел 3. Программная реализация и экспериментальная инфраструктура")
 
 # 3.1
 add_heading2(doc, "3.1 Архитектура программной системы")
@@ -1013,7 +1224,7 @@ add_body(doc,
     "Каждый эксперимент полностью задаётся YAML-конфигурационным файлом. "
     "Ключевые параметры:")
 
-add_table_caption(doc, "Таблица 7 — Конфигурационные параметры экспериментов")
+add_table_caption(doc, "Таблица 3.1. Конфигурационные параметры экспериментов")
 add_table_with_borders(doc,
     ["Параметр", "Описание", "Baseline", "Decomposed (r25)"],
     [
@@ -1083,17 +1294,23 @@ add_list_item(doc,
     "50 тестовых изображений (25 good + 25 anomaly) вместо полных 275 в baseline. "
     "Это позволяет быстро итерировать, но ограничивает статистическую значимость.")
 
-add_body(doc,
-    "В целом, система реализована как воспроизводимый модульный пакет "
-    "с YAML-конфигурацией и сохранением всех артефактов. Поддержка AWQ позволяет "
-    "запускать 38B-модель на одном A100 GPU. Выявленные ограничения (качество судьи, "
-    "подмножество тестов) обозначают направления улучшений для будущей работы.")
+add_heading2(doc, "Выводы по разделу 3")
+add_numbered_item(doc, 1,
+    "Система реализована как воспроизводимый модульный пакет на Python с YAML-конфигурацией "
+    "и сохранением всех промежуточных артефактов, что обеспечивает однозначное воспроизведение "
+    "каждого эксперимента.")
+add_numbered_item(doc, 2,
+    "Реализована поддержка AWQ-квантизации, позволяющая запускать модель InternVL2.5-38B "
+    "на одном GPU A100; устранены четыре технические проблемы загрузки квантованной модели.")
+add_numbered_item(doc, 3,
+    "Выявленные ограничения реализации — качество LLM-судьи Qwen2.5-3B и использование "
+    "подмножества тестовых изображений — обозначают направления для дальнейшего улучшения.")
 
 # ===========================================================================
 # ГЛАВА 4
 # ===========================================================================
 
-add_heading1(doc, "ГЛАВА 4. ЭКСПЕРИМЕНТЫ И АНАЛИЗ РЕЗУЛЬТАТОВ")
+add_heading1(doc, "Раздел 4. Эксперименты и анализ результатов")
 
 # 4.1
 add_heading2(doc, "4.1 Экспериментальная установка")
@@ -1117,7 +1334,7 @@ add_body(doc,
     "LogicQA с монолитным Stage 1, n_shots=3, без CoT, без per-component декомпозиции, "
     "с применением InternVL2.5-8B вместо GPT-4o. Результаты на полном тестовом наборе:")
 
-add_table_caption(doc, "Таблица 8 — Базовые метрики по пяти классам MVTec LOCO AD (InternVL2.5-8B)")
+add_table_caption(doc, "Таблица 4.1. Базовые метрики по пяти классам MVTec LOCO AD (InternVL2.5-8B)")
 add_table_with_borders(doc,
     ["Класс", "AUROC", "F1-max", "Bin-F1", "TP", "FP", "FN", "TN"],
     [
@@ -1152,7 +1369,7 @@ add_body(doc,
     "Разработка улучшений велась итеративно. Ниже представлены все ключевые запуски "
     "на 50-изображений подмножестве breakfast_box:")
 
-add_table_caption(doc, "Таблица 9 — Хронология экспериментальных запусков (50 изображений, breakfast_box)")
+add_table_caption(doc, "Таблица 4.2. Хронология экспериментальных запусков (50 изображений, breakfast_box)")
 add_table_with_borders(doc,
     ["Запуск", "AUROC", "F1-max", "Bin-F1", "TP", "FP", "FN", "TN", "Ключевое нововведение"],
     [
@@ -1186,7 +1403,7 @@ add_body(doc,
     "Проведён анализ вклада каждого из семи улучшений пайплайна. "
     "Таблица составлена на основе сравнения попарно близких запусков:")
 
-add_table_caption(doc, "Таблица 10 — Вклад улучшений пайплайна (ablation)")
+add_table_caption(doc, "Таблица 4.3. Вклад улучшений пайплайна (ablation)")
 add_table_with_borders(doc,
     ["Улучшение", "Компонент пайплайна", "Эффект", "AUROC до→после"],
     [
@@ -1200,6 +1417,12 @@ add_table_with_borders(doc,
     ]
 )
 
+add_body(doc,
+    "Из таблицы 4.3 видно, что наибольший прирост качества дают исправление механизма "
+    "count-bypass на стадии 3b (AUROC 0.500→0.782) и внедрение inline CoT на стадии 4 "
+    "(AUROC 0.782→0.852 при полном устранении ложноположительных срабатываний). Остальные "
+    "улучшения играют преимущественно стабилизирующую роль, повышая устойчивость пайплайна.")
+
 # 4.5
 add_heading2(doc, "4.5 Иерархическая оценка")
 
@@ -1207,7 +1430,7 @@ add_body(doc,
     "Промежуточные результаты иерархической оценки для ранних экспериментов "
     "представлены ниже:")
 
-add_table_caption(doc, "Таблица 11 — Иерархические метрики промежуточного этапа (visual_grounding-уровень)")
+add_table_caption(doc, "Таблица 4.4. Иерархические метрики промежуточного этапа (visual_grounding-уровень)")
 add_table_with_borders(doc,
     ["Класс", "AUROC", "CLIPScore", "CCR", "MACE", "SRA", "Sub-Q Consist."],
     [
@@ -1217,7 +1440,7 @@ add_table_with_borders(doc,
 )
 
 add_body(doc,
-    "Таблица 11 отражает состояние пайплайна на промежуточном этапе разработки — "
+    "Таблица 4.4 отражает состояние пайплайна на промежуточном этапе разработки — "
     "до внедрения per-component Stage 1 и RC4-A. CLIPScore 84.77% для breakfast_box "
     "свидетельствует о хорошем семантическом соответствии генерируемых описаний изображениям. "
     "Однако CCR=63.33% означает, что треть формальных ограничений нормальности не отражается "
@@ -1231,7 +1454,7 @@ add_body(doc,
 add_body(doc,
     "Полная иерархическая оценка лучшего запуска r25:")
 
-add_table_caption(doc, "Таблица 12 — Иерархическая оценка r25 по уровням L1–L4")
+add_table_caption(doc, "Таблица 4.5. Иерархическая оценка r25 по уровням L1–L4")
 add_table_with_borders(doc,
     ["Уровень", "Метрика", "Значение", "Интерпретация"],
     [
@@ -1248,7 +1471,7 @@ add_table_with_borders(doc,
 )
 
 add_body(doc,
-    "Таблица 12 демонстрирует полный диагностический профиль лучшего запуска r25. "
+    "Таблица 4.5 демонстрирует полный диагностический профиль лучшего запуска r25. "
     "На уровне L1 достигнуто CCR=100%: per-component декомпозиция Stage 1 "
     "обеспечивает полное покрытие всех формальных ограничений нормальности в описаниях — "
     "это прямой результат фокусировки VLM на отдельных компонентах вместо монолитного описания. "
@@ -1279,7 +1502,7 @@ add_heading2(doc, "4.6 Анализ ошибок")
 add_body(doc,
     "Сравнение r23 и r25 позволяет изолировать эффект RC4-A:")
 
-add_table_caption(doc, "Таблица 13 — Сравнение r23 и r25 (50 изображений, breakfast_box)")
+add_table_caption(doc, "Таблица 4.6. Сравнение r23 и r25 (50 изображений, breakfast_box)")
 add_table_with_borders(doc,
     ["Метрика", "r23 (без CoT)", "r25 (RC4-A CoT)", "Δ"],
     [
@@ -1332,20 +1555,26 @@ add_body(doc,
     "менее мощной открытой модели. Ключевое практическое преимущество: "
     "полная воспроизводимость, нулевая стоимость API, возможность локального развёртывания.")
 
-add_body(doc,
-    "Подводя итог экспериментальной части, следует отметить, что базовый AUROC "
-    "InternVL2.5-8B по пяти классам (0.527) значительно ниже результатов GPT-4o (0.876). "
-    "Серия из 10+ экспериментов демонстрирует постепенное улучшение метрик: AUROC вырос "
-    "с 0.521 (r18) до 0.852 (r25). Наибольший вклад внесли: устранение ошибок реализации "
-    "Stage 3b/3c (r23, +0.28 AUROC) и RC4-A CoT (r25, +0.07 AUROC при FP=0). "
-    "Иерархическая оценка выявила узкое место на уровне L2.5: Qwen2.5-3B судья "
-    "ограничен в семантическом сопоставлении.")
+add_heading2(doc, "Выводы по разделу 4")
+add_numbered_item(doc, 1,
+    "Базовый средний AUROC InternVL2.5-8B по пяти классам MVTec LOCO AD составил 0.527, "
+    "что значительно ниже результатов оригинального LogicQA на GPT-4o (0.876) и подтверждает "
+    "необходимость компенсации ограничений открытой модели через улучшение пайплайна.")
+add_numbered_item(doc, 2,
+    "Серия из более чем десяти экспериментов продемонстрировала постепенный рост AUROC "
+    "с 0.521 (r18) до 0.852 (r25) на классе breakfast_box; наибольший вклад внесли "
+    "устранение ошибок реализации Stage 3b/3c (r23, +0.28 AUROC) и внедрение RC4-A CoT "
+    "(r25, +0.07 AUROC при FP=0).")
+add_numbered_item(doc, 3,
+    "Лучший результат сопоставим с GPT-4o при нулевой стоимости API и полной воспроизводимости; "
+    "иерархическая оценка выявила узкое место на уровне L2.5 — ограниченность судьи Qwen2.5-3B "
+    "в семантическом сопоставлении вопросов с формальными ограничениями.")
 
 # ===========================================================================
 # ЗАКЛЮЧЕНИЕ
 # ===========================================================================
 
-add_heading1(doc, "ЗАКЛЮЧЕНИЕ")
+add_heading1(doc, "Заключение")
 
 add_body(doc,
     "Целью настоящей работы являлось повышение точности обнаружения логических аномалий "
@@ -1403,7 +1632,7 @@ add_body(doc,
 # СПИСОК ИСПОЛЬЗОВАННЫХ ИСТОЧНИКОВ
 # ===========================================================================
 
-add_heading1(doc, "СПИСОК ИСПОЛЬЗОВАННЫХ ИСТОЧНИКОВ")
+add_heading1(doc, "Список использованных источников")
 
 refs = [
     # [1]–[21] из diploma/04_Литература_Сахаров.docx
@@ -1490,8 +1719,9 @@ for num, text in refs:
 # ПРИЛОЖЕНИЕ А — Сравнение run25 (8B) и run26 (38B-AWQ)
 # ===========================================================================
 
-add_heading1(doc, "ПРИЛОЖЕНИЕ А")
-add_heading1(doc, "Детальное сравнение run25 (InternVL2.5-8B) и run26 (InternVL2.5-38B-AWQ)")
+add_heading1(doc, "Приложение А")
+_center_line(doc, "Детальное сравнение run25 (InternVL2.5-8B) и run26 (InternVL2.5-38B-AWQ)", bold=True)
+add_blank_line(doc)
 
 add_body(doc,
     "В данном приложении приведены подробные результаты экспериментального сравнения "
@@ -1501,7 +1731,7 @@ add_body(doc,
     "n_shots=5, n_val_shots=15, ensemble_seeds=[42]) при разных размерах модели."
 )
 
-add_table_caption(doc, "Таблица А.1 — Метрики run25 (8B) vs run26 (38B-AWQ)")
+add_table_caption(doc, "Таблица А.1. Метрики run25 (8B) vs run26 (38B-AWQ)")
 add_table_with_borders(doc,
     headers=["Метрика", "r25 (8B)", "r26 min_fail=2", "r26 min_fail=1", "Δ (r25→r26/mf1)"],
     rows=[
@@ -1524,7 +1754,7 @@ add_body(doc,
     "+0.048 AUROC, +0.071 F1-max, +0.139 Bin-F1."
 )
 
-add_table_caption(doc, "Таблица А.2 — Обнаружение по типам аномалий (run26, breakfast_box)")
+add_table_caption(doc, "Таблица А.2. Обнаружение по типам аномалий (run26, breakfast_box)")
 add_table_with_borders(doc,
     headers=["Тип аномалии", "r26 min_fail=2", "r26 min_fail=1", "Ср. score"],
     rows=[
@@ -1563,8 +1793,9 @@ add_body(doc,
 # ПРИЛОЖЕНИЕ Б — Сравнение baseline и r27–r30 по всем классам
 # ===========================================================================
 
-add_heading1(doc, "ПРИЛОЖЕНИЕ Б")
-add_heading1(doc, "Результаты экспериментов на всех пяти классах MVTec LOCO AD")
+add_heading1(doc, "Приложение Б")
+_center_line(doc, "Результаты экспериментов на всех пяти классах MVTec LOCO AD", bold=True)
+add_blank_line(doc)
 
 add_body(doc,
     "В таблице Б.1 представлено сравнение базовых метрик (InternVL2.5-8B, "
@@ -1576,7 +1807,7 @@ add_body(doc,
     "наборе (только нормальные и логические аномалии, структурные аномалии исключены)."
 )
 
-add_table_caption(doc, "Таблица Б.1 — Сравнение baseline и оптимизированного пайплайна по классам")
+add_table_caption(doc, "Таблица Б.1. Сравнение baseline и оптимизированного пайплайна по классам")
 add_table_with_borders(doc,
     headers=["Класс", "AUROC baseline", "F1-max baseline",
              "AUROC r27–r30", "F1-max r27–r30", "ΔAUROC"],
@@ -1598,7 +1829,7 @@ add_body(doc,
     "с точки зрения логического обнаружения."
 )
 
-add_table_caption(doc, "Таблица Б.2 — Конфигурация запусков r27–r30")
+add_table_caption(doc, "Таблица Б.2. Конфигурация запусков r27–r30")
 add_table_with_borders(doc,
     headers=["Параметр", "r27 juice_bottle", "r28 pushpins", "r29 screw_bag", "r30 splicing_conn."],
     rows=[
@@ -1613,6 +1844,13 @@ add_table_with_borders(doc,
                              "skip (pre-built)", "skip (pre-built)"],
     ],
 )
+
+add_body(doc,
+    "Как показано в таблице Б.2, все четыре запуска используют единую конфигурацию "
+    "(модель InternVL2.5-8B, порог anomaly_min_failures=1, заранее построенные вопросы) "
+    "с включением back patch masking только для классов с металлическим сетчатым фоном "
+    "(screw_bag, splicing_connectors). Такая унификация обеспечивает сопоставимость "
+    "результатов между классами.")
 
 # ===========================================================================
 # SAVE

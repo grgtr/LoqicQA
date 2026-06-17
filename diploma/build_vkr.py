@@ -359,23 +359,126 @@ def setup_page_numbers(doc):
     run._r.append(fldBegin); run._r.append(instr); run._r.append(fldEnd)
 
 
+TOC_ANCHOR = None  # элемент <w:p>, после которого вставляются строки содержания
+
+
 def add_toc(doc):
-    """Содержание: поле TOC \\o '1-2' (обновляется по F9 в Word)."""
+    """Содержание — статичное, редактируемое (заполняется в finalize_toc)."""
+    global TOC_ANCHOR
     add_heading1(doc, "Содержание")
+    # Якорь: пустой абзац, после которого вставим строки оглавления
+    anchor = doc.add_paragraph()
+    anchor.paragraph_format.first_line_indent = Pt(0)
+    anchor.paragraph_format.space_before = Pt(0)
+    anchor.paragraph_format.space_after = Pt(0)
+    TOC_ANCHOR = anchor._p
+
+
+def _make_toc_entry(doc, title, level, page):
+    """Строка содержания: заголовок + точечный лидер (таб справа) + номер страницы."""
+    from docx.enum.text import WD_TAB_ALIGNMENT, WD_TAB_LEADER
     p = doc.add_paragraph()
+    p.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.LEFT
     p.paragraph_format.first_line_indent = Pt(0)
+    p.paragraph_format.left_indent = Cm(0.75 if level == 2 else 0)
+    p.paragraph_format.space_before = Pt(0)
+    p.paragraph_format.space_after = Pt(0)
     _set_spacing(p)
-    run = p.add_run()
-    run.font.name = "Times New Roman"
-    run.font.size = Pt(14)
-    fldBegin = OxmlElement('w:fldChar'); fldBegin.set(qn('w:fldCharType'), 'begin')
-    instr = OxmlElement('w:instrText'); instr.set(qn('xml:space'), 'preserve')
-    instr.text = 'TOC \\o "1-2" \\h \\z \\u'
-    fldSep = OxmlElement('w:fldChar'); fldSep.set(qn('w:fldCharType'), 'separate')
-    placeholder = OxmlElement('w:t'); placeholder.text = "Обновите поле (F9), чтобы сформировать содержание."
-    fldEnd = OxmlElement('w:fldChar'); fldEnd.set(qn('w:fldCharType'), 'end')
-    run._r.append(fldBegin); run._r.append(instr); run._r.append(fldSep)
-    run._r.append(placeholder); run._r.append(fldEnd)
+    p.paragraph_format.tab_stops.add_tab_stop(Cm(16.5), WD_TAB_ALIGNMENT.RIGHT, WD_TAB_LEADER.DOTS)
+    r1 = p.add_run(title + "\t")
+    r1.font.name = "Times New Roman"; r1.font.size = Pt(14)
+    r2 = p.add_run(str(page))
+    r2.font.name = "Times New Roman"; r2.font.size = Pt(14)
+    return p
+
+
+def finalize_toc(doc):
+    """После сборки документа: собрать заголовки, оценить страницы, вставить строки
+    содержания после якоря. Содержание начинается с раздела «Введение»."""
+    from docx.text.paragraph import Paragraph
+    from docx.table import Table
+    import math
+
+    # --- 1. Сбор заголовков в порядке следования ---
+    headings = []   # (title, level)
+    started = False
+    for child in doc.element.body.iterchildren():
+        if child.tag != qn('w:p'):
+            continue
+        p = Paragraph(child, doc)
+        runs = p.runs
+        if not runs:
+            continue
+        bold = any(r.bold for r in runs)
+        size = next((r.font.size.pt for r in runs if r.font.size), None)
+        center = p.paragraph_format.alignment == WD_ALIGN_PARAGRAPH.CENTER
+        t = p.text.strip()
+        if not t:
+            continue
+        is_h1 = bold and center and size == 16
+        is_h2 = bold and (not center) and size == 14
+        if not (is_h1 or is_h2):
+            continue
+        if t == "Введение":
+            started = True
+        if not started:
+            continue  # пропускаем Аннотацию, Содержание, Обозначения
+        headings.append((t, 1 if is_h1 else 2))
+
+    # --- 2. Вставка строк содержания (с временным номером) после якоря ---
+    entries = []  # (title, level, page_run)
+    anchor = TOC_ANCHOR
+    for title, level in headings:
+        p = _make_toc_entry(doc, title, level, 0)
+        el = p._p
+        el.getparent().remove(el)
+        anchor.addnext(el)
+        anchor = el
+        entries.append((title, level, p.runs[-1]))
+
+    # --- 3. Оценка номеров страниц по разметке готового документа ---
+    USABLE_MM = 297 - 20 - 20 - 6
+    LINE_MM = 8.0
+    CHARS_PER_LINE = 88
+    page = {"n": 1, "y": 0.0}
+
+    def newpage():
+        page["n"] += 1; page["y"] = 0.0
+
+    def add_h(mm):
+        if page["y"] + mm > USABLE_MM:
+            newpage()
+        page["y"] += mm
+
+    def lines(text, size=14):
+        if not text.strip():
+            return 1
+        cpl = CHARS_PER_LINE if size != 16 else int(CHARS_PER_LINE * 14 / 16)
+        return max(1, math.ceil(len(text) / cpl))
+
+    title_page = {}
+    for child in doc.element.body.iterchildren():
+        if child.tag == qn('w:p'):
+            if 'w:type="page"' in child.xml:
+                newpage(); continue
+            p = Paragraph(child, doc)
+            runs = p.runs
+            size = next((r.font.size.pt for r in runs if r.font.size), 14) if runs else 14
+            bold = any(r.bold for r in runs) if runs else False
+            center = p.paragraph_format.alignment == WD_ALIGN_PARAGRAPH.CENTER
+            t = p.text.strip()
+            is_h1 = bold and center and size == 16 and t
+            is_h2 = bold and (not center) and size == 14 and t
+            if (is_h1 or is_h2) and t not in title_page:
+                title_page[t] = page["n"]
+            add_h(lines(p.text, int(size or 14)) * LINE_MM)
+        elif child.tag == qn('w:tbl'):
+            t = Table(child, doc)
+            add_h((len(t.rows) + 1) * LINE_MM * 1.2)
+
+    # --- 4. Проставить реальные номера ---
+    for title, level, run in entries:
+        run.text = str(title_page.get(title, 1))
 
 
 # ===========================================================================
@@ -1866,7 +1969,10 @@ add_body(doc,
 # SAVE
 # ===========================================================================
 
-# Заставить Word пересчитать поля (Содержание/TOC и номера страниц) при открытии
+# Сформировать статичное (редактируемое) содержание с оценкой номеров страниц
+finalize_toc(doc)
+
+# Заставить Word пересчитать номера страниц в колонтитуле при открытии
 settings = doc.settings.element
 if settings.find(qn('w:updateFields')) is None:
     uf = OxmlElement('w:updateFields')

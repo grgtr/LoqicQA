@@ -1,0 +1,100 @@
+# Full-pipeline run (all stages 1-4) on 50-image subset (25 good + 25 logical anomalies)
+# Class: screw_bag | decomposed Stage 1, structured Q-gen, RC4-A CoT, auto stage-3b filter
+# Normality definition: rewritten (see logicqa/data/normality_definitions.py)
+# Preprocessing: BPM=True (mesh background), LangSAM=off (breaks whole-image logical questions)
+
+vlm:
+  backend: "internvl"
+  internvl:
+    model_name: "OpenGVLab/InternVL2_5-8B"
+    temperature: 0.2
+    top_p: 0.7
+    repetition_penalty: 1.1
+    do_sample: true
+    max_new_tokens: 512
+    max_tiles: 12
+    device_map: "auto"
+
+pipeline:
+  decomposed_description: true
+  question_generation_mode: "structured"
+  n_shots: 5
+  n_val_shots: 15
+  n_questions: 8
+  n_sub_questions: 4
+  question_filter_threshold: 0.8
+  ensemble_seeds: [42]
+  use_llm_judge_hallucination: false
+  anomaly_min_failures: 1
+  use_grounded_reasoning: false
+  sub_question_mode: "rephrase"
+
+dataset:
+  name: "mvtec_loco"
+  data_dir: "/home/chikibriki/LoqicQA/dataset-ninja/"
+  download_if_missing: false
+
+preprocessing:
+  bpm:
+    enabled: true
+  langsam:
+    enabled: false
+
+output:
+  results_dir: "results/full50_screw_bag"
+  save_questions: true
+  save_per_image: true
+
+testing:
+  mode: "specific"
+  specific_samples:
+    - screw_bag_good_000.png
+    - screw_bag_good_004.png
+    - screw_bag_good_008.png
+    - screw_bag_good_012.png
+    - screw_bag_good_016.png
+    - screw_bag_good_020.png
+    - screw_bag_good_024.png
+    - screw_bag_good_028.png
+    - screw_bag_good_032.png
+    - screw_bag_good_036.png
+    - screw_bag_good_040.png
+    - screw_bag_good_044.png
+    - screw_bag_good_048.png
+    - screw_bag_good_052.png
+    - screw_bag_good_056.png
+    - screw_bag_good_060.png
+    - screw_bag_good_064.png
+    - screw_bag_good_068.png
+    - screw_bag_good_072.png
+    - screw_bag_good_076.png
+    - screw_bag_good_080.png
+    - screw_bag_good_084.png
+    - screw_bag_good_088.png
+    - screw_bag_good_092.png
+    - screw_bag_good_096.png
+    - screw_bag_logical_anomalies_000.png
+    - screw_bag_logical_anomalies_021.png
+    - screw_bag_logical_anomalies_041.png
+    - screw_bag_logical_anomalies_042.png
+    - screw_bag_logical_anomalies_043.png
+    - screw_bag_logical_anomalies_044.png
+    - screw_bag_logical_anomalies_045.png
+    - screw_bag_logical_anomalies_046.png
+    - screw_bag_logical_anomalies_049.png
+    - screw_bag_logical_anomalies_050.png
+    - screw_bag_logical_anomalies_065.png
+    - screw_bag_logical_anomalies_066.png
+    - screw_bag_logical_anomalies_067.png
+    - screw_bag_logical_anomalies_068.png
+    - screw_bag_logical_anomalies_069.png
+    - screw_bag_logical_anomalies_070.png
+    - screw_bag_logical_anomalies_073.png
+    - screw_bag_logical_anomalies_089.png
+    - screw_bag_logical_anomalies_090.png
+    - screw_bag_logical_anomalies_113.png
+    - screw_bag_logical_anomalies_115.png
+    - screw_bag_logical_anomalies_116.png
+    - screw_bag_logical_anomalies_117.png
+    - screw_bag_logical_anomalies_118.png
+    - screw_bag_logical_anomalies_119.png

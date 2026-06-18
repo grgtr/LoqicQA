@@ -585,13 +585,13 @@ add_body(doc,
 
 add_body(doc,
     "Степень разработанности проблемы. Задача обнаружения структурных аномалий хорошо "
-    "изучена: методы на основе реконструкции (VAE, DRAEM [12]), дистилляции знаний "
-    "(Student-Teacher [14,15], EfficientAD) и признаковых карт (PatchCore [13]) достигают "
+    "изучена: методы на основе реконструкции (VAE, DRAEM [1]), дистилляции знаний "
+    "(Student-Teacher [2, 3], EfficientAD) и признаковых карт (PatchCore [4]) достигают "
     "AUROC > 0.95 на стандартных бенчмарках. Для логических аномалий ситуация принципиально "
-    "иная: датасет MVTec LOCO AD [4] (2022) специально создан для этой задачи и выявил "
+    "иная: датасет MVTec LOCO AD [5] (2022) специально создан для этой задачи и выявил "
     "существенные ограничения существующих методов. Подходы на основе CLIP "
-    "(WinCLIP [5], AnoVL) демонстрируют улучшения, но не охватывают сложную "
-    "семантику ограничений. Принципиально иное решение предложено в LogicQA [L1] (2025). "
+    "(WinCLIP [6], AnoVL) демонстрируют улучшения, но не охватывают сложную "
+    "семантику ограничений. Принципиально иное решение предложено в LogicQA [7] (2025). "
     "Здесь визуально-языковая модель работает не как экстрактор признаков, а как рассуждающий "
     "агент: она сначала формирует перечень условий нормальности, после чего последовательно "
     "сверяет с ним каждое тестовое изображение. У этого решения есть существенный недостаток — "
@@ -680,7 +680,7 @@ add_heading2(doc, "1.1 Задача обнаружения визуальных 
 add_body(doc,
     "Визуальный контроль качества (Visual Quality Inspection) является неотъемлемым "
     "элементом производственных процессов в соответствии с требованиями стандарта "
-    "ISO 9001 [1]. Традиционно контроль осуществлялся операторами-людьми, однако "
+    "ISO 9001 [8]. Традиционно контроль осуществлялся операторами-людьми, однако "
     "рост скоростей производственных линий и потребность в стопроцентном охвате "
     "продукции сделали автоматизацию необходимостью. Методы компьютерного зрения "
     "позволяют обнаруживать отклонения на изображениях без остановки конвейера.")
@@ -703,7 +703,7 @@ add_list_item(doc,
     "дефект обнаруживается лишь на уровне глобального семантического контекста.")
 
 add_body(doc,
-    "Датасет MVTec LOCO AD (Logical Constraints Anomaly Detection) [4], разработанный "
+    "Датасет MVTec LOCO AD (Logical Constraints Anomaly Detection) [5], разработанный "
     "Бергманном и соавторами в 2022 году, специально создан для бенчмаркинга "
     "логических аномалий. Он включает пять классов промышленных объектов: "
     "breakfast_box, juice_bottle, pushpins, screw_bag и splicing_connectors. "
@@ -738,15 +738,15 @@ add_body(doc,
 add_body(doc,
     "Reconstruction-based методы обучают автоэнкодер или генеративную модель воспроизводить "
     "нормальные изображения. Аномалия детектируется как высокая ошибка реконструкции. "
-    "Метод VAE (Variational Autoencoder) [12] применяет вариационный вывод для построения "
-    "латентного пространства нормальности. DRAEM [12] обучает дискриминатор на синтетических "
+    "Метод VAE (Variational Autoencoder) [1] применяет вариационный вывод для построения "
+    "латентного пространства нормальности. DRAEM [1] обучает дискриминатор на синтетических "
     "аномалиях, наложенных на нормальные изображения. Основной недостаток этих подходов — "
     "неспособность детектировать логические аномалии, поскольку реконструкция опирается "
     "на локальные паттерны.")
 
 add_body(doc,
     "Embedding-based методы извлекают признаки из предобученных нейросетей (ResNet, "
-    "EfficientNet) и строят карту нормальности в признаковом пространстве. PatchCore [13] "
+    "EfficientNet) и строят карту нормальности в признаковом пространстве. PatchCore [4] "
     "формирует кор-сет нормальных патч-признаков и вычисляет аномальность тестового патча "
     "как расстояние до ближайшего соседа в кор-сете. SPADE строит пирамидальную карту "
     "нормальности. Эти методы хорошо работают для структурных аномалий (AUROC > 0.95), "
@@ -754,14 +754,14 @@ add_body(doc,
 
 add_body(doc,
     "В методах дистилляции знаний студенческую сеть учат повторять поведение учительской "
-    "на нормальных изображениях [14, 15], а об аномалии судят по расхождению их активаций. "
-    "Здесь выделяется EfficientAD [6], сочетающий высокую скорость с приемлемой точностью. "
+    "на нормальных изображениях [2, 3], а об аномалии судят по расхождению их активаций. "
+    "Здесь выделяется EfficientAD [9], сочетающий высокую скорость с приемлемой точностью. "
     "Но ограничение никуда не девается: обнаружение по-прежнему остаётся локальным.")
 
 add_body(doc,
     "Группа VLM-based методов строится на предобученных визуально-языковых моделях. Так, "
-    "WinCLIP [5] оценивает через CLIP, насколько патчи изображения близки к текстовым "
-    "описаниям нормы и аномалии, а AnoVL развивает эту идею дальше. На общем фоне LogicQA [L1] "
+    "WinCLIP [6] оценивает через CLIP, насколько патчи изображения близки к текстовым "
+    "описаниям нормы и аномалии, а AnoVL развивает эту идею дальше. На общем фоне LogicQA [7] "
     "(2025) стоит особняком: вместо подсчёта признаков модель берёт на себя роль рассуждающего "
     "агента — собирает перечень семантических ограничений нормы и по очереди проверяет каждое "
     "из них на тестовом изображении.")
@@ -770,11 +770,11 @@ add_table_caption(doc, "Таблица 1.2. Сравнение методов о
 add_table_with_borders(doc,
     ["Метод", "Тип аномалий", "Разметка аномалий", "Интерпретируемость", "AUROC (лог.)"],
     [
-        ["PatchCore [13]",    "структурные",  "нет",  "низкая",   "~0.60"],
-        ["DRAEM [12]",        "структурные",  "да",   "низкая",   "~0.55"],
-        ["EfficientAD [6]",   "структурные",  "нет",  "низкая",   "~0.58"],
-        ["WinCLIP [5]",       "оба типа",     "нет",  "средняя",  "~0.70"],
-        ["LogicQA (GPT-4o) [L1]", "логические", "нет", "высокая", "~0.88"],
+        ["PatchCore [4]",    "структурные",  "нет",  "низкая",   "~0.60"],
+        ["DRAEM [1]",        "структурные",  "да",   "низкая",   "~0.55"],
+        ["EfficientAD [9]",   "структурные",  "нет",  "низкая",   "~0.58"],
+        ["WinCLIP [6]",       "оба типа",     "нет",  "средняя",  "~0.70"],
+        ["LogicQA (GPT-4o) [7]", "логические", "нет", "высокая", "~0.88"],
         ["Наш метод (8B)",    "логические",   "нет",  "высокая",  "0.852"],
     ]
 )
@@ -790,7 +790,7 @@ add_body(doc,
 add_heading2(doc, "1.3 Визуально-языковые модели: архитектура и принципы")
 
 add_body(doc,
-    "Модель CLIP (Contrastive Language–Image Pre-training) [7] обучена на 400 миллионах пар "
+    "Модель CLIP (Contrastive Language–Image Pre-training) [10] обучена на 400 миллионах пар "
     "«изображение — текстовое описание» с контрастивной функцией потерь. В результате "
     "формируется совместное пространство эмбеддингов, где близкие по смыслу пары "
     "располагаются рядом, а несовпадающие расходятся. Благодаря этому сходство между любым "
@@ -799,7 +799,7 @@ add_body(doc,
     "качество текстового описания нормального изображения.")
 
 add_body(doc,
-    "Семейство открытых визуально-языковых моделей InternVL2.5 [8] собрано из трёх "
+    "Семейство открытых визуально-языковых моделей InternVL2.5 [11] собрано из трёх "
     "компонентов: визуального энкодера InternViT-6B, модуля pixel shuffling для работы "
     "с изображениями высокого разрешения и языковой модели Qwen2.5 от Alibaba. Обучающая "
     "выборка носила мультимодальный характер и включала пары изображение–текст, данные "
@@ -831,8 +831,8 @@ add_body(doc,
 
 add_body(doc,
     "Следует учитывать, что выигрыш от CoT носит эмерджентный (emergent) характер и "
-    "проявляется лишь с ростом масштаба модели [36]. Согласно работе «Chain-of-Thought "
-    "Prompting» [36] (NeurIPS 2022), на небольших моделях (примерно до 100 млрд параметров) "
+    "проявляется лишь с ростом масштаба модели [12]. Согласно работе «Chain-of-Thought "
+    "Prompting» [12] (NeurIPS 2022), на небольших моделях (примерно до 100 млрд параметров) "
     "приём не помогает, а порой и вредит: такие модели выстраивают правдоподобные с виду, но "
     "логически ошибочные цепочки рассуждений, и точность падает относительно прямого запроса. "
     "Ощутимая польза начинается только у достаточно крупных моделей. Для нашей задачи отсюда "
@@ -842,7 +842,7 @@ add_body(doc,
 
 add_body(doc,
     "Тяга визуально-языковых моделей к «галлюцинациям» и к утвердительному «Yes» подробно "
-    "разобрана в исследовании POPE [34]. Его авторы зафиксировали, что крупные модели нередко "
+    "разобрана в исследовании POPE [13]. Его авторы зафиксировали, что крупные модели нередко "
     "«видят» на изображении объекты, которых там нет, и чем чаще объект встречался в обучающих "
     "данных, тем выше вероятность такой ошибки. При этом открытый запрос провоцирует "
     "галлюцинации сильнее, чем закрытый вопрос с ответом Yes/No. Этот результат прямо "
@@ -853,7 +853,7 @@ add_body(doc,
 add_body(doc,
     "Второе системное ограничение визуально-языковых моделей — слабое пространственное "
     "рассуждение. Эта проблема прицельно изучена в работе «What's Up with Vision-Language "
-    "Models?» [33] на трёх специально подготовленных корпусах. Оказалось, что дообученные "
+    "Models?» [14] на трёх специально подготовленных корпусах. Оказалось, что дообученные "
     "модели VQAv2 на основе BLIP практически сравниваются с человеком на общем бенчмарке "
     "(около 99%), однако на отношениях вида «на/под» и «слева/справа» их точность обваливается "
     "до 56% против тех же 99% у людей. Главную причину авторы видят в дефиците надёжных "
@@ -935,7 +935,7 @@ add_heading1(doc, "Раздел 2. Разработанный метод обн�
 add_heading2(doc, "2.1 Общая архитектура пайплайна")
 
 add_body(doc,
-    "Разработанный фреймворк реализует парадигму question-checklist [L1]: нормальность "
+    "Разработанный фреймворк реализует парадигму question-checklist [7]: нормальность "
     "объекта формализуется через набор бинарных проверочных вопросов, каждый из которых "
     "соответствует одному семантическому ограничению. Тестовое изображение считается "
     "аномальным, если достаточное число вопросов получает ответ «No» (нарушение ограничения). "
@@ -1114,12 +1114,12 @@ add_body(doc,
 
 add_body(doc,
     "Следует привести теоретическое обоснование применения Chain-of-Thought в данной задаче. "
-    "Согласно работе «Chain-of-Thought Prompting Elicits Reasoning in Large Language Models» [36], "
+    "Согласно работе «Chain-of-Thought Prompting Elicits Reasoning in Large Language Models» [12], "
     "метод CoT служит способом разблокировать рассуждательные "
     "способности языковых моделей через явную формулировку промежуточных шагов. "
     "В задаче обнаружения аномалий CoT устраняет специфическую форму галлюцинаций — "
     "«yes-bias»: VLM, не имея явного шага верификации, склонна подтверждать ограничение "
-    "даже при его нарушении (эффект, задокументированный в POPE [34]). "
+    "даже при его нарушении (эффект, задокументированный в POPE [13]). "
     "Step 1 Observe создаёт верифицируемую промежуточную посылку: если наблюдение "
     "фиксирует отсутствие нарушения, вывод Yes логически согласован; если наблюдение "
     "описывает нарушение, вывод No обоснован. Ложноположительный ответ требовал бы "
@@ -1133,27 +1133,27 @@ add_heading2(doc, "2.6 Иерархическая система оценки (L
 add_body(doc,
     "Традиционные метрики AUROC и F1 оценивают лишь финальное бинарное решение, "
     "не позволяя диагностировать, на каком именно этапе пайплайна возникает ошибка. "
-    "В работе VALOR-EVAL [32] показано, что существующие бенчмарки ограничены "
+    "В работе VALOR-EVAL [15] показано, что существующие бенчмарки ограничены "
     "преимущественно объектными галлюцинациями и не охватывают атрибуты и пространственные "
     "отношения — именно те аспекты, которые критичны для обнаружения логических аномалий. "
     "Для решения этой проблемы разработана иерархическая система оценки, "
-    "охватывающая все уровни пайплайна [L1]–[L10].")
+    "охватывающая все уровни пайплайна.")
 
 add_body(doc,
     "L1 — Уровень восприятия (Perception). Оценивает качество текстового описания, "
     "генерируемого Stage 1.")
 
 add_list_item(doc,
-    "CLIPScore [L2]: косинусное сходство между CLIP-эмбеддингами сгенерированного "
+    "CLIPScore [16]: косинусное сходство между CLIP-эмбеддингами сгенерированного "
     "текстового описания и изображения. Измеряет, насколько описание семантически "
     "соответствует изображению. Формула: CLIPScore(t, i) = cos(CLIP_text(t), CLIP_image(i)).")
 add_list_item(doc,
-    "CCR (Constraint Coverage Rate) [L5, L6]: доля формальных ограничений нормальности "
+    "CCR (Constraint Coverage Rate) [17, 18]: доля формальных ограничений нормальности "
     "(ATOMIC_CONSTRAINTS), упомянутых в сгенерированном описании. Подход мотивирован "
-    "метриками типа FaithScore [30]: разложение описания на атомарные факты и их "
+    "метриками типа FaithScore [17]: разложение описания на атомарные факты и их "
     "независимая верификация без эталонного текста высококоррелирует с оценкой людей. "
-    "Оценивается LLM-as-Judge [L3] (Qwen2.5-3B-Instruct), обоснованность которого "
-    "подтверждена Prometheus-Vision [31]: подход VLM-as-Judge показывает наивысшую "
+    "Оценивается LLM-as-Judge [19] (Qwen2.5-3B-Instruct), обоснованность которого "
+    "подтверждена Prometheus-Vision [18]: подход VLM-as-Judge показывает наивысшую "
     "корреляцию Пирсона с оценками людей среди open-source моделей-оценщиков. "
     "CCR = |покрытые ограничения| / |все ограничения|.")
 
@@ -1162,21 +1162,21 @@ add_body(doc,
     "пространственных утверждений.")
 
 add_list_item(doc,
-    "MACE (Mean Absolute Count Error) [L7] измеряет среднее абсолютное расхождение между "
+    "MACE (Mean Absolute Count Error) измеряет среднее абсолютное расхождение между "
     "количеством объекта, названным в описании, и его истинным числом. Скажем, если "
     "в описании указано «3 мандарина» при фактических двух, MACE равен 1.")
 add_list_item(doc,
-    "SRA (Spatial Relation Accuracy) [L8, L9] — это доля верно описанных пространственных "
+    "SRA (Spatial Relation Accuracy) [13, 14] — это доля верно описанных пространственных "
     "отношений между компонентами (left/right/above/below). Выделить пространственное "
     "рассуждение в отдельную метрику нас побудили результаты работы «What's Up with "
-    "Vision-Language Models?» [33], где даже SOTA-модели после дообучения дотягивают лишь "
+    "Vision-Language Models?» [14], где даже SOTA-модели после дообучения дотягивают лишь "
     "до 56% точности на таких задачах против 99% у человека. Отслеживая SRA, мы отделяем "
     "ошибки пространственного восприятия от ошибок семантической верификации.")
 
 add_body(doc,
     "Уровень L2.5 отвечает за качество фильтрации вопросов, то есть за то, насколько хорошо "
     "итоговый набор покрывает формальные ограничения нормы. Зачем он нужен, поясняет "
-    "наблюдение из VALOR-EVAL [32]: бывает, что описание получилось полным и точным (уровни "
+    "наблюдение из VALOR-EVAL [15]: бывает, что описание получилось полным и точным (уровни "
     "L1–L2), а собранные по нему вопросы всё равно проходят мимо ключевых ограничений. "
     "Считаются здесь две величины. Filter Precision — какая часть вопросов финального набора "
     "попадает хотя бы в одно формальное ограничение (оценку выставляет LLM-as-Judge). "
@@ -1185,11 +1185,11 @@ add_body(doc,
 
 add_body(doc,
     "Уровень L3 — рассуждение (Reasoning). На нём проверяется, насколько устойчивы ответы "
-    "модели. Подсказку даёт работа «Uncertainty in Vision-Language Models» [35]: оказывается, "
+    "модели. Подсказку даёт работа «Uncertainty in Vision-Language Models» [20]: оказывается, "
     "точность и уверенность модели идут вразнобой, и порой именно самые точные модели "
     "оказываются наименее уверенными. Раз так, единичному ответу доверять рискованно — стоит "
     "посмотреть, сохранится ли он при перефразировках. Этим и занимается Sub-Q Consistency "
-    "Score [L10]: для каждого вопроса он измеряет долю совпадающих ответов среди его 4 "
+    "Score [20]: для каждого вопроса он измеряет долю совпадающих ответов среди его 4 "
     "sub-questions. Высокая доля выдаёт уверенность модели, низкая — что ответ держится скорее "
     "на поверхностных языковых шаблонах, чем на разборе самого изображения.")
 
@@ -1263,7 +1263,7 @@ add_body(doc,
 
 add_list_item(doc,
     "Детерминированная инициализация. Все эксперименты стартуют с фиксированным seed=42 и "
-    "ensemble_seeds=[42], а вызовы VLM выполняются при temperature=0.2 — это удерживает "
+    "ensemble_seeds={42}, а вызовы VLM выполняются при temperature=0.2 — это удерживает "
     "разброс ответов при повторных запусках на низком уровне.")
 add_list_item(doc,
     "Сохранение артефактов. Каждый запуск пишет файл run_artifacts.json со всеми "
@@ -1296,7 +1296,7 @@ add_body(doc,
     "умещается на одном GPU A100.")
 
 add_body(doc,
-    "AWQ (Activation-aware Weight Quantization) [9] — это метод 4-битной посттренировочной "
+    "AWQ (Activation-aware Weight Quantization) [21] — это метод 4-битной посттренировочной "
     "квантизации. В его основе лежит простое наблюдение: ошибка квантизации распределена "
     "неравномерно, и львиную её долю вносит лишь небольшая доля весовых каналов. AWQ находит "
     "такие «важные» каналы по статистике активаций и либо оставляет их в FP16, либо "
@@ -1421,7 +1421,7 @@ add_heading1(doc, "Раздел 4. Эксперименты и анализ ре
 add_heading2(doc, "4.1 Экспериментальная установка")
 
 add_body(doc,
-    "Эксперименты проводились на датасете MVTec LOCO AD [4], версия 1.0, 5 классов. "
+    "Эксперименты проводились на датасете MVTec LOCO AD [5], версия 1.0, 5 классов. "
     "Для базового сравнения (baseline_full) использовался полный тестовый набор: "
     "breakfast_box — 275 изображений, juice_bottle — 280, pushpins — 309, "
     "screw_bag — 345, splicing_connectors — 312. "
@@ -1622,7 +1622,7 @@ add_body(doc,
     "RC4-A сводит ложные срабатывания к нулю (FP: 12→0), но платой за это становится рост "
     "числа пропущенных аномалий (FN: 3→10). Перед нами типичный компромисс: более строгая "
     "проверка, требующая наблюдения до вывода, повышает специфичность ценой чувствительности. "
-    "Природа исчезновения FP хорошо ложится на логику POPE [34]: в r23 модель отвечала «Yes» "
+    "Природа исчезновения FP хорошо ложится на логику POPE [13]: в r23 модель отвечала «Yes» "
     "не оттого, что нарушения действительно не было, а оттого, что её ничто не обязывало это "
     "нарушение искать — и RC4-A как раз закрыл этот обходной путь.")
 
@@ -1630,14 +1630,14 @@ add_body(doc,
     "Если разобрать структуру FN=10, выясняется, что порядка 70% пропусков приходится на "
     "пространственные нарушения — неверное взаимное расположение компонентов или их сдвиг "
     "относительно отсеков коробки. Картина в точности повторяет уже отмеченную слабость VLM "
-    "в пространственном рассуждении из «What's Up with VLMs?» [33], где даже дообученные "
+    "в пространственном рассуждении из «What's Up with VLMs?» [14], где даже дообученные "
     "SOTA-модели берут лишь 56% против 99% у человека. На шаге Step 1 CoT-наблюдение верно "
     "передаёт геометрию сцены, однако языкового модуля масштаба 8B не всегда хватает, чтобы "
     "сверить с этой геометрией нормативное пространственное ограничение. Отсюда и наш "
     "SRA=64.25%: он ощутимо выше случайного уровня, но не дотягивает до человеческого, и "
     "именно он определяет большую часть оставшихся ошибок. Логично предположить, что "
     "InternVL2.5-38B с более мощным языковым модулем (в основе — Qwen2.5-72B) рассуждает "
-    "о пространстве заметно лучше [8] и потому должен сократить FN на пространственных "
+    "о пространстве заметно лучше [11] и потому должен сократить FN на пространственных "
     "аномалиях.")
 
 # 4.7
@@ -1645,7 +1645,7 @@ add_heading2(doc, "4.7 Сравнение с оригинальной стать
 
 add_body(doc,
     "Чтобы поместить полученные числа в контекст, сопоставим наш подход с оригинальным "
-    "LogicQA [L1].")
+    "LogicQA [7].")
 
 add_body(doc,
     "Оригинальный LogicQA на GPT-4o показывает средний AUROC около 0.876 по всем пяти классам "
@@ -1736,81 +1736,89 @@ add_body(doc,
 add_heading1(doc, "Список использованных источников")
 
 refs = [
-    # [1]–[21] из diploma/04_Литература_Сахаров.docx
-    ("1",  "ISO 9001:2015. Quality management systems — Requirements. — Geneva: ISO, 2015. — 29 p."),
-    ("2",  "Goodfellow I., Bengio Y., Courville A. Deep learning. — MIT Press, 2016. — 800 p."),
-    ("3",  "LeCun Y., Bengio Y., Hinton G. Deep learning // Nature. — 2015. — Vol. 521. — P. 436–444."),
-    ("4",  ("Bergmann P., Batzner K., Fauser M. et al. The MVTec Anomaly Detection Dataset: "
-            "A Comprehensive Real-World Dataset for Unsupervised Anomaly Detection // "
-            "International Journal of Computer Vision. — 2021. — Vol. 129. — P. 1038–1059.")),
-    ("5",  ("Jeong J., Zou Y., Kim T., et al. WinCLIP: Zero-/Few-Shot Anomaly Classification "
-            "and Segmentation // Proceedings of CVPR. — 2023. — P. 19606–19616.")),
-    ("6",  ("Batzner K., Heckler L., Büttner R. EfficientAD: Accurate Visual Anomaly Detection "
-            "at Millisecond-Level Latencies // Proceedings of WACV. — 2024. — P. 128–138.")),
-    ("7",  ("Radford A., Kim J.W., Hallacy C. et al. Learning Transferable Visual Models From "
-            "Natural Language Supervision // Proceedings of ICML. — 2021. — P. 8748–8763.")),
-    ("8",  ("Chen Z., Wu J., Wang W. et al. InternVL: Scaling up Vision Foundation Models "
-            "and Aligning for Generic Visual-Linguistic Tasks // arXiv:2312.14238. — 2024.")),
-    ("9",  ("Lin J., Tang J., Tang H. et al. AWQ: Activation-aware Weight Quantization for "
-            "LLM Compression and Acceleration // Proceedings of MLSys. — 2024.")),
-    ("10", ("Roth K., Pemula L., Zepeda J. et al. Towards Total Recall in Industrial Anomaly "
-            "Detection (PatchCore) // Proceedings of CVPR. — 2022. — P. 14298–14308.")),
-    ("11", ("Defard T., Setkov A., Loesch A., Audigier R. PaDiM: A Patch Distribution "
-            "Modeling Framework for Anomaly Detection and Localization // ICPR. — 2021.")),
-    ("12", ("Zavrtanik V., Kristan M., Skočaj D. DRAEM — A Discriminatively Trained "
-            "Reconstruction Embedding for Surface Anomaly Detection // ICCV. — 2021.")),
-    ("13", ("Roth K., Pemula L., Zepeda J. et al. Towards Total Recall in Industrial "
-            "Anomaly Detection // CVPR. — 2022. — P. 14298–14308.")),
-    ("14", ("Wang G., Han S., Ding E., Huang D. Student-Teacher Feature Pyramid Matching "
-            "for Unsupervised Anomaly Detection // BMVC. — 2021.")),
-    ("15", ("Deng H., Li X. Anomaly Detection via Reverse Distillation from One-Class "
-            "Embedding // CVPR. — 2022.")),
-    ("16", ("Lee S., Lee S., Song B.C. CFA: Coupled-Hypersphere-Based Feature Adaptation "
-            "for Target-Oriented Anomaly Localization // IEEE Access. — 2022.")),
-    ("17", ("Vaswani A., Shazeer N., Parmar N. et al. Attention Is All You Need // "
-            "Advances in NeurIPS. — 2017. — Vol. 30.")),
-    ("18", ("Dosovitskiy A., Beyer L., Kolesnikov A. et al. An Image is Worth 16x16 Words: "
-            "Transformers for Image Recognition at Scale // ICLR. — 2021.")),
-    ("19", ("Liu Z., Lin Y., Cao Y. et al. Swin Transformer: Hierarchical Vision Transformer "
-            "using Shifted Windows // ICCV. — 2021.")),
-    ("20", ("He K., Zhang X., Ren S., Sun J. Deep Residual Learning for Image Recognition // "
-            "CVPR. — 2016. — P. 770–778.")),
-    ("21", ("Brown T., Mann B., Ryder N. et al. Language Models are Few-Shot Learners // "
-            "Advances in NeurIPS. — 2020. — Vol. 33.")),
-    # Дополнительные
-    ("22", ("Kwon Y., Kim S., Choi J. LogicQA: Question-Checklist-Based Anomaly Detection "
-            "Using VLMs // arXiv:2503.20252. — 2025.")),
-    ("23", ("Bergmann P., Batzner K., Fauser M. et al. Beyond Dents and Scratches: Logical "
-            "Constraints in Unsupervised Anomaly Detection and Localization // "
-            "International Journal of Computer Vision. — 2022. — Vol. 130. — P. 947–969.")),
-    ("24", ("Chen Z., Wang W., Tian H. et al. InternVL2.5: Expanding Performance Frontiers "
-            "for Multimodal Models // arXiv:2412.05271. — 2024.")),
-    ("25", ("Jeong J., Zou Y., Kim T. et al. WinCLIP: Zero-/Few-Shot Anomaly Classification "
-            "and Segmentation // CVPR. — 2023.")),
-    ("26", ("Batzner K., Heckler L., Büttner R. EfficientAD: Accurate Visual Anomaly Detection "
-            "at Millisecond-Level Latencies // WACV. — 2024.")),
-    # Из evaluation_framework (L2–L10)
-    ("27", ("Hessel J., Holtzman A., Forbes M. et al. CLIPScore: A Reference-free Evaluation "
-            "Metric for Image Captioning // EMNLP. — 2021. — P. 7514–7528.")),
-    ("28", ("Zheng L., Chiang W.L., Sheng Y. et al. Judging LLM-as-a-Judge with MT-Bench "
-            "and Chatbot Arena // Advances in NeurIPS. — 2023.")),
-    ("29", ("Bergmann P., Fauser M., Sattlegger D., Steger C. MVTec AD: A Real-World Dataset "
-            "for Unsupervised Anomaly Detection // CVPR. — 2019.")),
-    ("30", ("Jing L., Li R., Chen Y. et al. FaithScore: Evaluating Hallucinations in Large "
-            "Vision-Language Models // arXiv:2311.01477. — 2023.")),
-    ("31", ("Lee S., Choi S., Shin J. et al. Prometheus-Vision: Vision-Language Model as a "
-            "Judge for Fine-Grained Evaluation // ACL. — 2024.")),
-    ("32", ("Qiu H., Zhang P., Tang X. et al. VALOR-EVAL: Holistic Coverage and Faithfulness "
-            "Evaluation of Large Vision-Language Models // arXiv:2404.13874. — 2024.")),
-    ("33", ("Kamath A., Hessel J., Chang K.W. What's \"up\" with Vision-Language Models? "
-            "Investigating Their Struggle with Spatial Reasoning // EMNLP. — 2023.")),
-    ("34", ("Li Y., Du Y., Zhou K. et al. Evaluating Object Hallucination in Large "
-            "Vision-Language Models (POPE) // EMNLP. — 2023. — P. 292–305.")),
-    ("35", ("Kostumov V., Borisov V., Belyy A. et al. Uncertainty in Vision-Language Models: "
-            "Towards Reliable Evaluation // arXiv:2402.14418. — 2024.")),
-    ("36", ("Wei J., Wang X., Schuurmans D. et al. Chain-of-Thought Prompting Elicits Reasoning "
-            "in Large Language Models // Advances in Neural Information Processing Systems "
-            "(NeurIPS). — 2022. — Vol. 35. — P. 24824–24837.")),
+    ("1", ("Zavrtanik, V. DRAEM – A Discriminatively Trained Reconstruction Embedding "
+           "for Surface Anomaly Detection / V. Zavrtanik, M. Kristan, D. Skočaj // "
+           "Proceedings of the IEEE/CVF International Conference on Computer Vision "
+           "(ICCV). – 2021. – P. 8330–8339. – Текст : непосредственный.")),
+    ("2", ("Wang, G. Student-Teacher Feature Pyramid Matching for Unsupervised Anomaly "
+           "Detection / G. Wang, S. Han, E. Ding, D. Huang // Proceedings of the "
+           "British Machine Vision Conference (BMVC). – 2021. – 14 p. – "
+           "Текст : непосредственный.")),
+    ("3", ("Deng, H. Anomaly Detection via Reverse Distillation from One-Class "
+           "Embedding / H. Deng, X. Li // Proceedings of the IEEE/CVF Conference on "
+           "Computer Vision and Pattern Recognition (CVPR). – 2022. – P. 9737–9746. – "
+           "Текст : непосредственный.")),
+    ("4", ("Roth, K. Towards Total Recall in Industrial Anomaly Detection / K. Roth, "
+           "L. Pemula, J. Zepeda [et al.] // Proceedings of the IEEE/CVF Conference on "
+           "Computer Vision and Pattern Recognition (CVPR). – 2022. – P. 14298–14308. – "
+           "Текст : непосредственный.")),
+    ("5", ("Bergmann, P. Beyond Dents and Scratches: Logical Constraints in Unsupervised "
+           "Anomaly Detection and Localization / P. Bergmann, K. Batzner, M. Fauser "
+           "[et al.] // International Journal of Computer Vision. – 2022. – Vol. 130. – "
+           "P. 947–969. – Текст : непосредственный.")),
+    ("6", ("Jeong, J. WinCLIP: Zero-/Few-Shot Anomaly Classification and Segmentation / "
+           "J. Jeong, Y. Zou, T. Kim [et al.] // Proceedings of the IEEE/CVF Conference "
+           "on Computer Vision and Pattern Recognition (CVPR). – 2023. – "
+           "P. 19606–19616. – Текст : непосредственный.")),
+    ("7", ("Kwon, Y. LogicQA: Question-Checklist-Based Anomaly Detection Using "
+           "Vision-Language Models / Y. Kwon, S. Kim, J. Choi // arXiv. – 2025. – "
+           "arXiv:2503.20252. – URL: https://arxiv.org/abs/2503.20252 (дата обращения: "
+           "18.06.2026). – Текст : электронный.")),
+    ("8", ("ISO 9001:2015. Quality management systems – Requirements. – Geneva : ISO, "
+           "2015. – 29 p. – Текст : непосредственный.")),
+    ("9", ("Batzner, K. EfficientAD: Accurate Visual Anomaly Detection at "
+           "Millisecond-Level Latencies / K. Batzner, L. Heckler, R. Büttner // "
+           "Proceedings of the IEEE/CVF Winter Conference on Applications of Computer "
+           "Vision (WACV). – 2024. – P. 128–138. – Текст : непосредственный.")),
+    ("10", ("Radford, A. Learning Transferable Visual Models From Natural Language "
+            "Supervision / A. Radford, J. W. Kim, C. Hallacy [et al.] // Proceedings of "
+            "the 38th International Conference on Machine Learning (ICML). – 2021. – "
+            "P. 8748–8763. – Текст : непосредственный.")),
+    ("11", ("Chen, Z. Expanding Performance Boundaries of Open-Source Multimodal Models "
+            "with Model, Data, and Test-Time Scaling (InternVL 2.5) / Z. Chen, W. Wang, "
+            "Y. Cao [et al.] // arXiv. – 2024. – arXiv:2412.05271. – "
+            "URL: https://arxiv.org/abs/2412.05271 (дата обращения: 18.06.2026). – "
+            "Текст : электронный.")),
+    ("12", ("Wei, J. Chain-of-Thought Prompting Elicits Reasoning in Large Language "
+            "Models / J. Wei, X. Wang, D. Schuurmans [et al.] // Advances in Neural "
+            "Information Processing Systems (NeurIPS). – 2022. – Vol. 35. – "
+            "P. 24824–24837. – Текст : непосредственный.")),
+    ("13", ("Li, Y. Evaluating Object Hallucination in Large Vision-Language Models / "
+            "Y. Li, Y. Du, K. Zhou [et al.] // Proceedings of the 2023 Conference on "
+            "Empirical Methods in Natural Language Processing (EMNLP). – 2023. – "
+            "P. 292–305. – Текст : непосредственный.")),
+    ("14", ("Kamath, A. What's \"up\" with Vision-Language Models? Investigating Their "
+            "Struggle with Spatial Reasoning / A. Kamath, J. Hessel, K.-W. Chang // "
+            "Proceedings of the 2023 Conference on Empirical Methods in Natural Language "
+            "Processing (EMNLP). – 2023. – P. 9161–9175. – Текст : непосредственный.")),
+    ("15", ("Qiu, H. VALOR-EVAL: Holistic Coverage and Faithfulness Evaluation of Large "
+            "Vision-Language Models / H. Qiu, W. Hu, Z.-Y. Dou [et al.] // arXiv. – "
+            "2024. – arXiv:2404.13874. – URL: https://arxiv.org/abs/2404.13874 "
+            "(дата обращения: 18.06.2026). – Текст : электронный.")),
+    ("16", ("Hessel, J. CLIPScore: A Reference-free Evaluation Metric for Image "
+            "Captioning / J. Hessel, A. Holtzman, M. Forbes [et al.] // Proceedings of "
+            "the 2021 Conference on Empirical Methods in Natural Language Processing "
+            "(EMNLP). – 2021. – P. 7514–7528. – Текст : непосредственный.")),
+    ("17", ("Jing, L. FaithScore: Evaluating Hallucinations in Large Vision-Language "
+            "Models / L. Jing, R. Li, Y. Chen [et al.] // arXiv. – 2023. – "
+            "arXiv:2311.01477. – URL: https://arxiv.org/abs/2311.01477 (дата обращения: "
+            "18.06.2026). – Текст : электронный.")),
+    ("18", ("Lee, S. Prometheus-Vision: Vision-Language Model as a Judge for Fine-Grained "
+            "Evaluation / S. Lee, S. Kim, S. Park [et al.] // Findings of the "
+            "Association for Computational Linguistics (ACL). – 2024. – "
+            "P. 11286–11315. – Текст : непосредственный.")),
+    ("19", ("Zheng, L. Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena / "
+            "L. Zheng, W.-L. Chiang, Y. Sheng [et al.] // Advances in Neural Information "
+            "Processing Systems (NeurIPS). – 2023. – Vol. 36. – P. 46595–46623. – "
+            "Текст : непосредственный.")),
+    ("20", ("Kostumov, V. Uncertainty-Aware Evaluation for Vision-Language Models / "
+            "V. Kostumov, B. Nutfullin, O. Pilipenko, E. Ilyushin // arXiv. – 2024. – "
+            "arXiv:2402.14418. – URL: https://arxiv.org/abs/2402.14418 (дата обращения: "
+            "18.06.2026). – Текст : электронный.")),
+    ("21", ("Lin, J. AWQ: Activation-aware Weight Quantization for LLM Compression and "
+            "Acceleration / J. Lin, J. Tang, H. Tang [et al.] // Proceedings of Machine "
+            "Learning and Systems (MLSys). – 2024. – Vol. 6. – P. 87–100. – "
+            "Текст : непосредственный.")),
 ]
 
 for num, text in refs:

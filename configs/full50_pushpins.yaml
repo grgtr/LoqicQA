@@ -1,0 +1,100 @@
+# Full-pipeline run (all stages 1-4) on 50-image subset (25 good + 25 logical anomalies)
+# Class: pushpins | decomposed Stage 1, structured Q-gen, RC4-A CoT, auto stage-3b filter
+# Normality definition: rewritten (see logicqa/data/normality_definitions.py)
+# Preprocessing: BPM=False (mesh background), LangSAM=off (breaks whole-image logical questions)
+
+vlm:
+  backend: "internvl"
+  internvl:
+    model_name: "OpenGVLab/InternVL2_5-8B"
+    temperature: 0.2
+    top_p: 0.7
+    repetition_penalty: 1.1
+    do_sample: true
+    max_new_tokens: 512
+    max_tiles: 12
+    device_map: "auto"
+
+pipeline:
+  decomposed_description: true
+  question_generation_mode: "structured"
+  n_shots: 5
+  n_val_shots: 15
+  n_questions: 8
+  n_sub_questions: 4
+  question_filter_threshold: 0.8
+  ensemble_seeds: [42]
+  use_llm_judge_hallucination: false
+  anomaly_min_failures: 1
+  use_grounded_reasoning: false
+  sub_question_mode: "rephrase"
+
+dataset:
+  name: "mvtec_loco"
+  data_dir: "/home/chikibriki/LoqicQA/dataset-ninja/"
+  download_if_missing: false
+
+preprocessing:
+  bpm:
+    enabled: false
+  langsam:
+    enabled: false
+
+output:
+  results_dir: "results/full50_pushpins"
+  save_questions: true
+  save_per_image: true
+
+testing:
+  mode: "specific"
+  specific_samples:
+    - pushpins_good_000.png
+    - pushpins_good_005.png
+    - pushpins_good_010.png
+    - pushpins_good_015.png
+    - pushpins_good_020.png
+    - pushpins_good_025.png
+    - pushpins_good_030.png
+    - pushpins_good_035.png
+    - pushpins_good_040.png
+    - pushpins_good_045.png
+    - pushpins_good_050.png
+    - pushpins_good_055.png
+    - pushpins_good_060.png
+    - pushpins_good_065.png
+    - pushpins_good_070.png
+    - pushpins_good_075.png
+    - pushpins_good_080.png
+    - pushpins_good_085.png
+    - pushpins_good_090.png
+    - pushpins_good_095.png
+    - pushpins_good_100.png
+    - pushpins_good_105.png
+    - pushpins_good_110.png
+    - pushpins_good_115.png
+    - pushpins_good_120.png
+    - pushpins_logical_anomalies_000.png
+    - pushpins_logical_anomalies_001.png
+    - pushpins_logical_anomalies_002.png
+    - pushpins_logical_anomalies_003.png
+    - pushpins_logical_anomalies_004.png
+    - pushpins_logical_anomalies_025.png
+    - pushpins_logical_anomalies_026.png
+    - pushpins_logical_anomalies_027.png
+    - pushpins_logical_anomalies_028.png
+    - pushpins_logical_anomalies_029.png
+    - pushpins_logical_anomalies_036.png
+    - pushpins_logical_anomalies_037.png
+    - pushpins_logical_anomalies_038.png
+    - pushpins_logical_anomalies_039.png
+    - pushpins_logical_anomalies_040.png
+    - pushpins_logical_anomalies_062.png
+    - pushpins_logical_anomalies_063.png
+    - pushpins_logical_anomalies_064.png
+    - pushpins_logical_anomalies_065.png
+    - pushpins_logical_anomalies_066.png
+    - pushpins_logical_anomalies_070.png
+    - pushpins_logical_anomalies_071.png
+    - pushpins_logical_anomalies_072.png
+    - pushpins_logical_anomalies_073.png
+    - pushpins_logical_anomalies_074.png

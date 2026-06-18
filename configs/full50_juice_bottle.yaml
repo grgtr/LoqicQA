@@ -1,0 +1,100 @@
+# Full-pipeline run (all stages 1-4) on 50-image subset (25 good + 25 logical anomalies)
+# Class: juice_bottle | decomposed Stage 1, structured Q-gen, RC4-A CoT, auto stage-3b filter
+# Normality definition: rewritten (see logicqa/data/normality_definitions.py)
+# Preprocessing: BPM=False (mesh background), LangSAM=off (breaks whole-image logical questions)
+
+vlm:
+  backend: "internvl"
+  internvl:
+    model_name: "OpenGVLab/InternVL2_5-8B"
+    temperature: 0.2
+    top_p: 0.7
+    repetition_penalty: 1.1
+    do_sample: true
+    max_new_tokens: 512
+    max_tiles: 12
+    device_map: "auto"
+
+pipeline:
+  decomposed_description: true
+  question_generation_mode: "structured"
+  n_shots: 5
+  n_val_shots: 15
+  n_questions: 8
+  n_sub_questions: 4
+  question_filter_threshold: 0.8
+  ensemble_seeds: [42]
+  use_llm_judge_hallucination: false
+  anomaly_min_failures: 1
+  use_grounded_reasoning: false
+  sub_question_mode: "rephrase"
+
+dataset:
+  name: "mvtec_loco"
+  data_dir: "/home/chikibriki/LoqicQA/dataset-ninja/"
+  download_if_missing: false
+
+preprocessing:
+  bpm:
+    enabled: false
+  langsam:
+    enabled: false
+
+output:
+  results_dir: "results/full50_juice_bottle"
+  save_questions: true
+  save_per_image: true
+
+testing:
+  mode: "specific"
+  specific_samples:
+    - juice_bottle_good_000.png
+    - juice_bottle_good_003.png
+    - juice_bottle_good_006.png
+    - juice_bottle_good_009.png
+    - juice_bottle_good_012.png
+    - juice_bottle_good_015.png
+    - juice_bottle_good_018.png
+    - juice_bottle_good_021.png
+    - juice_bottle_good_024.png
+    - juice_bottle_good_027.png
+    - juice_bottle_good_030.png
+    - juice_bottle_good_033.png
+    - juice_bottle_good_036.png
+    - juice_bottle_good_039.png
+    - juice_bottle_good_042.png
+    - juice_bottle_good_045.png
+    - juice_bottle_good_048.png
+    - juice_bottle_good_051.png
+    - juice_bottle_good_054.png
+    - juice_bottle_good_057.png
+    - juice_bottle_good_060.png
+    - juice_bottle_good_063.png
+    - juice_bottle_good_066.png
+    - juice_bottle_good_069.png
+    - juice_bottle_good_072.png
+    - juice_bottle_logical_anomalies_000.png
+    - juice_bottle_logical_anomalies_001.png
+    - juice_bottle_logical_anomalies_012.png
+    - juice_bottle_logical_anomalies_013.png
+    - juice_bottle_logical_anomalies_024.png
+    - juice_bottle_logical_anomalies_025.png
+    - juice_bottle_logical_anomalies_026.png
+    - juice_bottle_logical_anomalies_036.png
+    - juice_bottle_logical_anomalies_037.png
+    - juice_bottle_logical_anomalies_046.png
+    - juice_bottle_logical_anomalies_047.png
+    - juice_bottle_logical_anomalies_051.png
+    - juice_bottle_logical_anomalies_052.png
+    - juice_bottle_logical_anomalies_053.png
+    - juice_bottle_logical_anomalies_054.png
+    - juice_bottle_logical_anomalies_060.png
+    - juice_bottle_logical_anomalies_061.png
+    - juice_bottle_logical_anomalies_072.png
+    - juice_bottle_logical_anomalies_073.png
+    - juice_bottle_logical_anomalies_084.png
+    - juice_bottle_logical_anomalies_085.png
+    - juice_bottle_logical_anomalies_086.png
+    - juice_bottle_logical_anomalies_087.png
+    - juice_bottle_logical_anomalies_120.png
+    - juice_bottle_logical_anomalies_121.png

@@ -50,135 +50,103 @@ Strict compartment exclusivity:
 - RIGHT half: cereal mixture, banana chips, and almonds ONLY. Tangerines and nectarine are NEVER present on the right side.""",
 
     "juice_bottle": """\
-COMPONENTS (exact count matters):
-- Fruit icon label: exactly 1. Attached to the center or upper portion of the bottle body. \
-Contains a clearly visible fruit icon/image centered within the label. \
-The fruit type (e.g., orange, banana, apple) varies across normal images, \
-but the icon must always be present and centered.
-- "100% Juice" label: exactly 1. Attached to the lower portion of the bottle body, \
-below the fruit icon label. Contains the text "100% Juice".
-- Juice (liquid fill): the bottle body is filled with colored juice. \
-Fill level is at least 90% of the bottle's capacity but NOT 100% — \
-a small but visible gap must exist between the juice surface and the bottle cap/neck.
+NORMAL STATE: a single small square glass bottle with a screw cap, standing upright, \
+filled with coloured juice and carrying two paper labels.
 
-Spatial layout:
-- Fruit icon label is in the UPPER or CENTER portion of the bottle body.
-- "100% Juice" label is BELOW the fruit icon label, in the LOWER portion of the bottle body.
-- The fruit icon label is ALWAYS higher on the bottle than the "100% Juice" label. \
-They are never swapped.
+Labels — presence, identity and order (the primary signals):
+- The bottle always carries exactly TWO labels, one above the other.
+- UPPER label: shows a single fruit icon (an orange, a banana, an apple, etc.). \
+The fruit varies between normal bottles, but a fruit icon is ALWAYS present on the upper label.
+- LOWER label: carries the printed text "100% Juice".
+- Order is fixed: the fruit-icon label is ALWAYS above the "100% Juice" label. \
+The two labels are never swapped, and neither label is ever absent.
+- The fruit icon sits roughly in the middle of its label, not pushed into a corner or edge.
 
-Visual appearance:
-- The bottle is a small square glass bottle with a screw cap.
-- The fruit icon is positioned at the CENTER of its label — not shifted left, right, up, or down.
-- The juice color matches the fruit depicted on the label \
-(e.g., orange juice → orange color, banana juice → yellow color).
-- The juice surface is visible inside the bottle; the bottle is never empty or nearly empty.
+Juice fill:
+- The bottle is clearly filled with coloured juice — it is NEVER empty or only slightly filled.
+- The juice rises to a high level yet leaves a small air gap below the cap: \
+it is neither overfilled to the very brim nor noticeably low.
 
-Fill level constraints:
-- Juice fills at least 90% of the bottle body but not 100%.
-- A visible gap (air space) exists between the juice surface and the bottle cap.
-- The bottle is not filled so high that juice reaches the very neck or cap.
+Juice–fruit consistency:
+- The juice colour matches the fruit shown on the upper label \
+(orange icon → orange juice, banana icon → yellow juice, and so on). \
+Juice whose colour disagrees with the depicted fruit is abnormal.
 
-Juice-label consistency:
-- The color and type of the juice inside the bottle MUST match the fruit depicted \
-on the fruit icon label. A mismatch (e.g., orange juice with a banana icon) is an anomaly.
+Appearance:
+- A small square glass bottle with a screw cap; the juice surface is visible through the glass.
 
-Strict ordering rule:
-- Fruit icon label is ALWAYS above the "100% Juice" label on the bottle. \
-Swapped positions are an anomaly.""",
+What counts as a logical anomaly: a missing label, a missing fruit icon, swapped label order, \
+a fruit icon shoved off-centre, an empty or over-/under-filled bottle, or juice whose colour \
+does not match the depicted fruit.""",
 
     "pushpins": """\
-COMPONENTS (exact count matters):
-- Pushpins: exactly 15 in total (one per compartment). Round-capped pins with a metal needle. \
-All pushpins are the same color (yellow or orange) and the same size.
-- Compartments: exactly 15, arranged in a 3-row by 5-column grid inside a transparent \
-rectangular plastic box.
-- Separators (dividers): transparent plastic walls forming the internal 3×5 grid. \
-All dividers must be present and clearly visible on all four sides of every compartment.
+NORMAL STATE: a transparent rectangular plastic box, seen from above, divided into a \
+regular grid of small compartments (3 rows × 5 columns, 15 cells in total), with one \
+pushpin sitting in each cell.
 
-Spatial layout:
-- The box forms a complete 3-row × 5-column grid of 15 individual compartments.
-- Dividers run both horizontally (separating rows) and vertically (separating columns).
-- Every adjacent pair of compartments is separated by a visible plastic wall.
+Count and one-per-cell rule (the central, defining property):
+- There are exactly 15 pushpins in total — one in every compartment.
+- Each compartment holds EXACTLY ONE pushpin: a cell is never empty and never holds two or more.
+- Every pushpin lies in its own cell and does not share a cell with another pushpin.
+- The number of pushpins matches the number of compartments exactly: no surplus, no shortfall.
 
-Per-compartment rule (strict):
-- Each of the 15 compartments contains EXACTLY ONE pushpin — no more, no less.
-- No compartment is empty.
-- No compartment contains two or more pushpins.
-- Every pushpin is in its own dedicated compartment, not sharing space with another pin.
+Pushpin appearance:
+- All pushpins look alike — the same colour (yellow or orange), the same size, \
+each with a round cap and a metal needle.
 
-Divider/separator integrity:
-- ALL internal plastic walls between compartments are intact and clearly visible.
-- No wall between adjacent compartments is missing, broken, or absent.
-- The full 3×5 grid pattern is complete with no merged or open sections.
+Layout:
+- The 15 cells form a complete, even 3×5 grid; all cells are the same size.
 
-Visual appearance:
-- Pushpins have round colored caps (yellow or orange) and metallic needles pointing downward.
-- The box is transparent, allowing all compartments and pushpins to be seen clearly.
-- The grid is regular and uniform — all compartments are the same size.""",
+What counts as a logical anomaly: a compartment left empty (a missing pushpin), \
+a compartment holding two or more pushpins, or a total pushpin count other than exactly 15.""",
 
     "screw_bag": """\
-COUNTABLE components (exact count matters):
-- Washers: exactly 2. Small flat split rings with a visible gap/cut (split-ring washers). \
-Silver colored. Both washers are the same size.
-- Nuts: exactly 2. Hexagonal silver metal pieces. Both nuts are the same size.
-- Long screw: exactly 1. Hex socket head screw with a long threaded shaft. \
-Clearly longer than the short screw.
-- Short screw: exactly 1. Hex socket head screw with a shorter threaded shaft. \
-Clearly shorter than the long screw.
+NORMAL STATE: a sealed transparent bag holding a small, fixed set of silver metal hardware.
 
-Total item count: exactly 6 hardware items in the bag (2 washers + 2 nuts + 1 long screw + 1 short screw).
+Expected contents — exact set (the primary signal):
+- Exactly 2 split-ring washers (flat silver rings, each with a small gap in the ring).
+- Exactly 2 hexagonal nuts (six-sided silver pieces).
+- Exactly 1 long screw and exactly 1 short screw, each with a hex-socket head and a threaded shaft.
+- Six metal items in total and nothing else: every one of the four types is present, \
+no type is missing, and there are no extra pieces.
 
-Size proportions (strict):
-- The long screw is CLEARLY longer than the short screw — the length difference is visually obvious.
-- The long screw is at least 3× as long as the diameter of a washer.
-- The short screw is at least as long as the height of a hexagonal nut (not abnormally tiny).
-- Both screws are of standard proportional length — neither screw is abnormally tiny \
-nor excessively long relative to the bag size.
-- Neither screw extends close to the full height of the bag.
+Two screws of different length:
+- One screw is CLEARLY longer than the other; the difference is obvious at a glance.
+- There is exactly one long screw and exactly one short screw — never two long, never two short.
+- Both screws are of ordinary proportions, neither unusually tiny nor unusually long.
 
-Visual appearance:
-- Washers: flat rings with a visible split/gap, silver metal.
-- Nuts: six-sided (hexagonal) silver metal pieces.
-- Screws: hex socket head (recessed hexagonal socket on top), threaded shaft, silver metal.
-- All items are silver/metallic in color.
+Appearance:
+- Every item is bare silver/metallic: washers are split rings, nuts are hexagonal, \
+screws have a recessed hexagonal socket in the head.
 
-Completeness rule:
-- All four component types MUST be present: washers, nuts, long screw, short screw.
-- No component type is missing.
-- No extra items beyond the 6 expected pieces.""",
+What counts as a logical anomaly: a whole component type missing, the wrong number of any item \
+(e.g., one washer, or three nuts), an extra item beyond the six, or the screws being the wrong \
+lengths (two long, two short, or a screw of abnormal size).""",
 
     "splicing_connectors": """\
-COUNTABLE components (exact count matters):
-- Splicing connectors: exactly 2. Transparent plastic push-wire connectors with orange \
-lever clamps. Both connectors are the same type — the same model with the same number \
-of wire-entry slots and the same physical size. One connector on the LEFT, one on the RIGHT.
-- Cable: exactly 1. A single yellow cable linking the two connectors. \
-No extra cables, no missing cable.
+NORMAL STATE: two push-wire splicing connectors joined by a single cable, lying horizontally \
+on a textured background.
 
-Spatial layout:
-- Two connectors are placed horizontally on opposite sides, connected by the cable in the center.
-- The arrangement is bilaterally symmetric — the left connector and right connector \
-are approximate mirror images of each other.
-- The cable enters both connectors at the same relative slot position \
-(symmetric entry on both sides).
+Connectors and cable — the core set (primary signals):
+- Exactly TWO connectors: transparent blocks with orange lever clamps, one on the LEFT and \
+one on the RIGHT.
+- The two connectors are the SAME type — the same model, the same number of wire-entry slots \
+and the same size. One connector differing in type or size from the other is abnormal.
+- Exactly ONE cable joins them through the centre. There is never zero cables, and never \
+two or more.
 
 Cable properties:
-- Exactly one cable is present — not zero, not two or more.
-- The cable is YELLOW in color. A cable of any other color (blue, red, etc.) is an anomaly.
-- The cable is undamaged and continuous — no cuts, nicks, breaks, or exposed wire along its length.
-- The cable is longer than the width of a single connector terminal block.
+- The cable is YELLOW. A cable of any other colour (blue, red, etc.) is abnormal.
+- The cable is whole and continuous — no cut, nick, break, or exposed wire anywhere along it.
 
-Connector matching rule (strict):
-- Both connectors must be the same type: same number of orange lever clamps, same height, \
-same physical size.
-- A mismatch between connector types (e.g., one 2-slot and one 3-slot connector, \
-or one 3-slot and one 5-slot) is an anomaly.
+Symmetry:
+- The layout is left–right symmetric: the two connectors mirror each other, and the cable \
+enters each connector at the same slot position. The cable entering a different slot on one \
+side breaks this symmetry and is abnormal.
 
-Symmetry rule:
-- The cable must connect to the same relative slot position on both connectors.
-- Inserting the cable into a non-standard slot position on one connector is an anomaly.
-- Both connectors must appear as approximate mirror images of each other in the layout.""",
+What counts as a logical anomaly: a missing or extra cable, a cable of the wrong colour, \
+a cut or damaged cable, the two connectors being mismatched types/sizes, or an asymmetric \
+cable entry.""",
 }
 
 # --------------------------------------------------------------------------- #

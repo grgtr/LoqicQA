@@ -1,0 +1,100 @@
+# Full-pipeline run (all stages 1-4) on 50-image subset (25 good + 25 logical anomalies)
+# Class: splicing_connectors | decomposed Stage 1, structured Q-gen, RC4-A CoT, auto stage-3b filter
+# Normality definition: rewritten (see logicqa/data/normality_definitions.py)
+# Preprocessing: BPM=True (mesh background), LangSAM=off (breaks whole-image logical questions)
+
+vlm:
+  backend: "internvl"
+  internvl:
+    model_name: "OpenGVLab/InternVL2_5-8B"
+    temperature: 0.2
+    top_p: 0.7
+    repetition_penalty: 1.1
+    do_sample: true
+    max_new_tokens: 512
+    max_tiles: 12
+    device_map: "auto"
+
+pipeline:
+  decomposed_description: true
+  question_generation_mode: "structured"
+  n_shots: 5
+  n_val_shots: 15
+  n_questions: 8
+  n_sub_questions: 4
+  question_filter_threshold: 0.8
+  ensemble_seeds: [42]
+  use_llm_judge_hallucination: false
+  anomaly_min_failures: 1
+  use_grounded_reasoning: false
+  sub_question_mode: "rephrase"
+
+dataset:
+  name: "mvtec_loco"
+  data_dir: "/home/chikibriki/LoqicQA/dataset-ninja/"
+  download_if_missing: false
+
+preprocessing:
+  bpm:
+    enabled: true
+  langsam:
+    enabled: false
+
+output:
+  results_dir: "results/full50_splicing_connectors"
+  save_questions: true
+  save_per_image: true
+
+testing:
+  mode: "specific"
+  specific_samples:
+    - splicing_connectors_good_000.png
+    - splicing_connectors_good_004.png
+    - splicing_connectors_good_008.png
+    - splicing_connectors_good_012.png
+    - splicing_connectors_good_016.png
+    - splicing_connectors_good_020.png
+    - splicing_connectors_good_024.png
+    - splicing_connectors_good_028.png
+    - splicing_connectors_good_032.png
+    - splicing_connectors_good_036.png
+    - splicing_connectors_good_040.png
+    - splicing_connectors_good_044.png
+    - splicing_connectors_good_048.png
+    - splicing_connectors_good_052.png
+    - splicing_connectors_good_056.png
+    - splicing_connectors_good_060.png
+    - splicing_connectors_good_064.png
+    - splicing_connectors_good_068.png
+    - splicing_connectors_good_072.png
+    - splicing_connectors_good_076.png
+    - splicing_connectors_good_080.png
+    - splicing_connectors_good_084.png
+    - splicing_connectors_good_088.png
+    - splicing_connectors_good_092.png
+    - splicing_connectors_good_096.png
+    - splicing_connectors_logical_anomalies_000.png
+    - splicing_connectors_logical_anomalies_004.png
+    - splicing_connectors_logical_anomalies_008.png
+    - splicing_connectors_logical_anomalies_012.png
+    - splicing_connectors_logical_anomalies_016.png
+    - splicing_connectors_logical_anomalies_020.png
+    - splicing_connectors_logical_anomalies_024.png
+    - splicing_connectors_logical_anomalies_028.png
+    - splicing_connectors_logical_anomalies_032.png
+    - splicing_connectors_logical_anomalies_036.png
+    - splicing_connectors_logical_anomalies_040.png
+    - splicing_connectors_logical_anomalies_044.png
+    - splicing_connectors_logical_anomalies_048.png
+    - splicing_connectors_logical_anomalies_052.png
+    - splicing_connectors_logical_anomalies_056.png
+    - splicing_connectors_logical_anomalies_060.png
+    - splicing_connectors_logical_anomalies_064.png
+    - splicing_connectors_logical_anomalies_068.png
+    - splicing_connectors_logical_anomalies_072.png
+    - splicing_connectors_logical_anomalies_076.png
+    - splicing_connectors_logical_anomalies_080.png
+    - splicing_connectors_logical_anomalies_084.png
+    - splicing_connectors_logical_anomalies_088.png
+    - splicing_connectors_logical_anomalies_092.png
+    - splicing_connectors_logical_anomalies_096.png

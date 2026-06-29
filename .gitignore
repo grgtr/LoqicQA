@@ -1,6 +1,6 @@
 .venv/
 dataset-ninja/
-
+diploma/
 # ── experiment outputs (large, regenerable) ──
 results/
 results_baseline_full/

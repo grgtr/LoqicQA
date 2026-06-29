@@ -2,7 +2,7 @@
 from typing import List, Dict
 from logicqa.evaluation.llm_judge import LLMJudge
 
-def evaluate_filtering(stage3a_questions: Dict, stage3b_filtering: List[Dict], gt_constraints: List[str], judge: LLMJudge) -> Dict:
+def evaluate_filtering(stage3a_questions: Dict, stage3b_filtering: List[Dict], gt_constraints: List[str], judge: LLMJudge, threshold: float = 0.8) -> Dict:
 
     if not stage3a_questions or not gt_constraints:
         return {"Precision": 0.0, "Recall": 0.0}
@@ -29,7 +29,7 @@ def evaluate_filtering(stage3a_questions: Dict, stage3b_filtering: List[Dict], g
     dropped_questions = []
     
     for q, stats in q_stats.items():
-        if stats["total"] > 0 and (stats["yes"] / stats["total"]) >= 0.6:
+        if stats["total"] > 0 and (stats["yes"] / stats["total"]) >= threshold:
             kept_questions.append(q)
         else:
             dropped_questions.append(q)

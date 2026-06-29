@@ -1,0 +1,48 @@
+# Baseline Pipeline 1: Stage 4 only (load GT questions, test all images)
+# Usage: python scripts/run_pipeline.py --class_name <class> \
+#            --config config_baseline_gt.yaml \
+#            --questions_file results/<class>_questions_ground_truth.json
+
+vlm:
+  backend: "internvl"
+  internvl:
+    model_name: "OpenGVLab/InternVL2_5-8B"
+    temperature: 0.2
+    top_p: 0.7
+    repetition_penalty: 1.1
+    do_sample: true
+    max_new_tokens: 512
+    device_map: "auto"
+
+pipeline:
+  n_shots: 3
+  n_questions: 6
+  n_sub_questions: 5
+  question_filter_threshold: 0.8
+
+dataset:
+  name: "mvtec_loco"
+  data_dir: "/home/chikibriki/LoqicQA/dataset-ninja/"
+  download_if_missing: true
+
+preprocessing:
+  bpm:
+    enabled: true
+    patch_size: 16
+    threshold: 0.05
+  langsam:
+    enabled: true
+    prompts:
+      pushpins: "black compartment"
+      splicing_connectors: "Connector Block"
+
+output:
+  results_dir: "results"
+  save_questions: false
+  save_per_image: true
+
+testing:
+  mode: "all"
+  random_count: 10
+  random_seed: 42
+  interleave: true

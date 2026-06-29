@@ -1,0 +1,101 @@
+# Baseline Pipeline 1 (resume): GT questions, structural_anomalies 038-089
+# Usage: python scripts/run_pipeline.py --class_name breakfast_box \
+#            --config config_baseline_gt_resume.yaml \
+#            --questions_file results/breakfast_box_questions_ground_truth.json
+
+vlm:
+  backend: "internvl"
+  internvl:
+    model_name: "OpenGVLab/InternVL2_5-8B"
+    temperature: 0.2
+    top_p: 0.7
+    repetition_penalty: 1.1
+    do_sample: true
+    max_new_tokens: 512
+    device_map: "auto"
+
+pipeline:
+  n_shots: 3
+  n_questions: 6
+  n_sub_questions: 5
+  question_filter_threshold: 0.8
+
+dataset:
+  name: "mvtec_loco"
+  data_dir: "/home/chikibriki/LoqicQA/dataset-ninja/"
+  download_if_missing: true
+
+preprocessing:
+  bpm:
+    enabled: true
+    patch_size: 16
+    threshold: 0.05
+  langsam:
+    enabled: true
+    prompts:
+      pushpins: "The individual black compartments within the transparent plastic storage box"
+      splicing_connectors: "Connector Block"
+
+output:
+  results_dir: "results"
+  save_questions: false
+  save_per_image: true
+
+testing:
+  mode: "specific"
+  specific_samples:
+    - "breakfast_box_structural_anomalies_038.png"
+    - "breakfast_box_structural_anomalies_039.png"
+    - "breakfast_box_structural_anomalies_040.png"
+    - "breakfast_box_structural_anomalies_041.png"
+    - "breakfast_box_structural_anomalies_042.png"
+    - "breakfast_box_structural_anomalies_043.png"
+    - "breakfast_box_structural_anomalies_044.png"
+    - "breakfast_box_structural_anomalies_045.png"
+    - "breakfast_box_structural_anomalies_046.png"
+    - "breakfast_box_structural_anomalies_047.png"
+    - "breakfast_box_structural_anomalies_048.png"
+    - "breakfast_box_structural_anomalies_049.png"
+    - "breakfast_box_structural_anomalies_050.png"
+    - "breakfast_box_structural_anomalies_051.png"
+    - "breakfast_box_structural_anomalies_052.png"
+    - "breakfast_box_structural_anomalies_053.png"
+    - "breakfast_box_structural_anomalies_054.png"
+    - "breakfast_box_structural_anomalies_055.png"
+    - "breakfast_box_structural_anomalies_056.png"
+    - "breakfast_box_structural_anomalies_057.png"
+    - "breakfast_box_structural_anomalies_058.png"
+    - "breakfast_box_structural_anomalies_059.png"
+    - "breakfast_box_structural_anomalies_060.png"
+    - "breakfast_box_structural_anomalies_061.png"
+    - "breakfast_box_structural_anomalies_062.png"
+    - "breakfast_box_structural_anomalies_063.png"
+    - "breakfast_box_structural_anomalies_064.png"
+    - "breakfast_box_structural_anomalies_065.png"
+    - "breakfast_box_structural_anomalies_066.png"
+    - "breakfast_box_structural_anomalies_067.png"
+    - "breakfast_box_structural_anomalies_068.png"
+    - "breakfast_box_structural_anomalies_069.png"
+    - "breakfast_box_structural_anomalies_070.png"
+    - "breakfast_box_structural_anomalies_071.png"
+    - "breakfast_box_structural_anomalies_072.png"
+    - "breakfast_box_structural_anomalies_073.png"
+    - "breakfast_box_structural_anomalies_074.png"
+    - "breakfast_box_structural_anomalies_075.png"
+    - "breakfast_box_structural_anomalies_076.png"
+    - "breakfast_box_structural_anomalies_077.png"
+    - "breakfast_box_structural_anomalies_078.png"
+    - "breakfast_box_structural_anomalies_079.png"
+    - "breakfast_box_structural_anomalies_080.png"
+    - "breakfast_box_structural_anomalies_081.png"
+    - "breakfast_box_structural_anomalies_082.png"
+    - "breakfast_box_structural_anomalies_083.png"
+    - "breakfast_box_structural_anomalies_084.png"
+    - "breakfast_box_structural_anomalies_085.png"
+    - "breakfast_box_structural_anomalies_086.png"
+    - "breakfast_box_structural_anomalies_087.png"
+    - "breakfast_box_structural_anomalies_088.png"
+    - "breakfast_box_structural_anomalies_089.png"
+  random_count: 10
+  random_seed: 42
+  interleave: true

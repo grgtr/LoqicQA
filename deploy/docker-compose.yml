@@ -1,0 +1,100 @@
+services:
+
+  preprocessing:
+    build:
+      context: ..
+      dockerfile: preprocessing_service/Dockerfile
+    container_name: logicqa_preprocessing
+    ports:
+      - "8080:8000"
+    networks:
+      - logicqa_net
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  triton:
+    build:
+      context: .
+      dockerfile: triton/Dockerfile
+    container_name: logicqa_triton
+    command:
+      - tritonserver
+      - --model-repository=/models
+      - --model-control-mode=explicit
+      - --allow-metrics=true
+      - --metrics-port=8002
+      - --allow-http=true
+      - --http-port=8001
+      - --allow-grpc=true
+      - --grpc-port=8003
+      - --log-verbose=0
+    ports:
+      - "8111:8001"   # HTTP inference
+      - "8112:8002"   # Prometheus metrics
+      - "8113:8003"   # gRPC inference
+    volumes:
+      - ./triton/model_repository:/models:ro
+      - /home/chikibriki/.cache/huggingface/hub:/models_cache:ro
+    networks:
+      - logicqa_net
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8001/v2/health/ready"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
+
+  prometheus:
+    image: prom/prometheus:v2.53.0
+    container_name: logicqa_prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus_data:/prometheus
+    command:
+      - --config.file=/etc/prometheus/prometheus.yml
+      - --storage.tsdb.path=/prometheus
+      - --storage.tsdb.retention.time=7d
+      - --web.enable-lifecycle
+    networks:
+      - logicqa_net
+    restart: unless-stopped
+
+  grafana:
+    image: grafana/grafana:11.1.0
+    container_name: logicqa_grafana
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=logicqa123
+      - GF_USERS_ALLOW_SIGN_UP=false
+    volumes:
+      - ./grafana/provisioning:/etc/grafana/provisioning:ro
+      - grafana_data:/var/lib/grafana
+    networks:
+      - logicqa_net
+    depends_on:
+      - prometheus
+    restart: unless-stopped
+
+volumes:
+  prometheus_data:
+  grafana_data:
+
+networks:
+  logicqa_net:
+    driver: bridge

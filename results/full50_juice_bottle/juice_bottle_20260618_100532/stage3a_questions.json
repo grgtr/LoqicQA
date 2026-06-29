@@ -1,0 +1,122 @@
+{
+  "prompt": "(structured-from-bullets)",
+  "response": "",
+  "parsed_questions": [
+    "Is there a center label on the juice bottle?",
+    "Is there a lower label on the juice bottle?",
+    "Is there exactly one label in the center of the juice bottle?",
+    "Is there exactly one label on the lower part of the juice bottle?",
+    "Is there a single small square glass item in the image?",
+    "Is the center label of this juice bottle at its correct position?",
+    "Is the lower label of a juice bottle centered?",
+    "Is the juice bottle centered in the image?",
+    "Is the center label of this juice bottle yellow, square with rounded corners and a smooth texture (except for Image 4 which has a banana icon in the middle)?",
+    "Is the lower label of the juice bottle yellow, rectangular with black text and border?",
+    "Is there air bubbles or sedimentation in the juice?",
+    "Is the center label roughly equal to the lower label?",
+    "Is the lower label smaller than the bottle?",
+    "Is the bottle larger compared to labels on either side?",
+    "Does the juice bottle occupy most of its container?",
+    "Does the lower label of this juice bottle have less vertical or surface area compared to other components?",
+    "Is there a common vertical axis shared by all components in the juice bottle?",
+    "Are the labels on this juice bottle adjacent and aligned horizontally along its height?",
+    "Is there a center label slot with an image/logo related to juice content, featuring fruit icon above \"100% Juice\" text below it consistently across all images where applicable?"
+  ],
+  "bullet_results": [
+    {
+      "bullet": "center label",
+      "question": "Is there a center label on the juice bottle?",
+      "status": "KEPT"
+    },
+    {
+      "bullet": "lower label",
+      "question": "Is there a lower label on the juice bottle?",
+      "status": "KEPT"
+    },
+    {
+      "bullet": "center label: exactly 1",
+      "question": "Is there exactly one label in the center of the juice bottle?",
+      "status": "KEPT"
+    },
+    {
+      "bullet": "lower label: exactly 1",
+      "question": "Is there exactly one label on the lower part of the juice bottle?",
+      "status": "KEPT"
+    },
+    {
+      "bullet": "bottle: 'bottle' is a single small square glass item — summarize its typical coverage across all observations, e.g. \"a layer\", \"a handful\", \"sparse\". Do NOT write an exact count",
+      "question": "Is there a single small square glass item in the image?",
+      "status": "KEPT"
+    },
+    {
+      "bullet": "center label: center",
+      "question": "Is the center label of this juice bottle at its correct position?",
+      "status": "KEPT"
+    },
+    {
+      "bullet": "lower label: center",
+      "question": "Is the lower label of a juice bottle centered?",
+      "status": "KEPT"
+    },
+    {
+      "bullet": "bottle: Centered in the image",
+      "question": "Is the juice bottle centered in the image?",
+      "status": "KEPT"
+    },
+    {
+      "bullet": "center label: yellow, square with rounded corners and a smooth texture (except Image 4 which has a banana icon in the middle)",
+      "question": "Is the center label of this juice bottle yellow, square with rounded corners and a smooth texture (except for Image 4 which has a banana icon in the middle)?",
+      "status": "KEPT"
+    },
+    {
+      "bullet": "lower label: yellow, rectangular with black text and border",
+      "question": "Is the lower label of the juice bottle yellow, rectangular with black text and border?",
+      "status": "KEPT"
+    },
+    {
+      "bullet": "bottle: Transparent with smooth texture and filled to near or mid-level height without any air bubbles or sedimentation issues observed within the liquid itself; light-colored juice fills it most of time but not touching the screw cap when full;",
+      "question": "Is there air bubbles or sedimentation in the juice?",
+      "status": "KEPT"
+    },
+    {
+      "bullet": "center label: roughly equal to lower label",
+      "question": "Is the center label roughly equal to the lower label?",
+      "status": "KEPT"
+    },
+    {
+      "bullet": "lower label: smaller than the bottle",
+      "question": "Is the lower label smaller than the bottle?",
+      "status": "KEPT"
+    },
+    {
+      "bullet": "bottle: Largest component compared to labels on either side",
+      "question": "Is the bottle larger compared to labels on either side?",
+      "status": "KEPT"
+    },
+    {
+      "bullet": "The bottle occupies the most space",
+      "question": "Does the juice bottle occupy most of its container?",
+      "status": "KEPT"
+    },
+    {
+      "bullet": "The lower label likely has less vertical or surface area compared to other components",
+      "question": "Does the lower label of this juice bottle have less vertical or surface area compared to other components?",
+      "status": "KEPT"
+    },
+    {
+      "bullet": "Components are not strictly separated; they share a common axis (vertical)",
+      "question": "Is there a common vertical axis shared by all components in the juice bottle?",
+      "status": "KEPT"
+    },
+    {
+      "bullet": "Labels must be adjacent, with no strict parallel requirements between them except for alignment on the same plane of the bottle's body but positioned adjacently horizontally along its height in some cases",
+      "question": "Are the labels on this juice bottle adjacent and aligned horizontally along its height?",
+      "status": "KEPT"
+    },
+    {
+      "bullet": "There is one center label slot that contains an image/logo related to juice content: fruit icon above \"100% Juice\" text below it consistently across all images where applicable,",
+      "question": "Is there a center label slot with an image/logo related to juice content, featuring fruit icon above \"100% Juice\" text below it consistently across all images where applicable?",
+      "status": "KEPT"
+    }
+  ]
+}

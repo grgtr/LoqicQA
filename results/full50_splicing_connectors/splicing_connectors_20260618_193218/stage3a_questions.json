@@ -1,0 +1,91 @@
+{
+  "prompt": "(structured-from-bullets)",
+  "response": "",
+  "parsed_questions": [
+    "Is there a splicing connector visible in the image?",
+    "Is there exactly 2 splicing connectors?",
+    "Is there exactly one cable connected to the splicing connector?",
+    "Is the splicing connector on the left side?",
+    "Is the center of the cable visible in a normal splicing connector?",
+    "Is there a transparent splicing connector with an orange lever clamp and hexagonal shape?",
+    "Is the cable cylindrical with a smooth texture and consistent fill level?",
+    "Is the splicing connector roughly equal to the cable?",
+    "Does the splicing connector occupy a significant amount of space?",
+    "Is the cable component visible in the image?",
+    "Is there a common central area where cables connect to connectors on both sides, maintaining parallel alignment between them?",
+    "Is there an individual wire in each slot within the connector?",
+    "Is there a repeating slot in the splicing connectors?"
+  ],
+  "bullet_results": [
+    {
+      "bullet": "splicing connector",
+      "question": "Is there a splicing connector visible in the image?",
+      "status": "KEPT"
+    },
+    {
+      "bullet": "splicing connector: exactly 2",
+      "question": "Is there exactly 2 splicing connectors?",
+      "status": "KEPT"
+    },
+    {
+      "bullet": "cable: exactly 1",
+      "question": "Is there exactly one cable connected to the splicing connector?",
+      "status": "KEPT"
+    },
+    {
+      "bullet": "splicing connector: left/right",
+      "question": "Is the splicing connector on the left side?",
+      "status": "KEPT"
+    },
+    {
+      "bullet": "cable: center",
+      "question": "Is the center of the cable visible in a normal splicing connector?",
+      "status": "KEPT"
+    },
+    {
+      "bullet": "splicing connector: transparent with orange lever clamps, hexagonal shape",
+      "question": "Is there a transparent splicing connector with an orange lever clamp and hexagonal shape?",
+      "status": "KEPT"
+    },
+    {
+      "bullet": "cable: cylindrical shape with smooth texture and consistent fill level",
+      "question": "Is the cable cylindrical with a smooth texture and consistent fill level?",
+      "status": "KEPT"
+    },
+    {
+      "bullet": "splicing connector: roughly equal to the cable",
+      "question": "Is the splicing connector roughly equal to the cable?",
+      "status": "KEPT"
+    },
+    {
+      "bullet": "cable: roughly equal to the splicing connectors",
+      "question": "Is the cable length roughly equal to the splicing connectors?",
+      "status": "NEAR-DUP"
+    },
+    {
+      "bullet": "The splicing connector occupies the most space",
+      "question": "Does the splicing connector occupy a significant amount of space?",
+      "status": "KEPT"
+    },
+    {
+      "bullet": "The cable is the smallest component",
+      "question": "Is the cable component visible in the image?",
+      "status": "KEPT"
+    },
+    {
+      "bullet": "Components are not strictly separated; they share a common central area where cables connect to connectors on both sides, maintaining parallel alignment between them for connectivity purposes or as required by networking standards like Ethernet in Image 3",
+      "question": "Is there a common central area where cables connect to connectors on both sides, maintaining parallel alignment between them?",
+      "status": "KEPT"
+    },
+    {
+      "bullet": "Each slot within each side of the connector must contain an individual wire (Image 1), orange segmented part that secures the cable inside it properly (Image 2)",
+      "question": "Is there an individual wire in each slot within the connector?",
+      "status": "KEPT"
+    },
+    {
+      "bullet": "There's no repeating slots existing which means there isn't any rule per individual slot other than what was mentioned above except for Image 4 but since N/A applies here we will exclude this image from further analysis",
+      "question": "Is there a repeating slot in the splicing connectors?",
+      "status": "KEPT"
+    }
+  ]
+}

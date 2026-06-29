@@ -1,0 +1,1890 @@
+[
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_000.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_001.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_002.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.09090909090909091,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the juice level below the bottle's neck, with a visible gap between the juice and the cap?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_003.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_004.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_005.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_006.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_007.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_008.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_009.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_010.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_011.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_012.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.09090909090909091,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the color and type of the juice consistent with the fruit depicted on the label?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_013.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_014.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_015.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_016.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_017.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_018.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_019.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_020.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_021.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_022.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.09090909090909091,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the bottle at least three-quarters full of juice?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_023.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.09090909090909091,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the color and type of the juice consistent with the fruit depicted on the label?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_024.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.09090909090909091,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the color and type of the juice consistent with the fruit depicted on the label?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_025.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.09090909090909091,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the color and type of the juice consistent with the fruit depicted on the label?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_026.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_027.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_028.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_029.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_030.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_031.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_032.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_033.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_034.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_035.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_036.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.09090909090909091,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the color and type of the juice consistent with the fruit depicted on the label?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_037.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_038.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_039.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_040.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_041.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_042.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_043.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_044.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_045.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_046.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.09090909090909091,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the color and type of the juice consistent with the fruit depicted on the label?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_047.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.09090909090909091,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the color and type of the juice consistent with the fruit depicted on the label?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_048.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_049.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_050.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_051.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_052.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_053.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.09090909090909091,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the color and type of the juice consistent with the fruit depicted on the label?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_054.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_055.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_056.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_057.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_058.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_059.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_060.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_061.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_062.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_063.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.09090909090909091,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the color and type of the juice consistent with the fruit depicted on the label?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_064.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_065.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.09090909090909091,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the color and type of the juice consistent with the fruit depicted on the label?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_066.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.09090909090909091,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the color and type of the juice consistent with the fruit depicted on the label?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_067.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.09090909090909091,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the bottle at least three-quarters full of juice?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_068.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_069.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_070.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_071.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_072.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_073.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_074.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_075.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_076.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.09090909090909091,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the color and type of the juice consistent with the fruit depicted on the label?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_077.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.09090909090909091,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the color and type of the juice consistent with the fruit depicted on the label?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_078.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_079.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_080.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_081.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_082.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_083.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_084.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_085.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.09090909090909091,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the color and type of the juice consistent with the fruit depicted on the label?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_086.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_087.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_088.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_089.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_090.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_091.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_092.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_093.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_000.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "missing_bottom_label,missing_top_label",
+    "is_anomaly": true,
+    "anomaly_score": 1.0,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there a label with a fruit icon attached to the body of the bottle?\n  - Is there a label with '100% Juice' text attached to the lower part of the bottle?\n  - Does the fruit icon label display a clearly visible fruit image?\n  - Is the fruit icon positioned at the center of its label (not shifted to one side)?\n  - Is the fruit icon label positioned in the upper or center portion of the bottle body — not too close to the bottom?\n  - Is the '100% Juice' label positioned below the fruit icon label on the bottle?\n  - Is the fruit icon label higher on the bottle than the '100% Juice' label?\n  - Is the bottle filled with juice (not empty or nearly empty)?\n  - Is the juice level below the bottle's neck, with a visible gap between the juice and the cap?\n  - Is the bottle at least three-quarters full of juice?\n  - Is the color and type of the juice consistent with the fruit depicted on the label?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_001.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "missing_bottom_label,missing_top_label",
+    "is_anomaly": true,
+    "anomaly_score": 0.8181818181818182,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there a label with a fruit icon attached to the body of the bottle?\n  - Is there a label with '100% Juice' text attached to the lower part of the bottle?\n  - Does the fruit icon label display a clearly visible fruit image?\n  - Is the fruit icon positioned at the center of its label (not shifted to one side)?\n  - Is the '100% Juice' label positioned below the fruit icon label on the bottle?\n  - Is the fruit icon label higher on the bottle than the '100% Juice' label?\n  - Is the juice level below the bottle's neck, with a visible gap between the juice and the cap?\n  - Is the bottle at least three-quarters full of juice?\n  - Is the color and type of the juice consistent with the fruit depicted on the label?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_002.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "missing_bottom_label,missing_top_label",
+    "is_anomaly": true,
+    "anomaly_score": 1.0,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there a label with a fruit icon attached to the body of the bottle?\n  - Is there a label with '100% Juice' text attached to the lower part of the bottle?\n  - Does the fruit icon label display a clearly visible fruit image?\n  - Is the fruit icon positioned at the center of its label (not shifted to one side)?\n  - Is the fruit icon label positioned in the upper or center portion of the bottle body — not too close to the bottom?\n  - Is the '100% Juice' label positioned below the fruit icon label on the bottle?\n  - Is the fruit icon label higher on the bottle than the '100% Juice' label?\n  - Is the bottle filled with juice (not empty or nearly empty)?\n  - Is the juice level below the bottle's neck, with a visible gap between the juice and the cap?\n  - Is the bottle at least three-quarters full of juice?\n  - Is the color and type of the juice consistent with the fruit depicted on the label?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_003.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "missing_bottom_label,missing_top_label",
+    "is_anomaly": true,
+    "anomaly_score": 0.9090909090909091,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there a label with a fruit icon attached to the body of the bottle?\n  - Is there a label with '100% Juice' text attached to the lower part of the bottle?\n  - Does the fruit icon label display a clearly visible fruit image?\n  - Is the fruit icon positioned at the center of its label (not shifted to one side)?\n  - Is the fruit icon label positioned in the upper or center portion of the bottle body — not too close to the bottom?\n  - Is the '100% Juice' label positioned below the fruit icon label on the bottle?\n  - Is the fruit icon label higher on the bottle than the '100% Juice' label?\n  - Is the juice level below the bottle's neck, with a visible gap between the juice and the cap?\n  - Is the bottle at least three-quarters full of juice?\n  - Is the color and type of the juice consistent with the fruit depicted on the label?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_004.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "missing_bottom_label,missing_top_label",
+    "is_anomaly": true,
+    "anomaly_score": 0.8181818181818182,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there a label with a fruit icon attached to the body of the bottle?\n  - Is there a label with '100% Juice' text attached to the lower part of the bottle?\n  - Does the fruit icon label display a clearly visible fruit image?\n  - Is the fruit icon positioned at the center of its label (not shifted to one side)?\n  - Is the fruit icon label positioned in the upper or center portion of the bottle body — not too close to the bottom?\n  - Is the '100% Juice' label positioned below the fruit icon label on the bottle?\n  - Is the fruit icon label higher on the bottle than the '100% Juice' label?\n  - Is the bottle at least three-quarters full of juice?\n  - Is the color and type of the juice consistent with the fruit depicted on the label?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_005.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "missing_bottom_label,missing_top_label",
+    "is_anomaly": true,
+    "anomaly_score": 0.9090909090909091,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there a label with a fruit icon attached to the body of the bottle?\n  - Is there a label with '100% Juice' text attached to the lower part of the bottle?\n  - Does the fruit icon label display a clearly visible fruit image?\n  - Is the fruit icon positioned at the center of its label (not shifted to one side)?\n  - Is the fruit icon label positioned in the upper or center portion of the bottle body — not too close to the bottom?\n  - Is the '100% Juice' label positioned below the fruit icon label on the bottle?\n  - Is the fruit icon label higher on the bottle than the '100% Juice' label?\n  - Is the bottle filled with juice (not empty or nearly empty)?\n  - Is the bottle at least three-quarters full of juice?\n  - Is the color and type of the juice consistent with the fruit depicted on the label?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_006.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "missing_bottom_label,missing_top_label",
+    "is_anomaly": true,
+    "anomaly_score": 0.9090909090909091,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there a label with a fruit icon attached to the body of the bottle?\n  - Is there a label with '100% Juice' text attached to the lower part of the bottle?\n  - Does the fruit icon label display a clearly visible fruit image?\n  - Is the fruit icon positioned at the center of its label (not shifted to one side)?\n  - Is the fruit icon label positioned in the upper or center portion of the bottle body — not too close to the bottom?\n  - Is the '100% Juice' label positioned below the fruit icon label on the bottle?\n  - Is the fruit icon label higher on the bottle than the '100% Juice' label?\n  - Is the juice level below the bottle's neck, with a visible gap between the juice and the cap?\n  - Is the bottle at least three-quarters full of juice?\n  - Is the color and type of the juice consistent with the fruit depicted on the label?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_007.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "missing_bottom_label,missing_top_label",
+    "is_anomaly": true,
+    "anomaly_score": 0.9090909090909091,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there a label with a fruit icon attached to the body of the bottle?\n  - Is there a label with '100% Juice' text attached to the lower part of the bottle?\n  - Does the fruit icon label display a clearly visible fruit image?\n  - Is the fruit icon positioned at the center of its label (not shifted to one side)?\n  - Is the fruit icon label positioned in the upper or center portion of the bottle body — not too close to the bottom?\n  - Is the '100% Juice' label positioned below the fruit icon label on the bottle?\n  - Is the fruit icon label higher on the bottle than the '100% Juice' label?\n  - Is the bottle filled with juice (not empty or nearly empty)?\n  - Is the bottle at least three-quarters full of juice?\n  - Is the color and type of the juice consistent with the fruit depicted on the label?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_008.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "missing_bottom_label,missing_top_label",
+    "is_anomaly": true,
+    "anomaly_score": 0.8181818181818182,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there a label with a fruit icon attached to the body of the bottle?\n  - Is there a label with '100% Juice' text attached to the lower part of the bottle?\n  - Does the fruit icon label display a clearly visible fruit image?\n  - Is the fruit icon positioned at the center of its label (not shifted to one side)?\n  - Is the fruit icon label positioned in the upper or center portion of the bottle body — not too close to the bottom?\n  - Is the '100% Juice' label positioned below the fruit icon label on the bottle?\n  - Is the fruit icon label higher on the bottle than the '100% Juice' label?\n  - Is the bottle at least three-quarters full of juice?\n  - Is the color and type of the juice consistent with the fruit depicted on the label?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_009.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "missing_bottom_label,missing_top_label",
+    "is_anomaly": true,
+    "anomaly_score": 0.8181818181818182,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there a label with a fruit icon attached to the body of the bottle?\n  - Is there a label with '100% Juice' text attached to the lower part of the bottle?\n  - Does the fruit icon label display a clearly visible fruit image?\n  - Is the fruit icon positioned at the center of its label (not shifted to one side)?\n  - Is the fruit icon label positioned in the upper or center portion of the bottle body — not too close to the bottom?\n  - Is the '100% Juice' label positioned below the fruit icon label on the bottle?\n  - Is the fruit icon label higher on the bottle than the '100% Juice' label?\n  - Is the bottle at least three-quarters full of juice?\n  - Is the color and type of the juice consistent with the fruit depicted on the label?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_010.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "missing_bottom_label,missing_top_label",
+    "is_anomaly": true,
+    "anomaly_score": 0.8181818181818182,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there a label with a fruit icon attached to the body of the bottle?\n  - Is there a label with '100% Juice' text attached to the lower part of the bottle?\n  - Does the fruit icon label display a clearly visible fruit image?\n  - Is the fruit icon positioned at the center of its label (not shifted to one side)?\n  - Is the fruit icon label positioned in the upper or center portion of the bottle body — not too close to the bottom?\n  - Is the '100% Juice' label positioned below the fruit icon label on the bottle?\n  - Is the fruit icon label higher on the bottle than the '100% Juice' label?\n  - Is the bottle at least three-quarters full of juice?\n  - Is the color and type of the juice consistent with the fruit depicted on the label?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_011.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "missing_bottom_label,missing_top_label",
+    "is_anomaly": true,
+    "anomaly_score": 0.9090909090909091,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there a label with a fruit icon attached to the body of the bottle?\n  - Is there a label with '100% Juice' text attached to the lower part of the bottle?\n  - Does the fruit icon label display a clearly visible fruit image?\n  - Is the fruit icon positioned at the center of its label (not shifted to one side)?\n  - Is the fruit icon label positioned in the upper or center portion of the bottle body — not too close to the bottom?\n  - Is the '100% Juice' label positioned below the fruit icon label on the bottle?\n  - Is the fruit icon label higher on the bottle than the '100% Juice' label?\n  - Is the juice level below the bottle's neck, with a visible gap between the juice and the cap?\n  - Is the bottle at least three-quarters full of juice?\n  - Is the color and type of the juice consistent with the fruit depicted on the label?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_012.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "missing_bottom_label",
+    "is_anomaly": true,
+    "anomaly_score": 0.09090909090909091,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the '100% Juice' label positioned below the fruit icon label on the bottle?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_013.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "missing_bottom_label",
+    "is_anomaly": true,
+    "anomaly_score": 0.2727272727272727,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there a label with '100% Juice' text attached to the lower part of the bottle?\n  - Is the '100% Juice' label positioned below the fruit icon label on the bottle?\n  - Is the fruit icon label higher on the bottle than the '100% Juice' label?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_014.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "missing_bottom_label",
+    "is_anomaly": true,
+    "anomaly_score": 0.36363636363636365,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there a label with '100% Juice' text attached to the lower part of the bottle?\n  - Is the '100% Juice' label positioned below the fruit icon label on the bottle?\n  - Is the fruit icon label higher on the bottle than the '100% Juice' label?\n  - Is the color and type of the juice consistent with the fruit depicted on the label?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_015.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "missing_bottom_label",
+    "is_anomaly": true,
+    "anomaly_score": 0.18181818181818182,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there a label with '100% Juice' text attached to the lower part of the bottle?\n  - Is the '100% Juice' label positioned below the fruit icon label on the bottle?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_016.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "missing_bottom_label",
+    "is_anomaly": true,
+    "anomaly_score": 0.2727272727272727,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there a label with '100% Juice' text attached to the lower part of the bottle?\n  - Is the '100% Juice' label positioned below the fruit icon label on the bottle?\n  - Is the fruit icon label higher on the bottle than the '100% Juice' label?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_017.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "missing_bottom_label",
+    "is_anomaly": true,
+    "anomaly_score": 0.2727272727272727,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there a label with '100% Juice' text attached to the lower part of the bottle?\n  - Is the '100% Juice' label positioned below the fruit icon label on the bottle?\n  - Is the fruit icon label higher on the bottle than the '100% Juice' label?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_018.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "missing_bottom_label",
+    "is_anomaly": true,
+    "anomaly_score": 0.2727272727272727,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there a label with '100% Juice' text attached to the lower part of the bottle?\n  - Is the '100% Juice' label positioned below the fruit icon label on the bottle?\n  - Is the fruit icon label higher on the bottle than the '100% Juice' label?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_019.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "missing_bottom_label",
+    "is_anomaly": true,
+    "anomaly_score": 0.2727272727272727,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there a label with '100% Juice' text attached to the lower part of the bottle?\n  - Is the '100% Juice' label positioned below the fruit icon label on the bottle?\n  - Is the color and type of the juice consistent with the fruit depicted on the label?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_020.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "missing_bottom_label",
+    "is_anomaly": true,
+    "anomaly_score": 0.2727272727272727,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there a label with '100% Juice' text attached to the lower part of the bottle?\n  - Is the '100% Juice' label positioned below the fruit icon label on the bottle?\n  - Is the fruit icon label higher on the bottle than the '100% Juice' label?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_021.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "missing_bottom_label",
+    "is_anomaly": true,
+    "anomaly_score": 0.18181818181818182,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there a label with '100% Juice' text attached to the lower part of the bottle?\n  - Is the '100% Juice' label positioned below the fruit icon label on the bottle?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_022.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "missing_bottom_label",
+    "is_anomaly": true,
+    "anomaly_score": 0.2727272727272727,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there a label with '100% Juice' text attached to the lower part of the bottle?\n  - Is the '100% Juice' label positioned below the fruit icon label on the bottle?\n  - Is the fruit icon label higher on the bottle than the '100% Juice' label?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_023.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "missing_bottom_label",
+    "is_anomaly": true,
+    "anomaly_score": 0.2727272727272727,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there a label with '100% Juice' text attached to the lower part of the bottle?\n  - Is the '100% Juice' label positioned below the fruit icon label on the bottle?\n  - Is the color and type of the juice consistent with the fruit depicted on the label?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_024.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "empty_bottle",
+    "is_anomaly": true,
+    "anomaly_score": 0.09090909090909091,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the bottle at least three-quarters full of juice?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_025.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "empty_bottle",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_026.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "empty_bottle",
+    "is_anomaly": true,
+    "anomaly_score": 0.09090909090909091,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the bottle at least three-quarters full of juice?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_027.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "empty_bottle",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_028.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "empty_bottle",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_029.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "empty_bottle",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_030.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "empty_bottle",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_031.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "empty_bottle",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_032.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "empty_bottle",
+    "is_anomaly": true,
+    "anomaly_score": 0.18181818181818182,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the juice level below the bottle's neck, with a visible gap between the juice and the cap?\n  - Is the color and type of the juice consistent with the fruit depicted on the label?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_033.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "empty_bottle",
+    "is_anomaly": true,
+    "anomaly_score": 0.09090909090909091,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the color and type of the juice consistent with the fruit depicted on the label?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_034.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "empty_bottle",
+    "is_anomaly": true,
+    "anomaly_score": 0.18181818181818182,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the bottle at least three-quarters full of juice?\n  - Is the color and type of the juice consistent with the fruit depicted on the label?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_035.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "empty_bottle",
+    "is_anomaly": true,
+    "anomaly_score": 0.18181818181818182,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the bottle at least three-quarters full of juice?\n  - Is the color and type of the juice consistent with the fruit depicted on the label?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_036.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "misplaced_fruit_icon",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_037.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "misplaced_fruit_icon",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_038.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "misplaced_fruit_icon",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_039.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "misplaced_fruit_icon",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_040.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "misplaced_fruit_icon",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_041.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "misplaced_fruit_icon",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_042.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "misplaced_fruit_icon",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_043.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "misplaced_fruit_icon",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_044.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "misplaced_fruit_icon",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_045.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "misplaced_fruit_icon",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_046.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "missing_fruit_icon",
+    "is_anomaly": true,
+    "anomaly_score": 0.6363636363636364,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there a label with a fruit icon attached to the body of the bottle?\n  - Does the fruit icon label display a clearly visible fruit image?\n  - Is the fruit icon positioned at the center of its label (not shifted to one side)?\n  - Is the '100% Juice' label positioned below the fruit icon label on the bottle?\n  - Is the fruit icon label higher on the bottle than the '100% Juice' label?\n  - Is the juice level below the bottle's neck, with a visible gap between the juice and the cap?\n  - Is the color and type of the juice consistent with the fruit depicted on the label?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_047.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "missing_fruit_icon",
+    "is_anomaly": true,
+    "anomaly_score": 0.5454545454545454,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there a label with a fruit icon attached to the body of the bottle?\n  - Does the fruit icon label display a clearly visible fruit image?\n  - Is the fruit icon positioned at the center of its label (not shifted to one side)?\n  - Is the '100% Juice' label positioned below the fruit icon label on the bottle?\n  - Is the bottle at least three-quarters full of juice?\n  - Is the color and type of the juice consistent with the fruit depicted on the label?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_048.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "missing_fruit_icon",
+    "is_anomaly": true,
+    "anomaly_score": 0.5454545454545454,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there a label with a fruit icon attached to the body of the bottle?\n  - Does the fruit icon label display a clearly visible fruit image?\n  - Is the fruit icon positioned at the center of its label (not shifted to one side)?\n  - Is the '100% Juice' label positioned below the fruit icon label on the bottle?\n  - Is the fruit icon label higher on the bottle than the '100% Juice' label?\n  - Is the color and type of the juice consistent with the fruit depicted on the label?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_049.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "missing_fruit_icon",
+    "is_anomaly": true,
+    "anomaly_score": 0.6363636363636364,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there a label with a fruit icon attached to the body of the bottle?\n  - Does the fruit icon label display a clearly visible fruit image?\n  - Is the fruit icon positioned at the center of its label (not shifted to one side)?\n  - Is the '100% Juice' label positioned below the fruit icon label on the bottle?\n  - Is the fruit icon label higher on the bottle than the '100% Juice' label?\n  - Is the bottle at least three-quarters full of juice?\n  - Is the color and type of the juice consistent with the fruit depicted on the label?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_050.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "missing_fruit_icon",
+    "is_anomaly": true,
+    "anomaly_score": 0.6363636363636364,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there a label with a fruit icon attached to the body of the bottle?\n  - Does the fruit icon label display a clearly visible fruit image?\n  - Is the fruit icon positioned at the center of its label (not shifted to one side)?\n  - Is the '100% Juice' label positioned below the fruit icon label on the bottle?\n  - Is the fruit icon label higher on the bottle than the '100% Juice' label?\n  - Is the bottle at least three-quarters full of juice?\n  - Is the color and type of the juice consistent with the fruit depicted on the label?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_051.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "misplaced_label_top",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_052.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "misplaced_label_bottom",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_053.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "misplaced_label_top",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_054.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "misplaced_label_bottom",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_055.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "misplaced_label_top",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_056.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "misplaced_label_top",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_057.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "misplaced_label_top",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_058.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "misplaced_label_bottom",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_059.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "misplaced_label_bottom",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_060.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "swapped_labels",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_061.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "swapped_labels",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_062.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "swapped_labels",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_063.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "swapped_labels",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_064.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "swapped_labels",
+    "is_anomaly": true,
+    "anomaly_score": 0.09090909090909091,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the '100% Juice' label positioned below the fruit icon label on the bottle?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_065.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "swapped_labels",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_066.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "swapped_labels",
+    "is_anomaly": true,
+    "anomaly_score": 0.09090909090909091,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the color and type of the juice consistent with the fruit depicted on the label?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_067.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "swapped_labels",
+    "is_anomaly": true,
+    "anomaly_score": 0.09090909090909091,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the '100% Juice' label positioned below the fruit icon label on the bottle?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_068.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "swapped_labels",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_069.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "swapped_labels",
+    "is_anomaly": true,
+    "anomaly_score": 0.18181818181818182,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Does the fruit icon label display a clearly visible fruit image?\n  - Is the color and type of the juice consistent with the fruit depicted on the label?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_070.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "swapped_labels",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_071.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "swapped_labels",
+    "is_anomaly": true,
+    "anomaly_score": 0.2727272727272727,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there a label with '100% Juice' text attached to the lower part of the bottle?\n  - Is the '100% Juice' label positioned below the fruit icon label on the bottle?\n  - Is the color and type of the juice consistent with the fruit depicted on the label?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_072.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "missing_top_label",
+    "is_anomaly": true,
+    "anomaly_score": 0.7272727272727273,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there a label with a fruit icon attached to the body of the bottle?\n  - Does the fruit icon label display a clearly visible fruit image?\n  - Is the fruit icon positioned at the center of its label (not shifted to one side)?\n  - Is the fruit icon label positioned in the upper or center portion of the bottle body — not too close to the bottom?\n  - Is the '100% Juice' label positioned below the fruit icon label on the bottle?\n  - Is the fruit icon label higher on the bottle than the '100% Juice' label?\n  - Is the bottle at least three-quarters full of juice?\n  - Is the color and type of the juice consistent with the fruit depicted on the label?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_073.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "missing_top_label",
+    "is_anomaly": true,
+    "anomaly_score": 0.9090909090909091,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there a label with a fruit icon attached to the body of the bottle?\n  - Does the fruit icon label display a clearly visible fruit image?\n  - Is the fruit icon positioned at the center of its label (not shifted to one side)?\n  - Is the fruit icon label positioned in the upper or center portion of the bottle body — not too close to the bottom?\n  - Is the '100% Juice' label positioned below the fruit icon label on the bottle?\n  - Is the fruit icon label higher on the bottle than the '100% Juice' label?\n  - Is the bottle filled with juice (not empty or nearly empty)?\n  - Is the juice level below the bottle's neck, with a visible gap between the juice and the cap?\n  - Is the bottle at least three-quarters full of juice?\n  - Is the color and type of the juice consistent with the fruit depicted on the label?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_074.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "missing_top_label",
+    "is_anomaly": true,
+    "anomaly_score": 0.9090909090909091,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there a label with a fruit icon attached to the body of the bottle?\n  - Does the fruit icon label display a clearly visible fruit image?\n  - Is the fruit icon positioned at the center of its label (not shifted to one side)?\n  - Is the fruit icon label positioned in the upper or center portion of the bottle body — not too close to the bottom?\n  - Is the '100% Juice' label positioned below the fruit icon label on the bottle?\n  - Is the fruit icon label higher on the bottle than the '100% Juice' label?\n  - Is the bottle filled with juice (not empty or nearly empty)?\n  - Is the juice level below the bottle's neck, with a visible gap between the juice and the cap?\n  - Is the bottle at least three-quarters full of juice?\n  - Is the color and type of the juice consistent with the fruit depicted on the label?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_075.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "missing_top_label",
+    "is_anomaly": true,
+    "anomaly_score": 0.6363636363636364,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there a label with a fruit icon attached to the body of the bottle?\n  - Does the fruit icon label display a clearly visible fruit image?\n  - Is the fruit icon positioned at the center of its label (not shifted to one side)?\n  - Is the '100% Juice' label positioned below the fruit icon label on the bottle?\n  - Is the fruit icon label higher on the bottle than the '100% Juice' label?\n  - Is the bottle at least three-quarters full of juice?\n  - Is the color and type of the juice consistent with the fruit depicted on the label?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_076.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "missing_top_label",
+    "is_anomaly": true,
+    "anomaly_score": 0.7272727272727273,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there a label with a fruit icon attached to the body of the bottle?\n  - Does the fruit icon label display a clearly visible fruit image?\n  - Is the fruit icon positioned at the center of its label (not shifted to one side)?\n  - Is the '100% Juice' label positioned below the fruit icon label on the bottle?\n  - Is the fruit icon label higher on the bottle than the '100% Juice' label?\n  - Is the juice level below the bottle's neck, with a visible gap between the juice and the cap?\n  - Is the bottle at least three-quarters full of juice?\n  - Is the color and type of the juice consistent with the fruit depicted on the label?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_077.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "missing_top_label",
+    "is_anomaly": true,
+    "anomaly_score": 0.7272727272727273,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there a label with a fruit icon attached to the body of the bottle?\n  - Does the fruit icon label display a clearly visible fruit image?\n  - Is the fruit icon positioned at the center of its label (not shifted to one side)?\n  - Is the fruit icon label positioned in the upper or center portion of the bottle body — not too close to the bottom?\n  - Is the '100% Juice' label positioned below the fruit icon label on the bottle?\n  - Is the fruit icon label higher on the bottle than the '100% Juice' label?\n  - Is the juice level below the bottle's neck, with a visible gap between the juice and the cap?\n  - Is the color and type of the juice consistent with the fruit depicted on the label?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_078.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "missing_top_label",
+    "is_anomaly": true,
+    "anomaly_score": 0.6363636363636364,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there a label with a fruit icon attached to the body of the bottle?\n  - Does the fruit icon label display a clearly visible fruit image?\n  - Is the fruit icon positioned at the center of its label (not shifted to one side)?\n  - Is the '100% Juice' label positioned below the fruit icon label on the bottle?\n  - Is the fruit icon label higher on the bottle than the '100% Juice' label?\n  - Is the bottle at least three-quarters full of juice?\n  - Is the color and type of the juice consistent with the fruit depicted on the label?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_079.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "missing_top_label",
+    "is_anomaly": true,
+    "anomaly_score": 0.7272727272727273,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there a label with a fruit icon attached to the body of the bottle?\n  - Does the fruit icon label display a clearly visible fruit image?\n  - Is the fruit icon positioned at the center of its label (not shifted to one side)?\n  - Is the fruit icon label positioned in the upper or center portion of the bottle body — not too close to the bottom?\n  - Is the fruit icon label higher on the bottle than the '100% Juice' label?\n  - Is the juice level below the bottle's neck, with a visible gap between the juice and the cap?\n  - Is the bottle at least three-quarters full of juice?\n  - Is the color and type of the juice consistent with the fruit depicted on the label?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_080.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "missing_top_label",
+    "is_anomaly": true,
+    "anomaly_score": 0.7272727272727273,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there a label with a fruit icon attached to the body of the bottle?\n  - Does the fruit icon label display a clearly visible fruit image?\n  - Is the fruit icon positioned at the center of its label (not shifted to one side)?\n  - Is the fruit icon label positioned in the upper or center portion of the bottle body — not too close to the bottom?\n  - Is the '100% Juice' label positioned below the fruit icon label on the bottle?\n  - Is the fruit icon label higher on the bottle than the '100% Juice' label?\n  - Is the bottle at least three-quarters full of juice?\n  - Is the color and type of the juice consistent with the fruit depicted on the label?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_081.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "missing_top_label",
+    "is_anomaly": true,
+    "anomaly_score": 0.7272727272727273,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there a label with a fruit icon attached to the body of the bottle?\n  - Does the fruit icon label display a clearly visible fruit image?\n  - Is the fruit icon positioned at the center of its label (not shifted to one side)?\n  - Is the fruit icon label positioned in the upper or center portion of the bottle body — not too close to the bottom?\n  - Is the '100% Juice' label positioned below the fruit icon label on the bottle?\n  - Is the fruit icon label higher on the bottle than the '100% Juice' label?\n  - Is the bottle at least three-quarters full of juice?\n  - Is the color and type of the juice consistent with the fruit depicted on the label?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_082.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "missing_top_label",
+    "is_anomaly": true,
+    "anomaly_score": 0.7272727272727273,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there a label with a fruit icon attached to the body of the bottle?\n  - Does the fruit icon label display a clearly visible fruit image?\n  - Is the fruit icon positioned at the center of its label (not shifted to one side)?\n  - Is the '100% Juice' label positioned below the fruit icon label on the bottle?\n  - Is the fruit icon label higher on the bottle than the '100% Juice' label?\n  - Is the bottle filled with juice (not empty or nearly empty)?\n  - Is the bottle at least three-quarters full of juice?\n  - Is the color and type of the juice consistent with the fruit depicted on the label?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_083.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "missing_top_label",
+    "is_anomaly": true,
+    "anomaly_score": 0.7272727272727273,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there a label with a fruit icon attached to the body of the bottle?\n  - Does the fruit icon label display a clearly visible fruit image?\n  - Is the fruit icon positioned at the center of its label (not shifted to one side)?\n  - Is the fruit icon label positioned in the upper or center portion of the bottle body — not too close to the bottom?\n  - Is the '100% Juice' label positioned below the fruit icon label on the bottle?\n  - Is the fruit icon label higher on the bottle than the '100% Juice' label?\n  - Is the bottle at least three-quarters full of juice?\n  - Is the color and type of the juice consistent with the fruit depicted on the label?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_084.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "wrong_fill_level_not_enough",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_085.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "wrong_fill_level_too_much",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_086.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "wrong_fill_level_not_enough",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_087.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "wrong_fill_level_too_much",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_088.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "wrong_fill_level_not_enough",
+    "is_anomaly": true,
+    "anomaly_score": 0.09090909090909091,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the color and type of the juice consistent with the fruit depicted on the label?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_089.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "wrong_fill_level_not_enough",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_090.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "wrong_fill_level_not_enough",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_091.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "wrong_fill_level_too_much",
+    "is_anomaly": true,
+    "anomaly_score": 0.09090909090909091,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the color and type of the juice consistent with the fruit depicted on the label?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_092.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "wrong_fill_level_not_enough",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_093.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "wrong_fill_level_not_enough",
+    "is_anomaly": true,
+    "anomaly_score": 0.09090909090909091,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the bottle at least three-quarters full of juice?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_094.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "wrong_fill_level_not_enough",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_095.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "wrong_fill_level_not_enough",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_096.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "wrong_fill_level_not_enough",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_097.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "wrong_fill_level_not_enough",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_098.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "wrong_fill_level_too_much",
+    "is_anomaly": true,
+    "anomaly_score": 0.09090909090909091,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the color and type of the juice consistent with the fruit depicted on the label?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_099.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "wrong_fill_level_not_enough",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_100.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "wrong_fill_level_not_enough",
+    "is_anomaly": true,
+    "anomaly_score": 0.09090909090909091,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the color and type of the juice consistent with the fruit depicted on the label?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_101.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "wrong_fill_level_not_enough",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_102.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "wrong_fill_level_too_much",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_103.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "wrong_fill_level_too_much",
+    "is_anomaly": true,
+    "anomaly_score": 0.09090909090909091,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the color and type of the juice consistent with the fruit depicted on the label?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_104.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "wrong_fill_level_not_enough",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_105.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "wrong_fill_level_not_enough",
+    "is_anomaly": true,
+    "anomaly_score": 0.09090909090909091,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the color and type of the juice consistent with the fruit depicted on the label?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_106.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "wrong_fill_level_not_enough",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_107.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "wrong_fill_level_too_much",
+    "is_anomaly": true,
+    "anomaly_score": 0.09090909090909091,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the color and type of the juice consistent with the fruit depicted on the label?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_108.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "wrong_fill_level_not_enough",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_109.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "wrong_fill_level_too_much",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_110.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "wrong_fill_level_not_enough",
+    "is_anomaly": true,
+    "anomaly_score": 0.09090909090909091,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the color and type of the juice consistent with the fruit depicted on the label?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_111.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "wrong_fill_level_not_enough",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_112.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "wrong_fill_level_too_much",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_113.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "wrong_fill_level_not_enough",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_114.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "wrong_fill_level_not_enough",
+    "is_anomaly": true,
+    "anomaly_score": 0.09090909090909091,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the color and type of the juice consistent with the fruit depicted on the label?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_115.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "wrong_fill_level_too_much",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_116.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "wrong_fill_level_not_enough",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_117.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "wrong_fill_level_not_enough",
+    "is_anomaly": true,
+    "anomaly_score": 0.09090909090909091,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the color and type of the juice consistent with the fruit depicted on the label?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_118.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "wrong_fill_level_too_much",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_119.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "wrong_fill_level_too_much",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_120.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "wrong_juice_type",
+    "is_anomaly": true,
+    "anomaly_score": 0.09090909090909091,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the color and type of the juice consistent with the fruit depicted on the label?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_121.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "wrong_juice_type",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_122.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "wrong_juice_type",
+    "is_anomaly": true,
+    "anomaly_score": 0.09090909090909091,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the color and type of the juice consistent with the fruit depicted on the label?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_123.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "wrong_juice_type",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_124.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "wrong_juice_type",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_125.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "wrong_juice_type",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_126.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "wrong_juice_type",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_127.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "wrong_juice_type",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_128.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "wrong_juice_type",
+    "is_anomaly": true,
+    "anomaly_score": 0.09090909090909091,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the color and type of the juice consistent with the fruit depicted on the label?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_129.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "wrong_juice_type",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_130.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "wrong_juice_type",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_131.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "wrong_juice_type",
+    "is_anomaly": true,
+    "anomaly_score": 0.18181818181818182,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the bottle at least three-quarters full of juice?\n  - Is the color and type of the juice consistent with the fruit depicted on the label?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_132.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "wrong_juice_type",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_133.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "wrong_juice_type",
+    "is_anomaly": true,
+    "anomaly_score": 0.09090909090909091,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the color and type of the juice consistent with the fruit depicted on the label?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_134.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "wrong_juice_type",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_135.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "wrong_juice_type",
+    "is_anomaly": true,
+    "anomaly_score": 0.18181818181818182,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the bottle at least three-quarters full of juice?\n  - Is the color and type of the juice consistent with the fruit depicted on the label?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_136.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "wrong_juice_type",
+    "is_anomaly": true,
+    "anomaly_score": 0.09090909090909091,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the color and type of the juice consistent with the fruit depicted on the label?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_137.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "wrong_juice_type",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_138.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "wrong_juice_type",
+    "is_anomaly": true,
+    "anomaly_score": 0.09090909090909091,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the color and type of the juice consistent with the fruit depicted on the label?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_139.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "wrong_juice_type",
+    "is_anomaly": true,
+    "anomaly_score": 0.09090909090909091,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the color and type of the juice consistent with the fruit depicted on the label?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_140.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "wrong_juice_type",
+    "is_anomaly": true,
+    "anomaly_score": 0.09090909090909091,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the color and type of the juice consistent with the fruit depicted on the label?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_141.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "wrong_juice_type",
+    "is_anomaly": true,
+    "anomaly_score": 0.09090909090909091,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the color and type of the juice consistent with the fruit depicted on the label?"
+  }
+]

@@ -1,0 +1,92 @@
+{
+  "class_name": "juice_bottle",
+  "normality_definition": "NORMAL STATE: a single small square glass bottle with a screw cap, standing upright, filled with coloured juice and carrying two paper labels.\n\nLabels \u2014 presence, identity and order (the primary signals):\n- The bottle always carries exactly TWO labels, one above the other.\n- UPPER label: shows a single fruit icon (an orange, a banana, an apple, etc.). The fruit varies between normal bottles, but a fruit icon is ALWAYS present on the upper label.\n- LOWER label: carries the printed text \"100% Juice\".\n- Order is fixed: the fruit-icon label is ALWAYS above the \"100% Juice\" label. The two labels are never swapped, and neither label is ever absent.\n- The fruit icon sits roughly in the middle of its label, not pushed into a corner or edge.\n\nJuice fill:\n- The bottle is clearly filled with coloured juice \u2014 it is NEVER empty or only slightly filled.\n- The juice rises to a high level yet leaves a small air gap below the cap: it is neither overfilled to the very brim nor noticeably low.\n\nJuice\u2013fruit consistency:\n- The juice colour matches the fruit shown on the upper label (orange icon \u2192 orange juice, banana icon \u2192 yellow juice, and so on). Juice whose colour disagrees with the depicted fruit is abnormal.\n\nAppearance:\n- A small square glass bottle with a screw cap; the juice surface is visible through the glass.\n\nWhat counts as a logical anomaly: a missing label, a missing fruit icon, swapped label order, a fruit icon shoved off-centre, an empty or over-/under-filled bottle, or juice whose colour does not match the depicted fruit.",
+  "main_questions": [
+    "Is there a center label on the juice bottle?",
+    "Is there a lower label on the juice bottle?",
+    "Is there exactly one label in the center of the juice bottle?",
+    "Is there exactly one label on the lower part of the juice bottle?",
+    "Is the center label of this juice bottle at its correct position?",
+    "Is the center label of this juice bottle yellow, square with rounded corners and a smooth texture (except for Image 4 which has a banana icon in the middle)?",
+    "Is the center label roughly equal to the lower label?",
+    "Is the lower label smaller than the bottle?",
+    "Is the bottle larger compared to labels on either side?",
+    "Does the lower label of this juice bottle have less vertical or surface area compared to other components?",
+    "Are the labels on this juice bottle adjacent and aligned horizontally along its height?",
+    "Is there a center label slot with an image/logo related to juice content, featuring fruit icon above \"100% Juice\" text below it consistently across all images where applicable?"
+  ],
+  "sub_questions": {
+    "Is there a center label on the juice bottle?": [
+      "Can you see a center label on the juice bottle?",
+      "Do you observe any fruit icon or logo indicating that the juice is made from real fruits and contains no artificial additives within its composition?",
+      "Can you see center label in the juice_bottle?",
+      "Is center label visible in the juice_bottle?"
+    ],
+    "Is there a lower label on the juice bottle?": [
+      "Can you see a lower label on the juice bottle?",
+      "Is there an additional yellow rectangular component below the center of the bottle's body?",
+      "Do you observe any text or design elements beneath the main central part nearer to the bottom edge in this image?",
+      "Are both labels present and positioned correctly according to their specified locations relative to each other?"
+    ],
+    "Is there exactly one label in the center of the juice bottle?": [
+      "Can you see a label in the center of the juice bottle?",
+      "Is there exactly one label positioned centrally on the juice bottle?",
+      "Do you observe any labels located at the middle part of the juice container?",
+      "Are... visible, precisely N, centered along the height of the beverage's body?"
+    ],
+    "Is there exactly one label on the lower part of the juice bottle?": [
+      "Can you see a label on the lower part of the juice bottle?",
+      "Is there exactly one label visible at the bottom section of the juice container?",
+      "Do you observe any labels positioned below or near the base area of the beverage bottle in this image?",
+      "Are... present beneath, adjacent to, and within close proximity to the lowest portion of the drink's packaging?"
+    ],
+    "Is the center label of this juice bottle at its correct position?": [
+      "Can you see the center label of this juice bottle?",
+      "Is there a yellow, square with rounded corners and smooth texture in the image as expected for the center label position?",
+      "Do you observe that the lower part has an adjacent rectangular component matching its description near it on one side only.",
+      "Can you see center label in the juice_bottle?"
+    ],
+    "Is the center label of this juice bottle yellow, square with rounded corners and a smooth texture (except for Image 4 which has a banana icon in the middle)?": [
+      "Can you see a yellow, square label with rounded corners and smooth texture in the center of this juice bottle?",
+      "Is there an image/logo related to juice content on the central part of each visible juice bottle?",
+      "Do you observe that the middle section has a distinctly colored, rectangular shape without sharp edges or irregularities adjacent to it.",
+      "Can you see center label in the juice_bottle?"
+    ],
+    "Is the center label roughly equal to the lower label?": [
+      "Can you see the center label and lower label in this image?",
+      "Is there a visible difference between the size of the center label and the lower label?",
+      "Do you observe that both labels are roughly equal to each other's dimensions.",
+      "Are... present, with their sizes being approximately identical?"
+    ],
+    "Is the lower label smaller than the bottle?": [
+      "Can you see the lower label in relation to the bottle?",
+      "Is there a visible difference between the size of the lower label and the bottle?",
+      "Do you observe that the lower label is smaller than the bottle's height or width, depending on its orientation.",
+      "Are... present: Does the juice_bottle contain any component larger than both labels combined?"
+    ],
+    "Is the bottle larger compared to labels on either side?": [
+      "Is the bottle larger compared to labels on either side?",
+      "Does the juice_bottle contain a component that is visibly bigger than both center and lower labels combined?",
+      "Are there any visible elements in this image where the label sizes are greater or equal to those of the bottle's dimensions, aside from its immediate surroundings.",
+      "Can you see if the central part (bottle) occupies more space relative to adjacent components like upper-middle sections with textual content?"
+    ],
+    "Does the lower label of this juice bottle have less vertical or surface area compared to other components?": [
+      "Is the lower label of this juice bottle smaller in vertical or surface area compared to other components?",
+      "Does the juice_bottle contain a component with less vertical space than both labels and the bottle combined?",
+      "Are there any visible elements on the image that occupy more height vertically, width horizontally, or total surface area than all three mentioned components together (center label, lower label, and bottle)?",
+      "Can you see if one specific part within these images has lesser dimensions when measured against others like center label size versus lower label size relative to their own positional context along the same axis as the bottle's body length?"
+    ],
+    "Are the labels on this juice bottle adjacent and aligned horizontally along its height?": [
+      "Are the labels on this juice bottle adjacent and aligned horizontally along its height?",
+      "Is there a visible gap between the center label and lower label of the juice bottle in your image?",
+      "Does the juice_bottle contain two distinct, separate components labeled as \"center\" and \"lower,\" which appear side by side with no significant distance apart from one another when viewed head-on?",
+      "Can you see bottle in the juice_bottle?"
+    ],
+    "Is there a center label slot with an image/logo related to juice content, featuring fruit icon above \"100% Juice\" text below it consistently across all images where applicable?": [
+      "Is there a visible center label that includes the same fruit icon and \"100% Juice\" text as described in other normal images?",
+      "Do you observe any center labels displaying both a fruit icon and \"100% Juice\" text without deviation from this pattern seen elsewhere on similar bottles?",
+      "Are... present: Does the bottle contain a center label showing consistent imagery of fruit icons followed by \"100% Juice\"?",
+      "Can you see center label in the juice_bottle?"
+    ]
+  }
+}

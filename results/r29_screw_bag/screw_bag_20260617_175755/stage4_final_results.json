@@ -1,0 +1,2074 @@
+[
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_000.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.1111111111111111,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_001.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.2222222222222222,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the longer screw at least 3 times as long as the diameter of a washer?\n  - Are both screws of proportionate length — neither abnormally tiny nor excessively long relative to the bag?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_002.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.2222222222222222,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the longer screw at least 3 times as long as the diameter of a washer?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_003.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.3333333333333333,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Is the shorter screw at least as long as the height of a hexagonal nut?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_004.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_005.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.4444444444444444,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Is one screw clearly longer than the other?\n  - Does the bag contain exactly one long screw and one short screw of standard sizes?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_006.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.4444444444444444,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Is the shorter screw at least as long as the height of a hexagonal nut?\n  - Does the bag contain exactly one long screw and one short screw of standard sizes?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_007.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.3333333333333333,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the longer screw at least 3 times as long as the diameter of a washer?\n  - Is the shorter screw at least as long as the height of a hexagonal nut?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_008.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.2222222222222222,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the shorter screw at least as long as the height of a hexagonal nut?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_009.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.2222222222222222,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are both screws of proportionate length — neither abnormally tiny nor excessively long relative to the bag?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_010.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.1111111111111111,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_011.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.2222222222222222,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are both screws of proportionate length — neither abnormally tiny nor excessively long relative to the bag?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_012.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_013.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.2222222222222222,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Does the bag contain exactly one long screw and one short screw of standard sizes?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_014.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.3333333333333333,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Are both screws of proportionate length — neither abnormally tiny nor excessively long relative to the bag?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_015.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.1111111111111111,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_016.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.1111111111111111,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_017.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.2222222222222222,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Is the shorter screw at least as long as the height of a hexagonal nut?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_018.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.3333333333333333,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Is the longer screw at least 3 times as long as the diameter of a washer?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_019.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.3333333333333333,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Are both screws of proportionate length — neither abnormally tiny nor excessively long relative to the bag?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_020.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.2222222222222222,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are both screws of proportionate length — neither abnormally tiny nor excessively long relative to the bag?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_021.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.3333333333333333,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Is the longer screw at least 3 times as long as the diameter of a washer?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_022.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.2222222222222222,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_023.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.4444444444444444,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Is one screw clearly longer than the other?\n  - Is the longer screw at least 3 times as long as the diameter of a washer?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_024.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.2222222222222222,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the shorter screw at least as long as the height of a hexagonal nut?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_025.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.3333333333333333,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the longer screw at least 3 times as long as the diameter of a washer?\n  - Are both screws of proportionate length — neither abnormally tiny nor excessively long relative to the bag?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_026.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.2222222222222222,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_027.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.4444444444444444,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the longer screw at least 3 times as long as the diameter of a washer?\n  - Is the shorter screw at least as long as the height of a hexagonal nut?\n  - Are both screws of proportionate length — neither abnormally tiny nor excessively long relative to the bag?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_028.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.1111111111111111,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are both screws of proportionate length — neither abnormally tiny nor excessively long relative to the bag?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_029.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.2222222222222222,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are both screws of proportionate length — neither abnormally tiny nor excessively long relative to the bag?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_030.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.3333333333333333,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the shorter screw at least as long as the height of a hexagonal nut?\n  - Are both screws of proportionate length — neither abnormally tiny nor excessively long relative to the bag?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_031.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.2222222222222222,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the longer screw at least 3 times as long as the diameter of a washer?\n  - Are both screws of proportionate length — neither abnormally tiny nor excessively long relative to the bag?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_032.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.2222222222222222,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_033.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.2222222222222222,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the longer screw at least 3 times as long as the diameter of a washer?\n  - Is the shorter screw at least as long as the height of a hexagonal nut?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_034.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.2222222222222222,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the shorter screw at least as long as the height of a hexagonal nut?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_035.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.3333333333333333,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Is the longer screw at least 3 times as long as the diameter of a washer?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_036.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.2222222222222222,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the longer screw at least 3 times as long as the diameter of a washer?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_037.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.2222222222222222,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the longer screw at least 3 times as long as the diameter of a washer?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_038.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.2222222222222222,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Does the bag contain exactly one long screw and one short screw of standard sizes?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_039.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.3333333333333333,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the longer screw at least 3 times as long as the diameter of a washer?\n  - Is the shorter screw at least as long as the height of a hexagonal nut?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_040.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.3333333333333333,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Is the shorter screw at least as long as the height of a hexagonal nut?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_041.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.2222222222222222,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_042.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.2222222222222222,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Is the longer screw at least 3 times as long as the diameter of a washer?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_043.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.4444444444444444,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Is the longer screw at least 3 times as long as the diameter of a washer?\n  - Is the shorter screw at least as long as the height of a hexagonal nut?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_044.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_045.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.2222222222222222,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are both screws of proportionate length — neither abnormally tiny nor excessively long relative to the bag?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_046.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.1111111111111111,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_047.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.3333333333333333,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Are both screws of proportionate length — neither abnormally tiny nor excessively long relative to the bag?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_048.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.4444444444444444,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Is the longer screw at least 3 times as long as the diameter of a washer?\n  - Is the shorter screw at least as long as the height of a hexagonal nut?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_049.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.2222222222222222,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the shorter screw at least as long as the height of a hexagonal nut?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_050.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.2222222222222222,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Does the bag contain exactly one long screw and one short screw of standard sizes?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_051.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.3333333333333333,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the shorter screw at least as long as the height of a hexagonal nut?\n  - Are both screws of proportionate length — neither abnormally tiny nor excessively long relative to the bag?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_052.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.3333333333333333,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Is the shorter screw at least as long as the height of a hexagonal nut?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_053.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.1111111111111111,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_054.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.3333333333333333,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the shorter screw at least as long as the height of a hexagonal nut?\n  - Does the bag contain exactly one long screw and one short screw of standard sizes?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_055.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.2222222222222222,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_056.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.3333333333333333,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Is the shorter screw at least as long as the height of a hexagonal nut?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_057.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.1111111111111111,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_058.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.2222222222222222,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_059.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_060.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.2222222222222222,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_061.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.2222222222222222,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is one screw clearly longer than the other?\n  - Are both screws of proportionate length — neither abnormally tiny nor excessively long relative to the bag?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_062.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.2222222222222222,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_063.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_064.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.4444444444444444,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Is the shorter screw at least as long as the height of a hexagonal nut?\n  - Are both screws of proportionate length — neither abnormally tiny nor excessively long relative to the bag?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_065.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.4444444444444444,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the longer screw at least 3 times as long as the diameter of a washer?\n  - Are both screws of proportionate length — neither abnormally tiny nor excessively long relative to the bag?\n  - Does the bag contain exactly one long screw and one short screw of standard sizes?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_066.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.4444444444444444,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Is the longer screw at least 3 times as long as the diameter of a washer?\n  - Is the shorter screw at least as long as the height of a hexagonal nut?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_067.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.1111111111111111,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_068.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.1111111111111111,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_069.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.1111111111111111,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_070.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.3333333333333333,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Is the shorter screw at least as long as the height of a hexagonal nut?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_071.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.4444444444444444,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Is the longer screw at least 3 times as long as the diameter of a washer?\n  - Are both screws of proportionate length — neither abnormally tiny nor excessively long relative to the bag?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_072.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.1111111111111111,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_073.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.3333333333333333,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the longer screw at least 3 times as long as the diameter of a washer?\n  - Is the shorter screw at least as long as the height of a hexagonal nut?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_074.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.2222222222222222,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_075.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_076.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.1111111111111111,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the shorter screw at least as long as the height of a hexagonal nut?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_077.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.2222222222222222,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Does the bag contain exactly one long screw and one short screw of standard sizes?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_078.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.1111111111111111,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is one screw clearly longer than the other?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_079.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.3333333333333333,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is one screw clearly longer than the other?\n  - Is the longer screw at least 3 times as long as the diameter of a washer?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_080.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.3333333333333333,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the shorter screw at least as long as the height of a hexagonal nut?\n  - Are both screws of proportionate length — neither abnormally tiny nor excessively long relative to the bag?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_081.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.1111111111111111,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are both screws of proportionate length — neither abnormally tiny nor excessively long relative to the bag?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_082.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.2222222222222222,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the shorter screw at least as long as the height of a hexagonal nut?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_083.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.1111111111111111,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_084.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.2222222222222222,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the longer screw at least 3 times as long as the diameter of a washer?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_085.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.2222222222222222,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the shorter screw at least as long as the height of a hexagonal nut?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_086.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.5555555555555556,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Is one screw clearly longer than the other?\n  - Are both screws of proportionate length — neither abnormally tiny nor excessively long relative to the bag?\n  - Does the bag contain exactly one long screw and one short screw of standard sizes?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_087.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.3333333333333333,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Is the shorter screw at least as long as the height of a hexagonal nut?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_088.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.3333333333333333,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Is the shorter screw at least as long as the height of a hexagonal nut?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_089.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.3333333333333333,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are both screws of proportionate length — neither abnormally tiny nor excessively long relative to the bag?\n  - Does the bag contain exactly one long screw and one short screw of standard sizes?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_090.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.3333333333333333,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Is the longer screw at least 3 times as long as the diameter of a washer?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_091.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.3333333333333333,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Is the shorter screw at least as long as the height of a hexagonal nut?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_092.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.3333333333333333,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is one screw clearly longer than the other?\n  - Are both screws of proportionate length — neither abnormally tiny nor excessively long relative to the bag?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_093.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.3333333333333333,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Is the shorter screw at least as long as the height of a hexagonal nut?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_094.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.4444444444444444,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Is the longer screw at least 3 times as long as the diameter of a washer?\n  - Are both screws of proportionate length — neither abnormally tiny nor excessively long relative to the bag?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_095.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.3333333333333333,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Is the longer screw at least 3 times as long as the diameter of a washer?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_096.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.4444444444444444,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Is one screw clearly longer than the other?\n  - Are both screws of proportionate length — neither abnormally tiny nor excessively long relative to the bag?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_097.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_098.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.4444444444444444,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the longer screw at least 3 times as long as the diameter of a washer?\n  - Is the shorter screw at least as long as the height of a hexagonal nut?\n  - Are both screws of proportionate length — neither abnormally tiny nor excessively long relative to the bag?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_099.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.2222222222222222,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are both screws of proportionate length — neither abnormally tiny nor excessively long relative to the bag?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_100.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.1111111111111111,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_101.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_102.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.4444444444444444,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Is the longer screw at least 3 times as long as the diameter of a washer?\n  - Is the shorter screw at least as long as the height of a hexagonal nut?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_103.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.3333333333333333,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the shorter screw at least as long as the height of a hexagonal nut?\n  - Are both screws of proportionate length — neither abnormally tiny nor excessively long relative to the bag?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_104.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.2222222222222222,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_105.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.3333333333333333,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Is the shorter screw at least as long as the height of a hexagonal nut?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_106.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_107.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.1111111111111111,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the shorter screw at least as long as the height of a hexagonal nut?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_108.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.2222222222222222,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Is the shorter screw at least as long as the height of a hexagonal nut?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_109.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.6666666666666666,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Is one screw clearly longer than the other?\n  - Is the longer screw at least 3 times as long as the diameter of a washer?\n  - Is the shorter screw at least as long as the height of a hexagonal nut?\n  - Does the bag contain exactly one long screw and one short screw of standard sizes?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_110.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.3333333333333333,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Is the shorter screw at least as long as the height of a hexagonal nut?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_111.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.1111111111111111,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are both screws of proportionate length — neither abnormally tiny nor excessively long relative to the bag?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_112.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.1111111111111111,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_113.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.2222222222222222,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_114.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.3333333333333333,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the longer screw at least 3 times as long as the diameter of a washer?\n  - Are both screws of proportionate length — neither abnormally tiny nor excessively long relative to the bag?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_115.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_116.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.3333333333333333,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Is the shorter screw at least as long as the height of a hexagonal nut?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_117.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.2222222222222222,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Is the shorter screw at least as long as the height of a hexagonal nut?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_118.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.3333333333333333,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the longer screw at least 3 times as long as the diameter of a washer?\n  - Are both screws of proportionate length — neither abnormally tiny nor excessively long relative to the bag?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_119.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.3333333333333333,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Are both screws of proportionate length — neither abnormally tiny nor excessively long relative to the bag?\n  - Does the bag contain exactly one long screw and one short screw of standard sizes?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_120.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.2222222222222222,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_good_121.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.1111111111111111,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the longer screw at least 3 times as long as the diameter of a washer?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_000.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "screw_too_long",
+    "is_anomaly": true,
+    "anomaly_score": 0.3333333333333333,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Is the shorter screw at least as long as the height of a hexagonal nut?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_001.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "screw_too_long",
+    "is_anomaly": true,
+    "anomaly_score": 0.2222222222222222,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_002.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "screw_too_long",
+    "is_anomaly": true,
+    "anomaly_score": 0.1111111111111111,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are both screws of proportionate length — neither abnormally tiny nor excessively long relative to the bag?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_003.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "screw_too_long",
+    "is_anomaly": true,
+    "anomaly_score": 0.1111111111111111,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_004.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "screw_too_long",
+    "is_anomaly": true,
+    "anomaly_score": 0.3333333333333333,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the longer screw at least 3 times as long as the diameter of a washer?\n  - Is the shorter screw at least as long as the height of a hexagonal nut?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_005.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "screw_too_long",
+    "is_anomaly": true,
+    "anomaly_score": 0.4444444444444444,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Is the longer screw at least 3 times as long as the diameter of a washer?\n  - Are both screws of proportionate length — neither abnormally tiny nor excessively long relative to the bag?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_006.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "screw_too_long",
+    "is_anomaly": true,
+    "anomaly_score": 0.4444444444444444,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Is one screw clearly longer than the other?\n  - Is the shorter screw at least as long as the height of a hexagonal nut?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_007.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "screw_too_long",
+    "is_anomaly": true,
+    "anomaly_score": 0.2222222222222222,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the shorter screw at least as long as the height of a hexagonal nut?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_008.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "screw_too_long",
+    "is_anomaly": true,
+    "anomaly_score": 0.2222222222222222,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are both screws of proportionate length — neither abnormally tiny nor excessively long relative to the bag?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_009.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "screw_too_long",
+    "is_anomaly": true,
+    "anomaly_score": 0.3333333333333333,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the longer screw at least 3 times as long as the diameter of a washer?\n  - Is the shorter screw at least as long as the height of a hexagonal nut?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_010.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "screw_too_long",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_011.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "screw_too_long",
+    "is_anomaly": true,
+    "anomaly_score": 0.3333333333333333,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Is the shorter screw at least as long as the height of a hexagonal nut?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_012.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "screw_too_long",
+    "is_anomaly": true,
+    "anomaly_score": 0.1111111111111111,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_013.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "screw_too_long",
+    "is_anomaly": true,
+    "anomaly_score": 0.2222222222222222,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the longer screw at least 3 times as long as the diameter of a washer?\n  - Is the shorter screw at least as long as the height of a hexagonal nut?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_014.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "screw_too_long",
+    "is_anomaly": true,
+    "anomaly_score": 0.3333333333333333,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the shorter screw at least as long as the height of a hexagonal nut?\n  - Are both screws of proportionate length — neither abnormally tiny nor excessively long relative to the bag?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_015.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "screw_too_long",
+    "is_anomaly": true,
+    "anomaly_score": 0.2222222222222222,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the longer screw at least 3 times as long as the diameter of a washer?\n  - Is the shorter screw at least as long as the height of a hexagonal nut?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_016.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "screw_too_long",
+    "is_anomaly": true,
+    "anomaly_score": 0.1111111111111111,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_017.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "screw_too_long",
+    "is_anomaly": true,
+    "anomaly_score": 0.2222222222222222,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Is the shorter screw at least as long as the height of a hexagonal nut?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_018.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "screw_too_long",
+    "is_anomaly": true,
+    "anomaly_score": 0.1111111111111111,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_019.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "screw_too_long",
+    "is_anomaly": true,
+    "anomaly_score": 0.1111111111111111,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the longer screw at least 3 times as long as the diameter of a washer?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_020.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "screw_too_long",
+    "is_anomaly": true,
+    "anomaly_score": 0.1111111111111111,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the shorter screw at least as long as the height of a hexagonal nut?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_021.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "screw_too_short",
+    "is_anomaly": true,
+    "anomaly_score": 0.4444444444444444,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the shorter screw at least as long as the height of a hexagonal nut?\n  - Are both screws of proportionate length — neither abnormally tiny nor excessively long relative to the bag?\n  - Does the bag contain exactly one long screw and one short screw of standard sizes?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_022.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "screw_too_short",
+    "is_anomaly": true,
+    "anomaly_score": 0.4444444444444444,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Is the shorter screw at least as long as the height of a hexagonal nut?\n  - Are both screws of proportionate length — neither abnormally tiny nor excessively long relative to the bag?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_023.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "screw_too_short",
+    "is_anomaly": true,
+    "anomaly_score": 0.2222222222222222,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Is the longer screw at least 3 times as long as the diameter of a washer?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_024.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "screw_too_short",
+    "is_anomaly": true,
+    "anomaly_score": 0.4444444444444444,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is one screw clearly longer than the other?\n  - Is the shorter screw at least as long as the height of a hexagonal nut?\n  - Are both screws of proportionate length — neither abnormally tiny nor excessively long relative to the bag?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_025.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "screw_too_short",
+    "is_anomaly": true,
+    "anomaly_score": 0.1111111111111111,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Does the bag contain exactly one long screw and one short screw of standard sizes?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_026.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "screw_too_short",
+    "is_anomaly": true,
+    "anomaly_score": 0.3333333333333333,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Is the shorter screw at least as long as the height of a hexagonal nut?\n  - Are both screws of proportionate length — neither abnormally tiny nor excessively long relative to the bag?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_027.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "screw_too_short",
+    "is_anomaly": true,
+    "anomaly_score": 0.2222222222222222,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Is the longer screw at least 3 times as long as the diameter of a washer?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_028.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "screw_too_short",
+    "is_anomaly": true,
+    "anomaly_score": 0.3333333333333333,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Does the bag contain exactly one long screw and one short screw of standard sizes?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_029.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "screw_too_short",
+    "is_anomaly": true,
+    "anomaly_score": 0.4444444444444444,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is one screw clearly longer than the other?\n  - Is the longer screw at least 3 times as long as the diameter of a washer?\n  - Is the shorter screw at least as long as the height of a hexagonal nut?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_030.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "screw_too_short",
+    "is_anomaly": true,
+    "anomaly_score": 0.3333333333333333,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Is the shorter screw at least as long as the height of a hexagonal nut?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_031.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "screw_too_short",
+    "is_anomaly": true,
+    "anomaly_score": 0.2222222222222222,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the longer screw at least 3 times as long as the diameter of a washer?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_032.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "screw_too_short",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_033.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "screw_too_short",
+    "is_anomaly": true,
+    "anomaly_score": 0.3333333333333333,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Is the shorter screw at least as long as the height of a hexagonal nut?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_034.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "screw_too_short",
+    "is_anomaly": true,
+    "anomaly_score": 0.2222222222222222,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_035.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "screw_too_short",
+    "is_anomaly": true,
+    "anomaly_score": 0.1111111111111111,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Does the bag contain exactly one long screw and one short screw of standard sizes?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_036.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "screw_too_short",
+    "is_anomaly": true,
+    "anomaly_score": 0.1111111111111111,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are both screws of proportionate length — neither abnormally tiny nor excessively long relative to the bag?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_037.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "screw_too_short",
+    "is_anomaly": true,
+    "anomaly_score": 0.2222222222222222,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the longer screw at least 3 times as long as the diameter of a washer?\n  - Are both screws of proportionate length — neither abnormally tiny nor excessively long relative to the bag?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_038.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "screw_too_short",
+    "is_anomaly": true,
+    "anomaly_score": 0.2222222222222222,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the shorter screw at least as long as the height of a hexagonal nut?\n  - Are both screws of proportionate length — neither abnormally tiny nor excessively long relative to the bag?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_039.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "screw_too_short",
+    "is_anomaly": true,
+    "anomaly_score": 0.4444444444444444,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Are both screws of proportionate length — neither abnormally tiny nor excessively long relative to the bag?\n  - Does the bag contain exactly one long screw and one short screw of standard sizes?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_040.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "screw_too_short",
+    "is_anomaly": true,
+    "anomaly_score": 0.5555555555555556,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Is the longer screw at least 3 times as long as the diameter of a washer?\n  - Is the shorter screw at least as long as the height of a hexagonal nut?\n  - Are both screws of proportionate length — neither abnormally tiny nor excessively long relative to the bag?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_041.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_additional_nut",
+    "is_anomaly": true,
+    "anomaly_score": 0.1111111111111111,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two nuts in the bag?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_042.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_additional_long_screw",
+    "is_anomaly": true,
+    "anomaly_score": 0.1111111111111111,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the shorter screw at least as long as the height of a hexagonal nut?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_043.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_additional_washer",
+    "is_anomaly": true,
+    "anomaly_score": 0.4444444444444444,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Is the longer screw at least 3 times as long as the diameter of a washer?\n  - Are both screws of proportionate length — neither abnormally tiny nor excessively long relative to the bag?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_044.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_additional_washer",
+    "is_anomaly": true,
+    "anomaly_score": 0.1111111111111111,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Does the bag contain exactly one long screw and one short screw of standard sizes?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_045.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_additional_nut",
+    "is_anomaly": true,
+    "anomaly_score": 0.3333333333333333,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the shorter screw at least as long as the height of a hexagonal nut?\n  - Are both screws of proportionate length — neither abnormally tiny nor excessively long relative to the bag?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_046.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_additional_long_screw",
+    "is_anomaly": true,
+    "anomaly_score": 0.4444444444444444,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Is the longer screw at least 3 times as long as the diameter of a washer?\n  - Are both screws of proportionate length — neither abnormally tiny nor excessively long relative to the bag?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_047.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_additional_nut",
+    "is_anomaly": true,
+    "anomaly_score": 0.3333333333333333,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the longer screw at least 3 times as long as the diameter of a washer?\n  - Is the shorter screw at least as long as the height of a hexagonal nut?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_048.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_additional_washer",
+    "is_anomaly": true,
+    "anomaly_score": 0.1111111111111111,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_049.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_additional_short_screw",
+    "is_anomaly": true,
+    "anomaly_score": 0.3333333333333333,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Is the longer screw at least 3 times as long as the diameter of a washer?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_050.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_additional_short_screw",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_051.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_additional_nut",
+    "is_anomaly": true,
+    "anomaly_score": 0.2222222222222222,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the longer screw at least 3 times as long as the diameter of a washer?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_052.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_additional_long_screw",
+    "is_anomaly": true,
+    "anomaly_score": 0.3333333333333333,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is one screw clearly longer than the other?\n  - Are both screws of proportionate length — neither abnormally tiny nor excessively long relative to the bag?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_053.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_additional_washer",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_054.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_additional_washer",
+    "is_anomaly": true,
+    "anomaly_score": 0.1111111111111111,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_055.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_additional_washer",
+    "is_anomaly": true,
+    "anomaly_score": 0.1111111111111111,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the shorter screw at least as long as the height of a hexagonal nut?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_056.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_additional_short_screw",
+    "is_anomaly": true,
+    "anomaly_score": 0.4444444444444444,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Is the shorter screw at least as long as the height of a hexagonal nut?\n  - Are both screws of proportionate length — neither abnormally tiny nor excessively long relative to the bag?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_057.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_additional_nut",
+    "is_anomaly": true,
+    "anomaly_score": 0.2222222222222222,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_058.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_additional_long_screw",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_059.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_additional_long_screw",
+    "is_anomaly": true,
+    "anomaly_score": 0.2222222222222222,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_060.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_additional_short_screw",
+    "is_anomaly": true,
+    "anomaly_score": 0.1111111111111111,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_061.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_additional_nut",
+    "is_anomaly": true,
+    "anomaly_score": 0.2222222222222222,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_062.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_additional_long_screw",
+    "is_anomaly": true,
+    "anomaly_score": 0.1111111111111111,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Does the bag contain exactly one long screw and one short screw of standard sizes?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_063.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_additional_short_screw",
+    "is_anomaly": true,
+    "anomaly_score": 0.3333333333333333,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Is the shorter screw at least as long as the height of a hexagonal nut?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_064.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_additional_short_screw",
+    "is_anomaly": true,
+    "anomaly_score": 0.2222222222222222,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Is the shorter screw at least as long as the height of a hexagonal nut?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_065.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_missing_long_screw",
+    "is_anomaly": true,
+    "anomaly_score": 0.2222222222222222,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_066.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_missing_washer",
+    "is_anomaly": true,
+    "anomaly_score": 0.2222222222222222,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the shorter screw at least as long as the height of a hexagonal nut?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_067.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_missing_short_screw",
+    "is_anomaly": true,
+    "anomaly_score": 0.3333333333333333,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Does the bag contain exactly one long screw and one short screw of standard sizes?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_068.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_missing_nut",
+    "is_anomaly": true,
+    "anomaly_score": 0.2222222222222222,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_069.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_missing_nut",
+    "is_anomaly": true,
+    "anomaly_score": 0.2222222222222222,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Does the bag contain exactly one long screw and one short screw of standard sizes?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_070.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_missing_long_screw",
+    "is_anomaly": true,
+    "anomaly_score": 0.2222222222222222,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the shorter screw at least as long as the height of a hexagonal nut?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_071.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_missing_washer",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_072.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_missing_washer",
+    "is_anomaly": true,
+    "anomaly_score": 0.4444444444444444,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Is the longer screw at least 3 times as long as the diameter of a washer?\n  - Is the shorter screw at least as long as the height of a hexagonal nut?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_073.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_missing_short_screw",
+    "is_anomaly": true,
+    "anomaly_score": 0.1111111111111111,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the longer screw at least 3 times as long as the diameter of a washer?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_074.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_missing_long_screw",
+    "is_anomaly": true,
+    "anomaly_score": 0.5555555555555556,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Are there exactly two screws in the bag?\n  - Is the longer screw at least 3 times as long as the diameter of a washer?\n  - Are both screws of proportionate length — neither abnormally tiny nor excessively long relative to the bag?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_075.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_missing_short_screw",
+    "is_anomaly": true,
+    "anomaly_score": 0.3333333333333333,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Is the shorter screw at least as long as the height of a hexagonal nut?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_076.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_missing_long_screw",
+    "is_anomaly": true,
+    "anomaly_score": 0.3333333333333333,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Is the shorter screw at least as long as the height of a hexagonal nut?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_077.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_missing_washer",
+    "is_anomaly": true,
+    "anomaly_score": 0.1111111111111111,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_078.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_missing_nut",
+    "is_anomaly": true,
+    "anomaly_score": 0.1111111111111111,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Does the bag contain exactly one long screw and one short screw of standard sizes?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_079.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_missing_short_screw",
+    "is_anomaly": true,
+    "anomaly_score": 0.2222222222222222,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_080.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_missing_nut",
+    "is_anomaly": true,
+    "anomaly_score": 0.2222222222222222,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the longer screw at least 3 times as long as the diameter of a washer?\n  - Is the shorter screw at least as long as the height of a hexagonal nut?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_081.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_missing_long_screw",
+    "is_anomaly": true,
+    "anomaly_score": 0.6666666666666666,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Is one screw clearly longer than the other?\n  - Is the longer screw at least 3 times as long as the diameter of a washer?\n  - Is the shorter screw at least as long as the height of a hexagonal nut?\n  - Are both screws of proportionate length — neither abnormally tiny nor excessively long relative to the bag?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_082.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_missing_short_screw",
+    "is_anomaly": true,
+    "anomaly_score": 0.1111111111111111,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_083.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_missing_washer",
+    "is_anomaly": true,
+    "anomaly_score": 0.2222222222222222,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the longer screw at least 3 times as long as the diameter of a washer?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_084.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_missing_washer",
+    "is_anomaly": true,
+    "anomaly_score": 0.2222222222222222,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the shorter screw at least as long as the height of a hexagonal nut?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_085.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_missing_long_screw",
+    "is_anomaly": true,
+    "anomaly_score": 0.3333333333333333,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Is the shorter screw at least as long as the height of a hexagonal nut?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_086.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_missing_nut",
+    "is_anomaly": true,
+    "anomaly_score": 0.5555555555555556,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Is one screw clearly longer than the other?\n  - Is the longer screw at least 3 times as long as the diameter of a washer?\n  - Is the shorter screw at least as long as the height of a hexagonal nut?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_087.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_missing_nut",
+    "is_anomaly": true,
+    "anomaly_score": 0.1111111111111111,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the shorter screw at least as long as the height of a hexagonal nut?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_088.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_missing_short_screw",
+    "is_anomaly": true,
+    "anomaly_score": 0.2222222222222222,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the shorter screw at least as long as the height of a hexagonal nut?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_089.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_very_short_screw",
+    "is_anomaly": true,
+    "anomaly_score": 0.4444444444444444,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Is the longer screw at least 3 times as long as the diameter of a washer?\n  - Are both screws of proportionate length — neither abnormally tiny nor excessively long relative to the bag?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_090.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "2_very_short_screws",
+    "is_anomaly": true,
+    "anomaly_score": 0.4444444444444444,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Are both screws of proportionate length — neither abnormally tiny nor excessively long relative to the bag?\n  - Does the bag contain exactly one long screw and one short screw of standard sizes?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_091.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_very_short_screw",
+    "is_anomaly": true,
+    "anomaly_score": 0.4444444444444444,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Is one screw clearly longer than the other?\n  - Is the longer screw at least 3 times as long as the diameter of a washer?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_092.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_very_short_screw",
+    "is_anomaly": true,
+    "anomaly_score": 0.1111111111111111,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_093.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_very_short_screw",
+    "is_anomaly": true,
+    "anomaly_score": 0.3333333333333333,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the longer screw at least 3 times as long as the diameter of a washer?\n  - Is the shorter screw at least as long as the height of a hexagonal nut?\n  - Are both screws of proportionate length — neither abnormally tiny nor excessively long relative to the bag?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_094.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_very_short_screw",
+    "is_anomaly": true,
+    "anomaly_score": 0.2222222222222222,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Does the bag contain exactly one long screw and one short screw of standard sizes?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_095.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_very_short_screw",
+    "is_anomaly": true,
+    "anomaly_score": 0.3333333333333333,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Are both screws of proportionate length — neither abnormally tiny nor excessively long relative to the bag?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_096.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_very_short_screw",
+    "is_anomaly": true,
+    "anomaly_score": 0.1111111111111111,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_097.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_very_short_screw",
+    "is_anomaly": true,
+    "anomaly_score": 0.3333333333333333,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the longer screw at least 3 times as long as the diameter of a washer?\n  - Is the shorter screw at least as long as the height of a hexagonal nut?\n  - Are both screws of proportionate length — neither abnormally tiny nor excessively long relative to the bag?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_098.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_very_short_screw",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_099.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_very_short_screw",
+    "is_anomaly": true,
+    "anomaly_score": 0.2222222222222222,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_100.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_very_short_screw",
+    "is_anomaly": true,
+    "anomaly_score": 0.2222222222222222,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Is one screw clearly longer than the other?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_101.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_very_short_screw",
+    "is_anomaly": true,
+    "anomaly_score": 0.3333333333333333,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Are both screws of proportionate length — neither abnormally tiny nor excessively long relative to the bag?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_102.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "2_very_short_screws",
+    "is_anomaly": true,
+    "anomaly_score": 0.4444444444444444,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Is the shorter screw at least as long as the height of a hexagonal nut?\n  - Are both screws of proportionate length — neither abnormally tiny nor excessively long relative to the bag?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_103.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_very_short_screw",
+    "is_anomaly": true,
+    "anomaly_score": 0.2222222222222222,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the longer screw at least 3 times as long as the diameter of a washer?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_104.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "2_very_short_screws",
+    "is_anomaly": true,
+    "anomaly_score": 0.3333333333333333,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Is the shorter screw at least as long as the height of a hexagonal nut?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_105.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_very_short_screw",
+    "is_anomaly": true,
+    "anomaly_score": 0.2222222222222222,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_106.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "2_very_short_screws",
+    "is_anomaly": true,
+    "anomaly_score": 0.2222222222222222,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Is one screw clearly longer than the other?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_107.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_very_short_screw",
+    "is_anomaly": true,
+    "anomaly_score": 0.3333333333333333,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Is one screw clearly longer than the other?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_108.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "2_very_short_screws",
+    "is_anomaly": true,
+    "anomaly_score": 0.4444444444444444,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the longer screw at least 3 times as long as the diameter of a washer?\n  - Is the shorter screw at least as long as the height of a hexagonal nut?\n  - Are both screws of proportionate length — neither abnormally tiny nor excessively long relative to the bag?\n  - Does the bag contain exactly one long screw and one short screw of standard sizes?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_109.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_very_short_screw",
+    "is_anomaly": true,
+    "anomaly_score": 0.5555555555555556,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Is the longer screw at least 3 times as long as the diameter of a washer?\n  - Are both screws of proportionate length — neither abnormally tiny nor excessively long relative to the bag?\n  - Does the bag contain exactly one long screw and one short screw of standard sizes?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_110.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_very_short_screw",
+    "is_anomaly": true,
+    "anomaly_score": 0.3333333333333333,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Are both screws of proportionate length — neither abnormally tiny nor excessively long relative to the bag?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_111.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "2_very_short_screws",
+    "is_anomaly": true,
+    "anomaly_score": 0.5555555555555556,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Are there exactly two nuts in the bag?\n  - Is one screw clearly longer than the other?\n  - Is the shorter screw at least as long as the height of a hexagonal nut?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_112.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "2_very_short_screws",
+    "is_anomaly": true,
+    "anomaly_score": 0.2222222222222222,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Is the shorter screw at least as long as the height of a hexagonal nut?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_113.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "2_additional_nuts,2_missing_washers",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_114.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "2_additional_nuts,2_missing_washers",
+    "is_anomaly": true,
+    "anomaly_score": 0.2222222222222222,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is one screw clearly longer than the other?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_115.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_additional_nut,1_missing_washer",
+    "is_anomaly": true,
+    "anomaly_score": 0.1111111111111111,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the shorter screw at least as long as the height of a hexagonal nut?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_116.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "2_additional_washers,2_missing_nuts",
+    "is_anomaly": true,
+    "anomaly_score": 0.3333333333333333,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are both screws of proportionate length — neither abnormally tiny nor excessively long relative to the bag?\n  - Does the bag contain exactly one long screw and one short screw of standard sizes?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_117.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_additional_washer,1_missing_nut",
+    "is_anomaly": true,
+    "anomaly_score": 0.3333333333333333,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Are both screws of proportionate length — neither abnormally tiny nor excessively long relative to the bag?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_118.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_additional_washer,1_missing_nut",
+    "is_anomaly": true,
+    "anomaly_score": 0.4444444444444444,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Is the longer screw at least 3 times as long as the diameter of a washer?\n  - Are both screws of proportionate length — neither abnormally tiny nor excessively long relative to the bag?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_119.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_additional_nut,1_missing_washer",
+    "is_anomaly": true,
+    "anomaly_score": 0.2222222222222222,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the shorter screw at least as long as the height of a hexagonal nut?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_120.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_additional_nut,1_missing_washer",
+    "is_anomaly": true,
+    "anomaly_score": 0.3333333333333333,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is one screw clearly longer than the other?\n  - Does the bag contain exactly one long screw and one short screw of standard sizes?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_121.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "2_additional_nuts,2_missing_washers",
+    "is_anomaly": true,
+    "anomaly_score": 0.3333333333333333,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is one screw clearly longer than the other?\n  - Are both screws of proportionate length — neither abnormally tiny nor excessively long relative to the bag?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_122.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_additional_washer,1_missing_nut",
+    "is_anomaly": true,
+    "anomaly_score": 0.2222222222222222,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_123.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_additional_washer,1_missing_nut",
+    "is_anomaly": true,
+    "anomaly_score": 0.4444444444444444,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Is the shorter screw at least as long as the height of a hexagonal nut?\n  - Are both screws of proportionate length — neither abnormally tiny nor excessively long relative to the bag?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_124.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "2_additional_washers,2_missing_nuts",
+    "is_anomaly": true,
+    "anomaly_score": 0.2222222222222222,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the shorter screw at least as long as the height of a hexagonal nut?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_125.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_additional_washer,1_missing_nut",
+    "is_anomaly": true,
+    "anomaly_score": 0.3333333333333333,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the longer screw at least 3 times as long as the diameter of a washer?\n  - Are both screws of proportionate length — neither abnormally tiny nor excessively long relative to the bag?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_126.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "2_additional_washers,2_missing_nuts",
+    "is_anomaly": true,
+    "anomaly_score": 0.3333333333333333,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Are both screws of proportionate length — neither abnormally tiny nor excessively long relative to the bag?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_127.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "2_additional_nuts,2_missing_washers",
+    "is_anomaly": true,
+    "anomaly_score": 0.3333333333333333,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is one screw clearly longer than the other?\n  - Is the longer screw at least 3 times as long as the diameter of a washer?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_128.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "2_additional_washers,2_missing_nuts",
+    "is_anomaly": true,
+    "anomaly_score": 0.2222222222222222,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_129.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "2_additional_nuts,2_missing_washers",
+    "is_anomaly": true,
+    "anomaly_score": 0.1111111111111111,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the shorter screw at least as long as the height of a hexagonal nut?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_130.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_additional_nut,1_missing_washer",
+    "is_anomaly": true,
+    "anomaly_score": 0.5555555555555556,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Is the longer screw at least 3 times as long as the diameter of a washer?\n  - Are both screws of proportionate length — neither abnormally tiny nor excessively long relative to the bag?\n  - Does the bag contain exactly one long screw and one short screw of standard sizes?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_131.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_additional_nut,1_missing_washer",
+    "is_anomaly": true,
+    "anomaly_score": 0.2222222222222222,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the longer screw at least 3 times as long as the diameter of a washer?\n  - Are both screws of proportionate length — neither abnormally tiny nor excessively long relative to the bag?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_132.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "2_additional_washers,2_missing_nuts",
+    "is_anomaly": true,
+    "anomaly_score": 0.3333333333333333,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Is the longer screw at least 3 times as long as the diameter of a washer?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_133.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "2_additional_washers,2_missing_nuts",
+    "is_anomaly": true,
+    "anomaly_score": 0.4444444444444444,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Is the longer screw at least 3 times as long as the diameter of a washer?\n  - Is the shorter screw at least as long as the height of a hexagonal nut?\n  - Does the bag contain exactly one long screw and one short screw of standard sizes?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_134.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "2_additional_nuts,2_missing_washers",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_135.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_additional_washer,1_missing_nut",
+    "is_anomaly": true,
+    "anomaly_score": 0.3333333333333333,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Is the shorter screw at least as long as the height of a hexagonal nut?\n  - Does the bag contain exactly one long screw and one short screw of standard sizes?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/screw_bag_logical_anomalies_136.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "1_additional_nut,1_missing_washer",
+    "is_anomaly": true,
+    "anomaly_score": 0.4444444444444444,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Are there exactly two washers in the bag?\n  - Is the shorter screw at least as long as the height of a hexagonal nut?\n  - Are both screws of proportionate length — neither abnormally tiny nor excessively long relative to the bag?\n  - Does the bag contain items of all four expected types: washers, nuts, a long screw, and a short screw?"
+  }
+]

@@ -1,0 +1,402 @@
+[
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_good_000.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_good_004.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_good_008.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_good_012.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_good_016.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_good_020.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_good_024.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_good_028.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_good_032.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_good_036.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_good_040.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_good_044.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_good_048.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_good_052.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_good_056.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_good_060.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_good_064.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_good_068.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_good_072.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_good_076.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_good_080.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_good_084.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_good_088.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_good_092.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_good_096.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_logical_anomalies_000.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "cable_cut",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_logical_anomalies_004.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "cable_cut",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_logical_anomalies_008.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "cable_cut",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_logical_anomalies_012.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "wrong_connector_type_5_3",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_logical_anomalies_016.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "wrong_connector_type_5_2",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_logical_anomalies_020.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "wrong_connector_type_5_2",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_logical_anomalies_024.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "missing_cable",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_logical_anomalies_028.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "missing_cable",
+    "is_anomaly": true,
+    "anomaly_score": 0.125,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there exactly one cable connected to the splicing connector?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_logical_anomalies_032.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "missing_cable",
+    "is_anomaly": true,
+    "anomaly_score": 0.125,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the center of the cable visible in a normal splicing connector?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_logical_anomalies_036.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "missing_connector",
+    "is_anomaly": true,
+    "anomaly_score": 0.125,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there exactly 2 splicing connectors?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_logical_anomalies_040.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "missing_connector",
+    "is_anomaly": true,
+    "anomaly_score": 0.375,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there exactly 2 splicing connectors?\n  - Is the splicing connector on the left side?\n  - Is the splicing connector roughly equal to the cable?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_logical_anomalies_044.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "missing_connector",
+    "is_anomaly": true,
+    "anomaly_score": 0.125,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there exactly 2 splicing connectors?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_logical_anomalies_048.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "extra_cable",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_logical_anomalies_052.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "extra_cable",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_logical_anomalies_056.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "extra_cable",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_logical_anomalies_060.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_logical_anomalies_064.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_logical_anomalies_068.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.125,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the center of the cable visible in a normal splicing connector?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_logical_anomalies_072.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "cable_color",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_logical_anomalies_076.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "cable_color",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_logical_anomalies_080.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "cable_color",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_logical_anomalies_084.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "wrong_cable_location",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_logical_anomalies_088.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "wrong_cable_location",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_logical_anomalies_092.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "wrong_cable_location",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_logical_anomalies_096.png",
+    "gt_label": "logical_anomaly",
+    "anomaly_type": "wrong_cable_location",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  }
+]

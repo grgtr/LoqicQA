@@ -1,0 +1,762 @@
+{
+  "class_name": "pushpins",
+  "vlm": "internvl",
+  "n_shots": 5,
+  "metrics": {
+    "auroc": 0.5,
+    "f1_max": 0.6666666666666666,
+    "binary_f1": 0.5901639344262295
+  },
+  "results": [
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/pushpins_good_000.png",
+      "gt_label": "good",
+      "gt_is_anomaly": false,
+      "pred_is_anomaly": true,
+      "anomaly_score": 1.0,
+      "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there exactly one yellow pushpin head facing up in each slot?",
+      "main_q_results": [
+        {
+          "question": "Is there exactly one yellow pushpin head facing up in each slot?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/pushpins_good_005.png",
+      "gt_label": "good",
+      "gt_is_anomaly": false,
+      "pred_is_anomaly": false,
+      "anomaly_score": 0.0,
+      "explanation": "Image appears normal. All constraints satisfied.",
+      "main_q_results": [
+        {
+          "question": "Is there exactly one yellow pushpin head facing up in each slot?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/pushpins_good_010.png",
+      "gt_label": "good",
+      "gt_is_anomaly": false,
+      "pred_is_anomaly": false,
+      "anomaly_score": 0.0,
+      "explanation": "Image appears normal. All constraints satisfied.",
+      "main_q_results": [
+        {
+          "question": "Is there exactly one yellow pushpin head facing up in each slot?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/pushpins_good_015.png",
+      "gt_label": "good",
+      "gt_is_anomaly": false,
+      "pred_is_anomaly": true,
+      "anomaly_score": 1.0,
+      "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there exactly one yellow pushpin head facing up in each slot?",
+      "main_q_results": [
+        {
+          "question": "Is there exactly one yellow pushpin head facing up in each slot?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/pushpins_good_020.png",
+      "gt_label": "good",
+      "gt_is_anomaly": false,
+      "pred_is_anomaly": true,
+      "anomaly_score": 1.0,
+      "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there exactly one yellow pushpin head facing up in each slot?",
+      "main_q_results": [
+        {
+          "question": "Is there exactly one yellow pushpin head facing up in each slot?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/pushpins_good_025.png",
+      "gt_label": "good",
+      "gt_is_anomaly": false,
+      "pred_is_anomaly": true,
+      "anomaly_score": 1.0,
+      "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there exactly one yellow pushpin head facing up in each slot?",
+      "main_q_results": [
+        {
+          "question": "Is there exactly one yellow pushpin head facing up in each slot?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/pushpins_good_030.png",
+      "gt_label": "good",
+      "gt_is_anomaly": false,
+      "pred_is_anomaly": false,
+      "anomaly_score": 0.0,
+      "explanation": "Image appears normal. All constraints satisfied.",
+      "main_q_results": [
+        {
+          "question": "Is there exactly one yellow pushpin head facing up in each slot?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/pushpins_good_035.png",
+      "gt_label": "good",
+      "gt_is_anomaly": false,
+      "pred_is_anomaly": true,
+      "anomaly_score": 1.0,
+      "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there exactly one yellow pushpin head facing up in each slot?",
+      "main_q_results": [
+        {
+          "question": "Is there exactly one yellow pushpin head facing up in each slot?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/pushpins_good_040.png",
+      "gt_label": "good",
+      "gt_is_anomaly": false,
+      "pred_is_anomaly": true,
+      "anomaly_score": 1.0,
+      "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there exactly one yellow pushpin head facing up in each slot?",
+      "main_q_results": [
+        {
+          "question": "Is there exactly one yellow pushpin head facing up in each slot?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/pushpins_good_045.png",
+      "gt_label": "good",
+      "gt_is_anomaly": false,
+      "pred_is_anomaly": true,
+      "anomaly_score": 1.0,
+      "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there exactly one yellow pushpin head facing up in each slot?",
+      "main_q_results": [
+        {
+          "question": "Is there exactly one yellow pushpin head facing up in each slot?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/pushpins_good_050.png",
+      "gt_label": "good",
+      "gt_is_anomaly": false,
+      "pred_is_anomaly": true,
+      "anomaly_score": 1.0,
+      "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there exactly one yellow pushpin head facing up in each slot?",
+      "main_q_results": [
+        {
+          "question": "Is there exactly one yellow pushpin head facing up in each slot?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/pushpins_good_055.png",
+      "gt_label": "good",
+      "gt_is_anomaly": false,
+      "pred_is_anomaly": true,
+      "anomaly_score": 1.0,
+      "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there exactly one yellow pushpin head facing up in each slot?",
+      "main_q_results": [
+        {
+          "question": "Is there exactly one yellow pushpin head facing up in each slot?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/pushpins_good_060.png",
+      "gt_label": "good",
+      "gt_is_anomaly": false,
+      "pred_is_anomaly": false,
+      "anomaly_score": 0.0,
+      "explanation": "Image appears normal. All constraints satisfied.",
+      "main_q_results": [
+        {
+          "question": "Is there exactly one yellow pushpin head facing up in each slot?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/pushpins_good_065.png",
+      "gt_label": "good",
+      "gt_is_anomaly": false,
+      "pred_is_anomaly": true,
+      "anomaly_score": 1.0,
+      "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there exactly one yellow pushpin head facing up in each slot?",
+      "main_q_results": [
+        {
+          "question": "Is there exactly one yellow pushpin head facing up in each slot?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/pushpins_good_070.png",
+      "gt_label": "good",
+      "gt_is_anomaly": false,
+      "pred_is_anomaly": true,
+      "anomaly_score": 1.0,
+      "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there exactly one yellow pushpin head facing up in each slot?",
+      "main_q_results": [
+        {
+          "question": "Is there exactly one yellow pushpin head facing up in each slot?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/pushpins_good_075.png",
+      "gt_label": "good",
+      "gt_is_anomaly": false,
+      "pred_is_anomaly": true,
+      "anomaly_score": 1.0,
+      "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there exactly one yellow pushpin head facing up in each slot?",
+      "main_q_results": [
+        {
+          "question": "Is there exactly one yellow pushpin head facing up in each slot?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/pushpins_good_080.png",
+      "gt_label": "good",
+      "gt_is_anomaly": false,
+      "pred_is_anomaly": true,
+      "anomaly_score": 1.0,
+      "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there exactly one yellow pushpin head facing up in each slot?",
+      "main_q_results": [
+        {
+          "question": "Is there exactly one yellow pushpin head facing up in each slot?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/pushpins_good_085.png",
+      "gt_label": "good",
+      "gt_is_anomaly": false,
+      "pred_is_anomaly": true,
+      "anomaly_score": 1.0,
+      "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there exactly one yellow pushpin head facing up in each slot?",
+      "main_q_results": [
+        {
+          "question": "Is there exactly one yellow pushpin head facing up in each slot?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/pushpins_good_090.png",
+      "gt_label": "good",
+      "gt_is_anomaly": false,
+      "pred_is_anomaly": true,
+      "anomaly_score": 1.0,
+      "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there exactly one yellow pushpin head facing up in each slot?",
+      "main_q_results": [
+        {
+          "question": "Is there exactly one yellow pushpin head facing up in each slot?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/pushpins_good_095.png",
+      "gt_label": "good",
+      "gt_is_anomaly": false,
+      "pred_is_anomaly": false,
+      "anomaly_score": 0.0,
+      "explanation": "Image appears normal. All constraints satisfied.",
+      "main_q_results": [
+        {
+          "question": "Is there exactly one yellow pushpin head facing up in each slot?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/pushpins_good_100.png",
+      "gt_label": "good",
+      "gt_is_anomaly": false,
+      "pred_is_anomaly": false,
+      "anomaly_score": 0.0,
+      "explanation": "Image appears normal. All constraints satisfied.",
+      "main_q_results": [
+        {
+          "question": "Is there exactly one yellow pushpin head facing up in each slot?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/pushpins_good_105.png",
+      "gt_label": "good",
+      "gt_is_anomaly": false,
+      "pred_is_anomaly": true,
+      "anomaly_score": 1.0,
+      "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there exactly one yellow pushpin head facing up in each slot?",
+      "main_q_results": [
+        {
+          "question": "Is there exactly one yellow pushpin head facing up in each slot?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/pushpins_good_110.png",
+      "gt_label": "good",
+      "gt_is_anomaly": false,
+      "pred_is_anomaly": false,
+      "anomaly_score": 0.0,
+      "explanation": "Image appears normal. All constraints satisfied.",
+      "main_q_results": [
+        {
+          "question": "Is there exactly one yellow pushpin head facing up in each slot?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/pushpins_good_115.png",
+      "gt_label": "good",
+      "gt_is_anomaly": false,
+      "pred_is_anomaly": true,
+      "anomaly_score": 1.0,
+      "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there exactly one yellow pushpin head facing up in each slot?",
+      "main_q_results": [
+        {
+          "question": "Is there exactly one yellow pushpin head facing up in each slot?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/pushpins_good_120.png",
+      "gt_label": "good",
+      "gt_is_anomaly": false,
+      "pred_is_anomaly": true,
+      "anomaly_score": 1.0,
+      "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there exactly one yellow pushpin head facing up in each slot?",
+      "main_q_results": [
+        {
+          "question": "Is there exactly one yellow pushpin head facing up in each slot?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/pushpins_logical_anomalies_000.png",
+      "gt_label": "logical_anomaly",
+      "gt_is_anomaly": true,
+      "pred_is_anomaly": true,
+      "anomaly_score": 1.0,
+      "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there exactly one yellow pushpin head facing up in each slot?",
+      "main_q_results": [
+        {
+          "question": "Is there exactly one yellow pushpin head facing up in each slot?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/pushpins_logical_anomalies_001.png",
+      "gt_label": "logical_anomaly",
+      "gt_is_anomaly": true,
+      "pred_is_anomaly": true,
+      "anomaly_score": 1.0,
+      "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there exactly one yellow pushpin head facing up in each slot?",
+      "main_q_results": [
+        {
+          "question": "Is there exactly one yellow pushpin head facing up in each slot?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/pushpins_logical_anomalies_002.png",
+      "gt_label": "logical_anomaly",
+      "gt_is_anomaly": true,
+      "pred_is_anomaly": false,
+      "anomaly_score": 0.0,
+      "explanation": "Image appears normal. All constraints satisfied.",
+      "main_q_results": [
+        {
+          "question": "Is there exactly one yellow pushpin head facing up in each slot?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/pushpins_logical_anomalies_003.png",
+      "gt_label": "logical_anomaly",
+      "gt_is_anomaly": true,
+      "pred_is_anomaly": true,
+      "anomaly_score": 1.0,
+      "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there exactly one yellow pushpin head facing up in each slot?",
+      "main_q_results": [
+        {
+          "question": "Is there exactly one yellow pushpin head facing up in each slot?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/pushpins_logical_anomalies_004.png",
+      "gt_label": "logical_anomaly",
+      "gt_is_anomaly": true,
+      "pred_is_anomaly": true,
+      "anomaly_score": 1.0,
+      "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there exactly one yellow pushpin head facing up in each slot?",
+      "main_q_results": [
+        {
+          "question": "Is there exactly one yellow pushpin head facing up in each slot?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/pushpins_logical_anomalies_025.png",
+      "gt_label": "logical_anomaly",
+      "gt_is_anomaly": true,
+      "pred_is_anomaly": true,
+      "anomaly_score": 1.0,
+      "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there exactly one yellow pushpin head facing up in each slot?",
+      "main_q_results": [
+        {
+          "question": "Is there exactly one yellow pushpin head facing up in each slot?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/pushpins_logical_anomalies_026.png",
+      "gt_label": "logical_anomaly",
+      "gt_is_anomaly": true,
+      "pred_is_anomaly": true,
+      "anomaly_score": 1.0,
+      "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there exactly one yellow pushpin head facing up in each slot?",
+      "main_q_results": [
+        {
+          "question": "Is there exactly one yellow pushpin head facing up in each slot?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/pushpins_logical_anomalies_027.png",
+      "gt_label": "logical_anomaly",
+      "gt_is_anomaly": true,
+      "pred_is_anomaly": true,
+      "anomaly_score": 1.0,
+      "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there exactly one yellow pushpin head facing up in each slot?",
+      "main_q_results": [
+        {
+          "question": "Is there exactly one yellow pushpin head facing up in each slot?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/pushpins_logical_anomalies_028.png",
+      "gt_label": "logical_anomaly",
+      "gt_is_anomaly": true,
+      "pred_is_anomaly": true,
+      "anomaly_score": 1.0,
+      "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there exactly one yellow pushpin head facing up in each slot?",
+      "main_q_results": [
+        {
+          "question": "Is there exactly one yellow pushpin head facing up in each slot?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/pushpins_logical_anomalies_029.png",
+      "gt_label": "logical_anomaly",
+      "gt_is_anomaly": true,
+      "pred_is_anomaly": false,
+      "anomaly_score": 0.0,
+      "explanation": "Image appears normal. All constraints satisfied.",
+      "main_q_results": [
+        {
+          "question": "Is there exactly one yellow pushpin head facing up in each slot?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/pushpins_logical_anomalies_036.png",
+      "gt_label": "logical_anomaly",
+      "gt_is_anomaly": true,
+      "pred_is_anomaly": false,
+      "anomaly_score": 0.0,
+      "explanation": "Image appears normal. All constraints satisfied.",
+      "main_q_results": [
+        {
+          "question": "Is there exactly one yellow pushpin head facing up in each slot?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/pushpins_logical_anomalies_037.png",
+      "gt_label": "logical_anomaly",
+      "gt_is_anomaly": true,
+      "pred_is_anomaly": false,
+      "anomaly_score": 0.0,
+      "explanation": "Image appears normal. All constraints satisfied.",
+      "main_q_results": [
+        {
+          "question": "Is there exactly one yellow pushpin head facing up in each slot?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/pushpins_logical_anomalies_038.png",
+      "gt_label": "logical_anomaly",
+      "gt_is_anomaly": true,
+      "pred_is_anomaly": true,
+      "anomaly_score": 1.0,
+      "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there exactly one yellow pushpin head facing up in each slot?",
+      "main_q_results": [
+        {
+          "question": "Is there exactly one yellow pushpin head facing up in each slot?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/pushpins_logical_anomalies_039.png",
+      "gt_label": "logical_anomaly",
+      "gt_is_anomaly": true,
+      "pred_is_anomaly": true,
+      "anomaly_score": 1.0,
+      "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there exactly one yellow pushpin head facing up in each slot?",
+      "main_q_results": [
+        {
+          "question": "Is there exactly one yellow pushpin head facing up in each slot?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/pushpins_logical_anomalies_040.png",
+      "gt_label": "logical_anomaly",
+      "gt_is_anomaly": true,
+      "pred_is_anomaly": true,
+      "anomaly_score": 1.0,
+      "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there exactly one yellow pushpin head facing up in each slot?",
+      "main_q_results": [
+        {
+          "question": "Is there exactly one yellow pushpin head facing up in each slot?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/pushpins_logical_anomalies_062.png",
+      "gt_label": "logical_anomaly",
+      "gt_is_anomaly": true,
+      "pred_is_anomaly": true,
+      "anomaly_score": 1.0,
+      "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there exactly one yellow pushpin head facing up in each slot?",
+      "main_q_results": [
+        {
+          "question": "Is there exactly one yellow pushpin head facing up in each slot?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/pushpins_logical_anomalies_063.png",
+      "gt_label": "logical_anomaly",
+      "gt_is_anomaly": true,
+      "pred_is_anomaly": true,
+      "anomaly_score": 1.0,
+      "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there exactly one yellow pushpin head facing up in each slot?",
+      "main_q_results": [
+        {
+          "question": "Is there exactly one yellow pushpin head facing up in each slot?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/pushpins_logical_anomalies_064.png",
+      "gt_label": "logical_anomaly",
+      "gt_is_anomaly": true,
+      "pred_is_anomaly": false,
+      "anomaly_score": 0.0,
+      "explanation": "Image appears normal. All constraints satisfied.",
+      "main_q_results": [
+        {
+          "question": "Is there exactly one yellow pushpin head facing up in each slot?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/pushpins_logical_anomalies_065.png",
+      "gt_label": "logical_anomaly",
+      "gt_is_anomaly": true,
+      "pred_is_anomaly": true,
+      "anomaly_score": 1.0,
+      "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there exactly one yellow pushpin head facing up in each slot?",
+      "main_q_results": [
+        {
+          "question": "Is there exactly one yellow pushpin head facing up in each slot?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/pushpins_logical_anomalies_066.png",
+      "gt_label": "logical_anomaly",
+      "gt_is_anomaly": true,
+      "pred_is_anomaly": false,
+      "anomaly_score": 0.0,
+      "explanation": "Image appears normal. All constraints satisfied.",
+      "main_q_results": [
+        {
+          "question": "Is there exactly one yellow pushpin head facing up in each slot?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/pushpins_logical_anomalies_070.png",
+      "gt_label": "logical_anomaly",
+      "gt_is_anomaly": true,
+      "pred_is_anomaly": true,
+      "anomaly_score": 1.0,
+      "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there exactly one yellow pushpin head facing up in each slot?",
+      "main_q_results": [
+        {
+          "question": "Is there exactly one yellow pushpin head facing up in each slot?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/pushpins_logical_anomalies_071.png",
+      "gt_label": "logical_anomaly",
+      "gt_is_anomaly": true,
+      "pred_is_anomaly": false,
+      "anomaly_score": 0.0,
+      "explanation": "Image appears normal. All constraints satisfied.",
+      "main_q_results": [
+        {
+          "question": "Is there exactly one yellow pushpin head facing up in each slot?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/pushpins_logical_anomalies_072.png",
+      "gt_label": "logical_anomaly",
+      "gt_is_anomaly": true,
+      "pred_is_anomaly": true,
+      "anomaly_score": 1.0,
+      "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there exactly one yellow pushpin head facing up in each slot?",
+      "main_q_results": [
+        {
+          "question": "Is there exactly one yellow pushpin head facing up in each slot?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/pushpins_logical_anomalies_073.png",
+      "gt_label": "logical_anomaly",
+      "gt_is_anomaly": true,
+      "pred_is_anomaly": true,
+      "anomaly_score": 1.0,
+      "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there exactly one yellow pushpin head facing up in each slot?",
+      "main_q_results": [
+        {
+          "question": "Is there exactly one yellow pushpin head facing up in each slot?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/pushpins_logical_anomalies_074.png",
+      "gt_label": "logical_anomaly",
+      "gt_is_anomaly": true,
+      "pred_is_anomaly": true,
+      "anomaly_score": 1.0,
+      "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there exactly one yellow pushpin head facing up in each slot?",
+      "main_q_results": [
+        {
+          "question": "Is there exactly one yellow pushpin head facing up in each slot?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        }
+      ]
+    }
+  ]
+}

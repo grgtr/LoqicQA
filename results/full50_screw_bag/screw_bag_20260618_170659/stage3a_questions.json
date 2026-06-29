@@ -1,0 +1,132 @@
+{
+  "prompt": "(structured-from-bullets)",
+  "response": "",
+  "parsed_questions": [
+    "Is there a short screw in the bag?",
+    "Is there exactly 2 washers on the screw_bag?",
+    "Is there exactly 2 nuts in the image?",
+    "Is there exactly one long screw in the bag?",
+    "Is the washer located center-left, bottom-center in this image?",
+    "Is the nut centered in relation to the screw_bag?",
+    "Is the long screw located center-left in Image 4 or at the center of Images 1, 2, and 3?",
+    "Is the screw located center-left in Image 5 or centered in other images?",
+    "Is the nut silver, hexagonal with a smooth texture and filled level?",
+    "Is there a silver screw with a hex-socket head and threaded shaft?",
+    "Is there a silver, hex-socket head with a threaded shaft and recessed head in the image?",
+    "Is the washer smaller than the nuts?",
+    "Is the nut smaller than the long screw but larger than the short screw?",
+    "Is the long screw larger than both washers but smaller than both nuts?",
+    "Is the screw in this image shorter than a long screw?",
+    "Is the long screw occupying most of the space in this image?",
+    "Is the washer occupying a large amount of space?",
+    "Is there a mixed arrangement of components within the screw_bag?",
+    "Is there a repeating slot structure in the screw bag?"
+  ],
+  "bullet_results": [
+    {
+      "bullet": "short screw",
+      "question": "Is there a short screw in the bag?",
+      "status": "KEPT"
+    },
+    {
+      "bullet": "washer: exactly 2",
+      "question": "Is there exactly 2 washers on the screw_bag?",
+      "status": "KEPT"
+    },
+    {
+      "bullet": "nut: exactly 2",
+      "question": "Is there exactly 2 nuts in the image?",
+      "status": "KEPT"
+    },
+    {
+      "bullet": "long screw: exactly 1",
+      "question": "Is there exactly one long screw in the bag?",
+      "status": "KEPT"
+    },
+    {
+      "bullet": "short screw: exactly 1",
+      "question": "Is there exactly one short screw in the bag?",
+      "status": "NEAR-DUP"
+    },
+    {
+      "bullet": "washer: center-left, bottom-center (appears consistently in these positions)",
+      "question": "Is the washer located center-left, bottom-center in this image?",
+      "status": "KEPT"
+    },
+    {
+      "bullet": "nut: center",
+      "question": "Is the nut centered in relation to the screw_bag?",
+      "status": "KEPT"
+    },
+    {
+      "bullet": "long screw: center-left (in Image 4) or center (in Images 1, 2, and 3), N/A in Image 5",
+      "question": "Is the long screw located center-left in Image 4 or at the center of Images 1, 2, and 3?",
+      "status": "KEPT"
+    },
+    {
+      "bullet": "short screw: center-left (in Image 5) or center in other images",
+      "question": "Is the screw located center-left in Image 5 or centered in other images?",
+      "status": "KEPT"
+    },
+    {
+      "bullet": "washer: silver metal with a small gap in the ring; flat and circular shape",
+      "question": "Is there a silver metal washer with a small gap in the ring and is it flat and circular?",
+      "status": "INVALID"
+    },
+    {
+      "bullet": "nut: silver, hexagonal shape with a smooth texture and filled level",
+      "question": "Is the nut silver, hexagonal with a smooth texture and filled level?",
+      "status": "KEPT"
+    },
+    {
+      "bullet": "long screw: silver with a hex-socket head and threaded shaft",
+      "question": "Is there a silver screw with a hex-socket head and threaded shaft?",
+      "status": "KEPT"
+    },
+    {
+      "bullet": "short screw: silver, hex-socket head with a threaded shaft and recessed head",
+      "question": "Is there a silver, hex-socket head with a threaded shaft and recessed head in the image?",
+      "status": "KEPT"
+    },
+    {
+      "bullet": "washer: smaller than nuts",
+      "question": "Is the washer smaller than the nuts?",
+      "status": "KEPT"
+    },
+    {
+      "bullet": "nut: smaller than the long screw but larger than the short screw",
+      "question": "Is the nut smaller than the long screw but larger than the short screw?",
+      "status": "KEPT"
+    },
+    {
+      "bullet": "long screw: larger than the washers but smaller than both nuts",
+      "question": "Is the long screw larger than both washers but smaller than both nuts?",
+      "status": "KEPT"
+    },
+    {
+      "bullet": "short screw: smaller than the long screw",
+      "question": "Is the screw in this image shorter than a long screw?",
+      "status": "KEPT"
+    },
+    {
+      "bullet": "The long screw occupies the most space",
+      "question": "Is the long screw occupying most of the space in this image?",
+      "status": "KEPT"
+    },
+    {
+      "bullet": "The washers occupy the least amount of space",
+      "question": "Is the washer occupying a large amount of space?",
+      "status": "KEPT"
+    },
+    {
+      "bullet": "Components are not strictly separated by side; they can be mixed on either end or middle section within the bag without strict left or right separation requirements but must remain distinct in their own spaces for proper assembly functionality (e.g., nut, washer, and short/screw)",
+      "question": "Is there a mixed arrangement of components within the screw_bag?",
+      "status": "KEPT"
+    },
+    {
+      "bullet": "There is no repeating slot structure as all components reside together inside one main compartment with distinct sections designated by recycling symbols on the packaging side",
+      "question": "Is there a repeating slot structure in the screw bag?",
+      "status": "KEPT"
+    }
+  ]
+}

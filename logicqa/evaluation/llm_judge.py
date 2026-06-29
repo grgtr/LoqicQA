@@ -44,7 +44,7 @@ class LLMJudge:
         )
         self.model.eval()
 
-    def _generate(self, system_prompt: str, user_prompt: str) -> str:
+    def _generate(self, system_prompt: str, user_prompt: str, max_new_tokens: int = 512) -> str:
         messages = [
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": user_prompt}
@@ -53,55 +53,93 @@ class LLMJudge:
             messages, tokenize=False, add_generation_prompt=True
         )
         inputs = self.tokenizer([text], return_tensors="pt").to(self.device)
-        
+
         with torch.no_grad():
             outputs = self.model.generate(
                 **inputs,
-                max_new_tokens=256,
+                max_new_tokens=max_new_tokens,
                 do_sample=False
             )
-        
+
         generated_ids = outputs[0][len(inputs.input_ids[0]):]
         response = self.tokenizer.decode(generated_ids, skip_special_tokens=True)
         return response
 
-    # def _parse_json(self, text: str) -> dict:
-    #     try:
-    #         match = re.search(r'```json\s*(.*?)\s*```', text, re.DOTALL)
-    #         if match:
-    #             return json.loads(match.group(1))
-    #         return json.loads(text)
-    #     except Exception as e:
-    #         print(f"[LLMJudge] Failed to parse JSON: {e}\nText: {text}")
-    #         return {}
     def _parse_json(self, text: str) -> dict:
+        """Parse a JSON object from model output. Always returns a dict."""
+        # Code block
         try:
             match = re.search(r'```json\s*(.*?)\s*```', text, re.DOTALL)
             if match:
-                return json.loads(match.group(1))
-            return json.loads(text)
+                result = json.loads(match.group(1))
+                if isinstance(result, dict):
+                    return result
         except Exception:
+            pass
+        # Direct parse
+        try:
+            result = json.loads(text.strip())
+            if isinstance(result, dict):
+                return result
+        except Exception:
+            pass
+        # Strip preamble: find first { and try from there
+        start = text.find('{')
+        if start >= 0:
             try:
-                match = re.search(r'\{.*\}', text, re.DOTALL)
-                if match:
-                    return json.loads(match.group(0))
+                result = json.loads(text[start:])
+                if isinstance(result, dict):
+                    return result
             except Exception:
                 pass
-            print(f"[LLMJudge] Failed to parse JSON from: {text[:200]}...")
-            return {}
+        print(f"[LLMJudge] Failed to parse JSON from: {text[:200]}...")
+        return {}
+
+    def _parse_list(self, text: str) -> list:
+        """Parse a JSON array from model output. Always returns a list."""
+        # Code block
+        try:
+            match = re.search(r'```json\s*(.*?)\s*```', text, re.DOTALL)
+            if match:
+                result = json.loads(match.group(1))
+                if isinstance(result, list):
+                    return result
+        except Exception:
+            pass
+        # Direct parse
+        try:
+            result = json.loads(text.strip())
+            if isinstance(result, list):
+                return result
+        except Exception:
+            pass
+        # Strip preamble: find first [ and try from there
+        start = text.find('[')
+        if start >= 0:
+            try:
+                result = json.loads(text[start:])
+                if isinstance(result, list):
+                    return result
+            except Exception:
+                pass
+        print(f"[LLMJudge] Failed to parse JSON list from: {text[:200]}...")
+        return []
 
 
     def evaluate_ccr(self, description: str, constraints: List[str]) -> Dict[str, bool]:
+        # Ask for a list of covered constraints only — much shorter output than full dict.
         system_prompt = (
-            "You are an objective evaluator. You will be given a visual description of an object "
-            "and a list of constraints. Determine if each constraint is explicitly mentioned "
-            "or clearly implied in the description. Output ONLY a valid JSON dictionary where "
-            "keys are the exact constraints and values are true or false."
+            "You are an objective evaluator. Given a visual description and a list of constraints, "
+            "output ONLY a valid JSON list containing the EXACT strings of constraints that are "
+            "explicitly mentioned or clearly implied in the description. "
+            "Copy strings exactly as given. Output [] if none are covered. No other text."
         )
         user_prompt = f"Constraints:\n{json.dumps(constraints, indent=2)}\n\nDescription:\n{description}"
-        
-        response = self._generate(system_prompt, user_prompt)
-        return self._parse_json(response)
+
+        response = self._generate(system_prompt, user_prompt, max_new_tokens=1024)
+        covered = self._parse_list(response)
+        covered_set = set(covered)
+        return {c: (c in covered_set) for c in constraints}
 
     def extract_count(self, text: str, object_name: str) -> Optional[int]:
         # system_prompt = (
@@ -157,11 +195,8 @@ class LLMJudge:
         user_prompt = f"Constraints:\n{json.dumps(constraints, indent=2)}\n\nQuestion:\n{question}"
 
         response = self._generate(system_prompt, user_prompt)
-        data = self._parse_json(response)
-
-        if isinstance(data, list):
-            return [c for c in data if c in constraints]
-        return []
+        matched = self._parse_list(response)
+        return [c for c in matched if c in constraints]
 
     def detect_hallucinations(
         self,

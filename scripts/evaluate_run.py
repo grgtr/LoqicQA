@@ -93,6 +93,7 @@ def main():
     parser.add_argument("--levels", type=str, default="1,2,3,4", help="Levels to evaluate (comma-separated, e.g. '1,2,3,4')")
     parser.add_argument("--judge_model", type=str, default="Qwen/Qwen2.5-3B-Instruct", help="HF model ID for LLM-Judge")
     parser.add_argument("--device", type=str, default="cuda", help="Device for Judge and CLIP")
+    parser.add_argument("--filter_threshold", type=float, default=0.8, help="Stage 3b accuracy threshold (default: 0.8, matches pipeline)")
     args = parser.parse_args()
 
     # 1. Load artifacts
@@ -142,7 +143,7 @@ def main():
         stage3b = artifacts.get("stage3b_filtering", [])
         gt_constraints = ATOMIC_CONSTRAINTS.get(class_name, [])
         
-        report["filtering"] = evaluate_filtering(stage3a, stage3b, gt_constraints, judge)
+        report["filtering"] = evaluate_filtering(stage3a, stage3b, gt_constraints, judge, threshold=args.filter_threshold)
         
 
     if "2" in levels:
@@ -178,26 +179,30 @@ def main():
         
         descriptions = artifacts.get("stage1_descriptions", [])
         gt_constraints = ATOMIC_CONSTRAINTS.get(class_name, [])
-        
+
         ccr_scores = []
         clip_scores = []
-        
+
+        # Group per-component descriptions by image path so CCR sees the full picture.
+        from collections import defaultdict
+        img_to_texts = defaultdict(list)
         for desc in descriptions:
-            text = desc.get("response", "")
-            img_path = desc.get("image_path", "")
-            
-            # CCR
-            ccr_res = perception_eval.calculate_ccr(text, gt_constraints, judge)
+            img_to_texts[desc.get("image_path", "")].append(desc.get("response", ""))
+
+        for img_path, texts in img_to_texts.items():
+            combined_text = "\n".join(texts)
+
+            # CCR over combined per-component descriptions
+            ccr_res = perception_eval.calculate_ccr(combined_text, gt_constraints, judge)
             ccr_scores.append(ccr_res["ccr_score"])
-            # print(f"\n[Debug CCR] description: {text[:100]}...")
             for constraint, is_covered in ccr_res["details"].items():
                 if not is_covered:
                     print(f"  Skipped: {constraint}")
-            
-            # CLIP
+
+            # CLIP: use each component's text separately, take max score
             if os.path.exists(img_path):
-                clip = perception_eval.calculate_clip_score(img_path, text)
-                clip_scores.append(clip)
+                scores = [perception_eval.calculate_clip_score(img_path, t) for t in texts]
+                clip_scores.append(max(scores))
             else:
                 print(f"[Warning] Image not found for CLIPScore: {img_path}")
 

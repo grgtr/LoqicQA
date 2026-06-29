@@ -1,2 +1,27 @@
 .venv/
 dataset-ninja/
+
+# ── experiment outputs (large, regenerable) ──
+results/
+results_baseline_full/
+results_baseline_model/
+results_improved_test/
+results_metrics_logs
+# ── deployment model blobs (13G ONNX) ──
+*.onnx
+*.onnx.data
+*.bin
+*.safetensors
+deploy/triton/model_repository/
+# ── large reference materials ──
+materials/
+# ── caches, logs, editor, scratch ──
+__pycache__/
+*.pyc
+*.log
+nohup.out
+.vscode/
+test_report.json
+deployment_report.json
+breakfast_box.txt
+screw_bag.txt

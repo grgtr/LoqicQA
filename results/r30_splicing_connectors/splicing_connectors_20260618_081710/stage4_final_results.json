@@ -1,0 +1,258 @@
+[
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_good_000.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_good_001.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.4,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the cable yellow in color?\n  - Does the cable appear uncut and intact, with no visible damage, breaks, or exposed wire along its length?\n  - Does the cable enter both connectors at the same relative slot position on each side?\n  - Is the cable the same color along its entire visible length?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_good_002.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_good_003.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_good_004.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_good_005.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_good_006.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.3,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the cable yellow in color?\n  - Does the cable enter both connectors at the same relative slot position on each side?\n  - Is the cable the same color along its entire visible length?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_good_007.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.4,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the cable yellow in color?\n  - Does the cable appear uncut and intact, with no visible damage, breaks, or exposed wire along its length?\n  - Does the cable enter both connectors at the same relative slot position on each side?\n  - Is the cable the same color along its entire visible length?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_good_008.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_good_009.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.3,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the cable yellow in color?\n  - Does the cable appear uncut and intact, with no visible damage, breaks, or exposed wire along its length?\n  - Does the cable enter both connectors at the same relative slot position on each side?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_good_010.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.4,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the cable yellow in color?\n  - Does the cable appear uncut and intact, with no visible damage, breaks, or exposed wire along its length?\n  - Does the cable enter both connectors at the same relative slot position on each side?\n  - Is the cable the same color along its entire visible length?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_good_011.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.3,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the cable yellow in color?\n  - Does the cable appear uncut and intact, with no visible damage, breaks, or exposed wire along its length?\n  - Is the cable the same color along its entire visible length?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_good_012.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.4,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the cable yellow in color?\n  - Does the cable appear uncut and intact, with no visible damage, breaks, or exposed wire along its length?\n  - Does the cable enter both connectors at the same relative slot position on each side?\n  - Is the cable the same color along its entire visible length?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_good_013.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_good_014.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_good_015.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.5,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the cable yellow in color?\n  - Does the cable appear uncut and intact, with no visible damage, breaks, or exposed wire along its length?\n  - Does the cable enter both connectors at the same relative slot position on each side?\n  - Is the overall arrangement symmetric, with both connectors appearing as approximate mirror images of each other?\n  - Is the cable the same color along its entire visible length?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_good_016.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_good_017.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.5,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the cable yellow in color?\n  - Does the cable appear uncut and intact, with no visible damage, breaks, or exposed wire along its length?\n  - Does the cable enter both connectors at the same relative slot position on each side?\n  - Is the overall arrangement symmetric, with both connectors appearing as approximate mirror images of each other?\n  - Is the cable the same color along its entire visible length?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_good_018.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.4,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the cable yellow in color?\n  - Does the cable appear uncut and intact, with no visible damage, breaks, or exposed wire along its length?\n  - Does the cable enter both connectors at the same relative slot position on each side?\n  - Is the cable the same color along its entire visible length?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_good_019.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.3,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the cable yellow in color?\n  - Does the cable appear uncut and intact, with no visible damage, breaks, or exposed wire along its length?\n  - Does the cable enter both connectors at the same relative slot position on each side?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_good_020.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.3,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the cable yellow in color?\n  - Does the cable appear uncut and intact, with no visible damage, breaks, or exposed wire along its length?\n  - Does the cable enter both connectors at the same relative slot position on each side?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_good_021.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.5,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the cable yellow in color?\n  - Does the cable appear uncut and intact, with no visible damage, breaks, or exposed wire along its length?\n  - Does the cable enter both connectors at the same relative slot position on each side?\n  - Is the overall arrangement symmetric, with both connectors appearing as approximate mirror images of each other?\n  - Is the cable the same color along its entire visible length?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_good_022.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.4,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the cable yellow in color?\n  - Does the cable appear uncut and intact, with no visible damage, breaks, or exposed wire along its length?\n  - Does the cable enter both connectors at the same relative slot position on each side?\n  - Is the cable the same color along its entire visible length?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_good_023.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.5,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the cable yellow in color?\n  - Does the cable appear uncut and intact, with no visible damage, breaks, or exposed wire along its length?\n  - Does the cable enter both connectors at the same relative slot position on each side?\n  - Is the overall arrangement symmetric, with both connectors appearing as approximate mirror images of each other?\n  - Is the cable the same color along its entire visible length?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_good_024.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_good_025.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_good_026.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.3,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the cable yellow in color?\n  - Does the cable appear uncut and intact, with no visible damage, breaks, or exposed wire along its length?\n  - Is the overall arrangement symmetric, with both connectors appearing as approximate mirror images of each other?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_good_027.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_good_028.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.4,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the cable yellow in color?\n  - Does the cable appear uncut and intact, with no visible damage, breaks, or exposed wire along its length?\n  - Does the cable enter both connectors at the same relative slot position on each side?\n  - Is the cable the same color along its entire visible length?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_good_029.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "explanation": "Image appears normal. All constraints satisfied."
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_good_030.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.3,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the cable yellow in color?\n  - Does the cable enter both connectors at the same relative slot position on each side?\n  - Is the cable the same color along its entire visible length?"
+  },
+  {
+    "image_path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/splicing_connectors_good_031.png",
+    "gt_label": "good",
+    "anomaly_type": null,
+    "is_anomaly": true,
+    "anomaly_score": 0.4,
+    "explanation": "Logical anomaly detected. Violated constraints:\n  - Is the cable yellow in color?\n  - Does the cable appear uncut and intact, with no visible damage, breaks, or exposed wire along its length?\n  - Does the cable enter both connectors at the same relative slot position on each side?\n  - Is the cable the same color along its entire visible length?"
+  }
+]

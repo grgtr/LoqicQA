@@ -1,0 +1,3512 @@
+{
+  "class_name": "juice_bottle",
+  "vlm": "internvl",
+  "n_shots": 5,
+  "metrics": {
+    "auroc": 0.5808,
+    "f1_max": 0.6666666666666666,
+    "binary_f1": 0.46511627906976744
+  },
+  "results": [
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_000.png",
+      "gt_label": "good",
+      "gt_is_anomaly": false,
+      "pred_is_anomaly": false,
+      "anomaly_score": 0.0,
+      "explanation": "Image appears normal. All constraints satisfied.",
+      "main_q_results": [
+        {
+          "question": "Is there a center label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a lower label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label in the center of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label on the lower part of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle at its correct position?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle yellow, square with rounded corners and a smooth texture (except for Image 4 which has a banana icon in the middle)?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label roughly equal to the lower label?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the lower label smaller than the bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the bottle larger compared to labels on either side?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Does the lower label of this juice bottle have less vertical or surface area compared to other components?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Are the labels on this juice bottle adjacent and aligned horizontally along its height?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a center label slot with an image/logo related to juice content, featuring fruit icon above \"100% Juice\" text below it consistently across all images where applicable?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_003.png",
+      "gt_label": "good",
+      "gt_is_anomaly": false,
+      "pred_is_anomaly": true,
+      "anomaly_score": 0.08333333333333333,
+      "explanation": "Logical anomaly detected. Violated constraints:\n  - Does the lower label of this juice bottle have less vertical or surface area compared to other components?",
+      "main_q_results": [
+        {
+          "question": "Is there a center label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a lower label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label in the center of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label on the lower part of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle at its correct position?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle yellow, square with rounded corners and a smooth texture (except for Image 4 which has a banana icon in the middle)?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label roughly equal to the lower label?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the lower label smaller than the bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the bottle larger compared to labels on either side?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Does the lower label of this juice bottle have less vertical or surface area compared to other components?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Are the labels on this juice bottle adjacent and aligned horizontally along its height?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a center label slot with an image/logo related to juice content, featuring fruit icon above \"100% Juice\" text below it consistently across all images where applicable?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_006.png",
+      "gt_label": "good",
+      "gt_is_anomaly": false,
+      "pred_is_anomaly": false,
+      "anomaly_score": 0.0,
+      "explanation": "Image appears normal. All constraints satisfied.",
+      "main_q_results": [
+        {
+          "question": "Is there a center label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a lower label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label in the center of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label on the lower part of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle at its correct position?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle yellow, square with rounded corners and a smooth texture (except for Image 4 which has a banana icon in the middle)?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label roughly equal to the lower label?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the lower label smaller than the bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the bottle larger compared to labels on either side?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Does the lower label of this juice bottle have less vertical or surface area compared to other components?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Are the labels on this juice bottle adjacent and aligned horizontally along its height?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a center label slot with an image/logo related to juice content, featuring fruit icon above \"100% Juice\" text below it consistently across all images where applicable?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_009.png",
+      "gt_label": "good",
+      "gt_is_anomaly": false,
+      "pred_is_anomaly": false,
+      "anomaly_score": 0.0,
+      "explanation": "Image appears normal. All constraints satisfied.",
+      "main_q_results": [
+        {
+          "question": "Is there a center label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a lower label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label in the center of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label on the lower part of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle at its correct position?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle yellow, square with rounded corners and a smooth texture (except for Image 4 which has a banana icon in the middle)?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label roughly equal to the lower label?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the lower label smaller than the bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the bottle larger compared to labels on either side?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Does the lower label of this juice bottle have less vertical or surface area compared to other components?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Are the labels on this juice bottle adjacent and aligned horizontally along its height?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a center label slot with an image/logo related to juice content, featuring fruit icon above \"100% Juice\" text below it consistently across all images where applicable?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_012.png",
+      "gt_label": "good",
+      "gt_is_anomaly": false,
+      "pred_is_anomaly": false,
+      "anomaly_score": 0.0,
+      "explanation": "Image appears normal. All constraints satisfied.",
+      "main_q_results": [
+        {
+          "question": "Is there a center label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a lower label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label in the center of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label on the lower part of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle at its correct position?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle yellow, square with rounded corners and a smooth texture (except for Image 4 which has a banana icon in the middle)?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label roughly equal to the lower label?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the lower label smaller than the bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the bottle larger compared to labels on either side?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Does the lower label of this juice bottle have less vertical or surface area compared to other components?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Are the labels on this juice bottle adjacent and aligned horizontally along its height?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a center label slot with an image/logo related to juice content, featuring fruit icon above \"100% Juice\" text below it consistently across all images where applicable?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_015.png",
+      "gt_label": "good",
+      "gt_is_anomaly": false,
+      "pred_is_anomaly": false,
+      "anomaly_score": 0.0,
+      "explanation": "Image appears normal. All constraints satisfied.",
+      "main_q_results": [
+        {
+          "question": "Is there a center label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a lower label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label in the center of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label on the lower part of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle at its correct position?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle yellow, square with rounded corners and a smooth texture (except for Image 4 which has a banana icon in the middle)?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label roughly equal to the lower label?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the lower label smaller than the bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the bottle larger compared to labels on either side?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Does the lower label of this juice bottle have less vertical or surface area compared to other components?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Are the labels on this juice bottle adjacent and aligned horizontally along its height?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a center label slot with an image/logo related to juice content, featuring fruit icon above \"100% Juice\" text below it consistently across all images where applicable?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_018.png",
+      "gt_label": "good",
+      "gt_is_anomaly": false,
+      "pred_is_anomaly": false,
+      "anomaly_score": 0.0,
+      "explanation": "Image appears normal. All constraints satisfied.",
+      "main_q_results": [
+        {
+          "question": "Is there a center label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a lower label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label in the center of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label on the lower part of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle at its correct position?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle yellow, square with rounded corners and a smooth texture (except for Image 4 which has a banana icon in the middle)?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label roughly equal to the lower label?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the lower label smaller than the bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the bottle larger compared to labels on either side?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Does the lower label of this juice bottle have less vertical or surface area compared to other components?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Are the labels on this juice bottle adjacent and aligned horizontally along its height?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a center label slot with an image/logo related to juice content, featuring fruit icon above \"100% Juice\" text below it consistently across all images where applicable?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_021.png",
+      "gt_label": "good",
+      "gt_is_anomaly": false,
+      "pred_is_anomaly": false,
+      "anomaly_score": 0.0,
+      "explanation": "Image appears normal. All constraints satisfied.",
+      "main_q_results": [
+        {
+          "question": "Is there a center label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a lower label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label in the center of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label on the lower part of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle at its correct position?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle yellow, square with rounded corners and a smooth texture (except for Image 4 which has a banana icon in the middle)?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label roughly equal to the lower label?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the lower label smaller than the bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the bottle larger compared to labels on either side?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Does the lower label of this juice bottle have less vertical or surface area compared to other components?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Are the labels on this juice bottle adjacent and aligned horizontally along its height?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a center label slot with an image/logo related to juice content, featuring fruit icon above \"100% Juice\" text below it consistently across all images where applicable?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_024.png",
+      "gt_label": "good",
+      "gt_is_anomaly": false,
+      "pred_is_anomaly": false,
+      "anomaly_score": 0.0,
+      "explanation": "Image appears normal. All constraints satisfied.",
+      "main_q_results": [
+        {
+          "question": "Is there a center label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a lower label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label in the center of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label on the lower part of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle at its correct position?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle yellow, square with rounded corners and a smooth texture (except for Image 4 which has a banana icon in the middle)?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label roughly equal to the lower label?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the lower label smaller than the bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the bottle larger compared to labels on either side?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Does the lower label of this juice bottle have less vertical or surface area compared to other components?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Are the labels on this juice bottle adjacent and aligned horizontally along its height?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a center label slot with an image/logo related to juice content, featuring fruit icon above \"100% Juice\" text below it consistently across all images where applicable?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_027.png",
+      "gt_label": "good",
+      "gt_is_anomaly": false,
+      "pred_is_anomaly": false,
+      "anomaly_score": 0.0,
+      "explanation": "Image appears normal. All constraints satisfied.",
+      "main_q_results": [
+        {
+          "question": "Is there a center label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a lower label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label in the center of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label on the lower part of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle at its correct position?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle yellow, square with rounded corners and a smooth texture (except for Image 4 which has a banana icon in the middle)?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label roughly equal to the lower label?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the lower label smaller than the bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the bottle larger compared to labels on either side?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Does the lower label of this juice bottle have less vertical or surface area compared to other components?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Are the labels on this juice bottle adjacent and aligned horizontally along its height?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a center label slot with an image/logo related to juice content, featuring fruit icon above \"100% Juice\" text below it consistently across all images where applicable?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_030.png",
+      "gt_label": "good",
+      "gt_is_anomaly": false,
+      "pred_is_anomaly": false,
+      "anomaly_score": 0.0,
+      "explanation": "Image appears normal. All constraints satisfied.",
+      "main_q_results": [
+        {
+          "question": "Is there a center label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a lower label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label in the center of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label on the lower part of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle at its correct position?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle yellow, square with rounded corners and a smooth texture (except for Image 4 which has a banana icon in the middle)?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label roughly equal to the lower label?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the lower label smaller than the bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the bottle larger compared to labels on either side?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Does the lower label of this juice bottle have less vertical or surface area compared to other components?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Are the labels on this juice bottle adjacent and aligned horizontally along its height?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a center label slot with an image/logo related to juice content, featuring fruit icon above \"100% Juice\" text below it consistently across all images where applicable?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_033.png",
+      "gt_label": "good",
+      "gt_is_anomaly": false,
+      "pred_is_anomaly": true,
+      "anomaly_score": 0.08333333333333333,
+      "explanation": "Logical anomaly detected. Violated constraints:\n  - Does the lower label of this juice bottle have less vertical or surface area compared to other components?",
+      "main_q_results": [
+        {
+          "question": "Is there a center label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a lower label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label in the center of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label on the lower part of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle at its correct position?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle yellow, square with rounded corners and a smooth texture (except for Image 4 which has a banana icon in the middle)?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label roughly equal to the lower label?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the lower label smaller than the bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the bottle larger compared to labels on either side?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Does the lower label of this juice bottle have less vertical or surface area compared to other components?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Are the labels on this juice bottle adjacent and aligned horizontally along its height?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a center label slot with an image/logo related to juice content, featuring fruit icon above \"100% Juice\" text below it consistently across all images where applicable?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_036.png",
+      "gt_label": "good",
+      "gt_is_anomaly": false,
+      "pred_is_anomaly": false,
+      "anomaly_score": 0.0,
+      "explanation": "Image appears normal. All constraints satisfied.",
+      "main_q_results": [
+        {
+          "question": "Is there a center label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a lower label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label in the center of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label on the lower part of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle at its correct position?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle yellow, square with rounded corners and a smooth texture (except for Image 4 which has a banana icon in the middle)?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label roughly equal to the lower label?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the lower label smaller than the bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the bottle larger compared to labels on either side?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Does the lower label of this juice bottle have less vertical or surface area compared to other components?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Are the labels on this juice bottle adjacent and aligned horizontally along its height?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a center label slot with an image/logo related to juice content, featuring fruit icon above \"100% Juice\" text below it consistently across all images where applicable?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_039.png",
+      "gt_label": "good",
+      "gt_is_anomaly": false,
+      "pred_is_anomaly": false,
+      "anomaly_score": 0.0,
+      "explanation": "Image appears normal. All constraints satisfied.",
+      "main_q_results": [
+        {
+          "question": "Is there a center label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a lower label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label in the center of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label on the lower part of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle at its correct position?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle yellow, square with rounded corners and a smooth texture (except for Image 4 which has a banana icon in the middle)?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label roughly equal to the lower label?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the lower label smaller than the bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the bottle larger compared to labels on either side?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Does the lower label of this juice bottle have less vertical or surface area compared to other components?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Are the labels on this juice bottle adjacent and aligned horizontally along its height?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a center label slot with an image/logo related to juice content, featuring fruit icon above \"100% Juice\" text below it consistently across all images where applicable?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_042.png",
+      "gt_label": "good",
+      "gt_is_anomaly": false,
+      "pred_is_anomaly": false,
+      "anomaly_score": 0.0,
+      "explanation": "Image appears normal. All constraints satisfied.",
+      "main_q_results": [
+        {
+          "question": "Is there a center label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a lower label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label in the center of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label on the lower part of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle at its correct position?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle yellow, square with rounded corners and a smooth texture (except for Image 4 which has a banana icon in the middle)?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label roughly equal to the lower label?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the lower label smaller than the bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the bottle larger compared to labels on either side?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Does the lower label of this juice bottle have less vertical or surface area compared to other components?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Are the labels on this juice bottle adjacent and aligned horizontally along its height?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a center label slot with an image/logo related to juice content, featuring fruit icon above \"100% Juice\" text below it consistently across all images where applicable?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_045.png",
+      "gt_label": "good",
+      "gt_is_anomaly": false,
+      "pred_is_anomaly": true,
+      "anomaly_score": 0.16666666666666666,
+      "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there a lower label on the juice bottle?\n  - Does the lower label of this juice bottle have less vertical or surface area compared to other components?",
+      "main_q_results": [
+        {
+          "question": "Is there a center label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a lower label on the juice bottle?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label in the center of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label on the lower part of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle at its correct position?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle yellow, square with rounded corners and a smooth texture (except for Image 4 which has a banana icon in the middle)?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label roughly equal to the lower label?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the lower label smaller than the bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the bottle larger compared to labels on either side?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Does the lower label of this juice bottle have less vertical or surface area compared to other components?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Are the labels on this juice bottle adjacent and aligned horizontally along its height?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a center label slot with an image/logo related to juice content, featuring fruit icon above \"100% Juice\" text below it consistently across all images where applicable?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_048.png",
+      "gt_label": "good",
+      "gt_is_anomaly": false,
+      "pred_is_anomaly": true,
+      "anomaly_score": 0.08333333333333333,
+      "explanation": "Logical anomaly detected. Violated constraints:\n  - Does the lower label of this juice bottle have less vertical or surface area compared to other components?",
+      "main_q_results": [
+        {
+          "question": "Is there a center label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a lower label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label in the center of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label on the lower part of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle at its correct position?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle yellow, square with rounded corners and a smooth texture (except for Image 4 which has a banana icon in the middle)?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label roughly equal to the lower label?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the lower label smaller than the bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the bottle larger compared to labels on either side?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Does the lower label of this juice bottle have less vertical or surface area compared to other components?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Are the labels on this juice bottle adjacent and aligned horizontally along its height?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a center label slot with an image/logo related to juice content, featuring fruit icon above \"100% Juice\" text below it consistently across all images where applicable?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_051.png",
+      "gt_label": "good",
+      "gt_is_anomaly": false,
+      "pred_is_anomaly": false,
+      "anomaly_score": 0.0,
+      "explanation": "Image appears normal. All constraints satisfied.",
+      "main_q_results": [
+        {
+          "question": "Is there a center label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a lower label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label in the center of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label on the lower part of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle at its correct position?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle yellow, square with rounded corners and a smooth texture (except for Image 4 which has a banana icon in the middle)?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label roughly equal to the lower label?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the lower label smaller than the bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the bottle larger compared to labels on either side?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Does the lower label of this juice bottle have less vertical or surface area compared to other components?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Are the labels on this juice bottle adjacent and aligned horizontally along its height?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a center label slot with an image/logo related to juice content, featuring fruit icon above \"100% Juice\" text below it consistently across all images where applicable?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_054.png",
+      "gt_label": "good",
+      "gt_is_anomaly": false,
+      "pred_is_anomaly": true,
+      "anomaly_score": 0.08333333333333333,
+      "explanation": "Logical anomaly detected. Violated constraints:\n  - Does the lower label of this juice bottle have less vertical or surface area compared to other components?",
+      "main_q_results": [
+        {
+          "question": "Is there a center label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a lower label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label in the center of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label on the lower part of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle at its correct position?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle yellow, square with rounded corners and a smooth texture (except for Image 4 which has a banana icon in the middle)?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label roughly equal to the lower label?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the lower label smaller than the bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the bottle larger compared to labels on either side?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Does the lower label of this juice bottle have less vertical or surface area compared to other components?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Are the labels on this juice bottle adjacent and aligned horizontally along its height?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a center label slot with an image/logo related to juice content, featuring fruit icon above \"100% Juice\" text below it consistently across all images where applicable?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_057.png",
+      "gt_label": "good",
+      "gt_is_anomaly": false,
+      "pred_is_anomaly": false,
+      "anomaly_score": 0.0,
+      "explanation": "Image appears normal. All constraints satisfied.",
+      "main_q_results": [
+        {
+          "question": "Is there a center label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a lower label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label in the center of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label on the lower part of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle at its correct position?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle yellow, square with rounded corners and a smooth texture (except for Image 4 which has a banana icon in the middle)?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label roughly equal to the lower label?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the lower label smaller than the bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the bottle larger compared to labels on either side?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Does the lower label of this juice bottle have less vertical or surface area compared to other components?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Are the labels on this juice bottle adjacent and aligned horizontally along its height?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a center label slot with an image/logo related to juice content, featuring fruit icon above \"100% Juice\" text below it consistently across all images where applicable?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_060.png",
+      "gt_label": "good",
+      "gt_is_anomaly": false,
+      "pred_is_anomaly": true,
+      "anomaly_score": 0.08333333333333333,
+      "explanation": "Logical anomaly detected. Violated constraints:\n  - Does the lower label of this juice bottle have less vertical or surface area compared to other components?",
+      "main_q_results": [
+        {
+          "question": "Is there a center label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a lower label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label in the center of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label on the lower part of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle at its correct position?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle yellow, square with rounded corners and a smooth texture (except for Image 4 which has a banana icon in the middle)?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label roughly equal to the lower label?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the lower label smaller than the bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the bottle larger compared to labels on either side?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Does the lower label of this juice bottle have less vertical or surface area compared to other components?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Are the labels on this juice bottle adjacent and aligned horizontally along its height?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a center label slot with an image/logo related to juice content, featuring fruit icon above \"100% Juice\" text below it consistently across all images where applicable?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_063.png",
+      "gt_label": "good",
+      "gt_is_anomaly": false,
+      "pred_is_anomaly": false,
+      "anomaly_score": 0.0,
+      "explanation": "Image appears normal. All constraints satisfied.",
+      "main_q_results": [
+        {
+          "question": "Is there a center label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a lower label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label in the center of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label on the lower part of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle at its correct position?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle yellow, square with rounded corners and a smooth texture (except for Image 4 which has a banana icon in the middle)?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label roughly equal to the lower label?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the lower label smaller than the bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the bottle larger compared to labels on either side?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Does the lower label of this juice bottle have less vertical or surface area compared to other components?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Are the labels on this juice bottle adjacent and aligned horizontally along its height?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a center label slot with an image/logo related to juice content, featuring fruit icon above \"100% Juice\" text below it consistently across all images where applicable?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_066.png",
+      "gt_label": "good",
+      "gt_is_anomaly": false,
+      "pred_is_anomaly": true,
+      "anomaly_score": 0.08333333333333333,
+      "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there exactly one label in the center of the juice bottle?",
+      "main_q_results": [
+        {
+          "question": "Is there a center label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a lower label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label in the center of the juice bottle?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label on the lower part of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle at its correct position?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle yellow, square with rounded corners and a smooth texture (except for Image 4 which has a banana icon in the middle)?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label roughly equal to the lower label?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the lower label smaller than the bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the bottle larger compared to labels on either side?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Does the lower label of this juice bottle have less vertical or surface area compared to other components?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Are the labels on this juice bottle adjacent and aligned horizontally along its height?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a center label slot with an image/logo related to juice content, featuring fruit icon above \"100% Juice\" text below it consistently across all images where applicable?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_069.png",
+      "gt_label": "good",
+      "gt_is_anomaly": false,
+      "pred_is_anomaly": false,
+      "anomaly_score": 0.0,
+      "explanation": "Image appears normal. All constraints satisfied.",
+      "main_q_results": [
+        {
+          "question": "Is there a center label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a lower label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label in the center of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label on the lower part of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle at its correct position?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle yellow, square with rounded corners and a smooth texture (except for Image 4 which has a banana icon in the middle)?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label roughly equal to the lower label?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the lower label smaller than the bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the bottle larger compared to labels on either side?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Does the lower label of this juice bottle have less vertical or surface area compared to other components?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Are the labels on this juice bottle adjacent and aligned horizontally along its height?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a center label slot with an image/logo related to juice content, featuring fruit icon above \"100% Juice\" text below it consistently across all images where applicable?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_good_072.png",
+      "gt_label": "good",
+      "gt_is_anomaly": false,
+      "pred_is_anomaly": true,
+      "anomaly_score": 0.08333333333333333,
+      "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there a lower label on the juice bottle?",
+      "main_q_results": [
+        {
+          "question": "Is there a center label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a lower label on the juice bottle?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label in the center of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label on the lower part of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle at its correct position?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle yellow, square with rounded corners and a smooth texture (except for Image 4 which has a banana icon in the middle)?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label roughly equal to the lower label?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the lower label smaller than the bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the bottle larger compared to labels on either side?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Does the lower label of this juice bottle have less vertical or surface area compared to other components?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Are the labels on this juice bottle adjacent and aligned horizontally along its height?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a center label slot with an image/logo related to juice content, featuring fruit icon above \"100% Juice\" text below it consistently across all images where applicable?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_000.png",
+      "gt_label": "logical_anomaly",
+      "gt_is_anomaly": true,
+      "pred_is_anomaly": true,
+      "anomaly_score": 0.8333333333333334,
+      "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there a center label on the juice bottle?\n  - Is there a lower label on the juice bottle?\n  - Is there exactly one label in the center of the juice bottle?\n  - Is there exactly one label on the lower part of the juice bottle?\n  - Is the center label of this juice bottle at its correct position?\n  - Is the center label of this juice bottle yellow, square with rounded corners and a smooth texture (except for Image 4 which has a banana icon in the middle)?\n  - Is the center label roughly equal to the lower label?\n  - Is the lower label smaller than the bottle?\n  - Are the labels on this juice bottle adjacent and aligned horizontally along its height?\n  - Is there a center label slot with an image/logo related to juice content, featuring fruit icon above \"100% Juice\" text below it consistently across all images where applicable?",
+      "main_q_results": [
+        {
+          "question": "Is there a center label on the juice bottle?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a lower label on the juice bottle?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label in the center of the juice bottle?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label on the lower part of the juice bottle?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle at its correct position?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle yellow, square with rounded corners and a smooth texture (except for Image 4 which has a banana icon in the middle)?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label roughly equal to the lower label?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the lower label smaller than the bottle?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the bottle larger compared to labels on either side?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Does the lower label of this juice bottle have less vertical or surface area compared to other components?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Are the labels on this juice bottle adjacent and aligned horizontally along its height?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a center label slot with an image/logo related to juice content, featuring fruit icon above \"100% Juice\" text below it consistently across all images where applicable?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_001.png",
+      "gt_label": "logical_anomaly",
+      "gt_is_anomaly": true,
+      "pred_is_anomaly": true,
+      "anomaly_score": 0.8333333333333334,
+      "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there a center label on the juice bottle?\n  - Is there a lower label on the juice bottle?\n  - Is there exactly one label in the center of the juice bottle?\n  - Is there exactly one label on the lower part of the juice bottle?\n  - Is the center label of this juice bottle at its correct position?\n  - Is the center label of this juice bottle yellow, square with rounded corners and a smooth texture (except for Image 4 which has a banana icon in the middle)?\n  - Is the center label roughly equal to the lower label?\n  - Is the lower label smaller than the bottle?\n  - Are the labels on this juice bottle adjacent and aligned horizontally along its height?\n  - Is there a center label slot with an image/logo related to juice content, featuring fruit icon above \"100% Juice\" text below it consistently across all images where applicable?",
+      "main_q_results": [
+        {
+          "question": "Is there a center label on the juice bottle?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a lower label on the juice bottle?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label in the center of the juice bottle?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label on the lower part of the juice bottle?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle at its correct position?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle yellow, square with rounded corners and a smooth texture (except for Image 4 which has a banana icon in the middle)?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label roughly equal to the lower label?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the lower label smaller than the bottle?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the bottle larger compared to labels on either side?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Does the lower label of this juice bottle have less vertical or surface area compared to other components?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Are the labels on this juice bottle adjacent and aligned horizontally along its height?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a center label slot with an image/logo related to juice content, featuring fruit icon above \"100% Juice\" text below it consistently across all images where applicable?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_012.png",
+      "gt_label": "logical_anomaly",
+      "gt_is_anomaly": true,
+      "pred_is_anomaly": true,
+      "anomaly_score": 0.25,
+      "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there a lower label on the juice bottle?\n  - Is there exactly one label on the lower part of the juice bottle?\n  - Is the lower label smaller than the bottle?",
+      "main_q_results": [
+        {
+          "question": "Is there a center label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a lower label on the juice bottle?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label in the center of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label on the lower part of the juice bottle?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle at its correct position?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle yellow, square with rounded corners and a smooth texture (except for Image 4 which has a banana icon in the middle)?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label roughly equal to the lower label?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the lower label smaller than the bottle?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the bottle larger compared to labels on either side?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Does the lower label of this juice bottle have less vertical or surface area compared to other components?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Are the labels on this juice bottle adjacent and aligned horizontally along its height?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a center label slot with an image/logo related to juice content, featuring fruit icon above \"100% Juice\" text below it consistently across all images where applicable?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_013.png",
+      "gt_label": "logical_anomaly",
+      "gt_is_anomaly": true,
+      "pred_is_anomaly": true,
+      "anomaly_score": 0.25,
+      "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there a lower label on the juice bottle?\n  - Is the center label roughly equal to the lower label?\n  - Is there a center label slot with an image/logo related to juice content, featuring fruit icon above \"100% Juice\" text below it consistently across all images where applicable?",
+      "main_q_results": [
+        {
+          "question": "Is there a center label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a lower label on the juice bottle?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label in the center of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label on the lower part of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle at its correct position?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle yellow, square with rounded corners and a smooth texture (except for Image 4 which has a banana icon in the middle)?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label roughly equal to the lower label?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the lower label smaller than the bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the bottle larger compared to labels on either side?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Does the lower label of this juice bottle have less vertical or surface area compared to other components?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Are the labels on this juice bottle adjacent and aligned horizontally along its height?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a center label slot with an image/logo related to juice content, featuring fruit icon above \"100% Juice\" text below it consistently across all images where applicable?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_024.png",
+      "gt_label": "logical_anomaly",
+      "gt_is_anomaly": true,
+      "pred_is_anomaly": true,
+      "anomaly_score": 0.16666666666666666,
+      "explanation": "Logical anomaly detected. Violated constraints:\n  - Does the lower label of this juice bottle have less vertical or surface area compared to other components?\n  - Are the labels on this juice bottle adjacent and aligned horizontally along its height?",
+      "main_q_results": [
+        {
+          "question": "Is there a center label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a lower label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label in the center of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label on the lower part of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle at its correct position?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle yellow, square with rounded corners and a smooth texture (except for Image 4 which has a banana icon in the middle)?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label roughly equal to the lower label?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the lower label smaller than the bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the bottle larger compared to labels on either side?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Does the lower label of this juice bottle have less vertical or surface area compared to other components?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Are the labels on this juice bottle adjacent and aligned horizontally along its height?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a center label slot with an image/logo related to juice content, featuring fruit icon above \"100% Juice\" text below it consistently across all images where applicable?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_025.png",
+      "gt_label": "logical_anomaly",
+      "gt_is_anomaly": true,
+      "pred_is_anomaly": false,
+      "anomaly_score": 0.0,
+      "explanation": "Image appears normal. All constraints satisfied.",
+      "main_q_results": [
+        {
+          "question": "Is there a center label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a lower label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label in the center of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label on the lower part of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle at its correct position?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle yellow, square with rounded corners and a smooth texture (except for Image 4 which has a banana icon in the middle)?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label roughly equal to the lower label?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the lower label smaller than the bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the bottle larger compared to labels on either side?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Does the lower label of this juice bottle have less vertical or surface area compared to other components?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Are the labels on this juice bottle adjacent and aligned horizontally along its height?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a center label slot with an image/logo related to juice content, featuring fruit icon above \"100% Juice\" text below it consistently across all images where applicable?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_026.png",
+      "gt_label": "logical_anomaly",
+      "gt_is_anomaly": true,
+      "pred_is_anomaly": false,
+      "anomaly_score": 0.0,
+      "explanation": "Image appears normal. All constraints satisfied.",
+      "main_q_results": [
+        {
+          "question": "Is there a center label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a lower label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label in the center of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label on the lower part of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle at its correct position?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle yellow, square with rounded corners and a smooth texture (except for Image 4 which has a banana icon in the middle)?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label roughly equal to the lower label?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the lower label smaller than the bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the bottle larger compared to labels on either side?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Does the lower label of this juice bottle have less vertical or surface area compared to other components?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Are the labels on this juice bottle adjacent and aligned horizontally along its height?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a center label slot with an image/logo related to juice content, featuring fruit icon above \"100% Juice\" text below it consistently across all images where applicable?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_036.png",
+      "gt_label": "logical_anomaly",
+      "gt_is_anomaly": true,
+      "pred_is_anomaly": false,
+      "anomaly_score": 0.0,
+      "explanation": "Image appears normal. All constraints satisfied.",
+      "main_q_results": [
+        {
+          "question": "Is there a center label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a lower label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label in the center of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label on the lower part of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle at its correct position?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle yellow, square with rounded corners and a smooth texture (except for Image 4 which has a banana icon in the middle)?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label roughly equal to the lower label?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the lower label smaller than the bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the bottle larger compared to labels on either side?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Does the lower label of this juice bottle have less vertical or surface area compared to other components?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Are the labels on this juice bottle adjacent and aligned horizontally along its height?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a center label slot with an image/logo related to juice content, featuring fruit icon above \"100% Juice\" text below it consistently across all images where applicable?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_037.png",
+      "gt_label": "logical_anomaly",
+      "gt_is_anomaly": true,
+      "pred_is_anomaly": false,
+      "anomaly_score": 0.0,
+      "explanation": "Image appears normal. All constraints satisfied.",
+      "main_q_results": [
+        {
+          "question": "Is there a center label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a lower label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label in the center of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label on the lower part of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle at its correct position?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle yellow, square with rounded corners and a smooth texture (except for Image 4 which has a banana icon in the middle)?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label roughly equal to the lower label?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the lower label smaller than the bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the bottle larger compared to labels on either side?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Does the lower label of this juice bottle have less vertical or surface area compared to other components?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Are the labels on this juice bottle adjacent and aligned horizontally along its height?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a center label slot with an image/logo related to juice content, featuring fruit icon above \"100% Juice\" text below it consistently across all images where applicable?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_046.png",
+      "gt_label": "logical_anomaly",
+      "gt_is_anomaly": true,
+      "pred_is_anomaly": true,
+      "anomaly_score": 0.08333333333333333,
+      "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there a center label slot with an image/logo related to juice content, featuring fruit icon above \"100% Juice\" text below it consistently across all images where applicable?",
+      "main_q_results": [
+        {
+          "question": "Is there a center label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a lower label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label in the center of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label on the lower part of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle at its correct position?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle yellow, square with rounded corners and a smooth texture (except for Image 4 which has a banana icon in the middle)?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label roughly equal to the lower label?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the lower label smaller than the bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the bottle larger compared to labels on either side?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Does the lower label of this juice bottle have less vertical or surface area compared to other components?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Are the labels on this juice bottle adjacent and aligned horizontally along its height?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a center label slot with an image/logo related to juice content, featuring fruit icon above \"100% Juice\" text below it consistently across all images where applicable?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_047.png",
+      "gt_label": "logical_anomaly",
+      "gt_is_anomaly": true,
+      "pred_is_anomaly": true,
+      "anomaly_score": 0.08333333333333333,
+      "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there a center label slot with an image/logo related to juice content, featuring fruit icon above \"100% Juice\" text below it consistently across all images where applicable?",
+      "main_q_results": [
+        {
+          "question": "Is there a center label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a lower label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label in the center of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label on the lower part of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle at its correct position?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle yellow, square with rounded corners and a smooth texture (except for Image 4 which has a banana icon in the middle)?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label roughly equal to the lower label?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the lower label smaller than the bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the bottle larger compared to labels on either side?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Does the lower label of this juice bottle have less vertical or surface area compared to other components?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Are the labels on this juice bottle adjacent and aligned horizontally along its height?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a center label slot with an image/logo related to juice content, featuring fruit icon above \"100% Juice\" text below it consistently across all images where applicable?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_051.png",
+      "gt_label": "logical_anomaly",
+      "gt_is_anomaly": true,
+      "pred_is_anomaly": false,
+      "anomaly_score": 0.0,
+      "explanation": "Image appears normal. All constraints satisfied.",
+      "main_q_results": [
+        {
+          "question": "Is there a center label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a lower label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label in the center of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label on the lower part of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle at its correct position?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle yellow, square with rounded corners and a smooth texture (except for Image 4 which has a banana icon in the middle)?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label roughly equal to the lower label?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the lower label smaller than the bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the bottle larger compared to labels on either side?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Does the lower label of this juice bottle have less vertical or surface area compared to other components?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Are the labels on this juice bottle adjacent and aligned horizontally along its height?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a center label slot with an image/logo related to juice content, featuring fruit icon above \"100% Juice\" text below it consistently across all images where applicable?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_052.png",
+      "gt_label": "logical_anomaly",
+      "gt_is_anomaly": true,
+      "pred_is_anomaly": false,
+      "anomaly_score": 0.0,
+      "explanation": "Image appears normal. All constraints satisfied.",
+      "main_q_results": [
+        {
+          "question": "Is there a center label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a lower label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label in the center of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label on the lower part of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle at its correct position?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle yellow, square with rounded corners and a smooth texture (except for Image 4 which has a banana icon in the middle)?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label roughly equal to the lower label?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the lower label smaller than the bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the bottle larger compared to labels on either side?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Does the lower label of this juice bottle have less vertical or surface area compared to other components?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Are the labels on this juice bottle adjacent and aligned horizontally along its height?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a center label slot with an image/logo related to juice content, featuring fruit icon above \"100% Juice\" text below it consistently across all images where applicable?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_053.png",
+      "gt_label": "logical_anomaly",
+      "gt_is_anomaly": true,
+      "pred_is_anomaly": false,
+      "anomaly_score": 0.0,
+      "explanation": "Image appears normal. All constraints satisfied.",
+      "main_q_results": [
+        {
+          "question": "Is there a center label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a lower label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label in the center of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label on the lower part of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle at its correct position?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle yellow, square with rounded corners and a smooth texture (except for Image 4 which has a banana icon in the middle)?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label roughly equal to the lower label?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the lower label smaller than the bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the bottle larger compared to labels on either side?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Does the lower label of this juice bottle have less vertical or surface area compared to other components?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Are the labels on this juice bottle adjacent and aligned horizontally along its height?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a center label slot with an image/logo related to juice content, featuring fruit icon above \"100% Juice\" text below it consistently across all images where applicable?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_054.png",
+      "gt_label": "logical_anomaly",
+      "gt_is_anomaly": true,
+      "pred_is_anomaly": false,
+      "anomaly_score": 0.0,
+      "explanation": "Image appears normal. All constraints satisfied.",
+      "main_q_results": [
+        {
+          "question": "Is there a center label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a lower label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label in the center of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label on the lower part of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle at its correct position?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle yellow, square with rounded corners and a smooth texture (except for Image 4 which has a banana icon in the middle)?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label roughly equal to the lower label?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the lower label smaller than the bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the bottle larger compared to labels on either side?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Does the lower label of this juice bottle have less vertical or surface area compared to other components?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Are the labels on this juice bottle adjacent and aligned horizontally along its height?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a center label slot with an image/logo related to juice content, featuring fruit icon above \"100% Juice\" text below it consistently across all images where applicable?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_060.png",
+      "gt_label": "logical_anomaly",
+      "gt_is_anomaly": true,
+      "pred_is_anomaly": false,
+      "anomaly_score": 0.0,
+      "explanation": "Image appears normal. All constraints satisfied.",
+      "main_q_results": [
+        {
+          "question": "Is there a center label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a lower label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label in the center of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label on the lower part of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle at its correct position?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle yellow, square with rounded corners and a smooth texture (except for Image 4 which has a banana icon in the middle)?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label roughly equal to the lower label?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the lower label smaller than the bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the bottle larger compared to labels on either side?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Does the lower label of this juice bottle have less vertical or surface area compared to other components?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Are the labels on this juice bottle adjacent and aligned horizontally along its height?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a center label slot with an image/logo related to juice content, featuring fruit icon above \"100% Juice\" text below it consistently across all images where applicable?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_061.png",
+      "gt_label": "logical_anomaly",
+      "gt_is_anomaly": true,
+      "pred_is_anomaly": false,
+      "anomaly_score": 0.0,
+      "explanation": "Image appears normal. All constraints satisfied.",
+      "main_q_results": [
+        {
+          "question": "Is there a center label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a lower label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label in the center of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label on the lower part of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle at its correct position?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle yellow, square with rounded corners and a smooth texture (except for Image 4 which has a banana icon in the middle)?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label roughly equal to the lower label?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the lower label smaller than the bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the bottle larger compared to labels on either side?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Does the lower label of this juice bottle have less vertical or surface area compared to other components?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Are the labels on this juice bottle adjacent and aligned horizontally along its height?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a center label slot with an image/logo related to juice content, featuring fruit icon above \"100% Juice\" text below it consistently across all images where applicable?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_072.png",
+      "gt_label": "logical_anomaly",
+      "gt_is_anomaly": true,
+      "pred_is_anomaly": true,
+      "anomaly_score": 0.4166666666666667,
+      "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there a center label on the juice bottle?\n  - Is the center label of this juice bottle at its correct position?\n  - Is the center label of this juice bottle yellow, square with rounded corners and a smooth texture (except for Image 4 which has a banana icon in the middle)?\n  - Is the center label roughly equal to the lower label?\n  - Is there a center label slot with an image/logo related to juice content, featuring fruit icon above \"100% Juice\" text below it consistently across all images where applicable?",
+      "main_q_results": [
+        {
+          "question": "Is there a center label on the juice bottle?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a lower label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label in the center of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label on the lower part of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle at its correct position?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle yellow, square with rounded corners and a smooth texture (except for Image 4 which has a banana icon in the middle)?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label roughly equal to the lower label?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the lower label smaller than the bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the bottle larger compared to labels on either side?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Does the lower label of this juice bottle have less vertical or surface area compared to other components?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Are the labels on this juice bottle adjacent and aligned horizontally along its height?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a center label slot with an image/logo related to juice content, featuring fruit icon above \"100% Juice\" text below it consistently across all images where applicable?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_073.png",
+      "gt_label": "logical_anomaly",
+      "gt_is_anomaly": true,
+      "pred_is_anomaly": true,
+      "anomaly_score": 0.16666666666666666,
+      "explanation": "Logical anomaly detected. Violated constraints:\n  - Is there a center label on the juice bottle?\n  - Is there a center label slot with an image/logo related to juice content, featuring fruit icon above \"100% Juice\" text below it consistently across all images where applicable?",
+      "main_q_results": [
+        {
+          "question": "Is there a center label on the juice bottle?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a lower label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label in the center of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label on the lower part of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle at its correct position?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle yellow, square with rounded corners and a smooth texture (except for Image 4 which has a banana icon in the middle)?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label roughly equal to the lower label?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the lower label smaller than the bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the bottle larger compared to labels on either side?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Does the lower label of this juice bottle have less vertical or surface area compared to other components?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Are the labels on this juice bottle adjacent and aligned horizontally along its height?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a center label slot with an image/logo related to juice content, featuring fruit icon above \"100% Juice\" text below it consistently across all images where applicable?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_084.png",
+      "gt_label": "logical_anomaly",
+      "gt_is_anomaly": true,
+      "pred_is_anomaly": true,
+      "anomaly_score": 0.08333333333333333,
+      "explanation": "Logical anomaly detected. Violated constraints:\n  - Does the lower label of this juice bottle have less vertical or surface area compared to other components?",
+      "main_q_results": [
+        {
+          "question": "Is there a center label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a lower label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label in the center of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label on the lower part of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle at its correct position?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle yellow, square with rounded corners and a smooth texture (except for Image 4 which has a banana icon in the middle)?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label roughly equal to the lower label?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the lower label smaller than the bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the bottle larger compared to labels on either side?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Does the lower label of this juice bottle have less vertical or surface area compared to other components?",
+          "voted_answer": "No",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Are the labels on this juice bottle adjacent and aligned horizontally along its height?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a center label slot with an image/logo related to juice content, featuring fruit icon above \"100% Juice\" text below it consistently across all images where applicable?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_085.png",
+      "gt_label": "logical_anomaly",
+      "gt_is_anomaly": true,
+      "pred_is_anomaly": false,
+      "anomaly_score": 0.0,
+      "explanation": "Image appears normal. All constraints satisfied.",
+      "main_q_results": [
+        {
+          "question": "Is there a center label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a lower label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label in the center of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label on the lower part of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle at its correct position?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle yellow, square with rounded corners and a smooth texture (except for Image 4 which has a banana icon in the middle)?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label roughly equal to the lower label?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the lower label smaller than the bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the bottle larger compared to labels on either side?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Does the lower label of this juice bottle have less vertical or surface area compared to other components?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Are the labels on this juice bottle adjacent and aligned horizontally along its height?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a center label slot with an image/logo related to juice content, featuring fruit icon above \"100% Juice\" text below it consistently across all images where applicable?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_086.png",
+      "gt_label": "logical_anomaly",
+      "gt_is_anomaly": true,
+      "pred_is_anomaly": false,
+      "anomaly_score": 0.0,
+      "explanation": "Image appears normal. All constraints satisfied.",
+      "main_q_results": [
+        {
+          "question": "Is there a center label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a lower label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label in the center of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label on the lower part of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle at its correct position?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle yellow, square with rounded corners and a smooth texture (except for Image 4 which has a banana icon in the middle)?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label roughly equal to the lower label?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the lower label smaller than the bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the bottle larger compared to labels on either side?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Does the lower label of this juice bottle have less vertical or surface area compared to other components?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Are the labels on this juice bottle adjacent and aligned horizontally along its height?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a center label slot with an image/logo related to juice content, featuring fruit icon above \"100% Juice\" text below it consistently across all images where applicable?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_087.png",
+      "gt_label": "logical_anomaly",
+      "gt_is_anomaly": true,
+      "pred_is_anomaly": false,
+      "anomaly_score": 0.0,
+      "explanation": "Image appears normal. All constraints satisfied.",
+      "main_q_results": [
+        {
+          "question": "Is there a center label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a lower label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label in the center of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label on the lower part of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle at its correct position?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle yellow, square with rounded corners and a smooth texture (except for Image 4 which has a banana icon in the middle)?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label roughly equal to the lower label?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the lower label smaller than the bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the bottle larger compared to labels on either side?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Does the lower label of this juice bottle have less vertical or surface area compared to other components?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Are the labels on this juice bottle adjacent and aligned horizontally along its height?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a center label slot with an image/logo related to juice content, featuring fruit icon above \"100% Juice\" text below it consistently across all images where applicable?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_120.png",
+      "gt_label": "logical_anomaly",
+      "gt_is_anomaly": true,
+      "pred_is_anomaly": false,
+      "anomaly_score": 0.0,
+      "explanation": "Image appears normal. All constraints satisfied.",
+      "main_q_results": [
+        {
+          "question": "Is there a center label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a lower label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label in the center of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label on the lower part of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle at its correct position?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle yellow, square with rounded corners and a smooth texture (except for Image 4 which has a banana icon in the middle)?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label roughly equal to the lower label?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the lower label smaller than the bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the bottle larger compared to labels on either side?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Does the lower label of this juice bottle have less vertical or surface area compared to other components?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Are the labels on this juice bottle adjacent and aligned horizontally along its height?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a center label slot with an image/logo related to juice content, featuring fruit icon above \"100% Juice\" text below it consistently across all images where applicable?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        }
+      ]
+    },
+    {
+      "path": "/home/chikibriki/LoqicQA/dataset-ninja/mvtec-loco-ad/test/img/juice_bottle_logical_anomalies_121.png",
+      "gt_label": "logical_anomaly",
+      "gt_is_anomaly": true,
+      "pred_is_anomaly": false,
+      "anomaly_score": 0.0,
+      "explanation": "Image appears normal. All constraints satisfied.",
+      "main_q_results": [
+        {
+          "question": "Is there a center label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a lower label on the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label in the center of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there exactly one label on the lower part of the juice bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle at its correct position?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label of this juice bottle yellow, square with rounded corners and a smooth texture (except for Image 4 which has a banana icon in the middle)?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the center label roughly equal to the lower label?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the lower label smaller than the bottle?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is the bottle larger compared to labels on either side?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Does the lower label of this juice bottle have less vertical or surface area compared to other components?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Are the labels on this juice bottle adjacent and aligned horizontally along its height?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        },
+        {
+          "question": "Is there a center label slot with an image/logo related to juice content, featuring fruit icon above \"100% Juice\" text below it consistently across all images where applicable?",
+          "voted_answer": "Yes",
+          "best_log_prob": 0.0
+        }
+      ]
+    }
+  ]
+}

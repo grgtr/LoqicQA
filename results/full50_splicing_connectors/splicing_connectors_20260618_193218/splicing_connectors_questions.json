@@ -1,0 +1,64 @@
+{
+  "class_name": "splicing_connectors",
+  "normality_definition": "NORMAL STATE: two push-wire splicing connectors joined by a single cable, lying horizontally on a textured background.\n\nConnectors and cable \u2014 the core set (primary signals):\n- Exactly TWO connectors: transparent blocks with orange lever clamps, one on the LEFT and one on the RIGHT.\n- The two connectors are the SAME type \u2014 the same model, the same number of wire-entry slots and the same size. One connector differing in type or size from the other is abnormal.\n- Exactly ONE cable joins them through the centre. There is never zero cables, and never two or more.\n\nCable properties:\n- The cable is YELLOW. A cable of any other colour (blue, red, etc.) is abnormal.\n- The cable is whole and continuous \u2014 no cut, nick, break, or exposed wire anywhere along it.\n\nSymmetry:\n- The layout is left\u2013right symmetric: the two connectors mirror each other, and the cable enters each connector at the same slot position. The cable entering a different slot on one side breaks this symmetry and is abnormal.\n\nWhat counts as a logical anomaly: a missing or extra cable, a cable of the wrong colour, a cut or damaged cable, the two connectors being mismatched types/sizes, or an asymmetric cable entry.",
+  "main_questions": [
+    "Is there a splicing connector visible in the image?",
+    "Is there exactly 2 splicing connectors?",
+    "Is there exactly one cable connected to the splicing connector?",
+    "Is the splicing connector on the left side?",
+    "Is the center of the cable visible in a normal splicing connector?",
+    "Is there a transparent splicing connector with an orange lever clamp and hexagonal shape?",
+    "Is the splicing connector roughly equal to the cable?",
+    "Does the splicing connector occupy a significant amount of space?"
+  ],
+  "sub_questions": {
+    "Is there a splicing connector visible in the image?": [
+      "Are there splicing connectors visible in the image?",
+      "Is a splicing connector present within this picture?",
+      "Do you observe any splicing connectors here?",
+      "Does the splicing_connectors contain at least one component?"
+    ],
+    "Is there exactly 2 splicing connectors?": [
+      "Can you see exactly two splicing connectors in the image?",
+      "Is there precisely 2 visible splicing connectors present here?",
+      "Do you observe a total of exactly N splicing connectors, where N is an integer between 0 and infinity?",
+      "Are... (leave blank) splicing connectors clearly depicted within this picture?"
+    ],
+    "Is there exactly one cable connected to the splicing connector?": [
+      "Can you see a single cable connected to the splicing connector?",
+      "Is there exactly one cable attached to each of the two connectors in this image?",
+      "Do you observe precisely N cables linked with both ends of these connectors, where N is 1.",
+      "Can you see splicing connector in the splicing_connectors?"
+    ],
+    "Is the splicing connector on the left side?": [
+      "Can you see the splicing connector on the left side?",
+      "Is there a splicing connector positioned to the left in this image?",
+      "Do you observe that one of the connectors is located at the far-left edge.",
+      "Are both splicing connectors aligned with each other, ensuring they are not misplaced or out of position?"
+    ],
+    "Is the center of the cable visible in a normal splicing connector?": [
+      "Can you see the center of the cable in a normal splicing connector?",
+      "Is there visibility for the central part of the cable within an ordinary splicing connector?",
+      "Do you observe that the middle section of the cable is present inside typical splicing connectors?",
+      "Can you see splicing connector in the splicing_connectors?"
+    ],
+    "Is there a transparent splicing connector with an orange lever clamp and hexagonal shape?": [
+      "Can you see a transparent splicing connector with an orange lever clamp and hexagonal shape?",
+      "Is there a visible component that matches the description of having transparency, orange clamps, and being hexagonal in shape?",
+      "Do you observe any object resembling a splicing connector made from clear material featuring orange levers on its sides along with a six-sided form?",
+      "Can you see splicing connector in the splicing_connectors?"
+    ],
+    "Is the splicing connector roughly equal to the cable?": [
+      "Are the splicing connectors and cable of equal size?",
+      "Is there a noticeable difference in dimensions between the splicing connector and the cable?",
+      "Do you observe that both components are roughly equivalent in length or width?",
+      "Can you see splicing connector in the splicing_connectors?"
+    ],
+    "Does the splicing connector occupy a significant amount of space?": [
+      "Can you see the splicing connector occupying a significant amount of space?",
+      "Is there sufficient presence for the splicing connector to occupy considerable area in this image?",
+      "Do you observe that the splicing connector takes up an ample portion within its designated frame here.",
+      "Are... visible, indicating substantial coverage by the splicing connectors component itself?"
+    ]
+  }
+}

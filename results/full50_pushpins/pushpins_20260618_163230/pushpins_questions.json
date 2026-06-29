@@ -1,0 +1,15 @@
+{
+  "class_name": "pushpins",
+  "normality_definition": "NORMAL STATE: a transparent rectangular plastic box, seen from above, divided into a regular grid of small compartments (3 rows \u00d7 5 columns, 15 cells in total), with one pushpin sitting in each cell.\n\nCount and one-per-cell rule (the central, defining property):\n- There are exactly 15 pushpins in total \u2014 one in every compartment.\n- Each compartment holds EXACTLY ONE pushpin: a cell is never empty and never holds two or more.\n- Every pushpin lies in its own cell and does not share a cell with another pushpin.\n- The number of pushpins matches the number of compartments exactly: no surplus, no shortfall.\n\nPushpin appearance:\n- All pushpins look alike \u2014 the same colour (yellow or orange), the same size, each with a round cap and a metal needle.\n\nLayout:\n- The 15 cells form a complete, even 3\u00d75 grid; all cells are the same size.\n\nWhat counts as a logical anomaly: a compartment left empty (a missing pushpin), a compartment holding two or more pushpins, or a total pushpin count other than exactly 15.",
+  "main_questions": [
+    "Is there exactly one yellow pushpin head facing up in each slot?"
+  ],
+  "sub_questions": {
+    "Is there exactly one yellow pushpin head facing up in each slot?": [
+      "Are there exactly 15 yellow pushpin heads facing up in the image?",
+      "Is each slot occupied by precisely one upward-facing yellow pushpin head?",
+      "Does every visible space contain an exact number of yellow pushpins, all oriented upwards?",
+      "Can you see pushpin in the pushpins?"
+    ]
+  }
+}

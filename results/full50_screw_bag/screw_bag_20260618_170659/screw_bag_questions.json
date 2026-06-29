@@ -1,0 +1,36 @@
+{
+  "class_name": "screw_bag",
+  "normality_definition": "NORMAL STATE: a sealed transparent bag holding a small, fixed set of silver metal hardware.\n\nExpected contents \u2014 exact set (the primary signal):\n- Exactly 2 split-ring washers (flat silver rings, each with a small gap in the ring).\n- Exactly 2 hexagonal nuts (six-sided silver pieces).\n- Exactly 1 long screw and exactly 1 short screw, each with a hex-socket head and a threaded shaft.\n- Six metal items in total and nothing else: every one of the four types is present, no type is missing, and there are no extra pieces.\n\nTwo screws of different length:\n- One screw is CLEARLY longer than the other; the difference is obvious at a glance.\n- There is exactly one long screw and exactly one short screw \u2014 never two long, never two short.\n- Both screws are of ordinary proportions, neither unusually tiny nor unusually long.\n\nAppearance:\n- Every item is bare silver/metallic: washers are split rings, nuts are hexagonal, screws have a recessed hexagonal socket in the head.\n\nWhat counts as a logical anomaly: a whole component type missing, the wrong number of any item (e.g., one washer, or three nuts), an extra item beyond the six, or the screws being the wrong lengths (two long, two short, or a screw of abnormal size).",
+  "main_questions": [
+    "Is there exactly 2 washers on the screw_bag?",
+    "Is there exactly 2 nuts in the image?",
+    "Is there exactly one long screw in the bag?",
+    "Is there a mixed arrangement of components within the screw_bag?"
+  ],
+  "sub_questions": {
+    "Is there exactly 2 washers on the screw_bag?": [
+      "Are there precisely two washers visible in the screw_bag?",
+      "Can you see exactly 2 washers on this bag of screws and nuts?",
+      "Is it true that there are a total of 2 washers present inside the package with screws, nuts & bolts?",
+      "Can you see washer in the screw_bag?"
+    ],
+    "Is there exactly 2 nuts in the image?": [
+      "Are there precisely two nuts in the image?",
+      "Can you see exactly 2 nuts within this screw_bag picture?",
+      "Is it true that there are a total of 2 nuts visible here?",
+      "Do we observe an exact count of 2 nuts present?"
+    ],
+    "Is there exactly one long screw in the bag?": [
+      "Can you see exactly one long screw in the bag?",
+      "Is there precisely one long screw present within this image?",
+      "Do you observe a single, distinct long screw inside the bag?",
+      "Can you see long screw in the screw_bag?"
+    ],
+    "Is there a mixed arrangement of components within the screw_bag?": [
+      "Can you see a washer and nut in the same section of the screw_bag?",
+      "Is there any mixing between washers, nuts, long screws, or short screws within one compartment on this image?",
+      "Do you observe that all components are distinctly separated by recycling symbols but can be mixed without strict left/right separation requirements for proper assembly functionality here?",
+      "Are both types of screws (long and short) visible together inside their designated sections?"
+    ]
+  }
+}
